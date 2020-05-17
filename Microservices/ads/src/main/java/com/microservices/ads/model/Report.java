@@ -20,8 +20,8 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "report_id_seq")
     private Long id;
 
-    private Long idAgent;
-    private Long idUser;
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private AdCar adCar;
     private String text;
     private Integer km;
 
