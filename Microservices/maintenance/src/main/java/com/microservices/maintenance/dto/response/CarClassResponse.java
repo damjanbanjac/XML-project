@@ -7,11 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CarBrandResponse {
+public class CarClassResponse {
 
     private long id;
 
-    private String name;
-
-    private String label;
+    private String car_class;
 }

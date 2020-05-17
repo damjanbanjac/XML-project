@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TypeOfFuelResponse {
 
-    private Long id;
+    private long id;
 
     private String type;
 }
