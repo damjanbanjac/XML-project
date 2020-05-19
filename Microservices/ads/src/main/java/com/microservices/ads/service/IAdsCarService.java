@@ -17,5 +17,8 @@ public interface IAdsCarService {
 
     void deleteAdCar(long id);
 
+    Integer getAverageGrade(long id);
+
+
 
 }
