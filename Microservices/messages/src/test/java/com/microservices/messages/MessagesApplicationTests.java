@@ -1,10 +1,10 @@
-package com.microservices.tim7;
+package com.microservices.messages;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Tim47ApplicationTests {
+class MessagesApplicationTests {
 
 	@Test
 	void contextLoads() {

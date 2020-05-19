@@ -1,13 +1,13 @@
-package com.microservices.tim7;
+package com.microservices.messages;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Tim47Application {
+public class MessagesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Tim47Application.class, args);
+		SpringApplication.run(MessagesApplication.class, args);
 	}
 
 }
