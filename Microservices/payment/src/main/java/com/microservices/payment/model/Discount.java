@@ -21,4 +21,13 @@ public class Discount {
 
     private String discount;
 
+    //na koji oglas se odnosi popust
+    //@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private Long adCar;
+
+    //na kog agenta se odnosi popust
+    //@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private Long Agent;
+
+
 }

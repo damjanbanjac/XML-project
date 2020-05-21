@@ -13,4 +13,8 @@ public interface RequestService {
     RequestDTO createRequest(RequestDTO request);
 
     void cancelRequest(long id);
+
+    void cancelRequestFromAgent(long id, long idAgent);
+
+    void acceptRequestFromAgent(long id, long idAgent);
 }
