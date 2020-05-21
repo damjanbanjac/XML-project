@@ -25,4 +25,12 @@ public class Pricelist {
     private String priceForWorkingDays;
     private String priceForWeekend;
 
+    //na koji oglas se odnosi popust
+    //@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private Long adCar;
+
+    //na kog agenta se odnosi popust
+    //@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private Long Agent;
+
 }
