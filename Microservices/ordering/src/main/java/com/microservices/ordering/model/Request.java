@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,7 +21,9 @@ public class Request {
     private Long id;
 
     private String status;
-    private Date availableFrom;
-    private Date availableTo;
     private Boolean bundle;
+
+    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private  List<Order> orderList;
+
 }
