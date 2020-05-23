@@ -8,7 +8,12 @@ import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-axios.defaults.baseURL = "http://localhost:8093"
+axios.defaults.baseURL = "http://localhost:8080"
+
+axios.interceptors.request.use(config => {
+  config.headers['Authorization'] = "Bearer " + localStorage.getItem("jwt");
+  return config;
+})
 
 Vue.config.productionTip = false
 
