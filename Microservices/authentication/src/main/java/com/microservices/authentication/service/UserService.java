@@ -21,13 +21,16 @@ public class UserService {
     }
 
     public User findOne(String mail) {
-        return userRepository.findByMail(mail);
+        return userRepository.findByEmail(mail);
     }
 
-    public void save(User user) {
+    public void save(UserRequest user) {
 
+        User subject = new User();
+        subject.setName(user.getName());
+        subject.setEmail(user.getEmail());
 
-        this.userRepository.save(user);
+        userRepository.save(subject);
 
 
     }
