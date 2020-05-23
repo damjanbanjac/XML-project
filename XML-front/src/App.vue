@@ -22,7 +22,7 @@
 // import AgentRegistrationForm from "@/components/AgentRegistrationForm.vue"
 // import ClientRegistrationForm from "@/components/ClientRegistrationForm.vue"
 import HomePage from "@/components/HomePage.vue"
-
+import VueJwtDecode from "vue-jwt-decode";
 export default {
   components: {
     // "login" : LoginForm,
@@ -31,11 +31,19 @@ export default {
     "home-page" : HomePage
   } ,
 
+ 
+
 data() {
 
     return {
     };
   },
+
+   mounted() {
+    if (localStorage.getItem("jwt") != undefined) {
+      this.$store.state.user = VueJwtDecode.decode(localStorage.getItem("jwt"));
+    }
+  }
 
 
 }
