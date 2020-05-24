@@ -3,7 +3,7 @@
 
     <div>
 
-      <home-page></home-page>
+      <nav-bar></nav-bar>
       <!-- <login></login> -->
       <!-- <agent-registration></agent-registration> -->
       <!-- <client-registration></client-registration> -->
@@ -21,14 +21,14 @@
 // import LoginForm from "@/components/LoginForm.vue"
 // import AgentRegistrationForm from "@/components/AgentRegistrationForm.vue"
 // import ClientRegistrationForm from "@/components/ClientRegistrationForm.vue"
-import HomePage from "@/components/HomePage.vue"
+import NavBar from "@/components/NavBar.vue";
 import VueJwtDecode from "vue-jwt-decode";
 export default {
   components: {
     // "login" : LoginForm,
     // "agent-registration" : AgentRegistrationForm,
     // "client-registration" : ClientRegistrationForm
-    "home-page" : HomePage
+    "nav-bar" : NavBar
   } ,
 
  
@@ -42,6 +42,7 @@ data() {
    mounted() {
     if (localStorage.getItem("jwt") != undefined) {
       this.$store.state.user = VueJwtDecode.decode(localStorage.getItem("jwt"));
+      console.log(localStorage.getItem("jwt"));
     }
   }
 

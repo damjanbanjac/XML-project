@@ -7,39 +7,72 @@ import ClientRegistrationForm from '../components/ClientRegistrationForm.vue'
 import HomePage from '../components/HomePage.vue'
 import PriceList from '../components/PriceList.vue'
 
+
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/login',
     name: 'login',
-    component: LoginForm
+    component: LoginForm,
+    meta: {
+      requiresAuth: true
+    } 
   }, 
   {
     path: '/agentRegistration',
     name: 'agent-registration',
-    component: AgentRegistrationForm
+    component: AgentRegistrationForm,
+    meta: {
+      requiresAuth: true
+    } 
   },
   {
     path: '/clientRegistration',
     name: 'client-registration',
-    component: ClientRegistrationForm
+    component: ClientRegistrationForm,
+    meta: {
+      requiresAuth: true
+    } 
   },
   {
-    path: '/homePage',
+    path: '/',
     name: 'home-page',
-    component: HomePage
+    component: HomePage,
+    meta: {
+      requiresAuth: true
+    } 
   },
   {
     path: '/createPriceList',
     name: 'create-price-list',
-    component: PriceList
+    component: PriceList,
+    meta: {
+      requiresAuth: false
+    } 
   }
 ]
 
 const router = new VueRouter({
   
     routes
+  
+})
+
+router.beforeEach((to, from, next) => {
+
+  if (to.meta.requiresAuth) {
+    next();
+    return;
+  }
+  
+  if(localStorage.getItem('jwt'))
+  {
+    next();
+    return;
+  }
+   
+  next("/")
   
 })
 
