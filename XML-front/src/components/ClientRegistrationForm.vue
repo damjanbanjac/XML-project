@@ -13,7 +13,7 @@
         </template>
 
         <template>
-            <b-form bg-variant="light" @submit="onSubmit">
+            <b-form bg-variant="light">
             <b-form-group
                 id="input-group-1"
                 label="Email address:"
@@ -76,7 +76,7 @@
             </b-form-group>
 
             <b-form-group>
-                <b-button type="submit" variant="primary">Register</b-button>
+                <b-button type="submit" variant="primary" @click="regist">Register</b-button>
             </b-form-group>
 
             </b-form>
@@ -87,6 +87,7 @@
 </template>
 
 <script>
+import axios from "axios";
   export default {
     data() {
       return {
@@ -102,6 +103,17 @@
       }
     },
     methods: {
+
+        regist(){
+        axios
+            .post("/auth/register/",this.form)
+            .then(form=>{
+                this.form=form.data;
+            })
+            .catch(error => {
+            console.log(error);
+            });
+    }
     }
 }
 </script>
