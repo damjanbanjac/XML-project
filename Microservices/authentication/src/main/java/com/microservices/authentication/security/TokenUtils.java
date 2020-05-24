@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 
 import com.microservices.authentication.common.TimeProvider;
+import com.microservices.authentication.model.Authority;
 import com.microservices.authentication.model.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,17 +47,17 @@ public class TokenUtils {
 
     private SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS512;
 
-  /*  public String generateToken(User user, Authority role) {
+    public String generateToken(User user, Authority role) {
         return Jwts.builder().setIssuer(APP_NAME)
-                .setSubject(user.getUsername())
+                .setSubject(user.getEmail())
                 .setAudience(generateAudience())
                 .setIssuedAt(timeProvider.now())
                 .setExpiration(generateExpirationDate())
                 .claim("role", role)
                 .claim("id", user.getId())
-                .claim("enabled", user.isPromenjenaSifra())
+                .claim("enabled",user.getActive())
                 .signWith(SIGNATURE_ALGORITHM, SECRET).compact();
-    } */
+    }
 
     private String generateAudience() {
         return AUDIENCE_WEB;

@@ -10,12 +10,12 @@
     margin-left: 25%;">Log In</h2>
 
       <template>
-        <b-form @submit="onSubmit">
+        <b-form >
           
           <b-form-group id="input-group-1">
             <b-form-input
               id="input-1"
-              v-model="form.email"
+              v-model="user.email"
               type="email"
               required
               placeholder="Enter email"
@@ -25,7 +25,7 @@
           <b-form-group id="input-group-2">
             <b-form-input
               id="input-2"
-              v-model="form.password"
+              v-model="user.password"
               type="password"
               required
               placeholder="Enter password"
@@ -33,7 +33,7 @@
           </b-form-group>
 
           <b-form-group>
-            <b-button type="submit" variant="primary" style="width: 320px">Log In</b-button>
+            <b-button type="submit"  @click="loginFun" variant="primary" style="width: 320px">Log In</b-button>
           </b-form-group>
 
           <hr>
@@ -54,10 +54,12 @@
 </template>
 
 <script>
+import axios from "axios";
+import VueJwtDecode from "vue-jwt-decode";
   export default {
     data() {
       return {
-        form: {
+        user: {
           email: '',
           password: ''
         },
@@ -65,6 +67,27 @@
       }
     },
     methods: {
+      loginFun() {
+        console.log(this.user.email + "" + this.user.password)
+        axios
+        .post("/auth/login", this.user)
+        .then(response => {
+          this.user.email = "";
+          this.user.password = "";
+          console.log("usao");
+          localStorage.setItem("jwt", response.data.accessToken);
+          this.$store.state.user = VueJwtDecode.decode(
+            localStorage.getItem("jwt")
+          );
+          
+          this.$router.push("/");
+        })
+        .catch(show => {
+          console.log(show);
+          
+        });
+
+      }
     }
 }
 </script>

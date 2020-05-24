@@ -32,13 +32,23 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Override
+   /* @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(mail);
         if (user == null) {
             throw new UsernameNotFoundException(String.format("No user found with mail '%s'.", mail));
         } else {
             return (UserDetails) user;
+        }
+    } */
+
+    @Override
+    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(mail);
+        if (user == null) {
+            throw new UsernameNotFoundException(String.format("No user found with mail '%s'.", mail));
+        } else {
+            return user;
         }
     }
 

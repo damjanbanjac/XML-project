@@ -17,4 +17,6 @@ public class UserRequest {
     private String rate;
     private String password;
 
+
+
 }
