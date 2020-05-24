@@ -7,6 +7,7 @@ import ClientRegistrationForm from '../components/ClientRegistrationForm.vue'
 import HomePage from '../components/HomePage.vue'
 import PriceList from '../components/PriceList.vue'
 
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -35,7 +36,7 @@ const routes = [
     } 
   },
   {
-    path: '/homePage',
+    path: '/',
     name: 'home-page',
     component: HomePage,
     meta: {
