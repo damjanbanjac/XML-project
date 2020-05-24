@@ -80,7 +80,7 @@ import VueJwtDecode from "vue-jwt-decode";
             localStorage.getItem("jwt")
           );
           
-          this.$router.push("/");
+          this.$router.push("/homePage");
         })
         .catch(show => {
           console.log(show);
