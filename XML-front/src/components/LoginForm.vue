@@ -61,6 +61,8 @@
 <script>
 import axios from "axios";
 import VueJwtDecode from "vue-jwt-decode";
+  var counter = 0;
+  localStorage.setItem('counter', counter)
   export default {
     data() {
       return {
@@ -75,6 +77,11 @@ import VueJwtDecode from "vue-jwt-decode";
     },
     methods: {
       loginFun() {
+        if(localStorage.getItem('counter') == 3){
+          this.errorMessage = "You have reached your logging attempts limit.";
+          this.error = true;
+          return;
+        }
         this.error = false;
         // console.log(this.user.email + "" + this.user.password)
 
@@ -96,6 +103,8 @@ import VueJwtDecode from "vue-jwt-decode";
           console.log(error);
           this.errorMessage = "Bad credentials."
           this.error = true;
+          counter++;
+          localStorage.setItem('counter', counter)
         });
 
       }
