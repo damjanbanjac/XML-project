@@ -1,14 +1,15 @@
 <template>
 <div>
     <b-jumbotron bg-variant="light" text-variant="dark" style="width: 510px;
-    height: 825px;
-    margin-top: 2%;
+    height: 770px;
+    margin-top: 0.6%;
     margin-left: 3%;">
         <template>
             <h2 style="font-size: 3rem;
             font-weight: 300;
             line-height: 1.2;
-            margin-bottom: 2rem;">Company Registration</h2>
+            margin-top: -12%;
+            margin-bottom: -1rem;">Company Registration</h2>
         </template>
 
         <template>
