@@ -34,19 +34,16 @@ public class UserService {
 
     public void save(UserRequest user) {
 
-        Authority a  = new Authority();
-        a.setName("USER");
-        authorityRepository.save(a);
         User subject = new User();
         Authority auth = this.authorityRepository.findByName("USER");
         List<Authority> auths = new ArrayList<>();
         auths.add(auth);
         subject.setName(user.getName());
         subject.setEmail(user.getEmail());
-        //subject.setPhoneNumber(user.getPhoneNumber());
+        subject.setPhoneNumber(user.getPhoneNumber());
         subject.setSurname(user.getSurname());
-        //subject.setCountry(subject.getCountry());
-        //subject.setTown(subject.getTown());
+        subject.setCountry(user.getCountry());
+        subject.setTown(user.getTown());
         subject.setActive(true);
         subject.setBlocked(false);
         subject.setAuthorities(auths);
