@@ -170,6 +170,7 @@ import axios from "axios";
       let lowercase = this.form.password.match((/[a-z]+/g));
       let uppercase = this.form.password.match((/[A-Z]+/g));
       let digits = this.form.password.match((/[\d]+/g));
+      let special = this.form.password.match((/[!@#$%^&*_]+/g));
       
 
       if(lowercase == null){
@@ -186,6 +187,12 @@ import axios from "axios";
       
       if(digits == null){
         this.errorMessage = "Digits necessary.";
+        this.error = true;
+        return;
+      }
+
+      if(special == null){
+        this.errorMessage = "Special char necessary.";
         this.error = true;
         return;
       }
