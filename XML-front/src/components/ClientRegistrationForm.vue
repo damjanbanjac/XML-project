@@ -1,5 +1,10 @@
 <template>
 <div>
+    <div>
+        <b-container v-if="error">
+        <b-alert show variant="danger" class="d-flex justify-content-center">{{errorMessage}}</b-alert>
+        </b-container>
+    </div>
     <b-jumbotron bg-variant="light" text-variant="dark" style="width: 510px;
     height: 740px;
     margin-top: 2%;
@@ -46,12 +51,39 @@
                 ></b-form-input>
             </b-form-group>
 
+             <b-form-group id="input-group-7" label="Phone Number:" label-for="input-7">
+                <b-form-input
+                id="input-7"
+                v-model="form.phone"
+                required
+                placeholder="Enter phone number"
+                ></b-form-input>
+            </b-form-group>
+
             <b-form-group id="input-group-4" label="Address:" label-for="input-4">
                 <b-form-input
                 id="input-4"
                 v-model="form.address"
                 required
                 placeholder="Enter address"
+                ></b-form-input>
+            </b-form-group>
+
+             <b-form-group id="input-group-8" label="Town:" label-for="input-8">
+                <b-form-input
+                id="input-8"
+                v-model="form.town"
+                required
+                placeholder="Enter town"
+                ></b-form-input>
+            </b-form-group>
+
+            <b-form-group id="input-group-9" label="Country:" label-for="input-9">
+                <b-form-input
+                id="input-9"
+                v-model="form.country"
+                required
+                placeholder="Enter country"
                 ></b-form-input>
             </b-form-group>
 
@@ -95,20 +127,97 @@ import axios from "axios";
           email: '',
           name: '',
           surname: '',
+          phone: '',
           address: '',
+          town: '',
+          country: '',
           password: '',
           repassword: ''
         },
+        error: false,
+        errorMessage: "",
         show: true
       }
     },
     methods: {
 
         regist(){
+            this.error = false;
+      if (
+        this.form.email == "" ||
+        this.form.name == "" ||
+        this.form.surname == "" ||
+        this.form.phone == "" ||
+        this.form.address == "" ||
+        this.form.town == "" ||
+        this.form.country == "" ||
+        this.form.password == "" ||
+        this.form.repassword == ""
+      ) {
+        this.errorMessage = "Please fill all fields";
+        this.error = true;
+        return;
+      }
+
+    /*var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (!re.test(String(this.form.email.trim()).toLowerCase())) {
+        this.errorMessage = "Email address is not in the appropriate format";
+        this.error = true;
+        return;
+      }
+*/
+    if (this.form.password !== this.form.repassword) {
+        this.errorMessage = "Entered passwords are different";
+        this.error = true;
+        return;
+      }
+
+      var rexx = /^[a-zA-Z\-0-9\s]+$/;
+        if (!rexx.test(String(this.form.name.trim()))) {
+        this.errorMessage = "Name must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
+
+      if (!rexx.test(String(this.form.surname.trim()))) {
+        this.errorMessage = "Surname must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
+
+    if (!rexx.test(String(this.form.address.trim()))) {
+        this.errorMessage = "Address must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
+
+      if (!rexx.test(String(this.form.town.trim()))) {
+        this.errorMessage = "Town must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
+
+        if (!rexx.test(String(this.form.country.trim()))) {
+        this.errorMessage = "Country must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
+      
+
+      var rex = /^\+38[0-9]\/6[0-9]-?[0-9]+(-[0-9]+)?$/;
+      if (!rex.test(String(this.form.phone.trim()))) {
+        this.errorMessage = "Phone number should look like +381/65-504205";
+        this.error = true;
+        return;
+      }
+
+      
+
         axios
             .post("/auth/register/",this.form)
             .then(form=>{
                 this.form=form.data;
+                this.error = false;
             })
             .catch(error => {
             console.log(error);

@@ -82,6 +82,8 @@ public class AuthenticationController {
             throw new Exception("Alredy exist");
         }
 
+        System.out.println(userRequest.getCountry());
+
 
         userService.save(userRequest);
 
