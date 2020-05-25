@@ -1,7 +1,6 @@
 package com.microservices.authentication.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -59,8 +58,6 @@ public class User implements UserDetails {
     public String getPassword() {
         return this.password;
     }
-
-
 
 
     @JsonIgnore

@@ -9,7 +9,7 @@ public interface IUserService {
 
     UserResponse getUser(long id);
 
-    Set<UserResponse> gettAllUsers();
+    Set<UserResponse> getAllUsers();
 
     UserResponse createUser(UserRequest request);
 
