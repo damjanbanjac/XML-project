@@ -9,8 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 @Service
 public class UserService {
@@ -37,6 +41,7 @@ public class UserService {
         Authority a  = new Authority();
         a.setName("USER");
         authorityRepository.save(a);
+
         User subject = new User();
         Authority auth = this.authorityRepository.findByName("USER");
         List<Authority> auths = new ArrayList<>();
@@ -51,10 +56,39 @@ public class UserService {
         subject.setBlocked(false);
         subject.setAuthorities(auths);
         subject.setPassword(passwordEncoder.encode(user.getPassword()));
-
+        createLogFileSuccess(user);
         userRepository.save(subject);
 
 
     }
+
+    public void createLogFileSuccess(UserRequest user) {
+        Logger logger = Logger.getLogger("MyLog");
+        FileHandler fh;
+
+        try {
+
+            // This block configure the logger with handler and formatter
+            fh = new FileHandler("myLog.log");
+            logger.addHandler(fh);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fh.setFormatter(formatter);
+
+            // the following statement is used to log any messages
+            logger.info("type: SUCCESS");
+            logger.info("user" + user.getEmail());
+            logger.info("messages: Register success by user");
+
+
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }  catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
 
 }
