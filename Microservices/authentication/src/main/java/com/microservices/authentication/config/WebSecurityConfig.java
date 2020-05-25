@@ -70,6 +70,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         BasicAuthenticationFilter.class);
 
         http.csrf().disable();
+        http
+                .requiresChannel()
+                .anyRequest()
+                .requiresSecure();
+        http.cors();
     }
 
     // Generalna bezbednost aplikacije
