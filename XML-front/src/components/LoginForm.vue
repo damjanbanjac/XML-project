@@ -76,7 +76,7 @@ import VueJwtDecode from "vue-jwt-decode";
     methods: {
       loginFun() {
         this.error = false;
-        console.log(this.user.email + "" + this.user.password)
+        // console.log(this.user.email + "" + this.user.password)
 
         axios
         .post("/auth/login", this.user)
@@ -91,9 +91,11 @@ import VueJwtDecode from "vue-jwt-decode";
           
           this.$router.push("/");
         })
-        .catch(show => {
-          console.log(show);
-          
+        .catch(error => {
+          // console.log(show);
+          console.log(error);
+          this.errorMessage = "Bad credentials."
+          this.error = true;
         });
 
       }
