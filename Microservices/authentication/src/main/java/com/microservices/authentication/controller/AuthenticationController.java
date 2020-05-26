@@ -9,8 +9,6 @@ import com.microservices.authentication.model.User;
 import com.microservices.authentication.security.TokenUtils;
 import com.microservices.authentication.service.CustomUserDetailsService;
 import com.microservices.authentication.service.UserService;
-import com.sun.deploy.nativesandbox.comm.Response;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -74,55 +72,23 @@ public class AuthenticationController {
         }
     }
 
+    @PostMapping(value = "/register")
+    public ResponseEntity<?> addUser(@RequestBody UserRequest userRequest) throws Exception {
 
-    @PostMapping(value = "/register/{regType}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> addUser(@PathVariable String regType, @RequestBody UserRequest userRequest) throws Exception {
 
-        System.out.println(regType);
-
-<<<<<<< HEAD
-        if(regType.equals("password")) {
-            userService.createLogFileFailure(regType,userRequest);
-=======
         User existUser = this.userService.findOne(userRequest.getEmail());
         if (existUser != null) {
             throw new Exception("Already exists");
->>>>>>> 34f65e15d9802022bde9111984641151fc1d4913
         }
 
-        else if(regType.equals("phoneNumber")) {
-            userService.createLogFileFailure(regType,userRequest);
-        }
-
-         else if(regType.equals("success")) {
-
-            User existUser = this.userService.findOne(userRequest.getEmail());
-            if (existUser != null) {
-                throw new Exception("Alredy exist");
-            }
-
-            System.out.println(userRequest.getCountry());
+        System.out.println(userRequest.getCountry());
 
 
-            userService.save(userRequest);
+        userService.save(userRequest);
 
-            UserResponse userResponse = new UserResponse();
-            HttpHeaders headers = new HttpHeaders();
-            return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
-        }
-            UserResponse userResponse = new UserResponse();
-            HttpHeaders headers = new HttpHeaders();
-            return new ResponseEntity<UserResponse>(userResponse, HttpStatus.OK);
+        UserResponse userResponse = new UserResponse();
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
     }
-
-//    @PostMapping(value = "/registerFailure/{broj}", consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<?> registerFailurePhoneNumber(@PathVariable String broj, @RequestBody UserRequest userRequest) throws Exception {
-//        System.out.println(userRequest.getCountry());
-//        userService.createLogFileFailurePhoneNumber(broj,userRequest);
-//        UserResponse userResponse = new UserResponse();
-//        HttpHeaders headers = new HttpHeaders();
-//        return new ResponseEntity<UserResponse>(userResponse, HttpStatus.OK);
-//    }
-
 
 }
