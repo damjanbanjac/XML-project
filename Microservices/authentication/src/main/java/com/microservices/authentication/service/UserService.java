@@ -60,6 +60,7 @@ public class UserService {
     }
 
     public void createLogFileSuccess(UserRequest user) {
+
         Logger logger = Logger.getLogger("MyLog");
         FileHandler fh;
 
@@ -75,6 +76,44 @@ public class UserService {
             logger.info("type: SUCCESS");
             logger.info("user" + user.getEmail());
             logger.info("messages: Register success by user");
+
+
+
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }  catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void createLogFileFailure(String regType, UserRequest user) {
+        Logger logger = Logger.getLogger("MyLog");
+        FileHandler fh;
+
+        try {
+
+            // This block configure the logger with handler and formatter
+            fh = new FileHandler("myLog.log");
+            logger.addHandler(fh);
+            SimpleFormatter formatter = new SimpleFormatter();
+            fh.setFormatter(formatter);
+
+            // the following statement is used to log any messages
+            if(regType.equals("password")) {
+                logger.info("type: FAILURE");
+                logger.info("user: " + user.getEmail());
+                logger.info("messages: Register failure by user");
+                logger.info("Inserted password: " + user.getPassword());
+            }
+
+            else if(regType.equals("phoneNumber")) {
+                logger.info("type: FAILURE");
+                logger.info("user: " + user.getEmail());
+                logger.info("messages: Register failure by user");
+                logger.info("Inserted phone number: " + user.getPhoneNumber());
+            }
 
 
         } catch (SecurityException e) {

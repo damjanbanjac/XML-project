@@ -6,14 +6,15 @@
         </b-container>
     </div>
     <b-jumbotron bg-variant="light" text-variant="dark" style="width: 510px;
-    height: 740px;
-    margin-top: 2%;
+    height: 910px;
+    margin-top: 0.6%;
     margin-left: 3%;">
         <template>
             <h2 style="font-size: 3rem;
             font-weight: 300;
             line-height: 1.2;
-            margin-bottom: 2rem;
+            margin-top: -12%;
+            margin-bottom: -1.5rem;
             margin-left: 6%">Client Registration</h2>
         </template>
 
@@ -54,7 +55,7 @@
              <b-form-group id="input-group-7" label="Phone Number:" label-for="input-7">
                 <b-form-input
                 id="input-7"
-                v-model="form.phone"
+                v-model="form.phoneNumber"
                 required
                 placeholder="Enter phone number"
                 ></b-form-input>
@@ -92,8 +93,8 @@
                 id="input-5"
                 v-model="form.password"
                 required
-                placeholder="Enter password"
                 type="password"
+                placeholder="Enter password"
                 ></b-form-input>
             </b-form-group>
 
@@ -102,8 +103,8 @@
                 id="input-6"
                 v-model="form.repassword"
                 required
-                placeholder="Re-enter password"
                 type="password"
+                placeholder="Re-enter password"
                 ></b-form-input>
             </b-form-group>
 
@@ -127,7 +128,7 @@ import axios from "axios";
           email: '',
           name: '',
           surname: '',
-          phone: '',
+          phoneNumber: '',
           address: '',
           town: '',
           country: '',
@@ -141,13 +142,13 @@ import axios from "axios";
     },
     methods: {
 
-        regist(){
+      regist(){
             this.error = false;
       if (
         this.form.email == "" ||
         this.form.name == "" ||
         this.form.surname == "" ||
-        this.form.phone == "" ||
+        this.form.phoneNumber == "" ||
         this.form.address == "" ||
         this.form.town == "" ||
         this.form.country == "" ||
@@ -159,15 +160,67 @@ import axios from "axios";
         return;
       }
 
-    /*var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if (!re.test(String(this.form.email.trim()).toLowerCase())) {
-        this.errorMessage = "Email address is not in the appropriate format";
+      // var pass = /(?=.*[!@#\$%\^&\*])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/;
+      // if (!pass.test(String(this.form.password.trim()))) {
+      //   this.errorMessage = "Password too weak.";
+      //   this.error = true;
+      //   return;
+      // }
+
+      let lowercase = this.form.password.match((/[a-z]+/g));
+      let uppercase = this.form.password.match((/[A-Z]+/g));
+      let digits = this.form.password.match((/[\d]+/g));
+      let special = this.form.password.match((/[!@#$%^&*_]+/g));
+      let lenght = this.form.password.match((/[A-Za-z\d!@#$%^&*_]{8,}/g));
+      
+      var regType = "success";
+
+      if(lowercase == null){
+        regType = "password";
+        this.registerAxios(regType);
+        this.errorMessage = "Lowercase necessary.";
+        this.error = true;
+         return;
+      }
+
+      if(uppercase == null){
+        regType = "password";
+        this.registerAxios(regType);
+        this.errorMessage = "Uppercase necessary.";
+        this.error = true;
+        console.log(regType);
+        console.log("fsafsa");
+         return;
+      }
+      
+      if(digits == null){
+        regType = "password";
+        this.registerAxios(regType);
+        this.errorMessage = "Digits necessary.";
         this.error = true;
         return;
       }
-*/
-    if (this.form.password !== this.form.repassword) {
-        this.errorMessage = "Entered passwords are different";
+
+      if(special == null){
+        regType = "password";
+        this.registerAxios(regType);
+        this.errorMessage = "Special character necessary.";
+        this.error = true;
+        return;
+      }
+
+      if(lenght == null){
+        regType = "password";
+        this.registerAxios(regType);
+        this.errorMessage = "At least 8 characters necessary.";
+        this.error = true;
+        return;
+      }
+
+      if (this.form.password !== this.form.repassword) {
+        regType = "password";
+        this.registerAxios(regType);
+        this.errorMessage = "Entered passwords do not match";
         this.error = true;
         return;
       }
@@ -185,10 +238,10 @@ import axios from "axios";
         return;
       }
 
-    if (!rexx.test(String(this.form.address.trim()))) {
-        this.errorMessage = "Address must not contain unacceptable characters";
-        this.error = true;
-        return;
+      if (!rexx.test(String(this.form.address.trim()))) {
+          this.errorMessage = "Address must not contain unacceptable characters";
+          this.error = true;
+          return;
       }
 
       if (!rexx.test(String(this.form.town.trim()))) {
@@ -205,24 +258,49 @@ import axios from "axios";
       
 
       var rex = /^\+38[0-9]\/6[0-9]-?[0-9]+(-[0-9]+)?$/;
-      if (!rex.test(String(this.form.phone.trim()))) {
-        this.errorMessage = "Phone number should look like +381/65-504205";
+      if (!rex.test(String(this.form.phoneNumber.trim()))) {
+        regType = "phoneNumber";
         this.error = true;
+        axios
+        .post("/auth/register/" + regType,this.form)
+        .then(form=>{
+            this.form=form.data;
+            this.error = false;
+        })
+        .catch(error => {
+        console.log(error);
+        });
+        this.errorMessage = "Phone number should be entered in +381/65-504205 format";
         return;
       }
 
-      
+    axios
+        .post("/auth/register/" + regType,this.form)
+        .then(form=>{
+            this.form=form.data;
+            this.error = false;
+        })
+        .catch(error => {
+        console.log(error);
+        });
+      }
+      ,
 
+
+    registerAxios(regType) {
+      if(regType == "password") {
         axios
-            .post("/auth/register/",this.form)
-            .then(form=>{
-                this.form=form.data;
-                this.error = false;
-            })
-            .catch(error => {
-            console.log(error);
-            });
+        .post("/auth/register/" + regType,this.form)
+        .then(form=>{
+            this.form=form.data;
+            this.error = false;
+        })
+        .catch(error => {
+        console.log(error);
+        });
+      }
     }
+
     }
 }
 </script>
