@@ -80,8 +80,14 @@ public class AuthenticationController {
 
         System.out.println(regType);
 
+<<<<<<< HEAD
         if(regType.equals("password")) {
             userService.createLogFileFailure(regType,userRequest);
+=======
+        User existUser = this.userService.findOne(userRequest.getEmail());
+        if (existUser != null) {
+            throw new Exception("Already exists");
+>>>>>>> 34f65e15d9802022bde9111984641151fc1d4913
         }
 
         else if(regType.equals("phoneNumber")) {

@@ -1,7 +1,7 @@
 <template>
 <div>
     <b-jumbotron bg-variant="light" text-variant="dark" style="width: 510px;
-    height: 740px;
+    height: 600px;
     margin-top: 2%;
     margin-left: 3%;">
         <template>
@@ -9,7 +9,7 @@
             font-weight: 300;
             line-height: 1.2;
             margin-bottom: 2rem;
-            margin-left: 6%">Create pricelist</h2>
+            margin-left: 13%">Create pricelist</h2>
         </template>
 
         <template>

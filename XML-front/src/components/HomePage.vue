@@ -2,7 +2,11 @@
     <div>
         
         <b-navbar v-if="this.$store.state.user.role.authority == ''"  toggleable="lg" variant="light" >
-             <b-navbar-brand>Welcome</b-navbar-brand>
+             <b-navbar-brand
+             style="font-size: 1.2rem;
+             font-weight: 300;
+             line-height: 1.2;"
+             >Welcome</b-navbar-brand>
              
             <div style="border-left:1px solid #000; height:40px; margin-right:1%"></div>
 
@@ -26,6 +30,7 @@
         </b-collapse>
         </b-navbar>
     </div>
+    
 </template>
 
 <script>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 May 26, 2020 6:12:13 AM com.microservices.authentication.service.UserService createLogFileFailure
 INFO: type: FAILURE
 May 26, 2020 6:12:13 AM com.microservices.authentication.service.UserService createLogFileFailure
@@ -35,4 +36,11 @@ INFO: type: SUCCESS
 May 26, 2020 6:14:14 AM com.microservices.authentication.service.UserService createLogFileSuccess
 INFO: usersimeunovic1@gmail.com
 May 26, 2020 6:14:14 AM com.microservices.authentication.service.UserService createLogFileSuccess
+=======
+May 25, 2020 9:10:24 PM com.microservices.authentication.service.UserService createLogFileSuccess
+INFO: type: SUCCESS
+May 25, 2020 9:10:24 PM com.microservices.authentication.service.UserService createLogFileSuccess
+INFO: userlala@lala
+May 25, 2020 9:10:24 PM com.microservices.authentication.service.UserService createLogFileSuccess
+>>>>>>> 34f65e15d9802022bde9111984641151fc1d4913
 INFO: messages: Register success by user
