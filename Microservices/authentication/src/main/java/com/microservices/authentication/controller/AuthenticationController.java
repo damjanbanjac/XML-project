@@ -72,14 +72,13 @@ public class AuthenticationController {
         }
     }
 
-
     @PostMapping(value = "/register")
     public ResponseEntity<?> addUser(@RequestBody UserRequest userRequest) throws Exception {
 
 
         User existUser = this.userService.findOne(userRequest.getEmail());
         if (existUser != null) {
-            throw new Exception("Already exists!");
+            throw new Exception("Already exists");
         }
 
         System.out.println(userRequest.getCountry());
@@ -91,6 +90,5 @@ public class AuthenticationController {
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
     }
-
 
 }

@@ -173,38 +173,53 @@ import axios from "axios";
       let special = this.form.password.match((/[!@#$%^&*_]+/g));
       let lenght = this.form.password.match((/[A-Za-z\d!@#$%^&*_]{8,}/g));
       
+      var regType = "success";
 
       if(lowercase == null){
+        regType = "password";
+        this.registerAxios(regType);
         this.errorMessage = "Lowercase necessary.";
         this.error = true;
-        return;
+         return;
       }
 
       if(uppercase == null){
+        regType = "password";
+        this.registerAxios(regType);
         this.errorMessage = "Uppercase necessary.";
         this.error = true;
-        return;
+        console.log(regType);
+        console.log("fsafsa");
+         return;
       }
       
       if(digits == null){
+        regType = "password";
+        this.registerAxios(regType);
         this.errorMessage = "Digits necessary.";
         this.error = true;
         return;
       }
 
       if(special == null){
+        regType = "password";
+        this.registerAxios(regType);
         this.errorMessage = "Special character necessary.";
         this.error = true;
         return;
       }
 
       if(lenght == null){
+        regType = "password";
+        this.registerAxios(regType);
         this.errorMessage = "At least 8 characters necessary.";
         this.error = true;
         return;
       }
 
       if (this.form.password !== this.form.repassword) {
+        regType = "password";
+        this.registerAxios(regType);
         this.errorMessage = "Entered passwords do not match";
         this.error = true;
         return;
@@ -244,13 +259,38 @@ import axios from "axios";
 
       var rex = /^\+38[0-9]\/6[0-9]-?[0-9]+(-[0-9]+)?$/;
       if (!rex.test(String(this.form.phoneNumber.trim()))) {
-        this.errorMessage = "Phone number should be entered in +381/65-504205 format";
+        regType = "phoneNumber";
         this.error = true;
+        axios
+        .post("/auth/register/" + regType,this.form)
+        .then(form=>{
+            this.form=form.data;
+            this.error = false;
+        })
+        .catch(error => {
+        console.log(error);
+        });
+        this.errorMessage = "Phone number should be entered in +381/65-504205 format";
         return;
       }
 
     axios
-        .post("/auth/register/",this.form)
+        .post("/auth/register/" + regType,this.form)
+        .then(form=>{
+            this.form=form.data;
+            this.error = false;
+        })
+        .catch(error => {
+        console.log(error);
+        });
+      }
+      ,
+
+
+    registerAxios(regType) {
+      if(regType == "password") {
+        axios
+        .post("/auth/register/" + regType,this.form)
         .then(form=>{
             this.form=form.data;
             this.error = false;
@@ -260,14 +300,16 @@ import axios from "axios";
         });
       }
     }
+
+    }
 }
 </script>
 
 <style>
 
 .jumbotron {
-    padding: 2rem 2rem;
-    margin-bottom: 2rem;
+    padding: 2rem 2rem;;
+    margin-bottom: 2rem;;
 }
 
 </style>
