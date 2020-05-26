@@ -79,7 +79,7 @@ public class AuthenticationController {
 
         User existUser = this.userService.findOne(userRequest.getEmail());
         if (existUser != null) {
-            throw new Exception("Already exists");
+            throw new Exception("Already exists!");
         }
 
         System.out.println(userRequest.getCountry());
