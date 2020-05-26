@@ -309,7 +309,7 @@ import axios from "axios";
 
 .jumbotron {
     padding: 2rem 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem;;
 }
 
 </style>
