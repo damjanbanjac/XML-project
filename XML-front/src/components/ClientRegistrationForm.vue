@@ -261,21 +261,22 @@ import axios from "axios";
       if (!rex.test(String(this.form.phoneNumber.trim()))) {
         regType = "phoneNumber";
         this.error = true;
-        axios
-        .post("/auth/register/" + regType,this.form)
-        .then(form=>{
-            this.form=form.data;
-            this.error = false;
-        })
-        .catch(error => {
-        console.log(error);
-        });
+        //axios
+        // .post("/auth/register/" + regType,this.form)
+        // .then(form=>{
+        //     this.form=form.data;
+        //     this.error = false;
+        // })
+        // .catch(error => {
+        // console.log(error);
+        // });
         this.errorMessage = "Phone number should be entered in +381/65-504205 format";
         return;
       }
 
     axios
-        .post("/auth/register/" + regType,this.form)
+        .post("/auth/register/",this.form)
+        // .post("/auth/register")
         .then(form=>{
             this.form=form.data;
             this.error = false;
@@ -290,7 +291,7 @@ import axios from "axios";
     registerAxios(regType) {
       if(regType == "password") {
         axios
-        .post("/auth/register/" + regType,this.form)
+        .post("/auth/register/",this.form)
         .then(form=>{
             this.form=form.data;
             this.error = false;
