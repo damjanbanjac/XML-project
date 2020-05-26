@@ -141,7 +141,6 @@ import axios from "axios";
       }
     },
     methods: {
-
       regist(){
             this.error = false;
       if (
@@ -159,124 +158,84 @@ import axios from "axios";
         this.error = true;
         return;
       }
-
       // var pass = /(?=.*[!@#\$%\^&\*])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.{8,})/;
       // if (!pass.test(String(this.form.password.trim()))) {
       //   this.errorMessage = "Password too weak.";
       //   this.error = true;
       //   return;
       // }
-
       let lowercase = this.form.password.match((/[a-z]+/g));
       let uppercase = this.form.password.match((/[A-Z]+/g));
       let digits = this.form.password.match((/[\d]+/g));
       let special = this.form.password.match((/[!@#$%^&*_]+/g));
       let lenght = this.form.password.match((/[A-Za-z\d!@#$%^&*_]{8,}/g));
       
-      var regType = "success";
-
       if(lowercase == null){
-        regType = "password";
-        this.registerAxios(regType);
         this.errorMessage = "Lowercase necessary.";
         this.error = true;
-         return;
+        return;
       }
-
       if(uppercase == null){
-        regType = "password";
-        this.registerAxios(regType);
         this.errorMessage = "Uppercase necessary.";
         this.error = true;
-        console.log(regType);
-        console.log("fsafsa");
-         return;
+        return;
       }
       
       if(digits == null){
-        regType = "password";
-        this.registerAxios(regType);
         this.errorMessage = "Digits necessary.";
         this.error = true;
         return;
       }
-
       if(special == null){
-        regType = "password";
-        this.registerAxios(regType);
         this.errorMessage = "Special character necessary.";
         this.error = true;
         return;
       }
-
       if(lenght == null){
-        regType = "password";
-        this.registerAxios(regType);
         this.errorMessage = "At least 8 characters necessary.";
         this.error = true;
         return;
       }
-
       if (this.form.password !== this.form.repassword) {
-        regType = "password";
-        this.registerAxios(regType);
         this.errorMessage = "Entered passwords do not match";
         this.error = true;
         return;
       }
-
       var rexx = /^[a-zA-Z\-0-9\s]+$/;
         if (!rexx.test(String(this.form.name.trim()))) {
         this.errorMessage = "Name must not contain unacceptable characters";
         this.error = true;
         return;
       }
-
       if (!rexx.test(String(this.form.surname.trim()))) {
         this.errorMessage = "Surname must not contain unacceptable characters";
         this.error = true;
         return;
       }
-
       if (!rexx.test(String(this.form.address.trim()))) {
           this.errorMessage = "Address must not contain unacceptable characters";
           this.error = true;
           return;
       }
-
       if (!rexx.test(String(this.form.town.trim()))) {
         this.errorMessage = "Town must not contain unacceptable characters";
         this.error = true;
         return;
       }
-
         if (!rexx.test(String(this.form.country.trim()))) {
         this.errorMessage = "Country must not contain unacceptable characters";
         this.error = true;
         return;
       }
       
-
       var rex = /^\+38[0-9]\/6[0-9]-?[0-9]+(-[0-9]+)?$/;
       if (!rex.test(String(this.form.phoneNumber.trim()))) {
-        regType = "phoneNumber";
-        this.error = true;
-        //axios
-        // .post("/auth/register/" + regType,this.form)
-        // .then(form=>{
-        //     this.form=form.data;
-        //     this.error = false;
-        // })
-        // .catch(error => {
-        // console.log(error);
-        // });
         this.errorMessage = "Phone number should be entered in +381/65-504205 format";
+        this.error = true;
         return;
       }
-
     axios
         .post("/auth/register/",this.form)
-        // .post("/auth/register")
         .then(form=>{
             this.form=form.data;
             this.error = false;
@@ -285,32 +244,13 @@ import axios from "axios";
         console.log(error);
         });
       }
-      ,
-
-
-    registerAxios(regType) {
-      if(regType == "password") {
-        axios
-        .post("/auth/register/",this.form)
-        .then(form=>{
-            this.form=form.data;
-            this.error = false;
-        })
-        .catch(error => {
-        console.log(error);
-        });
-      }
-    }
-
     }
 }
 </script>
 
 <style>
-
 .jumbotron {
-    padding: 2rem 2rem;;
-    margin-bottom: 2rem;;
+    padding: 2rem 2rem;
+    margin-bottom: 2rem;
 }
-
 </style>
