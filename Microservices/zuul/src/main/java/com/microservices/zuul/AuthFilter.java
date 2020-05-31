@@ -1,4 +1,4 @@
-package com.microservices.zuul;
+/*package com.microservices.zuul;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
@@ -48,3 +48,4 @@ public class AuthFilter extends ZuulFilter {
 
 
 }
+*/
