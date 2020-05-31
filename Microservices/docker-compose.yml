@@ -7,6 +7,46 @@ services:
       - "8761:8761"
     tty: true
 
+  adsservice:
+    build: ./ads
+    ports:
+      - "8088:8088"
+    tty: true
+    environment:
+      - REGISTRY_HOST=eurekaservice
+    depends_on:
+      - eurekaservice
+
+  maintenanceservice:
+    build: ./maintenance
+    ports:
+      - "8086:8086"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+    tty: true
+    depends_on:
+      - eurekaservice
+
+  orderservice:
+    build: ./ordering
+    ports:
+      - "8089:8089"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+    tty: true
+    depends_on:
+      - eurekaservice
+
+  searchsevice:
+    build: ./search
+    ports:
+      - "8091:8091"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+    tty: true
+    depends_on:
+      - eurekaservice
+
   messageservice:
     build: ./messages
     ports:
