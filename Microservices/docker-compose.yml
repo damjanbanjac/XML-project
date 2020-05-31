@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  eurekaservice:
+    build: ./eureka
+    ports:
+      - "8761:8761"
+    tty: true
+
+  messageservice:
+    build: ./messages
+    ports:
+      - "8084:8084"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+    tty: true
+    depends_on:
+      - eurekaservice
+
+
+
