@@ -80,6 +80,22 @@ services:
     depends_on:
       - eurekaservice
 
+  zuul:
+    build: ./zuul
+    ports:
+      - "8662:8662"
+    environment:
+      REGISTRY_HOST: eurekaservice
+    tty: true
+    depends_on:
+      - eurekaservice
+      - adsservice
+      - authservice
+      - maintenanceservice
+      - orderservice
+      - paymentservice
+      - searchsevice
+
 
 
 
