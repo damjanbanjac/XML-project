@@ -3,7 +3,6 @@ package com.microservices.maintenance.controller;
 import com.microservices.maintenance.dto.request.CreateCarModelRequest;
 import com.microservices.maintenance.dto.request.UpdateCarModelRequest;
 import com.microservices.maintenance.dto.response.CarModelResponse;
-import com.microservices.maintenance.entity.CarModel;
 import com.microservices.maintenance.service.ICarModelService;
 import org.springframework.web.bind.annotation.*;
 
