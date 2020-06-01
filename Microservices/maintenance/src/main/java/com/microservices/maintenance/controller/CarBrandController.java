@@ -18,14 +18,14 @@ public class CarBrandController {
         _carBrandService = carBrandService;
     }
 
-    @GetMapping
-    public List<CarBrandResponse> getAllCarBrands() {
-        return _carBrandService.getAllCarBrands();
-    }
-
     @GetMapping("/{id}/brand")
     public CarBrandResponse getCarBrand(@PathVariable Long id) {
         return _carBrandService.getCarBrand(id);
+    }
+
+    @GetMapping
+    public List<CarBrandResponse> getAllCarBrands() {
+        return _carBrandService.getAllCarBrands();
     }
 
     @PostMapping
