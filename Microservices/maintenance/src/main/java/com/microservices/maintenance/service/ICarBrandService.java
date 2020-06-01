@@ -4,13 +4,13 @@ import com.microservices.maintenance.dto.request.CreateCarBrandRequest;
 import com.microservices.maintenance.dto.request.UpdateCarBrandRequest;
 import com.microservices.maintenance.dto.response.CarBrandResponse;
 
-import java.util.Set;
+import java.util.List;
 
 public interface ICarBrandService {
 
     CarBrandResponse getCarBrand(long id);
 
-    Set<CarBrandResponse> getAllCarBrands();
+    List<CarBrandResponse> getAllCarBrands();
 
     CarBrandResponse createCarBrand(CreateCarBrandRequest request);
 

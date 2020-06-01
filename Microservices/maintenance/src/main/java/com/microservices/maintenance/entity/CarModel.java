@@ -20,4 +20,6 @@ public class CarModel {
     private Long id;
 
     private String model;
+
+    private boolean deleted;
 }

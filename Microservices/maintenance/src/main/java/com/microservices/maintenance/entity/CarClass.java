@@ -20,4 +20,6 @@ public class CarClass {
     private Long id;
 
     private String car_class;
+
+    private boolean deleted;
 }

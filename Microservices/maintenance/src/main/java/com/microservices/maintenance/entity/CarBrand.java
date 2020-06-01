@@ -22,4 +22,6 @@ public class CarBrand {
     private String name;
 
     private String label;
+
+    private boolean deleted;
 }
