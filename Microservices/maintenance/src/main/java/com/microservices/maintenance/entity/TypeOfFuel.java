@@ -20,4 +20,6 @@ public class TypeOfFuel {
     private Long id;
 
     private String type;
+
+    private boolean deleted;
 }

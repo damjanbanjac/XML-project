@@ -20,4 +20,6 @@ public class TypeOfGearshift {
     private Long id;
 
     private String type;
+
+    private boolean deleted;
 }
