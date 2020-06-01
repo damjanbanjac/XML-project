@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("fuel-types")
+@RequestMapping("/fuel-types")
 public class TypeOfFuelController {
 
     private final ITypeOfFuelService _typeOfFuelService;
