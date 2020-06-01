@@ -8,7 +8,6 @@ import com.microservices.maintenance.repository.ITypeOfFuelRepository;
 import com.microservices.maintenance.service.ITypeOfFuelService;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
