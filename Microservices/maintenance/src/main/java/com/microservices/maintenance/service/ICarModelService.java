@@ -4,13 +4,14 @@ import com.microservices.maintenance.dto.request.CreateCarModelRequest;
 import com.microservices.maintenance.dto.request.UpdateCarModelRequest;
 import com.microservices.maintenance.dto.response.CarModelResponse;
 
+import java.util.List;
 import java.util.Set;
 
 public interface ICarModelService {
 
     CarModelResponse getCarModel(long id);
 
-    Set<CarModelResponse> getAllCarModels();
+    List<CarModelResponse> getAllCarModels();
 
     CarModelResponse createCarModel(CreateCarModelRequest request);
 
