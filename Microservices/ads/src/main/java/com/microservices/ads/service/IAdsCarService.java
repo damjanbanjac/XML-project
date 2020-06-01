@@ -2,6 +2,7 @@ package com.microservices.ads.service;
 
 import com.microservices.ads.dto.request.AdCarRequest;
 import com.microservices.ads.dto.response.AdCarResponse;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 

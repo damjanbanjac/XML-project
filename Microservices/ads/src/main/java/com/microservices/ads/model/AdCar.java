@@ -20,12 +20,16 @@ public class AdCar {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ad_id_seq")
     private Long id;
 
-
-    private String carBrand;
-    private String carModel;
-    private String fuelType;
-    private String gearBoxType;
-    private String carClass;
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private CarBrand carBrand;
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private CarModel carModel;
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private TypeOfFuel fuelType;
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private TypeOfGearshift gearBoxType;
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private CarClass carClass;
     private Integer grade;
     private String kmRestriction;
     private Integer kmTraveled;
