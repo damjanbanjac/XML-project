@@ -4,13 +4,13 @@ import com.microservices.maintenance.dto.request.CreateCarClassRequest;
 import com.microservices.maintenance.dto.request.UpdateCarClassRequest;
 import com.microservices.maintenance.dto.response.CarClassResponse;
 
-import java.util.Set;
+import java.util.List;
 
 public interface ICarClassService {
 
     CarClassResponse getCarClass(long id);
 
-    Set<CarClassResponse> getAllCarClass();
+    List<CarClassResponse> getAllCarClass();
 
     CarClassResponse createCarClass(CreateCarClassRequest request);
 
