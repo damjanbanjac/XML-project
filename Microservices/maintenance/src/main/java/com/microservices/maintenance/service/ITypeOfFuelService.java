@@ -4,13 +4,13 @@ import com.microservices.maintenance.dto.request.CreateTypeOfFuelRequest;
 import com.microservices.maintenance.dto.request.UpdateTypeOfFuelRequest;
 import com.microservices.maintenance.dto.response.TypeOfFuelResponse;
 
-import java.util.Set;
+import java.util.List;
 
 public interface ITypeOfFuelService {
 
     TypeOfFuelResponse getTypeOfFuel(long id);
 
-    Set<TypeOfFuelResponse> getAllTypesOfFuel();
+    List<TypeOfFuelResponse> getAllTypesOfFuel();
 
     TypeOfFuelResponse createTypeOfFuel(CreateTypeOfFuelRequest request);
 
