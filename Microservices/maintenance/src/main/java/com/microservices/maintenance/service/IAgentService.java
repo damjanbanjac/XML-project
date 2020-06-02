@@ -4,13 +4,13 @@ import com.microservices.maintenance.dto.request.CreateAgentRequest;
 import com.microservices.maintenance.dto.request.UpdateAgentRequest;
 import com.microservices.maintenance.dto.response.AgentResponse;
 
-import java.util.Set;
+import java.util.List;
 
 public interface IAgentService {
 
     AgentResponse getAgent(long id);
 
-    Set<AgentResponse> getAllAgents();
+    List<AgentResponse> getAllAgents();
 
     AgentResponse createAgent(CreateAgentRequest request);
 
