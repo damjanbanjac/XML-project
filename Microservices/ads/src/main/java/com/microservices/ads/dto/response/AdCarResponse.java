@@ -1,5 +1,6 @@
 package com.microservices.ads.dto.response;
 
+import com.microservices.ads.model.*;
 import lombok.Data;
 
 import java.util.Date;
@@ -7,11 +8,12 @@ import java.util.Date;
 @Data
 public class AdCarResponse {
 
-    private String carBrand;
-    private String carModel;
-    private String fuelType;
-    private String gearBoxType;
-    private String carClass;
+    private CarBrand carBrand;
+    private UserAd userAd;
+    private CarModel carModel;
+    private TypeOfFuel fuelType;
+    private TypeOfGearshift gearBoxType;
+    private CarClass carClass;
     private Integer grade;
     private String kmRestriction;
     private Integer kmTraveled;
