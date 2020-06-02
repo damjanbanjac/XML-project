@@ -16,69 +16,71 @@ services:
     tty: true
     environment:
       - REGISTRY_HOST=eurekaservice
+      - MYSQL_HOST=users-database
 
     depends_on:
+      - users-database
       - eurekaservice
 
-  maintenanceservice:
-    build: ./maintenance
-    ports:
-      - "8086:8086"
-    environment:
-      - REGISTRY_HOST=eurekaservice
-    tty: true
-    depends_on:
-      - eurekaservice
-
-  orderservice:
-    build: ./ordering
-    ports:
-      - "8089:8089"
-    environment:
-      - REGISTRY_HOST=eurekaservice
-    tty: true
-    depends_on:
-      - eurekaservice
-
-  searchsevice:
-    build: ./search
-    ports:
-      - "8091:8091"
-    environment:
-      - REGISTRY_HOST=eurekaservice
-    tty: true
-    depends_on:
-      - eurekaservice
-
-  messageservice:
-    build: ./messages
-    ports:
-      - "8084:8084"
-    environment:
-      - REGISTRY_HOST=eurekaservice
-    tty: true
-    depends_on:
-      - eurekaservice
-
-  authservice:
-    build: ./authentication
-    ports:
-      - "8443:8443"
-    environment:
-      - REGISTRY_HOST=eurekaservice
-    tty: true
-    depends_on:
-      - eurekaservice
-
-  paymentservice:
-    build: ./payment
-    ports:
-      - "8090:8090"
-    environment:
-      - REGISTRY_HOST=eurekaservice
-    tty: true
-    depends_on:
-      - eurekaservice
+#  maintenanceservice:
+#    build: ./maintenance
+#    ports:
+#      - "8086:8086"
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#    tty: true
+#    depends_on:
+#      - eurekaservice
+#
+#  orderservice:
+#    build: ./ordering
+#    ports:
+#      - "8089:8089"
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#    tty: true
+#    depends_on:
+#      - eurekaservice
+#
+#  searchsevice:
+#    build: ./search
+#    ports:
+#      - "8091:8091"
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#    tty: true
+#    depends_on:
+#      - eurekaservice
+#
+#  messageservice:
+#    build: ./messages
+#    ports:
+#      - "8084:8084"
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#    tty: true
+#    depends_on:
+#      - eurekaservice
+#
+#  authservice:
+#    build: ./authentication
+#    ports:
+#      - "8443:8443"
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#    tty: true
+#    depends_on:
+#      - eurekaservice
+#
+#  paymentservice:
+#    build: ./payment
+#    ports:
+#      - "8090:8090"
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#    tty: true
+#    depends_on:
+#      - eurekaservice
 
   zuul:
     build: ./zuul
@@ -90,14 +92,28 @@ services:
     depends_on:
       - eurekaservice
       - adsservice
-      - authservice
-      - maintenanceservice
-      - orderservice
-      - paymentservice
-      - searchsevice
+#      - authservice
+#      - maintenanceservice
+#      - orderservice
+#      - paymentservice
+#      - searchsevice
+
+  users-database:
+    image: mariadb:10.2
+    container_name: users-database
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: services
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - usersdata:/var/lib/mysql
 
 
-
-
+volumes:
+  #  mysqldata:
+  usersdata:
 
 
