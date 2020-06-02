@@ -1,4 +1,4 @@
-package com.microservices.messages;
+package com.microservices.ads;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class MessagesApplication {
+public class AdsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MessagesApplication.class, args);
+		SpringApplication.run(AdsApplication.class, args);
 	}
 
 }

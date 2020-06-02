@@ -1,10 +1,10 @@
-package com.microservices.messages;
+package com.microservices.ads;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MessagesApplicationTests {
+class AdsApplicationTests {
 
 	@Test
 	void contextLoads() {

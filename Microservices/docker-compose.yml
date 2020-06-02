@@ -10,7 +10,7 @@ services:
 
 
   adsservice:
-    build: ./ads
+    build: ./messages
     ports:
       - "8098:8098"
     tty: true
