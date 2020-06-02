@@ -32,7 +32,7 @@ public class AdsCarService implements IAdsCarService {
     public AdCarResponse createAd(AdCarRequest request) {
 
         Integer cnt = 0;
-        AdCarResponse carResponse  = new AdCarResponse();
+
         List<AdCar> adCarList = adCarRepository.findAll();
 
         for (AdCar ad: adCarList) {
@@ -58,17 +58,38 @@ public class AdsCarService implements IAdsCarService {
 
 
             adCarRepository.save(adCar);
-        }
-         return  carResponse;
-    }
+            AdCarResponse carResponse  = new AdCarResponse(adCar);
+            return  carResponse;
 
-    @Override
-    public AdCarResponse updateAd(AdCarRequest request, long id) {
+        }
         return null;
     }
 
     @Override
+    public AdCarResponse updateAd(AdCarRequest request, long id) {
+
+        AdCar adCar = adCarRepository.findById(id);
+        adCar.setAvailableFrom(request.getAvailableFrom());
+        adCar.setAvailableTo(request.getAvailableTo());
+        adCar.setCarBrand(request.getCarBrand());
+        adCar.setCarClass(request.getCarClass());
+        adCar.setCarModel(request.getCarModel());
+        adCar.setCdw(request.getCdw());
+        adCar.setUserAd(request.getUserAd());
+        adCar.setFuelType(request.getFuelType());
+        adCar.setGearBoxType(request.getGearBoxType());
+        adCar.setKidsSeats(request.getKidsSeats());
+        adCar.setKmTraveled(request.getKmTraveled());
+        adCar.setKmRestriction(request.getKmRestriction());
+        adCarRepository.save(adCar);
+        AdCarResponse response = new AdCarResponse(adCar);
+        return response;
+    }
+
+    @Override
     public void deleteAdCar(long id) {
+        adCarRepository.deleteById(id);
+
 
     }
 

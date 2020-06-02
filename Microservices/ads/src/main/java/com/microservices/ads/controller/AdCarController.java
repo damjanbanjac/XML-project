@@ -16,7 +16,7 @@ public class AdCarController {
     private AdsCarService adsCarService;
 
 
-    @PostMapping
+    @PostMapping("/{id}/ad")
     public AdCarResponse addAd(@RequestBody AdCarRequest request) throws Exception{
         return adsCarService.createAd(request);
     }

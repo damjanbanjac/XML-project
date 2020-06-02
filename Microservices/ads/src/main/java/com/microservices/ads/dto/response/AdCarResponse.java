@@ -22,4 +22,19 @@ public class AdCarResponse {
     private Date availableFrom;
     private Date availableTo;
 
+    public AdCarResponse(AdCar adCar) {
+        carBrand = adCar.getCarBrand();
+        userAd = adCar.getUserAd();
+        carModel = adCar.getCarModel();
+        fuelType = adCar.getFuelType();
+        gearBoxType = adCar.getGearBoxType();
+        carClass = adCar.getCarClass();
+        grade = adCar.getGrade();
+        kmRestriction = adCar.getKmRestriction();
+        kmTraveled = adCar.getKmTraveled();
+        cdw = adCar.getCdw();
+        kidsSeats = adCar.getKidsSeats();
+        availableFrom = adCar.getAvailableFrom();
+        availableTo = adCar.getAvailableTo();
+    }
 }
