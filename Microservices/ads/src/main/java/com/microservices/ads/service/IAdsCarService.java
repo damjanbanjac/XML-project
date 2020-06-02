@@ -4,13 +4,14 @@ import com.microservices.ads.dto.request.AdCarRequest;
 import com.microservices.ads.dto.response.AdCarResponse;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 public interface IAdsCarService {
 
     AdCarResponse getAd(long id);
 
-    Set<AdCarResponse> getAllAds();
+    List<AdCarResponse> getAllAds();
 
     AdCarResponse createAd(AdCarRequest request);
 
