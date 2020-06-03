@@ -17,12 +17,21 @@ public class AdsCarService implements IAdsCarService {
     
     @Override
     public AdCarResponse getAd(long id) {
-        return null;
+        AdCar adCar = adCarRepository.findOneById(id);
+        AdCarResponse adCarResponse = new AdCarResponse(adCar);
+        return  adCarResponse;
+
     }
 
     @Override
     public List<AdCarResponse> getAllAds() {
-        return null;
+        List<AdCarResponse> adCarResponses = null;
+        List<AdCar> ads = adCarRepository.findAll();
+        for (AdCar ad: ads) {
+            AdCarResponse adCarResponse = new AdCarResponse(ad);
+            adCarResponses.add(adCarResponse);
+        }
+        return  adCarResponses;
     }
 
     public List<AdCar> findAllAds() {

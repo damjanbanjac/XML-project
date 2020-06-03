@@ -10,4 +10,5 @@ import java.util.List;
 public interface AdCarRepository extends JpaRepository<AdCar, Long> {
     AdCar findById(long id);
 
+    AdCar findOneById(Long id);
 }
