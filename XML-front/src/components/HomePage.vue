@@ -25,6 +25,15 @@
                     <router-link  to="/clientRegistration" tag="b-dropdown-item">As client</router-link>
                     <router-link to="/agentRegistration" tag="b-dropdown-item">As company</router-link>
                     </b-nav-item-dropdown>
+                <b-nav-item-dropdown
+                    id="my-nav-dropdown"
+                    text="User"
+                    toggle-class="nav-link-custom"
+                    right
+                    >
+                    <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
+                   
+                    </b-nav-item-dropdown>
             
         </b-navbar-nav>
         </b-collapse>
