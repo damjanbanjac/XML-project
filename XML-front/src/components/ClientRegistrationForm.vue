@@ -109,7 +109,7 @@
             </b-form-group>
 
             <b-form-group>
-                <b-button type="submit" variant="primary" @click="regist">Register</b-button>
+                <b-button type="submit" variant="info" @click="regist">Register</b-button>
             </b-form-group>
 
             </b-form>

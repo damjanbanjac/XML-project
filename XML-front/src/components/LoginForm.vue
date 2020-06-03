@@ -40,7 +40,7 @@
           </b-form-group>
 
           <b-form-group>
-            <b-button type="submit"  @click="loginFun" variant="primary" style="width: 320px">Log In</b-button>
+            <b-button type="submit"  @click="loginFun" variant="info" style="width: 320px">Log In</b-button>
           </b-form-group>
 
           <hr>
@@ -50,7 +50,7 @@
 
       <b-form-group style="margin-left: 18%;">
         <label style="margin-right: 2%">Don't have an account?</label>
-        <router-link to="/clientRegistration">Sign Up!</router-link>
+        <router-link to="/clientRegistration">Register!</router-link>
         <br/>
       </b-form-group>
 

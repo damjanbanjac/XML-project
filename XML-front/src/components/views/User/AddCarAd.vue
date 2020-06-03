@@ -14,7 +14,11 @@
         <!--Header-->
         <div class="header pt-3 grey lighten-2">
           <div class="row d-flex justify-content-start">
-            <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5">New Car</h3>
+            <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5" 
+            style="font-size: 3rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-top: -12%;">Add Car</h3>
           </div>
         </div>
         <!--Header-->
@@ -36,9 +40,9 @@
                   <label for="Form-adresa">City</label>
                   <input type="text" id="Form-carCity" class="form-control" v-model="form.city" />
 
-                  <label for="Form-radnoDo">availableFrom</label>
+                  <label for="Form-radnoDo">Available From</label>
                   <input type="date" id="Form-availableFrom" class="form-control" v-model="form.availableFrom" />
-                   <label for="Form-radnoDo">availableFrom</label>
+                   <label for="Form-radnoDo">Available To</label>
                   <input type="date" id="Form-availableTo" class="form-control" v-model="form.availableTo" />
                 </div>
               </div>
@@ -76,18 +80,19 @@
             <!--Body-->
 
             <div v-if="newAd" class="text-center mb-4">
+              <br/>
               <button
                 type="button"
                 class="btn btn-info btn-block z-depth-2"
                 @click="newCar()"
-              >Ad Car</button>
+              >Add Car</button>
             </div>
           <div v-if="changeButton" >
               <input style="display:none" ref="fileInput" type="file" @change="onFileSelected()"/>
               <button type="button"
                 class="btn btn-info btn-block z-depth-2" @click="$refs.fileInput.click()">Choose image</button>
               <button type="button"
-                class="btn btn-outline-info btn-block z-depth-2" @click="uploadImages()">upload Image</button>
+                class="btn btn-outline-info btn-block z-depth-2" @click="uploadImages()">Upload Image</button>
         </div>
           </div>
         </div>
@@ -137,7 +142,7 @@
         },
         newCar() {
             this.success = true,
-            this.successmessages = "you succesfully added new car ad, now you can upload a images for car"
+            this.successmessages = "You have succesfully added a new car ad. Now you can upload images for the car."
             this.changeButton = true;
             this.newAd = false;
         }
