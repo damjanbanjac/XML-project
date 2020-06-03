@@ -13,5 +13,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/services</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="services@localhost [2]" uuid="08ff015a-b293-4017-9e99-0e231319bae9">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/services</jdbc-url>
+    </data-source>
   </component>
 </project>
