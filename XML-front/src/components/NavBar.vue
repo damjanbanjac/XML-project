@@ -10,10 +10,13 @@
 
     <b-navbar-nav class="ml-auto" v-if="this.$store.state.user.enabled == true">
       <b-nav-item-dropdown
-        text="Pricelist"
+        text="Sidebar"
         right
        v-if="this.$store.state.user.role.authority == 'USER'"
       >
+        <router-link to="/agentRegistration" tag="b-dropdown-item">Register agent/company</router-link>
+        <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
+        <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
         <router-link to="/createPriceList" tag="b-dropdown-item">Add pricelist</router-link>
          <div class="dropdown-divider"></div>
         <b-dropdown-item @click="odjavaFun">Log Out</b-dropdown-item>
