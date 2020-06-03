@@ -8,6 +8,7 @@ import HomePage from '../components/HomePage.vue'
 import PriceList from '../components/PriceList.vue'
 import UserList from '../components/Admin/UserList.vue'
 import RegistrationRequestList from '../components/Admin/RegistrationRequestList.vue'
+import AddCarAd from '../components/views/User/AddCarAd.vue'
 
 
 Vue.use(VueRouter);
@@ -66,7 +67,12 @@ const routes = [
     name: 'registration-requests',
     component: RegistrationRequestList,
     meta: {
-      requiresAuth: false
+      requiresAuth: false,
+      path: '/addCarAd',
+      name: 'add-car-ad',
+      component: AddCarAd,
+    meta: {
+      requiresAuth: true
     } 
   }
 ]
