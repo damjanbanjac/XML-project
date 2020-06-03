@@ -6,6 +6,8 @@ import AgentRegistrationForm from '../components/AgentRegistrationForm.vue'
 import ClientRegistrationForm from '../components/ClientRegistrationForm.vue'
 import HomePage from '../components/HomePage.vue'
 import PriceList from '../components/PriceList.vue'
+import UserList from '../components/Admin/UserList.vue'
+import RegistrationRequestList from '../components/Admin/RegistrationRequestList.vue'
 import AddCarAd from '../components/views/User/AddCarAd.vue'
 
 
@@ -25,7 +27,7 @@ const routes = [
     name: 'agent-registration',
     component: AgentRegistrationForm,
     meta: {
-      requiresAuth: true
+      requiresAuth: false
     } 
   },
   {
@@ -53,9 +55,22 @@ const routes = [
     } 
   },
   {
-    path: '/addCarAd',
-    name: 'add-car-ad',
-    component: AddCarAd,
+    path: '/userList',
+    name: 'user-list',
+    component: UserList,
+    meta: {
+      requiresAuth: false
+    } 
+  },
+  {
+    path: '/registrationRequests',
+    name: 'registration-requests',
+    component: RegistrationRequestList,
+    meta: {
+      requiresAuth: false,
+      path: '/addCarAd',
+      name: 'add-car-ad',
+      component: AddCarAd,
     meta: {
       requiresAuth: true
     } 
