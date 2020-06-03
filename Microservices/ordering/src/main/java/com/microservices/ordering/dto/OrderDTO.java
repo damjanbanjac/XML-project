@@ -16,6 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class OrderDTO {
 
+    private Long id;
     private Date availableFrom;
     private Date availableTo;
 
@@ -26,6 +27,7 @@ public class OrderDTO {
 
 
     public OrderDTO(Order order) {
+        this.id=order.getId();
         this.availableFrom=order.getAvailableFrom();
         this.availableTo=order.getAvailableTo();
         this.adCar=order.getAdCar();
