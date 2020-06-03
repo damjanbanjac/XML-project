@@ -6,6 +6,7 @@ import AgentRegistrationForm from '../components/AgentRegistrationForm.vue'
 import ClientRegistrationForm from '../components/ClientRegistrationForm.vue'
 import HomePage from '../components/HomePage.vue'
 import PriceList from '../components/PriceList.vue'
+import AddCarAd from '../components/views/User/AddCarAd.vue'
 
 
 Vue.use(VueRouter);
@@ -49,6 +50,14 @@ const routes = [
     component: PriceList,
     meta: {
       requiresAuth: false
+    } 
+  },
+  {
+    path: '/addCarAd',
+    name: 'add-car-ad',
+    component: AddCarAd,
+    meta: {
+      requiresAuth: true
     } 
   }
 ]
