@@ -10,7 +10,7 @@ services:
 
 
   adsservice:
-    build: ./messages
+    build: ./ads
     ports:
       - "8098:8098"
     tty: true
@@ -74,15 +74,17 @@ services:
 #    depends_on:
 #      - eurekaservice
 #
-#  paymentservice:
-#    build: ./payment
-#    ports:
-#      - "8090:8090"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#    tty: true
-#    depends_on:
-#      - eurekaservice
+  paymentservice:
+    build: ./payment
+    ports:
+      - "8090:8090"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+      - MYSQL_HOST=users-database
+    tty: true
+    depends_on:
+      - eurekaservice
+      - users-database
 
   zuul:
     build: ./zuul
