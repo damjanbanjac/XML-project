@@ -38,6 +38,9 @@ import java.util.Date;
         private Date availableFrom;
         private Date availableTo;
 
+        private String city;
+        private Integer price;
+
 
     }
 

@@ -1,0 +1,1 @@
+insert into search_ad(id,available_from,available_to,city) values (1,'21:21 10-2-2015','23:23 12-4-2015','Novi Sad');
