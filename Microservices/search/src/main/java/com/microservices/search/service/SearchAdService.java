@@ -119,7 +119,7 @@ public class SearchAdService implements ISearchAdService {
     }
 
 
-    public List<SearchAd> searchAds(SearchAdDTO searchAd, Integer id) throws ParseException {
+    public List<SearchAd> searchAds(SearchAdDTO searchAd) throws ParseException {
 
         List<SearchAd> ads = findAll();
 

@@ -26,14 +26,14 @@ public class SearchController {
     List<SearchAd> searchAdsResult = null;
 
 
-    @PostMapping(value = "/ad/{id}")
-    public ResponseEntity<Collection<SearchAdDTO>> searchAds(@RequestBody SearchAdDTO searchAd, @PathVariable Integer id) throws ParseException {
+    @PostMapping(value = "/ad")
+    public ResponseEntity<Collection<SearchAdDTO>> searchAds(@RequestBody SearchAdDTO searchAd) throws ParseException {
         Map<Long,SearchAdDTO> adsDTO = new HashMap();
 
         if(searchAd == null) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        searchAdsResult = searchAdService.searchAds(searchAd, id);
+        searchAdsResult = searchAdService.searchAds(searchAd);
 
         for(SearchAd searchAdReturn : searchAdsResult) {
             adsDTO.put(searchAdReturn.getId(), new SearchAdDTO(searchAdReturn));
@@ -63,7 +63,7 @@ public class SearchController {
         return new ResponseEntity<>(adsDTO.values(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/ad", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/adanad")
     public ResponseEntity<SearchAdDTO> addAd(@RequestBody SearchAdDTO searchAdDTO) throws Exception {
 
         SearchAdDTO searchaddto = new SearchAdDTO();
