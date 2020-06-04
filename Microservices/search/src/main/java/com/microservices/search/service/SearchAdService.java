@@ -130,7 +130,7 @@ public class SearchAdService implements ISearchAdService {
         //TODO ima ovo 48h od trenutka pretrage mora da bude preuzimanje al to se validira na frontu kontam
 
 
-        List<SearchAd> searchAdsReturn = null;
+        List<SearchAd> searchAdsReturn = new ArrayList<>();
 
         for(SearchAd ad : ads) {
             Date adDateTakeOver = sdf.parse(ad.getAvailableFrom());
