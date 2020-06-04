@@ -6,8 +6,9 @@ import com.microservices.search.repository.SearchAdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Set;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class SearchAdService implements ISearchAdService {
@@ -117,5 +118,85 @@ public class SearchAdService implements ISearchAdService {
         return searchAds;
     }
 
+
+    public List<SearchAd> searchAds(SearchAdDTO searchAd, Integer id) throws ParseException {
+
+        List<SearchAd> ads = findAll();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd-MM-yyyy");
+        Date dateFormatTakeOver = sdf.parse(searchAd.getAvailableFrom()); //ili promeni na Date u modelu ali onda sta sa onim hh:mm...
+        Date dateFormatReturn = sdf.parse(searchAd.getAvailableTo());
+
+        //TODO ima ovo 48h od trenutka pretrage mora da bude preuzimanje al to se validira na frontu kontam
+
+
+        List<SearchAd> searchAdsReturn = null;
+
+        for(SearchAd ad : ads) {
+            Date adDateTakeOver = sdf.parse(ad.getAvailableFrom());
+            Date adDateReturn = sdf.parse(ad.getAvailableTo());
+            if(dateFormatTakeOver.compareTo(adDateTakeOver) >= 0) {
+                if(dateFormatReturn.compareTo(adDateReturn) <= 0) {
+                    if(searchAd.getCity().equals(ad.getCity())) {
+                        if(searchAd.getCarBrand() != null) {
+                            if (!(ad.getCarBrand().getId().equals(searchAd.getCarBrand().getId()))) {
+                                break;
+                            }
+                        }
+                        if(searchAd.getCarModel() != null) {
+                            if (!(ad.getCarModel().getId().equals(searchAd.getCarModel().getId()))) {
+                                break;
+                            }
+                        }
+                        if(searchAd.getFuelType() != null) {
+                            if (!(ad.getFuelType().getId().equals(searchAd.getFuelType().getId()))) {
+                                break;
+                            }
+                        }
+                        if(searchAd.getGearBoxType() != null) {
+                            if (!(ad.getGearBoxType().getId().equals(searchAd.getGearBoxType().getId()))) {
+                                break;
+                            }
+                        }
+                        if(searchAd.getCarClass() != null) {
+                            if (!(ad.getCarClass().getId().equals(searchAd.getCarClass().getId()))) {
+                                break;
+                            }
+                        }
+                        //TODO cenu uradi, treba od - do cena al ovo je privremeno sad snalazenje, mada ovde cenovnik igra ulogu ne znam sta sa time
+                        if(searchAd.getPrice() != null) {
+                            if(searchAd.getPrice() < ad.getPrice()) {
+                                break;
+                            }
+                        }
+                        if(searchAd.getKmTraveled() != null) {
+                            if(searchAd.getKmTraveled() < ad.getKmTraveled()) {
+                                break;
+                            }
+                        }
+                        //TODO ovo je malo zbunjujuce, on unosi kilometrazu koju planira da predje i sta sa time, ne kaze jel mu smeta restrikcija ili ispisujem koliko treba da plati dodatno ili sta
+                        if(searchAd.getKmRestriction() != null) {
+                            if(searchAd.getKmRestriction() > ad.getKmRestriction()) {
+                                break;
+                            }
+                        }
+                        if(searchAd.getCdw() != null) {
+                            if(searchAd.getCdw() != ad.getCdw()) {
+                                break;
+                            }
+                        }
+                        if(searchAd.getKidsSeats() != null) {
+                            if(searchAd.getKidsSeats() > ad.getKidsSeats()) {
+                                break;
+                            }
+                        }
+
+                        searchAdsReturn.add(ad);
+                    }
+                }
+            }
+        }
+        return searchAdsReturn;
+    }
 
 }

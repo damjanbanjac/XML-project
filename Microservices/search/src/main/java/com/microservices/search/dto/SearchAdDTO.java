@@ -13,12 +13,12 @@ public class SearchAdDTO {
     private TypeOfGearshift gearBoxType;
     private CarClass carClass;
     private Integer grade;
-    private String kmRestriction;
+    private Integer kmRestriction;
     private Integer kmTraveled;
     private Boolean cdw;
     private  Integer kidsSeats;
-    private Date availableFrom;
-    private Date availableTo;
+    private String availableFrom;
+    private String availableTo;
 
     private String city;
     private Integer price;

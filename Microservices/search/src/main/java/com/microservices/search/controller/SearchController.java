@@ -25,29 +25,19 @@ public class SearchController {
 
     List<SearchAd> searchAdsResult = null;
 
-    @PostMapping(value = "/{city}/{takoOverDate}/{returnDate}")
-    public ResponseEntity<Collection<SearchAdDTO>> searchAds(@PathVariable String city, @PathVariable String takeOverDate, @PathVariable String returnDate) throws ParseException {
 
-        List<SearchAd> ads = searchAdService.findAll();
-
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd-MM-yyyy");
-        Date dateFormatTakeOver = sdf.parse(takeOverDate);
-        Date dateFormatReturn = sdf.parse(returnDate);
-
+    @PostMapping(value = "/ad/{id}")
+    public ResponseEntity<Collection<SearchAdDTO>> searchAds(@RequestBody SearchAdDTO searchAd, @PathVariable Integer id) throws ParseException {
         Map<Long,SearchAdDTO> adsDTO = new HashMap();
 
-        for(SearchAd searchAd : ads) {
-            if(dateFormatTakeOver.compareTo(searchAd.getAvailableFrom()) >= 0) {
-                if(dateFormatReturn.compareTo(searchAd.getAvailableTo()) <= 0) {
-                    if(city.equals(searchAd.getCity())) {
-                        adsDTO.put(searchAd.getId(), new SearchAdDTO(searchAd));
-                        searchAdsResult.add(searchAd);
-                    }
-                }
-            }
+        if(searchAd == null) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+        searchAdsResult = searchAdService.searchAds(searchAd, id);
 
-
+        for(SearchAd searchAdReturn : searchAdsResult) {
+            adsDTO.put(searchAdReturn.getId(), new SearchAdDTO(searchAdReturn));
+        }
 
         return new ResponseEntity<>(adsDTO.values(), HttpStatus.OK);
     }
@@ -62,9 +52,12 @@ public class SearchController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        Map<Integer,SearchAdDTO> adsDTO = new HashMap();
-        for(int i = 0; i < sortedSearchAds.size(); i++) {
-            adsDTO.put(i, new SearchAdDTO(sortedSearchAds.get(i)));
+        Map<Long,SearchAdDTO> adsDTO = new HashMap();
+//        for(int i = 0; i < sortedSearchAds.size(); i++) {
+//            adsDTO.put(i, new SearchAdDTO(sortedSearchAds.get(i)));
+//        }
+        for(SearchAd ad : sortedSearchAds) {
+            adsDTO.put(ad.getId(), new SearchAdDTO(ad));
         }
 
         return new ResponseEntity<>(adsDTO.values(), HttpStatus.OK);
