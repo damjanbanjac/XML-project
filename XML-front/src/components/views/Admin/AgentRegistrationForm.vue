@@ -85,7 +85,7 @@
             </b-form-group>
 
             <b-form-group>
-                <b-button type="submit" variant="primary">Register</b-button>
+                <b-button type="submit" variant="info">Register</b-button>
             </b-form-group>
 
             </b-form>

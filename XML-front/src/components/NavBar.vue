@@ -10,7 +10,7 @@
 
     <b-navbar-nav class="ml-auto" v-if="this.$store.state.user.enabled == true">
       <b-nav-item-dropdown
-        text="Pricelist"
+        text="Sidebar"
         right
        v-if="this.$store.state.user.role.authority == 'USER'"
       >

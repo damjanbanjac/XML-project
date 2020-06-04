@@ -15,16 +15,25 @@
         <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
             
-            <router-link to="/login" tag="b-nav-item">Log In</router-link>
+            <router-link to="/login" tag="b-nav-item">Log in</router-link>
                 <b-nav-item-dropdown
                     id="my-nav-dropdown"
-                    text="Register "
+                    text="User"
                     toggle-class="nav-link-custom"
                     right
                     >
-                    <router-link  to="/clientRegistration" tag="b-dropdown-item">As client</router-link>
-                    <router-link to="/agentRegistration" tag="b-dropdown-item">As company</router-link>
-                    </b-nav-item-dropdown>
+                    <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
+                </b-nav-item-dropdown>
+                <b-nav-item-dropdown
+                    id="my-nav-dropdown"
+                    text="Admin"
+                    toggle-class="nav-link-custom"
+                    right
+                    >
+                    <router-link to="/agentRegistration" tag="b-dropdown-item">Register agent/company</router-link>
+                    <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
+                    <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
+                </b-nav-item-dropdown>
             
         </b-navbar-nav>
         </b-collapse>
