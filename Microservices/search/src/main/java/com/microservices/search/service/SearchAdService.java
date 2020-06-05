@@ -169,32 +169,49 @@ public class SearchAdService implements ISearchAdService {
 
 //        List<SearchAd> ads = findAll();
 
-
+//        List<SearchAd> ads = new ArrayList<SearchAd>();
 
 
         CarBrand mercedez = new CarBrand((long)4);
         CarBrand audi = new CarBrand((long)5);
+        carBrandRepository.save(mercedez);
+        carBrandRepository.save(audi);
 
-        CarClass caravan = new CarClass((long)6);
-        CarClass cupe = new CarClass((long)7);
+        CarModel astra = new CarModel((long)6);
+        CarModel clio = new CarModel((long)7);
+        carModelRepository.save(astra);
+        carModelRepository.save(clio);
 
-        CarModel astra = new CarModel((long)8);
-        CarModel clio = new CarModel((long)9);
 
-        TypeOfFuel diesel = new TypeOfFuel((long)10);
-        TypeOfFuel gas = new TypeOfFuel((long)11);
+        TypeOfFuel diesel = new TypeOfFuel((long)8);
+        TypeOfFuel gas = new TypeOfFuel((long)9);
+        fuelTypeRepository.save(diesel);
+        fuelTypeRepository.save(gas);
 
-        TypeOfGearshift manual = new TypeOfGearshift((long)12);
-        TypeOfGearshift automatic = new TypeOfGearshift((long)13);
+        TypeOfGearshift manual = new TypeOfGearshift((long)10);
+        TypeOfGearshift automatic = new TypeOfGearshift((long)11);
+        gearBoxTypeRepository.save(manual);
+        gearBoxTypeRepository.save(automatic);
+
+        CarClass caravan = new CarClass((long)12);
+        CarClass cupe = new CarClass((long)13);
+        carClassRepository.save(caravan);
+        carClassRepository.save(cupe);
 
         SearchAd ad1 = new SearchAd((long) 2,mercedez,astra,diesel,manual,caravan,5,200,1000,true,2,"12:40 2-4-2012", "12:50 7-4-2012", "Novi Sad", 200);
         SearchAd ad2 = new SearchAd((long) 3, audi, clio, gas, automatic, cupe, 4, 300, 2000, false, 4, "11:00 5-4-2012", "11:30 6-4-2012", "Novi Sad", 150);
 
-        List<SearchAd> ads = new ArrayList<SearchAd>();
-        ads.add(ad1);
-        ads.add(ad2);
+//        ads.add(ad1);
+//        ads.add(ad2);
 
+//        searchAdRepository.save(ad1);
+//        searchAdRepository.save(ad2);
 
+        SearchAdDTO dto1 = new SearchAdDTO(2,4,6,8,10,12,5,200,1000,true,2,"12:40 2-4-2012","12:50 7-4-2012","Novi Sad",200);
+//        SearchAdDTO dto2 = new SearchAdDTO((long)3,(long)5,(long)7,(long)9,(long)11,(long)13,(long)300,2000,false,4,"11:00 5-4-2012","11:30 6-4-2012","Novi Sad", 150);
+        this.addAd(dto1);
+
+        List<SearchAd> ads = findAll();
 
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd-MM-yyyy");
@@ -247,12 +264,12 @@ public class SearchAdService implements ISearchAdService {
 //                                break;
 //                            }
 //                        }
-//                        if(searchAd.getKmTraveled() != null) {
-//                            if(searchAd.getKmTraveled() < ad.getKmTraveled()) {
-//                                break;
-//                            }
-//                        }
-//                        //TODO ovo je malo zbunjujuce, on unosi kilometrazu koju planira da predje i sta sa time, ne kaze jel mu smeta restrikcija ili ispisujem koliko treba da plati dodatno ili sta
+                        if(searchAd.getKmTraveled() != null) {
+                            if(searchAd.getKmTraveled() < ad.getKmTraveled()) {
+                                break;
+                            }
+                        }
+                        //TODO ovo je malo zbunjujuce, on unosi kilometrazu koju planira da predje i sta sa time, ne kaze jel mu smeta restrikcija ili ispisujem koliko treba da plati dodatno ili sta
 //                        if(searchAd.getKmRestriction() != null) {
 //                            if(searchAd.getKmRestriction() > ad.getKmRestriction()) {
 //                                break;
