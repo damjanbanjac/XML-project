@@ -47,15 +47,17 @@ services:
 #      - users-database
 #      - eurekaservice
 
-#  searchsevice:
-#    build: ./search
-#    ports:
-#      - "8091:8091"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#    tty: true
-#    depends_on:
-#      - eurekaservice
+  searchsevice:
+    build: ./search
+    ports:
+      - "8091:8091"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+      - MYSQL_HOST=users-database
+    tty: true
+    depends_on:
+      - users-database
+      - eurekaservice
 #
 #  messageservice:
 #    build: ./messages
