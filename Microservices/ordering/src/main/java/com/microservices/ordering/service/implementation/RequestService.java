@@ -8,6 +8,7 @@ import com.microservices.ordering.model.Request;
 import com.microservices.ordering.repository.OrderRepository;
 import com.microservices.ordering.repository.RequestRepository;
 import com.microservices.ordering.service.IRequestService;
+import org.bouncycastle.cert.ocsp.Req;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,7 @@ public class RequestService implements IRequestService {
 
     @Autowired
     private RequestRepository requestRepository;
+
 
     @Override
     public RequestDTO getRequest(long id) {
@@ -94,10 +96,49 @@ public class RequestService implements IRequestService {
             newRequest.setBundle(request.getBundle());
             newRequest.setStatus("SACEKAJTE");
             bundleOrders.add(orderRepositiory.findOneById(order.getId()));
+            newRequest.setOrderList(bundleOrders);
             RequestDTO requestDTO = new RequestDTO(newRequest);
 
             return requestDTO;
 
         }
+    }
+
+    @Override
+    public RequestDTO presonallyRequest(OrderDTO order) {
+
+        Order order1 = new Order();
+
+        order1.setAvailableFrom(order.getAvailableFrom());
+        order1.setAvailableTo(order.getAvailableTo());
+        order1.setAdCar(order.getAdCar());
+        order1.setUserr(order.getUser());
+        order1.setUserIzdavao(order.getUserIzdao());
+        order1.setAgentIzdao(order.getAgentIzdao());
+
+        orderRepositiory.save(order1);
+
+        List<Request> requests= requestRepository.findAll();
+        List<Order> bundleOrders= new ArrayList<>();
+
+        Request newRequest= new Request();
+        newRequest.setBundle(false);
+        newRequest.setStatus("RESERVED");
+        bundleOrders.add(order1);
+        newRequest.setOrderList(bundleOrders);
+
+        for (Request req:requests){
+            for(int i=0; i<req.getOrderList().size(); i++) {
+                if (req.getOrderList().get(i).equals(order.getAdCar().getId())){
+                    Request request1= requestRepository.getOne(req.getId());
+                    request1.setStatus("CACELED");
+                    requestRepository.save(request1);
+                }
+            }
+        }
+
+
+        RequestDTO requestDTO = new RequestDTO(newRequest);
+        return  requestDTO;
     }
 }
