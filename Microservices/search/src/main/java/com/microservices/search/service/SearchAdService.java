@@ -1,11 +1,13 @@
 package com.microservices.search.service;
 
 import com.microservices.search.dto.SearchAdDTO;
-import com.microservices.search.model.SearchAd;
-import com.microservices.search.repository.SearchAdRepository;
+import com.microservices.search.model.*;
+import com.microservices.search.repository.*;
+import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -16,6 +18,21 @@ public class SearchAdService implements ISearchAdService {
 
     @Autowired
     private SearchAdRepository searchAdRepository;
+
+    @Autowired
+    private CarBrandRepository carBrandRepository;
+
+    @Autowired
+    private CarModelRepository carModelRepository;
+
+    @Autowired
+    private CarClassRepository carClassRepository;
+
+    @Autowired
+    private FuelTypeRepository fuelTypeRepository;
+
+    @Autowired
+    private GearBoxTypeRepository gearBoxTypeRepository;
 
     @Override
     public List<SearchAdDTO> getAllSearchAds() {
@@ -32,10 +49,10 @@ public class SearchAdService implements ISearchAdService {
 
     private SearchAdDTO mapToResponse(SearchAd searchAd) {
         SearchAdDTO response = new SearchAdDTO();
-        response.setCarModel(searchAd.getCarModel());
-        response.setFuelType(searchAd.getFuelType());
-        response.setGearBoxType(searchAd.getGearBoxType());
-        response.setCarClass(searchAd.getCarClass());
+        response.setCarModel(searchAd.getCarModel().getId());
+        response.setFuelType(searchAd.getFuelType().getId());
+        response.setGearBoxType(searchAd.getGearBoxType().getId());
+        response.setCarClass(searchAd.getCarClass().getId());
         response.setCity(searchAd.getCity());
         response.setGrade(searchAd.getGrade());
         response.setKmRestriction(searchAd.getKmRestriction());
@@ -66,11 +83,11 @@ public class SearchAdService implements ISearchAdService {
         searchAd.setKidsSeats(searchAdDTO.getKidsSeats());
         searchAd.setKmRestriction(searchAdDTO.getKmRestriction());
         searchAd.setKmTraveled(searchAdDTO.getKmTraveled());
-        searchAd.setCarBrand(searchAdDTO.getCarBrand());
-        searchAd.setCarClass(searchAdDTO.getCarClass());
-        searchAd.setCarModel(searchAdDTO.getCarModel());
-        searchAd.setFuelType(searchAdDTO.getFuelType());
-        searchAd.setGearBoxType(searchAdDTO.getGearBoxType());
+        searchAd.setCarBrand(carBrandRepository.findById(searchAdDTO.getCarBrand()).orElse(null));
+        searchAd.setCarClass(carClassRepository.findById(searchAdDTO.getCarClass()).orElse(null));
+        searchAd.setCarModel(carModelRepository.findById(searchAdDTO.getCarModel()).orElse(null));
+        searchAd.setFuelType(fuelTypeRepository.findById(searchAdDTO.getFuelType()).orElse(null));
+        searchAd.setGearBoxType(gearBoxTypeRepository.findById(searchAdDTO.getGearBoxType()).orElse(null));
         searchAd.setPrice(searchAdDTO.getPrice());
         searchAdRepository.save(searchAd);
 
@@ -150,7 +167,34 @@ public class SearchAdService implements ISearchAdService {
 
     public List<SearchAd> searchAds(SearchAdDTO searchAd) throws ParseException {
 
-        List<SearchAd> ads = findAll();
+//        List<SearchAd> ads = findAll();
+
+
+
+
+        CarBrand mercedez = new CarBrand((long)4);
+        CarBrand audi = new CarBrand((long)5);
+
+        CarClass caravan = new CarClass((long)6);
+        CarClass cupe = new CarClass((long)7);
+
+        CarModel astra = new CarModel((long)8);
+        CarModel clio = new CarModel((long)9);
+
+        TypeOfFuel diesel = new TypeOfFuel((long)10);
+        TypeOfFuel gas = new TypeOfFuel((long)11);
+
+        TypeOfGearshift manual = new TypeOfGearshift((long)12);
+        TypeOfGearshift automatic = new TypeOfGearshift((long)13);
+
+        SearchAd ad1 = new SearchAd((long) 2,mercedez,astra,diesel,manual,caravan,5,200,1000,true,2,"12:40 2-4-2012", "12:50 7-4-2012", "Novi Sad", 200);
+        SearchAd ad2 = new SearchAd((long) 3, audi, clio, gas, automatic, cupe, 4, 300, 2000, false, 4, "11:00 5-4-2012", "11:30 6-4-2012", "Novi Sad", 150);
+
+        List<SearchAd> ads = new ArrayList<SearchAd>();
+        ads.add(ad1);
+        ads.add(ad2);
+
+
 
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd-MM-yyyy");
@@ -158,11 +202,11 @@ public class SearchAdService implements ISearchAdService {
         Date dateFormatReturn = sdf.parse(searchAd.getAvailableTo());
 
         //TODO ima ovo 48h od trenutka pretrage mora da bude preuzimanje al to se validira na frontu kontam
-        long milisecondsTakeOver = dateFormatTakeOver.getTime();
-        long milisecondsNow = now.getTime();
-        if(milisecondsNow - milisecondsTakeOver < 172800000) {
-            return null; //TODO sta ovde staviti da nije null
-        }
+//        long milisecondsTakeOver = dateFormatTakeOver.getTime();
+//        long milisecondsNow = now.getTime();
+//        if(milisecondsNow - milisecondsTakeOver < 172800000) {
+//            return null; //TODO sta ovde staviti da nije null
+//        }
 
         List<SearchAd> searchAdsReturn = new ArrayList<>();
 
@@ -172,58 +216,58 @@ public class SearchAdService implements ISearchAdService {
             if(dateFormatTakeOver.compareTo(adDateTakeOver) >= 0) {
                 if(dateFormatReturn.compareTo(adDateReturn) <= 0) {
                     if(searchAd.getCity().equals(ad.getCity())) {
-                        if(searchAd.getCarBrand() != null) {
-                            if (!(ad.getCarBrand().getId().equals(searchAd.getCarBrand().getId()))) {
-                                break;
-                            }
-                        }
-                        if(searchAd.getCarModel() != null) {
-                            if (!(ad.getCarModel().getId().equals(searchAd.getCarModel().getId()))) {
-                                break;
-                            }
-                        }
-                        if(searchAd.getFuelType() != null) {
-                            if (!(ad.getFuelType().getId().equals(searchAd.getFuelType().getId()))) {
-                                break;
-                            }
-                        }
-                        if(searchAd.getGearBoxType() != null) {
-                            if (!(ad.getGearBoxType().getId().equals(searchAd.getGearBoxType().getId()))) {
-                                break;
-                            }
-                        }
-                        if(searchAd.getCarClass() != null) {
-                            if (!(ad.getCarClass().getId().equals(searchAd.getCarClass().getId()))) {
-                                break;
-                            }
-                        }
-                        //TODO cenu uradi, treba od - do cena al ovo je privremeno sad snalazenje, mada ovde cenovnik igra ulogu ne znam sta sa time
-                        if(searchAd.getPrice() != null) {
-                            if(searchAd.getPrice() < ad.getPrice()) {
-                                break;
-                            }
-                        }
-                        if(searchAd.getKmTraveled() != null) {
-                            if(searchAd.getKmTraveled() < ad.getKmTraveled()) {
-                                break;
-                            }
-                        }
-                        //TODO ovo je malo zbunjujuce, on unosi kilometrazu koju planira da predje i sta sa time, ne kaze jel mu smeta restrikcija ili ispisujem koliko treba da plati dodatno ili sta
-                        if(searchAd.getKmRestriction() != null) {
-                            if(searchAd.getKmRestriction() > ad.getKmRestriction()) {
-                                break;
-                            }
-                        }
-                        if(searchAd.getCdw() != null) {
-                            if(searchAd.getCdw() != ad.getCdw()) {
-                                break;
-                            }
-                        }
-                        if(searchAd.getKidsSeats() != null) {
-                            if(searchAd.getKidsSeats() > ad.getKidsSeats()) {
-                                break;
-                            }
-                        }
+//                   //     if(searchAd.getCarBrand() != null) {
+//                            if (!(ad.getCarBrand().getId().equals(searchAd.getCarBrand()))) {
+//                                break;
+//                            }
+//                  //      }
+//                     //   if(carModelRepository.findById(searchAd.getCarModel())) {
+//                            if (!(ad.getCarModel().getId().equals(searchAd.getCarModel()))) {
+//                                break;
+//                            }
+//                    //    }
+//                    //    if(searchAd.getFuelType() != null) {
+//                            if (!(ad.getFuelType().getId().equals(searchAd.getFuelType()))) {
+//                                break;
+//                            }
+//                    //    }
+//                    //    if(searchAd.getGearBoxType() != null) {
+//                            if (!(ad.getGearBoxType().getId().equals(searchAd.getGearBoxType()))) {
+//                                break;
+//                            }
+//                    //    }
+//                   //     if(searchAd.getCarClass() != null) {
+//                            if (!(ad.getCarClass().getId().equals(searchAd.getCarClass()))) {
+//                                break;
+//                            }
+//                  //      }
+//                        //TODO cenu uradi, treba od - do cena al ovo je privremeno sad snalazenje, mada ovde cenovnik igra ulogu ne znam sta sa time
+//                        if(searchAd.getPrice() != null) {
+//                            if(searchAd.getPrice() < ad.getPrice()) {
+//                                break;
+//                            }
+//                        }
+//                        if(searchAd.getKmTraveled() != null) {
+//                            if(searchAd.getKmTraveled() < ad.getKmTraveled()) {
+//                                break;
+//                            }
+//                        }
+//                        //TODO ovo je malo zbunjujuce, on unosi kilometrazu koju planira da predje i sta sa time, ne kaze jel mu smeta restrikcija ili ispisujem koliko treba da plati dodatno ili sta
+//                        if(searchAd.getKmRestriction() != null) {
+//                            if(searchAd.getKmRestriction() > ad.getKmRestriction()) {
+//                                break;
+//                            }
+//                        }
+//                        if(searchAd.getCdw() != null) {
+//                            if(searchAd.getCdw() != ad.getCdw()) {
+//                                break;
+//                            }
+//                        }
+//                        if(searchAd.getKidsSeats() != null) {
+//                            if(searchAd.getKidsSeats() > ad.getKidsSeats()) {
+//                                break;
+//                            }
+//                        }
 
                         searchAdsReturn.add(ad);
                     }

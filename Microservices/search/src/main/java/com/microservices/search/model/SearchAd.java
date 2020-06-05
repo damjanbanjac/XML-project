@@ -13,11 +13,12 @@ import java.util.Date;
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
+    @Table(name = "SearchAd")
     public class SearchAd {
 
         @Id
         @SequenceGenerator(name = "searchAd_id_seq", sequenceName = "searchAd_id_seq", allocationSize = 1)
-        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ad_id_seq")
+        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "searchAd_id_seq")
         private Long id;
 
         @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
