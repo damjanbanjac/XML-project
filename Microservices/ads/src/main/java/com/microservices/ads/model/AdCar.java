@@ -25,13 +25,13 @@ public class AdCar {
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private UserAd userAd;
 
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    private CarBrand carBrand;
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    private CarBrand carBrand_id;
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private CarModel carModel;
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private TypeOfFuel fuelType;
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private TypeOfGearshift gearBoxType;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -48,9 +48,9 @@ public class AdCar {
     private Date availableTo;
 
 
-    public AdCar(AdCarResponse carResponse) {
+  /*  public AdCar(AdCarResponse carResponse) {
         userAd = carResponse.getUserAd();
-        carBrand = carResponse.getCarBrand();
+        carBrand = carResponse.getCarBrand_id();
         carModel = carResponse.getCarModel();
         carClass = carResponse.getCarClass();
         availableTo = carResponse.getAvailableTo();
@@ -60,5 +60,5 @@ public class AdCar {
         kidsSeats = carResponse.getKidsSeats();
         fuelType = carResponse.getFuelType();
         gearBoxType = carResponse.getGearBoxType();
-    }
+    } */
 }

@@ -18,10 +18,10 @@ public class ImageController {
     private ImageService imageService;
 
 
-    @PostMapping("/{idAdCar}/AdCar")
+   /* @PostMapping("/{idAdCar}/AdCar")
     public ImageDTO addImage(@RequestParam("imageFile") MultipartFile imageFile, @PathParam("idAdCar") Long idAdCar) throws Exception{
         return imageService.uploadImage(imageFile,idAdCar);
-    }
+    } */
 
     @GetMapping("/{id}/AdCar")
     public List<ImageDTO> getAllPhotosByCar(@PathVariable Long id) throws Exception{

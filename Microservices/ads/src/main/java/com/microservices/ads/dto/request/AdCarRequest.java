@@ -8,7 +8,7 @@ import java.util.Date;
 @Data
 public class AdCarRequest {
 
-    private CarBrand carBrand;
+    private long carBrand_id;
     private UserAd userAd;
     private CarModel carModel;
     private TypeOfFuel fuelType;

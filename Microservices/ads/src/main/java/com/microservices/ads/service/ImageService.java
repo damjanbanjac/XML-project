@@ -24,7 +24,7 @@ public class ImageService {
     @Autowired
     AdCarRepository adCarRepository;
 
-    public ImageDTO uploadImage(MultipartFile request,Long idAdCar) throws IOException {
+   /* public ImageDTO uploadImage(MultipartFile request,Long idAdCar) throws IOException {
         ImageDTO imageDTO = new ImageDTO();
         imageDTO.setName(request.getOriginalFilename());
         imageDTO.setPic(request.getBytes());
@@ -34,7 +34,7 @@ public class ImageService {
         Image img = new Image(imageDTO);
         imageRepository.save(img);
          return imageDTO;
-    }
+    } */
 
     public List<ImageDTO> getAllPhotosByAdCar(Long id) {
         List<ImageDTO> imageDTOList = null;

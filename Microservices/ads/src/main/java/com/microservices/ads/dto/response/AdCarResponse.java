@@ -8,7 +8,7 @@ import java.util.Date;
 @Data
 public class AdCarResponse {
 
-    private CarBrand carBrand;
+    private long carBrand_id;
     private UserAd userAd;
     private CarModel carModel;
     private TypeOfFuel fuelType;
@@ -23,7 +23,7 @@ public class AdCarResponse {
     private Date availableTo;
 
     public AdCarResponse(AdCar adCar) {
-        carBrand = adCar.getCarBrand();
+        carBrand_id = adCar.getCarBrand_id().getId();
         userAd = adCar.getUserAd();
         carModel = adCar.getCarModel();
         fuelType = adCar.getFuelType();
