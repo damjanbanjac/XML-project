@@ -5,8 +5,7 @@ import com.microservices.ordering.dto.OrderDTO;
 import com.microservices.ordering.dto.RequestDTO;
 import com.microservices.ordering.model.Order;
 import com.microservices.ordering.model.Request;
-import com.microservices.ordering.repository.OrderRepository;
-import com.microservices.ordering.repository.RequestRepository;
+import com.microservices.ordering.repository.*;
 import com.microservices.ordering.service.IRequestService;
 import org.bouncycastle.cert.ocsp.Req;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +27,14 @@ public class RequestService implements IRequestService {
     @Autowired
     private RequestRepository requestRepository;
 
+    @Autowired
+    private AdCarRepository adCarRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private AgentRepository agentRepository;
 
     @Override
     public RequestDTO getRequest(long id) {
@@ -111,10 +118,10 @@ public class RequestService implements IRequestService {
 
         order1.setAvailableFrom(order.getAvailableFrom());
         order1.setAvailableTo(order.getAvailableTo());
-        order1.setAdCar(order.getAdCar());
-        order1.setUserr(order.getUser());
-        order1.setUserIzdavao(order.getUserIzdao());
-        order1.setAgentIzdao(order.getAgentIzdao());
+        order1.setAdCar(adCarRepository.findOneById(order.getAdCar().getId()));
+        order1.setUserr(userRepository.findOneById(order.getUser().getId()));
+        order1.setUserIzdavao(userRepository.findOneById(order.getUserIzdao().getId()));
+        order1.setAgentIzdao(agentRepository.findOneById(order.getAgentIzdao().getId()));
 
         orderRepositiory.save(order1);
 

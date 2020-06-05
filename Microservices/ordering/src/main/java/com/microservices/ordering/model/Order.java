@@ -21,22 +21,22 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_id_seq")
     private Long id;
 
-    private Date availableFrom;
-    private Date availableTo;
+    private String availableFrom;
+    private String availableTo;
 
     //na koji oglas se odnosi zahtev
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private AdCar adCar;
     //na kog korisnika se odnosi zahtev
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Users userr;
 
     //koji korisnik je izdao oglas
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Users userIzdavao;
 
     //koji agent je izdao oglas
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Agent agentIzdao;
 
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)

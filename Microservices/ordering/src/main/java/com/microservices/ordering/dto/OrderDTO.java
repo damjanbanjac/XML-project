@@ -17,8 +17,8 @@ import java.util.Date;
 public class OrderDTO {
 
     private Long id;
-    private Date availableFrom;
-    private Date availableTo;
+    private String availableFrom;
+    private String availableTo;
 
     private AdCar adCar;
     private Users user;
