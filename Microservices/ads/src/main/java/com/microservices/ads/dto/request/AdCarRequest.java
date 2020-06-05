@@ -9,11 +9,11 @@ import java.util.Date;
 public class AdCarRequest {
 
     private long carBrand_id;
+    private long carClass_id;
     private UserAd userAd;
-    private CarModel carModel;
+    private long carModel_id;
     private TypeOfFuel fuelType;
     private TypeOfGearshift gearBoxType;
-    private CarClass carClass;
     private Integer grade;
     private String kmRestriction;
     private Integer kmTraveled;

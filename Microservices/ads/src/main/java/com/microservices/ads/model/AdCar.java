@@ -28,7 +28,7 @@ public class AdCar {
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private CarBrand carBrand_id;
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-    private CarModel carModel;
+    private CarModel carModel_id;
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private TypeOfFuel fuelType;
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
@@ -37,8 +37,8 @@ public class AdCar {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Image> image;
 
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    private CarClass carClass;
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    private CarClass carClass_id;
     private Integer grade;
     private String kmRestriction;
     private Integer kmTraveled;

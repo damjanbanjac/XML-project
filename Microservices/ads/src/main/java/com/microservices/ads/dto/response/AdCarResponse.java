@@ -9,11 +9,11 @@ import java.util.Date;
 public class AdCarResponse {
 
     private long carBrand_id;
+    private long carClass_id;
     private UserAd userAd;
-    private CarModel carModel;
+    private long carModel_id;
     private TypeOfFuel fuelType;
     private TypeOfGearshift gearBoxType;
-    private CarClass carClass;
     private Integer grade;
     private String kmRestriction;
     private Integer kmTraveled;
@@ -25,10 +25,10 @@ public class AdCarResponse {
     public AdCarResponse(AdCar adCar) {
         carBrand_id = adCar.getCarBrand_id().getId();
         userAd = adCar.getUserAd();
-        carModel = adCar.getCarModel();
+        carModel_id = adCar.getCarModel_id().getId();
         fuelType = adCar.getFuelType();
         gearBoxType = adCar.getGearBoxType();
-        carClass = adCar.getCarClass();
+        carClass_id = adCar.getCarClass_id().getId();
         grade = adCar.getGrade();
         kmRestriction = adCar.getKmRestriction();
         kmTraveled = adCar.getKmTraveled();

@@ -4,8 +4,12 @@ import com.microservices.ads.dto.request.AdCarRequest;
 import com.microservices.ads.dto.response.AdCarResponse;
 import com.microservices.ads.model.AdCar;
 import com.microservices.ads.model.CarBrand;
+import com.microservices.ads.model.CarClass;
+import com.microservices.ads.model.CarModel;
 import com.microservices.ads.repository.AdCarRepository;
 import com.microservices.ads.repository.CarBrandRepository;
+import com.microservices.ads.repository.CarClassRepository;
+import com.microservices.ads.repository.CarModelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +22,12 @@ public class AdsCarService implements IAdsCarService {
     AdCarRepository adCarRepository;
     @Autowired
     CarBrandRepository carBrandRepository;
+
+    @Autowired
+    CarModelRepository carModelRepository;
+
+    @Autowired
+    CarClassRepository carClassRepository;
 
     @Override
     public AdCarResponse getAd(long id) {
@@ -43,7 +53,8 @@ public class AdsCarService implements IAdsCarService {
     }
 
     public AdCarResponse createAd(AdCarRequest request) {
-
+        CarModel c = new CarModel();
+        carModelRepository.save(c);
         Integer cnt = 0;
      //   CarBrand c =new CarBrand();
        // c.setName("mercedes");
@@ -63,8 +74,9 @@ public class AdsCarService implements IAdsCarService {
             adCar.setAvailableTo(request.getAvailableTo());
             //adCar.setCarBrand(carBrandRepository.findById(request.getCarBrand_id()));
             adCar.setCarBrand_id(carBrandRepository.findById(request.getCarBrand_id()).orElse(null));
-            adCar.setCarClass(request.getCarClass());
-            adCar.setCarModel(request.getCarModel());
+            adCar.setCarClass_id(carClassRepository.findById(request.getCarClass_id()).orElse(null));
+
+            adCar.setCarModel_id(carModelRepository.findById(request.getCarModel_id()).orElse(null));
             adCar.setCdw(request.getCdw());
             adCar.setUserAd(request.getUserAd());
             adCar.setFuelType(request.getFuelType());
@@ -89,8 +101,8 @@ public class AdsCarService implements IAdsCarService {
         adCar.setAvailableFrom(request.getAvailableFrom());
         adCar.setAvailableTo(request.getAvailableTo());
         adCar.setCarBrand_id(carBrandRepository.findById(request.getCarBrand_id()).orElse(null));
-        adCar.setCarClass(request.getCarClass());
-        adCar.setCarModel(request.getCarModel());
+        adCar.setCarClass_id(carClassRepository.findById(request.getCarClass_id()).orElse(null));
+        adCar.setCarModel_id(carModelRepository.findById(request.getCarModel_id()).orElse(null));
         adCar.setCdw(request.getCdw());
         adCar.setUserAd(request.getUserAd());
         adCar.setFuelType(request.getFuelType());
