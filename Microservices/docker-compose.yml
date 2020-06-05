@@ -35,50 +35,50 @@ services:
       - users-database
       - eurekaservice
 
-#  orderservice:
-#    build: ./ordering
-#    ports:
-#      - "8089:8089"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#      - MYSQL_HOST=users-database
-#    tty: true
-#    depends_on:
-#      - users-database
-#      - eurekaservice
+  #  orderservice:
+  #    build: ./ordering
+  #    ports:
+  #      - "8089:8089"
+  #    environment:
+  #      - REGISTRY_HOST=eurekaservice
+  #      - MYSQL_HOST=users-database
+  #    tty: true
+  #    depends_on:
+  #      - users-database
+  #      - eurekaservice
 
-#  searchsevice:
-#    build: ./search
-#    ports:
-#      - "8091:8091"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#    tty: true
-#    depends_on:
-#      - eurekaservice
-#
-#  messageservice:
-#    build: ./messages
-#    ports:
-#      - "8084:8084"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#      -  MYSQL_HOST=users-database
-#    tty: true
-#    depends_on:
-#      - eurekaservice
-#      - users-database
-#
-#  authservice:
-#    build: ./authentication
-#    ports:
-#      - "8443:8443"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#    tty: true
-#    depends_on:
-#      - eurekaservice
-#
+  #  searchsevice:
+  #    build: ./search
+  #    ports:
+  #      - "8091:8091"
+  #    environment:
+  #      - REGISTRY_HOST=eurekaservice
+  #    tty: true
+  #    depends_on:
+  #      - eurekaservice
+  #
+  #  messageservice:
+  #    build: ./messages
+  #    ports:
+  #      - "8084:8084"
+  #    environment:
+  #      - REGISTRY_HOST=eurekaservice
+  #      -  MYSQL_HOST=users-database
+  #    tty: true
+  #    depends_on:
+  #      - eurekaservice
+  #      - users-database
+  #
+  #  authservice:
+  #    build: ./authentication
+  #    ports:
+  #      - "8443:8443"
+  #    environment:
+  #      - REGISTRY_HOST=eurekaservice
+  #    tty: true
+  #    depends_on:
+  #      - eurekaservice
+  #
   paymentservice:
     build: ./payment
     ports:
@@ -101,11 +101,11 @@ services:
     depends_on:
       - eurekaservice
       - adsservice
-#      - authservice
+      #      - authservice
       - maintenanceservice
-#      - orderservice
+      #      - orderservice
       - paymentservice
-#      - searchsevice
+  #      - searchsevice
 
   users-database:
     image: mariadb:10.2
@@ -119,8 +119,6 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - usersdata:/var/lib/mysql
-
-
 volumes:
   #  mysqldata:
   usersdata:

@@ -2,14 +2,8 @@ package com.microservices.ads.service;
 
 import com.microservices.ads.dto.request.AdCarRequest;
 import com.microservices.ads.dto.response.AdCarResponse;
-import com.microservices.ads.model.AdCar;
-import com.microservices.ads.model.CarBrand;
-import com.microservices.ads.model.CarClass;
-import com.microservices.ads.model.CarModel;
-import com.microservices.ads.repository.AdCarRepository;
-import com.microservices.ads.repository.CarBrandRepository;
-import com.microservices.ads.repository.CarClassRepository;
-import com.microservices.ads.repository.CarModelRepository;
+import com.microservices.ads.model.*;
+import com.microservices.ads.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +16,8 @@ public class AdsCarService implements IAdsCarService {
     AdCarRepository adCarRepository;
     @Autowired
     CarBrandRepository carBrandRepository;
+    @Autowired
+    UserAdRepository userAdRepository;
 
     @Autowired
     CarModelRepository carModelRepository;
@@ -53,8 +49,8 @@ public class AdsCarService implements IAdsCarService {
     }
 
     public AdCarResponse createAd(AdCarRequest request) {
-        CarModel c = new CarModel();
-        carModelRepository.save(c);
+        UserAd c = new UserAd();
+        userAdRepository.save(c);
         Integer cnt = 0;
      //   CarBrand c =new CarBrand();
        // c.setName("mercedes");
@@ -62,11 +58,11 @@ public class AdsCarService implements IAdsCarService {
         System.out.println(request.getCarBrand_id());
         List<AdCar> adCarList = adCarRepository.findAll();
 
-      /*  for (AdCar ad: adCarList) {
-            if(ad.getUserAd().getId().equals(request.getUserAd().getId())) {
+        for (AdCar ad: adCarList) {
+            if(ad.getUserAd().getId().equals(request.getUserAd())) {
                 cnt++;
             }
-        } */
+        }
         if(cnt != 3) {
 
             AdCar adCar = new AdCar();
@@ -78,8 +74,8 @@ public class AdsCarService implements IAdsCarService {
 
             adCar.setCarModel_id(carModelRepository.findById(request.getCarModel_id()).orElse(null));
             adCar.setCdw(request.getCdw());
-            adCar.setUserAd(request.getUserAd());
-            adCar.setFuelType(request.getFuelType());
+            adCar.setUserAd(userAdRepository.findById(request.getUserAd()).orElse(null));
+           // adCar.setFuelType(request.getFuelType());
             adCar.setGearBoxType(request.getGearBoxType());
             adCar.setKidsSeats(request.getKidsSeats());
             adCar.setKmTraveled(request.getKmTraveled());
@@ -90,6 +86,9 @@ public class AdsCarService implements IAdsCarService {
             AdCarResponse carResponse  = new AdCarResponse(adCar);
             return  carResponse;
 
+        }
+        else  {
+            System.out.println("ne mozete dodati");
         }
         return null;
     }
@@ -104,8 +103,8 @@ public class AdsCarService implements IAdsCarService {
         adCar.setCarClass_id(carClassRepository.findById(request.getCarClass_id()).orElse(null));
         adCar.setCarModel_id(carModelRepository.findById(request.getCarModel_id()).orElse(null));
         adCar.setCdw(request.getCdw());
-        adCar.setUserAd(request.getUserAd());
-        adCar.setFuelType(request.getFuelType());
+        adCar.setUserAd(userAdRepository.findById(request.getUserAd()).orElse(null));
+       // adCar.setFuelType(request.getFuelType());
         adCar.setGearBoxType(request.getGearBoxType());
         adCar.setKidsSeats(request.getKidsSeats());
         adCar.setKmTraveled(request.getKmTraveled());

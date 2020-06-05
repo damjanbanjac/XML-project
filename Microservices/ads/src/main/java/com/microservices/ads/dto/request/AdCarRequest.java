@@ -10,9 +10,9 @@ public class AdCarRequest {
 
     private long carBrand_id;
     private long carClass_id;
-    private UserAd userAd;
+    private long userAd;
     private long carModel_id;
-    private TypeOfFuel fuelType;
+    private long fuelType;
     private TypeOfGearshift gearBoxType;
     private Integer grade;
     private String kmRestriction;

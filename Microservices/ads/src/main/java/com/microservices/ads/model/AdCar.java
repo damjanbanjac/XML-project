@@ -22,7 +22,7 @@ public class AdCar {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ad_id_seq")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private UserAd userAd;
 
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)

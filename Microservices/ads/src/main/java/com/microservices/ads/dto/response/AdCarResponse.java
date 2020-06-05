@@ -10,9 +10,9 @@ public class AdCarResponse {
 
     private long carBrand_id;
     private long carClass_id;
-    private UserAd userAd;
+    private long userAd;
     private long carModel_id;
-    private TypeOfFuel fuelType;
+    private long fuelType;
     private TypeOfGearshift gearBoxType;
     private Integer grade;
     private String kmRestriction;
@@ -24,9 +24,9 @@ public class AdCarResponse {
 
     public AdCarResponse(AdCar adCar) {
         carBrand_id = adCar.getCarBrand_id().getId();
-        userAd = adCar.getUserAd();
+        userAd = adCar.getUserAd().getId();
         carModel_id = adCar.getCarModel_id().getId();
-        fuelType = adCar.getFuelType();
+        fuelType = adCar.getFuelType().getId();
         gearBoxType = adCar.getGearBoxType();
         carClass_id = adCar.getCarClass_id().getId();
         grade = adCar.getGrade();
