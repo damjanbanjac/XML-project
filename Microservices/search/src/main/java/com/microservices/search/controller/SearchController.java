@@ -26,7 +26,7 @@ public class SearchController {
     List<SearchAd> searchAdsResult = null;
 
 
-    @PostMapping(value = "/ad")
+    @GetMapping(value = "/ad")
     public ResponseEntity<Collection<SearchAdDTO>> searchAds(@RequestBody SearchAdDTO searchAd) throws ParseException {
         Map<Long,SearchAdDTO> adsDTO = new HashMap();
 
@@ -43,13 +43,15 @@ public class SearchController {
     }
 
 
-    @PostMapping(value="/{sortBy}/{sortType}")
+    @GetMapping(value="/ad/{sortBy}/{sortType}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<SearchAdDTO>> sortAds(@PathVariable String sortBy, @PathVariable String sortType) {
         List<SearchAd> sortedSearchAds = null;
+        //String sortByy = new String("kmTraveled");
+        //String sortTypee = new String(("asc"));
         if(searchAdsResult != null) {
             sortedSearchAds = searchAdService.sortAds(searchAdsResult,sortBy,sortType);
         } else {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
 
         Map<Long,SearchAdDTO> adsDTO = new HashMap();
@@ -63,13 +65,19 @@ public class SearchController {
         return new ResponseEntity<>(adsDTO.values(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/adanad")
+    @PostMapping(value = "/addad")
     public ResponseEntity<SearchAdDTO> addAd(@RequestBody SearchAdDTO searchAdDTO) throws Exception {
 
         SearchAdDTO searchaddto = new SearchAdDTO();
         searchaddto = searchAdService.addAd(searchAdDTO);
 
         return new ResponseEntity<>(searchaddto, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/ads", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<SearchAdDTO>> getAllAds() throws Exception {
+        List<SearchAdDTO> response = searchAdService.getAllSearchAds();
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

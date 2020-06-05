@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class SearchAdService implements ISearchAdService {
@@ -17,9 +18,37 @@ public class SearchAdService implements ISearchAdService {
     private SearchAdRepository searchAdRepository;
 
     @Override
-    public Set<SearchAd> getAllSearchAds() {
-        return null;
+    public List<SearchAdDTO> getAllSearchAds() {
+//        List<SearchAdDTO> searchAdResponses = null;
+//        List<SearchAd> ads = searchAdRepository.findAll();
+//        for(SearchAd searchAd : ads) {
+//            SearchAdDTO searchAdResponse = new SearchAdDTO(searchAd);
+//            searchAdResponses.add(searchAdResponse);
+//        }
+//        return searchAdResponses;
+        List<SearchAd> searchAdList = searchAdRepository.findAll();
+        return searchAdList.stream().map(patient -> mapToResponse(patient)).collect(Collectors.toList());
     }
+
+    private SearchAdDTO mapToResponse(SearchAd searchAd) {
+        SearchAdDTO response = new SearchAdDTO();
+        response.setCarModel(searchAd.getCarModel());
+        response.setFuelType(searchAd.getFuelType());
+        response.setGearBoxType(searchAd.getGearBoxType());
+        response.setCarClass(searchAd.getCarClass());
+        response.setCity(searchAd.getCity());
+        response.setGrade(searchAd.getGrade());
+        response.setKmRestriction(searchAd.getKmRestriction());
+        response.setKmTraveled(searchAd.getKmTraveled());
+        response.setCdw(searchAd.getCdw());
+        response.setKidsSeats(searchAd.getKidsSeats());
+        response.setAvailableFrom(searchAd.getAvailableFrom());
+        response.setAvailableTo(searchAd.getAvailableTo());
+        response.setPrice(searchAd.getPrice());
+        return response;
+    }
+
+
     public List<SearchAd> findAll() {
             return searchAdRepository.findAll();
     }
@@ -123,12 +152,17 @@ public class SearchAdService implements ISearchAdService {
 
         List<SearchAd> ads = findAll();
 
+        Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd-MM-yyyy");
         Date dateFormatTakeOver = sdf.parse(searchAd.getAvailableFrom()); //ili promeni na Date u modelu ali onda sta sa onim hh:mm...
         Date dateFormatReturn = sdf.parse(searchAd.getAvailableTo());
 
         //TODO ima ovo 48h od trenutka pretrage mora da bude preuzimanje al to se validira na frontu kontam
-
+        long milisecondsTakeOver = dateFormatTakeOver.getTime();
+        long milisecondsNow = now.getTime();
+        if(milisecondsNow - milisecondsTakeOver < 172800000) {
+            return null; //TODO sta ovde staviti da nije null
+        }
 
         List<SearchAd> searchAdsReturn = new ArrayList<>();
 
@@ -198,5 +232,6 @@ public class SearchAdService implements ISearchAdService {
         }
         return searchAdsReturn;
     }
+
 
 }
