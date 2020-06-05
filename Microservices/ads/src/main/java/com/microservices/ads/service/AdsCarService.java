@@ -2,14 +2,9 @@ package com.microservices.ads.service;
 
 import com.microservices.ads.dto.request.AdCarRequest;
 import com.microservices.ads.dto.response.AdCarResponse;
-import com.microservices.ads.model.AdCar;
-import com.microservices.ads.model.CarBrand;
-import com.microservices.ads.model.CarClass;
-import com.microservices.ads.model.CarModel;
-import com.microservices.ads.repository.AdCarRepository;
-import com.microservices.ads.repository.CarBrandRepository;
-import com.microservices.ads.repository.CarClassRepository;
-import com.microservices.ads.repository.CarModelRepository;
+import com.microservices.ads.model.*;
+import com.microservices.ads.repository.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +15,25 @@ public class AdsCarService implements IAdsCarService {
 
     @Autowired
     AdCarRepository adCarRepository;
+
     @Autowired
     CarBrandRepository carBrandRepository;
+
+
+    @Autowired
+    UserAdRepository userAdRepository;
 
     @Autowired
     CarModelRepository carModelRepository;
 
     @Autowired
     CarClassRepository carClassRepository;
+
+    @Autowired
+    TypeOfFuelTypeRepository typeOfFuelTypeRepository;
+
+    @Autowired
+    TypeOfGearShiftRepository typeOfGearShiftRepository;
 
     @Override
     public AdCarResponse getAd(long id) {
@@ -53,21 +59,38 @@ public class AdsCarService implements IAdsCarService {
     }
 
     public AdCarResponse createAd(AdCarRequest request) {
-        CarModel c = new CarModel();
+      /*  CarModel c = new CarModel();
         carModelRepository.save(c);
+
+        CarClass cc = new CarClass();
+        carClassRepository.save(cc);
+
+        CarBrand cb = new CarBrand();
+        carBrandRepository.save(cb);
+
+        UserAd u = new UserAd();
+        userAdRepository.save(u);
+        System.out.println(userAdRepository.findById()); */
+     //   UserAd u = new UserAd();
+       // userAdRepository.save(u);
         Integer cnt = 0;
+        /*TypeOfFuelCar t = new TypeOfFuelCar();
+        typeOfFuelTypeRepository.save(t);
+        TypeOfGearshiftCar g = new TypeOfGearshiftCar();
+        typeOfGearShiftRepository.save(g); */
      //   CarBrand c =new CarBrand();
        // c.setName("mercedes");
        // carBrandRepository.save(c);
-        System.out.println(request.getCarBrand_id());
+        System.out.println(request.getUserAd());
         List<AdCar> adCarList = adCarRepository.findAll();
 
-      /*  for (AdCar ad: adCarList) {
-            if(ad.getUserAd().getId().equals(request.getUserAd().getId())) {
+        for (AdCar ad: adCarList) {
+            if(ad.getUserAd().getId().equals(request.getUserAd())) {
                 cnt++;
             }
-        } */
-        if(cnt != 3) {
+        }
+        System.out.println(cnt);
+        if(cnt < 3) {
 
             AdCar adCar = new AdCar();
             adCar.setAvailableFrom(request.getAvailableFrom());
@@ -78,9 +101,9 @@ public class AdsCarService implements IAdsCarService {
 
             adCar.setCarModel_id(carModelRepository.findById(request.getCarModel_id()).orElse(null));
             adCar.setCdw(request.getCdw());
-            adCar.setUserAd(request.getUserAd());
-            adCar.setFuelType(request.getFuelType());
-            adCar.setGearBoxType(request.getGearBoxType());
+            adCar.setUserAd(userAdRepository.findById(request.getUserAd()).orElse(null));
+           // adCar.setFuelTypeCar_id(typeOfFuelTypeRepository.findById(request.getFuelType_id()).orElse(null));
+            //adCar.setGearShiftCar_id(typeOfGearShiftRepository.findById(request.getGearShift_id()).orElse(null));
             adCar.setKidsSeats(request.getKidsSeats());
             adCar.setKmTraveled(request.getKmTraveled());
             adCar.setKmRestriction(request.getKmRestriction());
@@ -104,9 +127,9 @@ public class AdsCarService implements IAdsCarService {
         adCar.setCarClass_id(carClassRepository.findById(request.getCarClass_id()).orElse(null));
         adCar.setCarModel_id(carModelRepository.findById(request.getCarModel_id()).orElse(null));
         adCar.setCdw(request.getCdw());
-        adCar.setUserAd(request.getUserAd());
-        adCar.setFuelType(request.getFuelType());
-        adCar.setGearBoxType(request.getGearBoxType());
+        adCar.setUserAd(userAdRepository.findById(request.getUserAd()).orElse(null));
+        //adCar.setGearShiftCar_id(typeOfGearShiftRepository.findById(request.getGearShift_id()).orElse(null));
+        //adCar.setFuelTypeCar_id(typeOfFuelTypeRepository.findById(request.getFuelType_id()).orElse(null));
         adCar.setKidsSeats(request.getKidsSeats());
         adCar.setKmTraveled(request.getKmTraveled());
         adCar.setKmRestriction(request.getKmRestriction());

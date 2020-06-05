@@ -21,7 +21,7 @@ public class CarBrand {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
     private Long id;
 
-    private  String name;
+
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "carBrand_id")

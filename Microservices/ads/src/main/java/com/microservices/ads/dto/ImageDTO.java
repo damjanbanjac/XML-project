@@ -12,10 +12,10 @@ public class ImageDTO {
     private byte[] pic;
     private AdCar adCar;
 
-    public ImageDTO(Image image) {
+   /* public ImageDTO(Image image) {
         name = image.getName();
         type = image.getType();
         pic = image.getPic();
         adCar = image.getAdCar();
-    }
+    } */
 }

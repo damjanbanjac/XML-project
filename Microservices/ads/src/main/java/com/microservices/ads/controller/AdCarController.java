@@ -34,8 +34,8 @@ public class AdCarController {
     }
 
     @GetMapping("/{id}/ad")
-    public void getAd(@PathVariable long id) throws Exception{
-        adsCarService.getAd(id);
+    public AdCarResponse getAd(@PathVariable long id) throws Exception{
+       return adsCarService.getAd(id);
     }
     @GetMapping
     public List<AdCarResponse> getAllAds() throws Exception{

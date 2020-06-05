@@ -6,7 +6,6 @@ import lombok.Data;
 @Data
 public class CarBrandDTO {
     private long id;
-    private String name;
 
 
     public CarBrandDTO() {
@@ -15,6 +14,6 @@ public class CarBrandDTO {
 
     public CarBrandDTO(CarBrand carBrand) {
         id = carBrand.getId();
-        name =carBrand.getName();
+
     }
 }
