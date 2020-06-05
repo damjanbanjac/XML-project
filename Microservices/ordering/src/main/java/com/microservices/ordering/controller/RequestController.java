@@ -18,4 +18,9 @@ public class RequestController {
     public RequestDTO createRequestForUser(@RequestBody RequestDTO request,@RequestBody OrderDTO order) {
         return irequestService.createRquestForUser(request, order);
     }
+
+    @PostMapping("/personally")
+    public RequestDTO presonallyRequest(@RequestBody OrderDTO order){
+        return irequestService.presonallyRequest(order);
+    }
 }
