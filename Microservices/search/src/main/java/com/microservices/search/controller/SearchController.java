@@ -43,11 +43,11 @@ public class SearchController {
     }
 
 
-    @GetMapping(value="/ad/{sortBy}/{sortType}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value="/{sortBy}/{sortType}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<SearchAdDTO>> sortAds(@PathVariable String sortBy, @PathVariable String sortType) {
         List<SearchAd> sortedSearchAds = null;
-        //String sortByy = new String("kmTraveled");
-        //String sortTypee = new String(("asc"));
+//        String sortByy = new String("kmTraveled");
+//        String sortTypee = new String(("asc"));
         if(searchAdsResult != null) {
             sortedSearchAds = searchAdService.sortAds(searchAdsResult,sortBy,sortType);
         } else {
@@ -67,6 +67,15 @@ public class SearchController {
 
     @PostMapping(value = "/addad")
     public ResponseEntity<SearchAdDTO> addAd(@RequestBody SearchAdDTO searchAdDTO) throws Exception {
+
+        SearchAdDTO searchaddto = new SearchAdDTO();
+        searchaddto = searchAdService.addAd(searchAdDTO);
+
+        return new ResponseEntity<>(searchaddto, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/addCarBrand")
+    public ResponseEntity<SearchAdDTO> addCarBrand(@RequestBody SearchAdDTO searchAdDTO) throws Exception {
 
         SearchAdDTO searchaddto = new SearchAdDTO();
         searchaddto = searchAdService.addAd(searchAdDTO);

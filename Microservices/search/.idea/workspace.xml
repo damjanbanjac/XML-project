@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e0b8693c-7168-4cb6-8019-0e1ec3d908e1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/microservices/search/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/microservices/search/controller/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/microservices/search/dto/SearchAdDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/microservices/search/dto/SearchAdDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/microservices/search/model/CarBrand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/microservices/search/model/CarBrand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/microservices/search/model/CarClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/microservices/search/model/CarClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/microservices/search/model/CarModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/microservices/search/model/CarModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/microservices/search/model/TypeOfFuel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/microservices/search/model/TypeOfFuel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/microservices/search/model/TypeOfGearshift.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/microservices/search/model/TypeOfGearshift.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/microservices/search/service/SearchAdService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/microservices/search/service/SearchAdService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,8 +35,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -100,7 +106,8 @@
       <workItem from="1591369160508" duration="45000" />
       <workItem from="1591369227115" duration="6719000" />
       <workItem from="1591384770147" duration="39000" />
-      <workItem from="1591386924808" duration="6222000" />
+      <workItem from="1591386924808" duration="9525000" />
+      <workItem from="1591413067364" duration="10787000" />
     </task>
     <servers />
   </component>
@@ -133,46 +140,46 @@
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591010831316" />
     <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1591287904513" />
-    <state width="1876" height="308" key="GridCell.Tab.0.bottom" timestamp="1591392511846">
+    <state width="1876" height="313" key="GridCell.Tab.0.bottom" timestamp="1591425458440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="308" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591392511846" />
-    <state width="1876" height="308" key="GridCell.Tab.0.center" timestamp="1591392511846">
+    <state width="1876" height="313" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591425458440" />
+    <state width="1876" height="313" key="GridCell.Tab.0.center" timestamp="1591425458440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="308" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591392511846" />
-    <state width="1876" height="308" key="GridCell.Tab.0.left" timestamp="1591392511846">
+    <state width="1876" height="313" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591425458440" />
+    <state width="1876" height="313" key="GridCell.Tab.0.left" timestamp="1591425458439">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="308" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591392511846" />
-    <state width="1876" height="308" key="GridCell.Tab.0.right" timestamp="1591392511846">
+    <state width="1876" height="313" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591425458439" />
+    <state width="1876" height="313" key="GridCell.Tab.0.right" timestamp="1591425458440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="308" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591392511846" />
-    <state width="1876" height="308" key="GridCell.Tab.1.bottom" timestamp="1591392511846">
+    <state width="1876" height="313" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591425458440" />
+    <state width="1876" height="313" key="GridCell.Tab.1.bottom" timestamp="1591425458440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="308" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591392511846" />
-    <state width="1876" height="308" key="GridCell.Tab.1.center" timestamp="1591392511846">
+    <state width="1876" height="313" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591425458440" />
+    <state width="1876" height="313" key="GridCell.Tab.1.center" timestamp="1591425458440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="308" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591392511846" />
-    <state width="1876" height="308" key="GridCell.Tab.1.left" timestamp="1591392511846">
+    <state width="1876" height="313" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591425458440" />
+    <state width="1876" height="313" key="GridCell.Tab.1.left" timestamp="1591425458440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="308" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591392511846" />
-    <state width="1876" height="308" key="GridCell.Tab.1.right" timestamp="1591392511846">
+    <state width="1876" height="313" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591425458440" />
+    <state width="1876" height="313" key="GridCell.Tab.1.right" timestamp="1591425458440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="308" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591392511846" />
+    <state width="1876" height="313" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591425458440" />
     <state x="490" y="173" key="Maven.ArtifactSearchDialog" timestamp="1591369052109">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="490" y="173" key="Maven.ArtifactSearchDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591369052109" />
-    <state x="175" y="342" key="com.intellij.ide.util.TipDialog" timestamp="1591369251494">
+    <state x="175" y="342" key="com.intellij.ide.util.TipDialog" timestamp="1591413070529">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="175" y="342" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591369251494" />
+    <state x="175" y="342" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1591413070529" />
     <state x="136" y="235" key="run.anything.popup" timestamp="1591289106811">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
