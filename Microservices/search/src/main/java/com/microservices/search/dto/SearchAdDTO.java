@@ -7,12 +7,12 @@ import java.util.Date;
 @Data
 public class SearchAdDTO {
 
-    private long id;
-    private long carBrand;
-    private long carModel;
-    private long fuelType;
-    private long gearBoxType;
-    private long carClass;
+    private Long id;
+    private Long carBrand;
+    private Long carModel;
+    private Long fuelType;
+    private Long gearBoxType;
+    private Long carClass;
     private Integer grade;
     private Integer kmRestriction;
     private Integer kmTraveled;
@@ -29,7 +29,7 @@ public class SearchAdDTO {
 
     }
 
-    public SearchAdDTO(long id, long carBrand, long carModel, long fuelType, long gearBoxType, long carClass, Integer grade, Integer kmRestriction, Integer kmTraveled, Boolean cdw, Integer kidsSeats, String availableFrom, String availableTo, String city, Integer price) {
+    public SearchAdDTO(Long id, Long carBrand, Long carModel, Long fuelType, Long gearBoxType, Long carClass, Integer grade, Integer kmRestriction, Integer kmTraveled, Boolean cdw, Integer kidsSeats, String availableFrom, String availableTo, String city, Integer price) {
         this.id = id;
         this.carBrand = carBrand;
         this.carModel = carModel;
@@ -49,11 +49,11 @@ public class SearchAdDTO {
 
     public SearchAdDTO(SearchAd searchAd) {
         this.id = searchAd.getId();
+        this.carClass = searchAd.getCarClass().getId();
         this.carBrand = searchAd.getCarBrand().getId();
         this.carModel = searchAd.getCarModel().getId();
         this.fuelType = searchAd.getFuelType().getId();
         this.gearBoxType = searchAd.getGearBoxType().getId();
-        this.carClass = searchAd.getCarClass().getId();
         this.grade = searchAd.getGrade();
         this.kmRestriction = searchAd.getKmRestriction();
         this.kmTraveled = searchAd.getKmTraveled();

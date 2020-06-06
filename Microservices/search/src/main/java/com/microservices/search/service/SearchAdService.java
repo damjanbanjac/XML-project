@@ -49,6 +49,7 @@ public class SearchAdService implements ISearchAdService {
 
     private SearchAdDTO mapToResponse(SearchAd searchAd) {
         SearchAdDTO response = new SearchAdDTO();
+        response.setCarBrand(searchAd.getCarBrand().getId());
         response.setCarModel(searchAd.getCarModel().getId());
         response.setFuelType(searchAd.getFuelType().getId());
         response.setGearBoxType(searchAd.getGearBoxType().getId());
@@ -74,7 +75,18 @@ public class SearchAdService implements ISearchAdService {
 
         SearchAd searchAd = new SearchAd();
 
-        //searchAd.setId(searchAdDTO.getId());
+        CarBrand cb = new CarBrand((long) 1,null);
+        carBrandRepository.save(cb);
+        CarModel cm = new CarModel((long) 2, null);
+        carModelRepository.save(cm);
+        CarClass cc = new CarClass((long) 3, null);
+        carClassRepository.save(cc);
+        TypeOfFuel tf = new TypeOfFuel((long) 4, null);
+        fuelTypeRepository.save(tf);
+        TypeOfGearshift tg = new TypeOfGearshift((long) 5, null);
+        gearBoxTypeRepository.save(tg);
+
+        searchAd.setId(searchAdDTO.getId());
         searchAd.setAvailableFrom(searchAdDTO.getAvailableFrom());
         searchAd.setAvailableTo(searchAdDTO.getAvailableTo());
         searchAd.setCdw(searchAdDTO.getCdw());
@@ -172,34 +184,34 @@ public class SearchAdService implements ISearchAdService {
 //        List<SearchAd> ads = new ArrayList<SearchAd>();
 
 
-        CarBrand mercedez = new CarBrand((long)4);
-        CarBrand audi = new CarBrand((long)5);
-        carBrandRepository.save(mercedez);
-        carBrandRepository.save(audi);
+//        CarBrand mercedez = new CarBrand((long)4);
+//        CarBrand audi = new CarBrand((long)5);
+//        carBrandRepository.save(mercedez);
+//        carBrandRepository.save(audi);
+//
+//        CarModel astra = new CarModel((long)6);
+//        CarModel clio = new CarModel((long)7);
+//        carModelRepository.save(astra);
+//        carModelRepository.save(clio);
+//
+//
+//        TypeOfFuel diesel = new TypeOfFuel((long)8);
+//        TypeOfFuel gas = new TypeOfFuel((long)9);
+//        fuelTypeRepository.save(diesel);
+//        fuelTypeRepository.save(gas);
+//
+//        TypeOfGearshift manual = new TypeOfGearshift((long)10);
+//        TypeOfGearshift automatic = new TypeOfGearshift((long)11);
+//        gearBoxTypeRepository.save(manual);
+//        gearBoxTypeRepository.save(automatic);
+//
+//        CarClass caravan = new CarClass((long)12);
+//        CarClass cupe = new CarClass((long)13);
+//        carClassRepository.save(caravan);
+//        carClassRepository.save(cupe);
 
-        CarModel astra = new CarModel((long)6);
-        CarModel clio = new CarModel((long)7);
-        carModelRepository.save(astra);
-        carModelRepository.save(clio);
-
-
-        TypeOfFuel diesel = new TypeOfFuel((long)8);
-        TypeOfFuel gas = new TypeOfFuel((long)9);
-        fuelTypeRepository.save(diesel);
-        fuelTypeRepository.save(gas);
-
-        TypeOfGearshift manual = new TypeOfGearshift((long)10);
-        TypeOfGearshift automatic = new TypeOfGearshift((long)11);
-        gearBoxTypeRepository.save(manual);
-        gearBoxTypeRepository.save(automatic);
-
-        CarClass caravan = new CarClass((long)12);
-        CarClass cupe = new CarClass((long)13);
-        carClassRepository.save(caravan);
-        carClassRepository.save(cupe);
-
-        SearchAd ad1 = new SearchAd((long) 2,mercedez,astra,diesel,manual,caravan,5,200,1000,true,2,"12:40 2-4-2012", "12:50 7-4-2012", "Novi Sad", 200);
-        SearchAd ad2 = new SearchAd((long) 3, audi, clio, gas, automatic, cupe, 4, 300, 2000, false, 4, "11:00 5-4-2012", "11:30 6-4-2012", "Novi Sad", 150);
+        //SearchAd ad1 = new SearchAd((long) 2,mercedez,astra,diesel,manual,caravan,5,200,1000,true,2,"12:40 2-4-2012", "12:50 7-4-2012", "Novi Sad", 200);
+        //SearchAd ad2 = new SearchAd((long) 3, audi, clio, gas, automatic, cupe, 4, 300, 2000, false, 4, "11:00 5-4-2012", "11:30 6-4-2012", "Novi Sad", 150);
 
 //        ads.add(ad1);
 //        ads.add(ad2);
@@ -207,9 +219,13 @@ public class SearchAdService implements ISearchAdService {
 //        searchAdRepository.save(ad1);
 //        searchAdRepository.save(ad2);
 
-        SearchAdDTO dto1 = new SearchAdDTO(2,4,6,8,10,12,5,200,1000,true,2,"12:40 2-4-2012","12:50 7-4-2012","Novi Sad",200);
-//        SearchAdDTO dto2 = new SearchAdDTO((long)3,(long)5,(long)7,(long)9,(long)11,(long)13,(long)300,2000,false,4,"11:00 5-4-2012","11:30 6-4-2012","Novi Sad", 150);
-        this.addAd(dto1);
+//        SearchAdDTO dto1 = new SearchAdDTO(2,4,6,8,10,12,5,200,1000,true,2,"12:40 2-4-2012","12:50 7-4-2012","Novi Sad",200);
+//        SearchAdDTO dto2 = new SearchAdDTO(3,4,6,8,10,12,5,200,1000,true,2,"12:40 2-4-2012","12:50 7-4-2012","Beograd",200);
+
+        //        SearchAdDTO dto2 = new SearchAdDTO((long)3,(long)5,(long)7,(long)9,(long)11,(long)13,(long)300,2000,false,4,"11:00 5-4-2012","11:30 6-4-2012","Novi Sad", 150);
+
+        //this.addAd(dto1);
+        //this.addAd(dto2);
 
         List<SearchAd> ads = findAll();
 
@@ -233,58 +249,63 @@ public class SearchAdService implements ISearchAdService {
             if(dateFormatTakeOver.compareTo(adDateTakeOver) >= 0) {
                 if(dateFormatReturn.compareTo(adDateReturn) <= 0) {
                     if(searchAd.getCity().equals(ad.getCity())) {
-//                   //     if(searchAd.getCarBrand() != null) {
-//                            if (!(ad.getCarBrand().getId().equals(searchAd.getCarBrand()))) {
-//                                break;
-//                            }
-//                  //      }
-//                     //   if(carModelRepository.findById(searchAd.getCarModel())) {
-//                            if (!(ad.getCarModel().getId().equals(searchAd.getCarModel()))) {
-//                                break;
-//                            }
-//                    //    }
-//                    //    if(searchAd.getFuelType() != null) {
-//                            if (!(ad.getFuelType().getId().equals(searchAd.getFuelType()))) {
-//                                break;
-//                            }
-//                    //    }
-//                    //    if(searchAd.getGearBoxType() != null) {
-//                            if (!(ad.getGearBoxType().getId().equals(searchAd.getGearBoxType()))) {
-//                                break;
-//                            }
-//                    //    }
-//                   //     if(searchAd.getCarClass() != null) {
-//                            if (!(ad.getCarClass().getId().equals(searchAd.getCarClass()))) {
-//                                break;
-//                            }
-//                  //      }
-//                        //TODO cenu uradi, treba od - do cena al ovo je privremeno sad snalazenje, mada ovde cenovnik igra ulogu ne znam sta sa time
-//                        if(searchAd.getPrice() != null) {
-//                            if(searchAd.getPrice() < ad.getPrice()) {
-//                                break;
-//                            }
-//                        }
+                        if(searchAd.getCarBrand() != null) {
+                            if (!(ad.getCarBrand().getId().equals(searchAd.getCarBrand()))) {
+                                continue;
+                            }
+                        }
+                        if(searchAd.getCarModel() != null) {
+                            if (!(ad.getCarModel().getId().equals(searchAd.getCarModel()))) {
+                                continue;
+                            }
+                        }
+                        if(searchAd.getFuelType() != null) {
+                            if (!(ad.getFuelType().getId().equals(searchAd.getFuelType()))) {
+                                continue;
+                            }
+                        }
+                        if(searchAd.getGearBoxType() != null) {
+                            if (!(ad.getGearBoxType().getId().equals(searchAd.getGearBoxType()))) {
+                                continue;
+                            }
+                        }
+                        if(searchAd.getCarClass() != null) {
+                            if (!(ad.getCarClass().getId().equals(searchAd.getCarClass()))) {
+                                continue;
+                            }
+                        }
+                        if(searchAd.getPrice() != null) {
+                            if(searchAd.getPrice() < ad.getPrice()) {
+                                continue;
+                            }
+                        }
+                        //TODO cenu uradi, treba od - do cena al ovo je privremeno sad snalazenje, mada ovde cenovnik igra ulogu ne znam sta sa time
+                        if(searchAd.getGrade() != null) {
+                            if(searchAd.getGrade() > ad.getGrade()) {
+                                continue;
+                            }
+                        }
                         if(searchAd.getKmTraveled() != null) {
                             if(searchAd.getKmTraveled() < ad.getKmTraveled()) {
-                                break;
+                                continue;
                             }
                         }
                         //TODO ovo je malo zbunjujuce, on unosi kilometrazu koju planira da predje i sta sa time, ne kaze jel mu smeta restrikcija ili ispisujem koliko treba da plati dodatno ili sta
-//                        if(searchAd.getKmRestriction() != null) {
-//                            if(searchAd.getKmRestriction() > ad.getKmRestriction()) {
-//                                break;
-//                            }
-//                        }
-//                        if(searchAd.getCdw() != null) {
-//                            if(searchAd.getCdw() != ad.getCdw()) {
-//                                break;
-//                            }
-//                        }
-//                        if(searchAd.getKidsSeats() != null) {
-//                            if(searchAd.getKidsSeats() > ad.getKidsSeats()) {
-//                                break;
-//                            }
-//                        }
+                        if(searchAd.getKmRestriction() != null) {
+                            if(searchAd.getKmRestriction() < ad.getKmRestriction()) {
+                                continue;
+                            }
+                        }
+                        if(searchAd.getCdw() != null) {
+                            if(searchAd.getCdw() != ad.getCdw()) {
+                                continue;
+                            }
+                        }
+                        if(searchAd.getKidsSeats() != null) {
+                            if(searchAd.getKidsSeats() > ad.getKidsSeats()) {
+                                continue;
+                            }
+                        }
 
                         searchAdsReturn.add(ad);
                     }
