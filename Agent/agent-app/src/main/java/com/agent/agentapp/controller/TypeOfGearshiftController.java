@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("gearshift-types")
+@RequestMapping("/gearshift-types")
 public class TypeOfGearshiftController {
 
     private final ITypeOfGearshiftService _typeOfGearshiftService;
