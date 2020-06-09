@@ -10,13 +10,57 @@
                 </b-button>
             </template>
         </b-table>
+    <div>
+      <b-form>
+        <label>name</label>
+        <input v-model="brand.name"/>
+        <button @click="dodajBrand()">dodaj brand</button>
+      </b-form>
+       <b-form>
+        <label>class</label>
+        <input v-model="clas.car_class"/>
+        <button @click="dodajClass()"> dodaj class</button>
+      </b-form>
+       <b-form>
+        <label>model</label>
+        <input v-model="model.model"/>
+        <button @click="dodajModel()">dodaj model</button>
+      </b-form>
+       <b-form>
+        <label>fuel</label>
+        <input v-model="fuel.type"/>
+        <button @click="dodajFuel()">dodaj fuel</button>
+      </b-form>
+       <b-form>
+        <label>Gearshift</label>
+        <input v-model="gear.type"/>
+        <button @click="dodajGearshift()">dodaj gear</button>
+      </b-form>
+
+    </div>
     </div>
 </template>
 
 <script>
+import axios from "axios";
   export default {
     data() {
       return {
+        brand: {
+          name: ""
+        },
+         clas: {
+          car_class: ""
+        },
+         model: {
+          model: ""
+        },
+         fuel: {
+          type: ""
+        },
+         gear: {
+          type: ""
+        },
         fields: [
           {
             key: 'Firstname',
@@ -31,9 +75,79 @@
         items: [
             { Firstname: 'Lara', Lastname: 'Mimica'},
             
-        ]
+        ],
+        error: ""
       }
+    },
+    methods: {
+
+      dodajBrand() {
+        axios
+        .post(
+          "/brands" ,
+          this.brand
+        )
+
+        .then(error => {
+          this.error = error;
+         
+        })
+        
+    },
+    dodajClass() {
+        axios
+        .post(
+          "/classes" ,
+          this.clas
+        )
+
+        .then(error => {
+          this.error = error;
+         
+        })
+        
+    },
+    dodajModel() {
+        axios
+        .post(
+          "/models" ,
+          this.model
+        )
+
+        .then(error => {
+          this.error = error;
+         
+        })
+        
+    },
+    dodajFuel() {
+        axios
+        .post(
+          "/fuel-types" ,
+          this.fuel
+        )
+
+        .then(error => {
+          this.error = error;
+         
+        })
+        
+    },
+    dodajGearshift() {
+        axios
+        .post(
+          "/gearshift-types" ,
+          this.gear
+        )
+
+        .then(error => {
+          this.error = error;
+         
+        })
+        
     }
+    }
+    
   }
 </script>
 
