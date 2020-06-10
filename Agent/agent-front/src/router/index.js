@@ -5,6 +5,7 @@ import OpenedAd from '../components/Ad/OpenedAd.vue'
 import AgentRegistrationForm from '../components/views/Admin/AgentRegistrationForm.vue'
 import RegistrationRequestList from '../components/views/Admin/RegistrationRequestList.vue'
 import UserList from '../components/views/Admin/UserList.vue'
+import AdsList from '../components/Ad/AdsList.vue'
 
 Vue.use(VueRouter)
 
@@ -15,7 +16,12 @@ const routes = [
         component: NewAd
       },
       {
-        path: '/openedAd',
+        path: '/adsList',
+        name: 'ads-list',
+        component: AdsList
+      },
+      {
+        path: '/openedAd/:id',
         name: 'opened-ad',
         component: OpenedAd
       },

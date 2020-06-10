@@ -8,6 +8,7 @@ import com.agent.agentapp.service.IAdCarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class AdCarService implements IAdCarService {
@@ -44,7 +45,7 @@ public class AdCarService implements IAdCarService {
 
     @Override
     public List<AdCarResponse> getAllAds() {
-        List<AdCarResponse> adCarResponses = null;
+        List<AdCarResponse> adCarResponses = new ArrayList<>();
         List<AdCar> ads = adCarRepository.findAll();
         for (AdCar ad: ads) {
             AdCarResponse adCarResponse = new AdCarResponse(ad);

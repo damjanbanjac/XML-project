@@ -35,4 +35,10 @@ public class Image {
         pic = imageDTO.getPic();
         adCar = imageDTO.getAdCar();
     }
+
+    public Image(String name, String type, byte[] pic) {
+        this.name =name;
+        this.type = type;
+        this.pic = pic;
+    }
 }
