@@ -6,12 +6,14 @@ import com.agent.agentapp.dto.response.ImageResponse;
 import com.agent.agentapp.entity.Image;
 import com.agent.agentapp.repository.ImageRepository;
 import com.agent.agentapp.service.implementation.AdCarService;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/ads")

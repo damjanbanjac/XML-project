@@ -131,11 +131,11 @@ import axios from "axios";
     data() {
       return {
         form: {
-          carClass_id: null,
-          carBrand_id: null,
-          carModel_id: null,
-          fuelType_id: null,
-          gearShift_id: null,
+          carClass_id: {},
+          carBrand_id: {},
+          carModel_id: {},
+          fuelType_id: {},
+          gearShift_id: {},
           cdw: false,
           kidsSeats: '',
           availableFrom: '',
@@ -202,28 +202,28 @@ import axios from "axios";
 
             this.brands.forEach(brand => {
             if (brand.id === this.selectedBrand) {
-            this.form.carBrand_id = brand.id;
+            this.form.carBrand_id = brand;
             }
            });
 
            this.classes.forEach(clas => {
             if (clas.id === this.selectedClass) {
-            this.form.carClass_id = clas.id;
+            this.form.carClass_id = clas;
             }
            });
            this.models.forEach(model => {
             if (model.id === this.selectedModel) {
-            this.form.carModel_id = model.id;
+            this.form.carModel_id = model;
             }
            });
            this.fuels.forEach(fuel => {
             if (fuel.id === this.selectedFuel) {
-            this.form.fuelType_id = fuel.id;
+            this.form.fuelType_id = fuel;
             }
            });
            this.gears.forEach(gear => {
             if (gear.id === this.selectedGear) {
-            this.form.gearShift_id = gear.id;
+            this.form.gearShift_id = gear;
             }
            });
 

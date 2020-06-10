@@ -22,13 +22,13 @@
               <div class="col">
                 <div class="md-form">
                   <label for="Form-carBrand">Car Brand</label>
-                   <input type="text" id="Form-carCity" class="form-control" v-model="form.carBrand_id" />
+                   <input type="text" id="Form-carCity" class="form-control" v-model="form.carBrand_id.name" />
 
                   <label for="Form-phone">Car Class</label>
-                    <input type="text" id="Form-carCity" class="form-control" v-model="form.carClass_id" />
+                    <input type="text" id="Form-carCity" class="form-control" v-model="form.carClass_id.car_class" />
 
                   <label for="Form-email">Car Model</label>
-                    <input type="text" id="Form-carCity" class="form-control" v-model="form.carModel_id" />
+                    <input type="text" id="Form-carCity" class="form-control" v-model="form.carModel_id.model" />
 
                   <label for="Form-adresa">City</label>
                   <input type="text" id="Form-carCity" class="form-control" v-model="form.city" />
@@ -37,16 +37,16 @@
                   <input type="date" id="Form-availableFrom" class="form-control" v-model="form.availableFrom" />
                    <label for="Form-radnoDo">Available To</label>
                   <input type="date" id="Form-availableTo" class="form-control" v-model="form.availableTo" >
-                </div>
+                </div>  
               </div>
               <div class="col">
                 <div class="md-form pb-3">
                   <label for="Form-grad">Type of fuel</label>
-                    <input type="text" id="Form-carCity" class="form-control" v-model="form.fuelType_id" />
+                    <input type="text" id="Form-carCity" class="form-control" v-model="form.fuelType_id.type" />
                   
 
                   <label for="Form-država">Type of gearshift</label>
-                    <input type="text" id="Form-carCity" class="form-control" v-model="form.gearShift_id" />
+                    <input type="text" id="Form-carCity" class="form-control" v-model="form.gearShift_id.type" />
 
                   <label for="Form-br">Kids Seats</label>
                   <input type="text" id="Form-kidsSeats" class="form-control" v-model="form.kidsSeats" />
@@ -128,11 +128,11 @@ export default {
   data() {
     return {
       form: {
-        carClass_id: null,
-          carBrand_id: null,
-          carModel_id: null,
-          fuelType_id: null,
-          gearShift_id: null,
+        carClass_id: {},
+          carBrand_id: {},
+          carModel_id: {},
+          fuelType_id: {},
+          gearShift_id: {},
           cdw: false,
           kidsSeats: '',
           availableFrom: '',

@@ -18,7 +18,7 @@
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Brand</label>
-                <label id="Form-ime" class="form-control">{{ad.carBrand_id}}</label>
+                <label id="Form-ime" class="form-control">{{ad.carBrand_id.name}}</label>
               
 
                 <div class="text-center mb-4">
@@ -50,9 +50,11 @@ export default {
    
 
   mounted() {
+      console.log("usao");
     axios
       .get("/ads")
       .then(ads => {
+          console.log("usao u listu")
         this.ads = ads.data;
       })
       .catch(error => {
