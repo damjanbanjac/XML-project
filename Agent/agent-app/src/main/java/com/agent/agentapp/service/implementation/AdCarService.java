@@ -8,6 +8,7 @@ import com.agent.agentapp.service.IAdCarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class AdCarService implements IAdCarService {
@@ -44,7 +45,7 @@ public class AdCarService implements IAdCarService {
 
     @Override
     public List<AdCarResponse> getAllAds() {
-        List<AdCarResponse> adCarResponses = null;
+        List<AdCarResponse> adCarResponses = new ArrayList<>();
         List<AdCar> ads = adCarRepository.findAll();
         for (AdCar ad: ads) {
             AdCarResponse adCarResponse = new AdCarResponse(ad);
@@ -77,14 +78,14 @@ public class AdCarService implements IAdCarService {
             AdCar adCar = new AdCar();
             adCar.setAvailableFrom(request.getAvailableFrom());
             adCar.setAvailableTo(request.getAvailableTo());
-            adCar.setCarBrand_id(carBrandRepository.findById(request.getCarBrand_id()).orElse(null));
-            adCar.setCarClass_id(carClassRepository.findById(request.getCarClass_id()).orElse(null));
+            adCar.setCarBrand_id(carBrandRepository.findOneById(request.getCarBrand_id().getId()));
+            adCar.setCarClass_id(carClassRepository.findOneById(request.getCarClass_id().getId()));
 
-            adCar.setCarModel_id(carModelRepository.findById(request.getCarModel_id()).orElse(null));
+            adCar.setCarModel_id(carModelRepository.findOneById(request.getCarModel_id().getId()));
             adCar.setCdw(request.getCdw());
-            adCar.setUserAd(userAdRepository.findById(request.getUserAd()).orElse(null));
-            adCar.setFuelTypeCar_id(typeOfFuelTypeRepository.findById(request.getFuelType_id()).orElse(null));
-            adCar.setGearShiftCar_id(typeOfGearShiftRepository.findById(request.getGearShift_id()).orElse(null));
+           // adCar.setUserAd(userAdRepository.findById(request.getUserAd()).orElse(null));
+            adCar.setFuelTypeCar_id(typeOfFuelTypeRepository.findOneById(request.getFuelType_id().getId()));
+            adCar.setGearShiftCar_id(typeOfGearShiftRepository.findOneById(request.getGearShift_id().getId()));
             adCar.setKidsSeats(request.getKidsSeats());
             adCar.setKmTraveled(request.getKmTraveled());
             adCar.setKmRestriction(request.getKmRestriction());
@@ -101,16 +102,18 @@ public class AdCarService implements IAdCarService {
     @Override
     public AdCarResponse updateAd(AdCarRequest request, long id) {
 
-        AdCar adCar = adCarRepository.findById(id);
+        AdCar adCar = adCarRepository.findOneById(id);
         adCar.setAvailableFrom(request.getAvailableFrom());
         adCar.setAvailableTo(request.getAvailableTo());
-        adCar.setCarBrand_id(carBrandRepository.findById(request.getCarBrand_id()).orElse(null));
-        adCar.setCarClass_id(carClassRepository.findById(request.getCarClass_id()).orElse(null));
-        adCar.setCarModel_id(carModelRepository.findById(request.getCarModel_id()).orElse(null));
+        adCar.setCarBrand_id(carBrandRepository.findOneById(request.getCarBrand_id().getId()));
+        adCar.setCarClass_id(carClassRepository.findOneById(request.getCarClass_id().getId()));
+
+        adCar.setCarModel_id(carModelRepository.findOneById(request.getCarModel_id().getId()));
         adCar.setCdw(request.getCdw());
-        adCar.setUserAd(userAdRepository.findById(request.getUserAd()).orElse(null));
-        adCar.setGearShiftCar_id(typeOfGearShiftRepository.findById(request.getGearShift_id()).orElse(null));
-        adCar.setFuelTypeCar_id(typeOfFuelTypeRepository.findById(request.getFuelType_id()).orElse(null));
+        adCar.setCity(request.getSity());
+        // adCar.setUserAd(userAdRepository.findById(request.getUserAd()).orElse(null));
+        adCar.setFuelTypeCar_id(typeOfFuelTypeRepository.findOneById(request.getFuelType_id().getId()));
+        adCar.setGearShiftCar_id(typeOfGearShiftRepository.findOneById(request.getGearShift_id().getId()));
         adCar.setKidsSeats(request.getKidsSeats());
         adCar.setKmTraveled(request.getKmTraveled());
         adCar.setKmRestriction(request.getKmRestriction());

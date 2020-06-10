@@ -2,6 +2,7 @@ package com.agent.agentapp.entity;
 
 import com.agent.agentapp.dto.request.ImageRequest;
 import com.agent.agentapp.dto.response.ImageResponse;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "image_id_seq")
     private Long id;
     private String name;
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private AdCar adCar;
 
@@ -34,5 +36,11 @@ public class Image {
         type = imageDTO.getType();
         pic = imageDTO.getPic();
         adCar = imageDTO.getAdCar();
+    }
+
+    public Image(String name, String type, byte[] pic) {
+        this.name =name;
+        this.type = type;
+        this.pic = pic;
     }
 }

@@ -7,7 +7,8 @@
       <!-- Navbar dropdowns -->
       <b-nav-item-dropdown text="Ad" left>
         <router-link to="/newAd" tag="b-dropdown-item">New Ad</router-link>
-        <router-link to="/openedAd" tag="b-dropdown-item">Ad profile</router-link>
+        <router-link to="/adsList" tag="b-dropdown-item">AdsList</router-link>
+        <!--<router-link to="/openedAd" tag="b-dropdown-item">Ad profile</router-link>-->
       </b-nav-item-dropdown>
 
       <b-nav-item-dropdown text="Lists" left>

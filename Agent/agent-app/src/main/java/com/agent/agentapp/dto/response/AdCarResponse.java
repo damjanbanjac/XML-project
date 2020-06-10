@@ -1,6 +1,6 @@
 package com.agent.agentapp.dto.response;
 
-import com.agent.agentapp.entity.AdCar;
+import com.agent.agentapp.entity.*;
 import lombok.Data;
 
 import java.util.Date;
@@ -8,12 +8,12 @@ import java.util.Date;
 @Data
 public class AdCarResponse {
     private Long id;
-    private long carBrand_id;
-    private long carClass_id;
-    private long userAd;
-    private long carModel_id;
-    private long fuelType_id;
-    private long gearShift_id;
+    private CarBrand carBrand_id;
+    private CarClass carClass_id;
+    private User userAd;
+    private CarModel carModel_id;
+    private TypeOfFuel fuelType_id;
+    private TypeOfGearshift gearShift_id;
     private Integer grade;
     private String kmRestriction;
     private Integer kmTraveled;
@@ -25,12 +25,12 @@ public class AdCarResponse {
 
     public AdCarResponse(AdCar adCar) {
         id = adCar.getId();
-        carBrand_id = adCar.getCarBrand_id().getId();
+        carBrand_id = adCar.getCarBrand_id();
       //  userAd = adCar.getUserAd().getId();
-        carModel_id = adCar.getCarModel_id().getId();
-        fuelType_id = adCar.getFuelTypeCar_id().getId();
-        gearShift_id = adCar.getGearShiftCar_id().getId();
-        carClass_id = adCar.getCarClass_id().getId();
+        carModel_id = adCar.getCarModel_id();
+        fuelType_id = adCar.getFuelTypeCar_id();
+        gearShift_id = adCar.getGearShiftCar_id();
+        carClass_id = adCar.getCarClass_id();
         grade = adCar.getGrade();
         kmRestriction = adCar.getKmRestriction();
         kmTraveled = adCar.getKmTraveled();
