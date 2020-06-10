@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@RestController 
+@RestController
 @RequestMapping("/images")
 public class ImageController {
 

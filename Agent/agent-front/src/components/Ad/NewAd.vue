@@ -181,14 +181,16 @@ import axios from "axios";
         .post("/images/" + this.idAd + "/Ad",uploadImageData)
         .then(form => {
           this.error = form;
+          this.error = false;
+           this.success = false;
+            this.newAd = true;
+            this.changeButton = false;
             
          
         })
         .catch(error => {
           console.log(error);
-          this.success = false;
-            this.newAd = true;
-            this.changeButton = false;
+         
 
 
           

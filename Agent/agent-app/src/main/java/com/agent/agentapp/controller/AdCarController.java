@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -51,27 +52,29 @@ public class AdCarController {
     }
 
     @GetMapping("/{id}/image")
-    public ImageResponse getImage(@PathVariable("id") String id) throws IOException {
+    public List<ImageResponse> getImage(@PathVariable("id") String id) throws IOException {
         Long idCar  = Long.parseLong(id);
         Image retrievedImage = new Image();
         List<Image> allImages = imageRepository.findAll();
+        List<ImageResponse> allResponse = new ArrayList<>();
 
         for (Image image: allImages ) {
             if(image.getAdCar().getId() == idCar) {
                 System.out.println("usao");
-                retrievedImage = image;
+                ImageResponse imageResponse = new ImageResponse(image);
+                allResponse.add(imageResponse);
 
-                break;
+
             }
 
         }
 
-        Image img = new Image(retrievedImage.getName(), retrievedImage.getType(),
-                retrievedImage.getPic());
-        System.out.println(img.getAdCar());
-        System.out.println(img.getPic());
-        ImageResponse imageResponse = new ImageResponse(img);
-        return imageResponse;
+       // Image img = new Image(retrievedImage.getName(), retrievedImage.getType(),
+             //   retrievedImage.getPic());
+       // System.out.println(img.getAdCar());
+       // System.out.println(img.getPic());
+        //ImageResponse imageResponse = new ImageResponse(img);
+        return allResponse;
 
     }
 }
