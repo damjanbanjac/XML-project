@@ -84,7 +84,7 @@
               <button
                 type="button"
                 class="btn btn-info btn-block z-depth-2"
-                @click="newCar()"
+              
               >Add Car</button>
             </div>
           <div v-if="changeButton" >
@@ -103,6 +103,7 @@
 </template>
 
 <script>
+import axios from "axios";
  export default {
     data() {
       return {
@@ -141,10 +142,27 @@
             this.changeButton = false;
         },
         newCar() {
-            this.success = true,
+           axios
+        .post("/ads/ads" , this.form)
+        .then(form => {
+          this.error = form,
+          this.idAd = form.data.id,
+          console.log(this.idAd);
+          this.form.kidsSeats = "",
+           this.success = true,
             this.successmessages = "You have succesfully added a new car ad. Now you can upload images for the car."
             this.changeButton = true;
             this.newAd = false;
+
+          this.error = false;
+          
+        })
+        .catch(error => {
+          console.log(error);
+          this.errormessage = "Mail vec postoji";
+          this.error = true;
+        });
+
         }
     }
 }
