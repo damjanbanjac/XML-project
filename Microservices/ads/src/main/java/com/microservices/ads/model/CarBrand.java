@@ -6,14 +6,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "carBrandAd")
+@Table(name="CarBrandAd")
 public class CarBrand {
 
     @Id
@@ -21,12 +20,9 @@ public class CarBrand {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
     private Long id;
 
+    private String name;
 
+    private String label;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "carBrand_id")
-    public List<AdCar> adsCar;
-
-
-
+    private boolean deleted;
 }

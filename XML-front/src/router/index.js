@@ -9,7 +9,8 @@ import PriceList from '../components/PriceList.vue'
 import UserList from '../components/views/Admin/UserList.vue'
 import RegistrationRequestList from '../components/views/Admin/RegistrationRequestList.vue'
 import AddCarAd from '../components/views/User/AddCarAd.vue'
-
+import AdsList from '../components/views/User/AdsList.vue'
+import OpenedAd from '../components/views/User/OpenedAd.vue'
 
 Vue.use(VueRouter);
 
@@ -77,7 +78,23 @@ const routes = [
     meta: {
       requiresAuth: true
     } 
-  }
+  },
+  {
+    path: '/adsList',
+    name: 'ads-list',
+    component: AdsList,
+    meta: {
+      requiresAuth: true
+    } 
+  },
+  {
+    path: '/openedAd/:id',
+    name: 'opened-ad',
+    component: OpenedAd,
+    meta: {
+      requiresAuth: true
+    } 
+  },
 
 ]
 

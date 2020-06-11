@@ -1,7 +1,14 @@
 package com.microservices.ads.model;
 
-import com.microservices.ads.dto.response.AdCarResponse;
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import com.microservices.ads.model.CarClass;
+import com.microservices.ads.model.CarModel;
+import com.microservices.ads.model.Image;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +19,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="AdCar")
 public class AdCar {
 
     @Id
@@ -19,22 +27,27 @@ public class AdCar {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ad_id_seq")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-    private UserAd userAd;
-
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private User userAd;
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private CarBrand carBrand_id;
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private CarModel carModel_id;
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-    private TypeOfFuelCar fuelTypeCar_id;
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-    private TypeOfGearshiftCar gearShiftCar_id;
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private TypeOfFuel fuelTypeCar_id;
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private TypeOfGearshift gearShiftCar_id;
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Image> image;
 
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private CarClass carClass_id;
     private Integer grade;
     private String kmRestriction;
@@ -43,19 +56,8 @@ public class AdCar {
     private  Integer kidsSeats;
     private Date availableFrom;
     private Date availableTo;
+    private String city;
 
 
-  /*  public AdCar(AdCarResponse carResponse) {
-        userAd = carResponse.getUserAd();
-        carBrand = carResponse.getCarBrand_id();
-        carModel = carResponse.getCarModel();
-        carClass = carResponse.getCarClass();
-        availableTo = carResponse.getAvailableTo();
-        availableFrom = carResponse.getAvailableFrom();
-        kmTraveled = carResponse.getKmTraveled();
-        cdw = carResponse.getCdw();
-        kidsSeats = carResponse.getKidsSeats();
-        fuelType = carResponse.getFuelType();
-        gearBoxType = carResponse.getGearBoxType();
-    } */
+
 }
