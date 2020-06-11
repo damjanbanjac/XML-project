@@ -14,9 +14,9 @@ public class RequestController {
     @Autowired
     private IRequestService irequestService;
 
-    @PostMapping
-    public RequestDTO createRequestForUser(@RequestBody RequestDTO request,@RequestBody OrderDTO order) {
-        return irequestService.createRquestForUser(request, order);
+    @PostMapping("/{bundle}/request")
+    public RequestDTO createRequestForUser(@PathVariable Boolean bundle,@RequestBody OrderDTO order) {
+        return irequestService.createRquestForUser(bundle, order);
     }
 
     @PostMapping("/personally")

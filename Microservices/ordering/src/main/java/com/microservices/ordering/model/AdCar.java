@@ -21,8 +21,9 @@ public class AdCar {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "adcar_id_seq")
     private Long id;
 
+    /*
     @OneToOne(fetch = FetchType.EAGER)
     public
-    Order orders;
+    Order orders;*/
 
 }

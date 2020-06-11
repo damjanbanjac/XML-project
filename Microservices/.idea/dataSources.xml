@@ -7,5 +7,11 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/xml</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="services@localhost" uuid="f7cebef4-1235-4233-aee8-254a0a0dad77">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/services</jdbc-url>
+    </data-source>
   </component>
 </project>
