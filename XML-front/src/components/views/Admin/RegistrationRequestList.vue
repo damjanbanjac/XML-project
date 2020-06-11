@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-table table-variant="light" head-variant="dark" small="true" bordered="true" responsive="sm" stickyHeader="1000px" hover :items="items" :fields="fields">
+        <b-table table-variant="light" head-variant="dark" small=true bordered=true responsive="sm" stickyHeader="1000px" hover :items="items" :fields="fields">
             <template v-slot:cell(actions1)="row">
                 <b-button variant="success" size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
                 Approve

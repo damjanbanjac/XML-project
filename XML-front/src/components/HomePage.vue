@@ -33,6 +33,7 @@
                     <router-link to="/agentRegistration" tag="b-dropdown-item">Register agent/company</router-link>
                     <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
                     <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
+                    <router-link to="/carBrandList" tag="b-dropdown-item">Car brands</router-link>
                 </b-nav-item-dropdown>
             
         </b-navbar-nav>
