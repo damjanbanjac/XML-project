@@ -61,9 +61,8 @@ public class RequestService implements IRequestService {
 
     }
 
-
     @Override
-    public RequestDTO createRquestForUser(RequestDTO request, OrderDTO order) {
+    public RequestDTO createRquestForUser(Boolean bundle, OrderDTO order) {
 
 
         Long agentIzdaoId = order.getAgentIzdao().getId();
@@ -72,7 +71,7 @@ public class RequestService implements IRequestService {
         List<Order> orders= orderRepositiory.findAll();
         List<Order> bundleOrders= new ArrayList<>();
 
-        if(request.getBundle()==true){
+        if(bundle==true){
             for(Order ord:orders){
                 if(ord.getUserr().getId().equals(order.getUser().getId())){
                     if(order.getAgentIzdao().getId()!=null) {
@@ -86,11 +85,11 @@ public class RequestService implements IRequestService {
                         }
                     }
 
-                    }
                 }
+            }
             Request newRequest= new Request();
-            newRequest.setBundle(request.getBundle());
-            newRequest.setStatus("SACEKAJTE");
+            newRequest.setBundle(bundle);
+            newRequest.setStatus("PENDING");
             newRequest.setOrderList(bundleOrders);
 
             requestRepository.save(newRequest);
@@ -100,8 +99,8 @@ public class RequestService implements IRequestService {
 
         } else{
             Request newRequest= new Request();
-            newRequest.setBundle(request.getBundle());
-            newRequest.setStatus("SACEKAJTE");
+            newRequest.setBundle(bundle);
+            newRequest.setStatus("PENDING");
             bundleOrders.add(orderRepositiory.findOneById(order.getId()));
             newRequest.setOrderList(bundleOrders);
             RequestDTO requestDTO = new RequestDTO(newRequest);
@@ -110,6 +109,8 @@ public class RequestService implements IRequestService {
 
         }
     }
+
+
 
     @Override
     public RequestDTO presonallyRequest(OrderDTO order) {
