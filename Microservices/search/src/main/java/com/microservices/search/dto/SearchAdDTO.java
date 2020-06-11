@@ -11,7 +11,7 @@ public class SearchAdDTO {
     private Long carBrand;
     private Long carModel;
     private Long fuelType;
-    private Long gearBoxType;
+    private Long gearShiftType;
     private Long carClass;
     private Integer grade;
     private Integer kmRestriction;
@@ -34,7 +34,7 @@ public class SearchAdDTO {
         this.carBrand = carBrand;
         this.carModel = carModel;
         this.fuelType = fuelType;
-        this.gearBoxType = gearBoxType;
+        this.gearShiftType = gearBoxType;
         this.carClass = carClass;
         this.grade = grade;
         this.kmRestriction = kmRestriction;
@@ -52,10 +52,10 @@ public class SearchAdDTO {
         this.carClass = searchAd.getCarClass().getId();
         this.carBrand = searchAd.getCarBrand().getId();
         this.carModel = searchAd.getCarModel().getId();
-        this.fuelType = searchAd.getFuelType().getId();
-        this.gearBoxType = searchAd.getGearBoxType().getId();
-        this.grade = searchAd.getGrade();
         this.kmRestriction = searchAd.getKmRestriction();
+        this.grade = searchAd.getGrade();
+        this.gearShiftType = searchAd.getGearShiftType().getId();
+        this.fuelType = searchAd.getFuelType().getId();
         this.kmTraveled = searchAd.getKmTraveled();
         this.cdw = searchAd.getCdw();
         this.kidsSeats = searchAd.getKidsSeats();

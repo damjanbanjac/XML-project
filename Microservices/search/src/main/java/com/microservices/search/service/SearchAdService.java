@@ -32,7 +32,7 @@ public class SearchAdService implements ISearchAdService {
     private FuelTypeRepository fuelTypeRepository;
 
     @Autowired
-    private GearBoxTypeRepository gearBoxTypeRepository;
+    private GearShiftTypeRepository gearShiftTypeRepository;
 
     @Override
     public List<SearchAdDTO> getAllSearchAds() {
@@ -49,10 +49,11 @@ public class SearchAdService implements ISearchAdService {
 
     private SearchAdDTO mapToResponse(SearchAd searchAd) {
         SearchAdDTO response = new SearchAdDTO();
+        response.setId(searchAd.getId());
         response.setCarBrand(searchAd.getCarBrand().getId());
         response.setCarModel(searchAd.getCarModel().getId());
         response.setFuelType(searchAd.getFuelType().getId());
-        response.setGearBoxType(searchAd.getGearBoxType().getId());
+        response.setGearShiftType(searchAd.getGearShiftType().getId());
         response.setCarClass(searchAd.getCarClass().getId());
         response.setCity(searchAd.getCity());
         response.setGrade(searchAd.getGrade());
@@ -81,10 +82,10 @@ public class SearchAdService implements ISearchAdService {
         carModelRepository.save(cm);
         CarClass cc = new CarClass((long) 3, null);
         carClassRepository.save(cc);
-        TypeOfFuel tf = new TypeOfFuel((long) 4, null);
+        FuelType tf = new FuelType((long) 4, null);
         fuelTypeRepository.save(tf);
-        TypeOfGearshift tg = new TypeOfGearshift((long) 5, null);
-        gearBoxTypeRepository.save(tg);
+        GearShiftType tg = new GearShiftType((long) 5, null);
+        gearShiftTypeRepository.save(tg);
 
         searchAd.setId(searchAdDTO.getId());
         searchAd.setAvailableFrom(searchAdDTO.getAvailableFrom());
@@ -99,7 +100,7 @@ public class SearchAdService implements ISearchAdService {
         searchAd.setCarClass(carClassRepository.findById(searchAdDTO.getCarClass()).orElse(null));
         searchAd.setCarModel(carModelRepository.findById(searchAdDTO.getCarModel()).orElse(null));
         searchAd.setFuelType(fuelTypeRepository.findById(searchAdDTO.getFuelType()).orElse(null));
-        searchAd.setGearBoxType(gearBoxTypeRepository.findById(searchAdDTO.getGearBoxType()).orElse(null));
+        searchAd.setGearShiftType(gearShiftTypeRepository.findById(searchAdDTO.getGearShiftType()).orElse(null));
         searchAd.setPrice(searchAdDTO.getPrice());
         searchAdRepository.save(searchAd);
 
@@ -264,8 +265,8 @@ public class SearchAdService implements ISearchAdService {
                                 continue;
                             }
                         }
-                        if(searchAd.getGearBoxType() != null) {
-                            if (!(ad.getGearBoxType().getId().equals(searchAd.getGearBoxType()))) {
+                        if(searchAd.getGearShiftType() != null) {
+                            if (!(ad.getGearShiftType().getId().equals(searchAd.getGearShiftType()))) {
                                 continue;
                             }
                         }

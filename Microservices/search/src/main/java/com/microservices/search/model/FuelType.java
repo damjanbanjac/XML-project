@@ -13,8 +13,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "TypeOfFuel")
-public class TypeOfFuel {
+@Table(name = "FuelTypeSearchAd")
+public class FuelType {
 
     @Id
     @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)

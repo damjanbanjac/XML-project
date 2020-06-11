@@ -13,8 +13,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "TypeOfGearshift")
-public class TypeOfGearshift {
+@Table(name = "GearShiftTypeSearchAd")
+public class GearShiftType {
 
     @Id
     @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)

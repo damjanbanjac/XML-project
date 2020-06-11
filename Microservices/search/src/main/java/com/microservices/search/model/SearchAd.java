@@ -26,9 +26,9 @@ import java.util.Date;
         @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
         private CarModel carModel;
         @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-        private TypeOfFuel fuelType;
+        private FuelType fuelType;
         @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-        private TypeOfGearshift gearBoxType;
+        private GearShiftType gearShiftType;
         @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
         private CarClass carClass;
         private Integer grade;
