@@ -101,8 +101,10 @@ public class RequestService implements IRequestService {
             Request newRequest= new Request();
             newRequest.setBundle(bundle);
             newRequest.setStatus("PENDING");
-            bundleOrders.add(orderRepositiory.findOneById(order.getId()));
+            Order orderFalse = orderRepositiory.findOneById(order.getId());
+            bundleOrders.add(orderFalse);
             newRequest.setOrderList(bundleOrders);
+            requestRepository.save(newRequest);
             RequestDTO requestDTO = new RequestDTO(newRequest);
 
             return requestDTO;
@@ -148,5 +150,22 @@ public class RequestService implements IRequestService {
 
         RequestDTO requestDTO = new RequestDTO(newRequest);
         return  requestDTO;
+    }
+
+    @Override
+    public List<RequestDTO> agentRequests(Long agentId) {
+
+        List<Request> requests = requestRepository.findAll();
+        List<RequestDTO> requestsDTO= new ArrayList<>();
+
+        for(Request req:requests){
+            for(int i=0; i<req.getOrderList().size(); i++){
+                System.out.println(req.getOrderList().get(i).getAgentIzdao().getId());
+                if(req.getOrderList().get(i).getAgentIzdao().getId().equals(agentId)){
+                    requestsDTO.add(new RequestDTO(req));
+                }
+            }
+        }
+        return requestsDTO;
     }
 }

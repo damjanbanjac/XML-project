@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/requests", produces = MediaType.APPLICATION_JSON_VALUE)
 public class RequestController {
@@ -22,5 +24,10 @@ public class RequestController {
     @PostMapping("/personally")
     public RequestDTO presonallyRequest(@RequestBody OrderDTO order){
         return irequestService.presonallyRequest(order);
+    }
+
+    @GetMapping("/{agentId}/agent")
+    public List<RequestDTO> agentRequests(@PathVariable Long agentId){
+        return irequestService.agentRequests(agentId);
     }
 }

@@ -3,6 +3,7 @@ package com.microservices.ordering.service;
 import com.microservices.ordering.dto.OrderDTO;
 import com.microservices.ordering.dto.RequestDTO;
 
+import java.util.List;
 import java.util.Set;
 
 public interface IRequestService {
@@ -22,4 +23,6 @@ public interface IRequestService {
     RequestDTO createRquestForUser(Boolean bundle, OrderDTO order);
 
     RequestDTO presonallyRequest(OrderDTO order);
+
+    List<RequestDTO> agentRequests(Long agentId);
 }

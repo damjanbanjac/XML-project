@@ -105,22 +105,22 @@ services:
       - adsservice
 #      - authservice
 #      - maintenanceservice
-#      - orderservice
+      - orderservice
 #      - paymentservice
 #      - searchsevice
 
- # users-database:
-  #  image: mariadb:10.2
-   # container_name: users-database
-   # ports:
-    #  - 3306:3306
-   # environment:
-   #   MYSQL_DATABASE: services
-   #   MYSQL_USER: root
-   #   MYSQL_PASSWORD: root
-   #   MYSQL_ROOT_PASSWORD: root
-   # volumes:
-    #  - usersdata:/var/lib/mysql
+  users-database:
+    image: mariadb:10.2
+    container_name: users-database
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: services
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - usersdata:/var/lib/mysql
 
 
 volumes:
