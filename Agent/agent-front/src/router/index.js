@@ -139,8 +139,6 @@ const routes = [
         name: 'update-type-of-gearshift',
         component: UpdateTypeOfGearshift
       },
-
-
 ]
 
 const router = new VueRouter({

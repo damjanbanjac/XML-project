@@ -9,22 +9,22 @@
                 style="font-size: 3rem;
                 font-weight: 300;
                 line-height: 1.2;
-                margin-top: -12%;">Car classes</h3>
+                margin-top: -12%;">Car models</h3>
             </div>
         </div>
 
-        <div class="form-group" v-for="carclass in carclasses" :key="carclass.id">
+        <div class="form-group" v-for="carmodel in carmodels" :key="carmodel.id">
             <div class="card-body mx-4 mt-4">
                 <div class="row">
                     <div class="col">
                         <div class="md-form">
-                            <label for="Form-car_class">Car class</label>
-                            <label id="Form-car_class" class="form-control">{{carclass.car_class}}</label>
+                            <label for="Form-model">Car class</label>
+                            <label id="Form-model" class="form-control">{{carmodel.model}}</label>
 
                             <br/>
 
                             <div class="text-center mb-4">
-                                <router-link :to="'/updateCarClass/'+ carclass.id"
+                                <router-link :to="'/updateCarModel/'+ carmodel.id"
                                 tag="button"
                                 class="btn btn-info mt-2 btn-block z-depth-2" >Update</router-link>
                             </div>
@@ -32,7 +32,7 @@
                                 <button
                                 type="button"
                                 class="btn btn-danger btn-block z-depth-2"
-                                @click="deleteCarClass(carclass.id)"
+                                @click="deleteCarModel(carmodel.id)"
                                 >Delete</button>
                             </div>
                         </div>
@@ -50,34 +50,33 @@ import axios from "axios";
 export default {
   data() {
     return {
-      carclasses: []           
+      carmodels: []           
     };
   },
   methods: {
 
-    deleteCarClass(id) {
+    deleteCarModel(id) {
         axios
-        .delete("/classes/" + id + "/class")
+        .delete("/maintenance/models/" + id + "/model")
         axios
-        .get("/classes")
-        .then(carclasses => {
+        .get("/maintenance/models")
+        .then(carmodels => {
             console.log("usao u listu")
-            this.carclasses = carclasses.data;
+            this.carmodels = carmodels.data;
         })
         .catch(error => {
             console.log(error);
         });
     },
-
   },
 
     mounted() {
         console.log("usao");
         axios
-        .get("/classes")
-        .then(carclasses => {
+        .get("/maintenance/models")
+        .then(carmodels => {
             console.log("usao u listu")
-            this.carclasses = carclasses.data;
+            this.carmodels = carmodels.data;
         })
         .catch(error => {
             console.log(error);
