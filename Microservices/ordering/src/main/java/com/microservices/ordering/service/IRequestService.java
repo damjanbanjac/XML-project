@@ -25,4 +25,12 @@ public interface IRequestService {
     RequestDTO presonallyRequest(OrderDTO order);
 
     List<RequestDTO> agentRequests(Long agentId);
+
+    RequestDTO acceptRequest(Long idRequest);
+
+    List<RequestDTO> userRequests(Long idUser);
+
+    RequestDTO paidRequest(Long idRequest);
+
+    RequestDTO declineRequest(Long idRequest);
 }
