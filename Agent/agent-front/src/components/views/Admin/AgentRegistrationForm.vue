@@ -15,7 +15,7 @@
         </template>
 
         <template>
-            <b-form bg-variant="light" @submit="onSubmit">
+            <b-form bg-variant="light" @click="submit()">
             <b-form-group
                 id="input-group-1"
                 label="Email address:"
@@ -114,6 +114,34 @@
       }
     },
     methods: {
+        submit() {
+        if (this.form.email === "" || 
+        this.form.name === "" ||
+        this.form.surname === "" ||
+        this.form.companyId === "" ||
+        this.form.address === "" ||
+        this.form.password === "" ||
+        this.form.repassword === "") {
+          this.errorMessage = "Please fill all fields";
+          this.error = true;
+          return;
+        }
+        if(this.form.password != this.form.repassword) {
+          this.errorMessage = "Passwords must match";
+          this.error = true;
+          return;
+        }
+        // axios
+        // .post("/brands", this.form)
+        // .then(() => {
+        //   this.form.name = "";
+        //   this.form.label = "";
+        // })
+        // .catch(error => {
+        //   console.log(error);
+        // });
+
+        }
     }
 }
 </script>

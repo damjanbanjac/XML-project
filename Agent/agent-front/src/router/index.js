@@ -14,6 +14,12 @@ import AddCarModel from '../components/views/Admin/add/AddCarModel.vue'
 import AddTypeOfFuel from '../components/views/Admin/add/AddTypeOfFuel.vue'
 import AddTypeOfGearshift from '../components/views/Admin/add/AddTypeOfGearshift.vue'
 
+import UpdateCarBrand from '../components/views/Admin/update/UpdateCarBrand.vue'
+import UpdateCarClass from '../components/views/Admin/update/UpdateCarClass.vue'
+import UpdateCarModel from '../components/views/Admin/update/UpdateCarModel.vue'
+import UpdateTypeOfFuel from '../components/views/Admin/update/UpdateTypeOfFuel.vue'
+import UpdateTypeOfGearshift from '../components/views/Admin/update/UpdateTypeOfGearshift.vue'
+
 import RegistrationRequestList from '../components/views/Admin/lists/RegistrationRequestList.vue'
 import UserList from '../components/views/Admin/lists/UserList.vue'
 import CarBrandList from '../components/views/Admin/lists/CarBrandList.vue'
@@ -45,6 +51,7 @@ const routes = [
         name: 'agent-registration',
         component: AgentRegistrationForm
       },
+      // lists
       {
         path: '/userList',
         name: 'user-list',
@@ -60,6 +67,27 @@ const routes = [
         name: 'car-brand-list',
         component: CarBrandList
       },
+      {
+        path: '/carClassList',
+        name: 'car-class-list',
+        component: CarClassList
+      },
+      {
+        path: '/carModelList',
+        name: 'car-model-list',
+        component: CarModelList
+      },
+      {
+        path: '/fuelTypeList',
+        name: 'fuel-type-list',
+        component: FuelTypeList
+      },
+      {
+        path: '/gearshiftTypeList',
+        name: 'gearshift-type-list',
+        component: GearshiftTypeList
+      },
+      // add
       {
         path: '/addCarBrand',
         name: 'add-car-brand',
@@ -85,25 +113,31 @@ const routes = [
         name: 'add-type-of-gearshift',
         component: AddTypeOfGearshift
       },
+      // update
       {
-        path: '/carClassList',
-        name: 'car-class-list',
-        component: CarClassList
+        path: '/updateCarBrand/:id',
+        name: 'update-car-brand',
+        component: UpdateCarBrand
       },
       {
-        path: '/carModelList',
-        name: 'car-model-list',
-        component: CarModelList
+        path: '/updateCarClass/:id',
+        name: 'update-car-class',
+        component: UpdateCarClass
       },
       {
-        path: '/fuelTypeList',
-        name: 'fuel-type-list',
-        component: FuelTypeList
+        path: '/updateCarModel/:id',
+        name: 'update-car-model',
+        component: UpdateCarModel
       },
       {
-        path: '/gearshiftTypeList',
-        name: 'gearshift-type-list',
-        component: GearshiftTypeList
+        path: '/updateTypeOfFuel/:id',
+        name: 'update-type-of-fuel',
+        component: UpdateTypeOfFuel
+      },
+      {
+        path: '/updateTypeOfGearshift/:id',
+        name: 'update-type-of-gearshift',
+        component: UpdateTypeOfGearshift
       },
 
 

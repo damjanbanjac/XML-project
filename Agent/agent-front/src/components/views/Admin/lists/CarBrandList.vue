@@ -1,7 +1,7 @@
 <template>
   <div class="container d-flex justify-content-center" style="margin-top: 20px">
     
-    <div class="card" style="width: 60%">
+    <div class="card" style="width: 40%">
       
         <div class="header pt-3 grey lighten-2">
             <div class="row d-flex justify-content-start">
@@ -18,6 +18,9 @@
                             <label id="Form-name" class="form-control">{{carbrand.name}}</label>
                             <label for="Form-name">Car label</label>
                             <label id="Form-name" class="form-control">{{carbrand.label}}</label>
+
+                            <br/>
+
                             <div class="text-center mb-4">
                                 <router-link :to="'/updateCarBrand/'+ carbrand.id"
                                 tag="button"
@@ -26,7 +29,7 @@
                             <div class="text-center mb-4">
                                 <button
                                 type="button"
-                                class="btn btn-success btn-block z-depth-2"
+                                class="btn btn-danger btn-block z-depth-2"
                                 @click="deleteCarBrand(carbrand.id)"
                                 >Delete</button>
                             </div>
@@ -53,22 +56,39 @@ export default {
     deleteCarBrand(id) {
         axios
         .delete("/brands/" + id + "/brand")
+        .then(carbrands => {
+          this.carbrands = carbrands.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+        axios
+        .get("/brands")
+        .then(carbrands => {
+            this.carbrands = carbrands.data;
+            console.log(carbrands.data)
+        })
+        .catch(error => {
+            console.log(error);
+        });
     },
+  },
 
     mounted() {
         console.log("usao");
         axios
         .get("/brands")
         .then(carbrands => {
-            console.log("usao u listu")
             this.carbrands = carbrands.data;
+            console.log(carbrands.data)
         })
         .catch(error => {
             console.log(error);
         });
     }
   }
-};
+
+
 </script>
 
 <style>

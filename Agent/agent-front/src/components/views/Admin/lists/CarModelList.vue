@@ -1,7 +1,7 @@
 <template>
   <div class="container d-flex justify-content-center" style="margin-top: 20px">
     
-    <div class="card" style="width: 60%">
+    <div class="card" style="width: 40%">
       
         <div class="header pt-3 grey lighten-2">
             <div class="row d-flex justify-content-start">
@@ -16,6 +16,9 @@
                         <div class="md-form">
                             <label for="Form-model">Car class</label>
                             <label id="Form-model" class="form-control">{{carmodel.model}}</label>
+
+                            <br/>
+
                             <div class="text-center mb-4">
                                 <router-link :to="'/updateCarModel/'+ carmodel.id"
                                 tag="button"
@@ -24,7 +27,7 @@
                             <div class="text-center mb-4">
                                 <button
                                 type="button"
-                                class="btn btn-success btn-block z-depth-2"
+                                class="btn btn-danger btn-block z-depth-2"
                                 @click="deleteCarModel(carmodel.id)"
                                 >Delete</button>
                             </div>
@@ -48,10 +51,20 @@ export default {
   },
   methods: {
 
-    deleteCarClass(id) {
+    deleteCarModel(id) {
         axios
         .delete("/models/" + id + "/model")
+        axios
+        .get("/models")
+        .then(carmodels => {
+            console.log("usao u listu")
+            this.carmodels = carmodels.data;
+        })
+        .catch(error => {
+            console.log(error);
+        });
     },
+  },
 
     mounted() {
         console.log("usao");
@@ -66,7 +79,7 @@ export default {
         });
     }
   }
-};
+
 </script>
 
 <style>

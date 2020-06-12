@@ -1,7 +1,7 @@
 <template>
   <div class="container d-flex justify-content-center" style="margin-top: 20px">
     
-    <div class="card" style="width: 60%">
+    <div class="card" style="width: 40%">
       
         <div class="header pt-3 grey lighten-2">
             <div class="row d-flex justify-content-start">
@@ -16,15 +16,18 @@
                         <div class="md-form">
                             <label for="Form-type">Type of gearshift</label>
                             <label id="Form-type" class="form-control">{{gearshifttype.type}}</label>
+
+                            <br/>
+                            
                             <div class="text-center mb-4">
-                                <router-link :to="'/updateGearshiftType/'+ gearshifttype.id"
+                                <router-link :to="'/updateTypeOfGearshift/'+ gearshifttype.id"
                                 tag="button"
                                 class="btn btn-info mt-2 btn-block z-depth-2" >Update</router-link>
                             </div>
                             <div class="text-center mb-4">
                                 <button
                                 type="button"
-                                class="btn btn-success btn-block z-depth-2"
+                                class="btn btn-danger btn-block z-depth-2"
                                 @click="deleteGearshiftType(gearshifttype.id)"
                                 >Delete</button>
                             </div>
@@ -51,7 +54,18 @@ export default {
     deleteGearshiftType(id) {
         axios
         .delete("/gearshift-types/" + id + "/gearshift-type")
+        axios
+        .get("/gearshift-types")
+        .then(gearshifttypes => {
+            console.log("usao u listu")
+            this.gearshifttypes = gearshifttypes.data;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+        // location.reload();
     },
+  },
 
     mounted() {
         console.log("usao");
@@ -66,7 +80,7 @@ export default {
         });
     }
   }
-};
+
 </script>
 
 <style>
