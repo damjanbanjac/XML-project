@@ -1,16 +1,16 @@
 <template>
      <div>
-    <!-- <b-container v-if="error">
+    <b-container v-if="error">
       <b-alert show variant="danger" class="d-flex justify-content-center">{{errormessage}}</b-alert>
     </b-container>
 
      <b-container v-if="success">
-      <b-alert show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
-    </b-container> -->
+      <b-alert show variant="success" class="d-flex justify-content-center">{{successmessage}}</b-alert>
+    </b-container>
 
     <div class="container d-flex justify-content-center" style="margin-top: 20px">
       <!--Form with header-->
-      <div class="card" style="width: 60%">
+      <div class="card" style="width: 40%">
         <!--Header-->
         <div class="header pt-3 grey lighten-2">
           <div class="row d-flex justify-content-start">
@@ -44,7 +44,7 @@
                 type="button"
                 class="btn btn-info btn-block z-depth-2"
                 @click="addCarClass()"
-              >Add car class</button>
+              >Add</button>
             </div>
           </div>
         </div>
@@ -61,13 +61,31 @@ import axios from "axios";
       return {
         form: {
           car_class: ''
-        }
+        },
+        error: false,
+        errormessage: "",
+        success: false,
+        successmessage: ""
       }
     },
     methods: {
         addCarClass() {
+        if (this.form.car_class === ""){
+          this.errormessage = "Please fill all fields";
+          this.error = true;
+          return;
+        }
         axios
-        .post("/classes")
+        .post("/classes", this.form)
+        .then(() => {
+          this.form.car_class = "";
+          this.success = true;
+          this.successmessage = "You have successfully added a new car class."
+        })
+        .catch(error => {
+          console.log(error);
+          this.error = true;
+        });
         }
     }
 }

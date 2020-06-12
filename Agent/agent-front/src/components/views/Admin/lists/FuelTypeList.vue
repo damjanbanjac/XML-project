@@ -1,7 +1,7 @@
 <template>
   <div class="container d-flex justify-content-center" style="margin-top: 20px">
     
-    <div class="card" style="width: 60%">
+    <div class="card" style="width: 40%">
       
         <div class="header pt-3 grey lighten-2">
             <div class="row d-flex justify-content-start">
@@ -16,15 +16,18 @@
                         <div class="md-form">
                             <label for="Form-type">Type of fuel</label>
                             <label id="Form-type" class="form-control">{{fueltype.type}}</label>
+
+                            <br/>
+                            
                             <div class="text-center mb-4">
-                                <router-link :to="'/updateFuelType/'+ fueltype.id"
+                                <router-link :to="'/updateTypeOfFuel/'+ fueltype.id"
                                 tag="button"
                                 class="btn btn-info mt-2 btn-block z-depth-2" >Update</router-link>
                             </div>
                             <div class="text-center mb-4">
                                 <button
                                 type="button"
-                                class="btn btn-success btn-block z-depth-2"
+                                class="btn btn-danger btn-block z-depth-2"
                                 @click="deleteFuelType(fueltype.id)"
                                 >Delete</button>
                             </div>
@@ -51,7 +54,17 @@ export default {
     deleteFuelType(id) {
         axios
         .delete("/fuel-types/" + id + "/fuel-type")
+        axios
+        .get("/fuel-types")
+        .then(fueltypes => {
+            console.log("usao u listu")
+            this.fueltypes = fueltypes.data;
+        })
+        .catch(error => {
+            console.log(error);
+        });
     },
+  },
 
     mounted() {
         console.log("usao");
@@ -66,7 +79,7 @@ export default {
         });
     }
   }
-};
+
 </script>
 
 <style>
