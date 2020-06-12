@@ -5,26 +5,28 @@
       
         <div class="header pt-3 grey lighten-2">
             <div class="row d-flex justify-content-start">
-                <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5"
+                <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5" 
                 style="font-size: 3rem;
                 font-weight: 300;
                 line-height: 1.2;
-                margin-top: -12%;">Car classes</h3>
+                margin-top: -12%;">Car brands</h3>
             </div>
         </div>
 
-        <div class="form-group" v-for="carclass in carclasses" :key="carclass.id">
+        <div class="form-group" v-for="carbrand in carbrands" :key="carbrand.id">
             <div class="card-body mx-4 mt-4">
                 <div class="row">
                     <div class="col">
                         <div class="md-form">
-                            <label for="Form-car_class">Car class</label>
-                            <label id="Form-car_class" class="form-control">{{carclass.car_class}}</label>
+                            <label for="Form-name">Car brand</label>
+                            <label id="Form-name" class="form-control">{{carbrand.name}}</label>
+                            <label for="Form-name">Car label</label>
+                            <label id="Form-name" class="form-control">{{carbrand.label}}</label>
 
                             <br/>
 
                             <div class="text-center mb-4">
-                                <router-link :to="'/updateCarClass/'+ carclass.id"
+                                <router-link :to="'/updateCarBrand/'+ carbrand.id"
                                 tag="button"
                                 class="btn btn-info mt-2 btn-block z-depth-2" >Update</router-link>
                             </div>
@@ -32,7 +34,7 @@
                                 <button
                                 type="button"
                                 class="btn btn-danger btn-block z-depth-2"
-                                @click="deleteCarClass(carclass.id)"
+                                @click="deleteCarBrand(carbrand.id)"
                                 >Delete</button>
                             </div>
                         </div>
@@ -50,40 +52,46 @@ import axios from "axios";
 export default {
   data() {
     return {
-      carclasses: []           
+      carbrands: []           
     };
   },
   methods: {
 
-    deleteCarClass(id) {
+    deleteCarBrand(id) {
         axios
-        .delete("/classes/" + id + "/class")
+        .delete("/maintenance/brands/" + id + "/brand")
+        .then(carbrands => {
+          this.carbrands = carbrands.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
         axios
-        .get("/classes")
-        .then(carclasses => {
-            console.log("usao u listu")
-            this.carclasses = carclasses.data;
+        .get("/maintenance/brands")
+        .then(carbrands => {
+            this.carbrands = carbrands.data;
+            console.log(carbrands.data)
         })
         .catch(error => {
             console.log(error);
         });
     },
-
   },
 
     mounted() {
         console.log("usao");
         axios
-        .get("/classes")
-        .then(carclasses => {
-            console.log("usao u listu")
-            this.carclasses = carclasses.data;
+        .get("/maintenance/brands")
+        .then(carbrands => {
+            this.carbrands = carbrands.data;
+            console.log(carbrands.data)
         })
         .catch(error => {
             console.log(error);
         });
     }
   }
+
 
 </script>
 

@@ -9,22 +9,22 @@
                 style="font-size: 3rem;
                 font-weight: 300;
                 line-height: 1.2;
-                margin-top: -12%;">Car classes</h3>
+                margin-top: -12%;">Types of gearshift</h3>
             </div>
         </div>
 
-        <div class="form-group" v-for="carclass in carclasses" :key="carclass.id">
+        <div class="form-group" v-for="gearshifttype in gearshifttypes" :key="gearshifttype.id">
             <div class="card-body mx-4 mt-4">
                 <div class="row">
                     <div class="col">
                         <div class="md-form">
-                            <label for="Form-car_class">Car class</label>
-                            <label id="Form-car_class" class="form-control">{{carclass.car_class}}</label>
+                            <label for="Form-type">Type of gearshift</label>
+                            <label id="Form-type" class="form-control">{{gearshifttype.type}}</label>
 
                             <br/>
-
+                            
                             <div class="text-center mb-4">
-                                <router-link :to="'/updateCarClass/'+ carclass.id"
+                                <router-link :to="'/updateTypeOfGearshift/'+ gearshifttype.id"
                                 tag="button"
                                 class="btn btn-info mt-2 btn-block z-depth-2" >Update</router-link>
                             </div>
@@ -32,7 +32,7 @@
                                 <button
                                 type="button"
                                 class="btn btn-danger btn-block z-depth-2"
-                                @click="deleteCarClass(carclass.id)"
+                                @click="deleteGearshiftType(gearshifttype.id)"
                                 >Delete</button>
                             </div>
                         </div>
@@ -50,34 +50,34 @@ import axios from "axios";
 export default {
   data() {
     return {
-      carclasses: []           
+      gearshifttypes: []           
     };
   },
   methods: {
 
-    deleteCarClass(id) {
+    deleteGearshiftType(id) {
         axios
-        .delete("/classes/" + id + "/class")
+        .delete("/maintenance/gearshift-types/" + id + "/gearshift-type")
         axios
-        .get("/classes")
-        .then(carclasses => {
+        .get("/maintenance/gearshift-types")
+        .then(gearshifttypes => {
             console.log("usao u listu")
-            this.carclasses = carclasses.data;
+            this.gearshifttypes = gearshifttypes.data;
         })
         .catch(error => {
             console.log(error);
         });
+        // location.reload();
     },
-
   },
 
     mounted() {
         console.log("usao");
         axios
-        .get("/classes")
-        .then(carclasses => {
+        .get("/maintenance/gearshift-types")
+        .then(gearshifttypes => {
             console.log("usao u listu")
-            this.carclasses = carclasses.data;
+            this.gearshifttypes = gearshifttypes.data;
         })
         .catch(error => {
             console.log(error);

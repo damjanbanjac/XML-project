@@ -57,9 +57,9 @@ export default {
 
     deleteCarClass(id) {
         axios
-        .delete("/classes/" + id + "/class")
+        .delete("/maintenance/classes/" + id + "/class")
         axios
-        .get("/classes")
+        .get("/maintenance/classes")
         .then(carclasses => {
             console.log("usao u listu")
             this.carclasses = carclasses.data;
@@ -74,7 +74,7 @@ export default {
     mounted() {
         console.log("usao");
         axios
-        .get("/classes")
+        .get("/maintenance/classes")
         .then(carclasses => {
             console.log("usao u listu")
             this.carclasses = carclasses.data;
