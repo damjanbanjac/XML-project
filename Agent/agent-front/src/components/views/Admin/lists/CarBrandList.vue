@@ -1,0 +1,76 @@
+<template>
+  <div class="container d-flex justify-content-center" style="margin-top: 20px">
+    
+    <div class="card" style="width: 60%">
+      
+        <div class="header pt-3 grey lighten-2">
+            <div class="row d-flex justify-content-start">
+                <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5">Car brands</h3>
+            </div>
+        </div>
+
+        <div class="form-group" v-for="carbrand in carbrands" :key="carbrand.id">
+            <div class="card-body mx-4 mt-4">
+                <div class="row">
+                    <div class="col">
+                        <div class="md-form">
+                            <label for="Form-name">Car brand</label>
+                            <label id="Form-name" class="form-control">{{carbrand.name}}</label>
+                            <label for="Form-name">Car label</label>
+                            <label id="Form-name" class="form-control">{{carbrand.label}}</label>
+                            <div class="text-center mb-4">
+                                <router-link :to="'/updateCarBrand/'+ carbrand.id"
+                                tag="button"
+                                class="btn btn-info mt-2 btn-block z-depth-2" >Update</router-link>
+                            </div>
+                            <div class="text-center mb-4">
+                                <button
+                                type="button"
+                                class="btn btn-success btn-block z-depth-2"
+                                @click="deleteCarBrand(carbrand.id)"
+                                >Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      carbrands: []           
+    };
+  },
+  methods: {
+
+    deleteCarBrand(id) {
+        axios
+        .delete("/brands/" + id + "/brand")
+    },
+
+    mounted() {
+        console.log("usao");
+        axios
+        .get("/brands")
+        .then(carbrands => {
+            console.log("usao u listu")
+            this.carbrands = carbrands.data;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+  }
+};
+</script>
+
+<style>
+
+</style>
