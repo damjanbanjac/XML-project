@@ -228,7 +228,7 @@ import axios from "axios";
            });
 
         axios
-        .post("/ads/" , this.form)
+        .post("/ads/ads" , this.form)
         .then(form => {
           this.error = form,
           this.idAd = form.data.id,

@@ -9,17 +9,17 @@ services:
 
 
 
-  adsservice:
-    build: ./ads
-    ports:
-      - "8098:8098"
-    tty: true
-    environment:
-      - REGISTRY_HOST=eurekaservice
+#  adsservice:
+#    build: ./ads
+#    ports:
+#      - "8098:8098"
+#    tty: true
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
      # - MYSQL_HOST=users-database
 
-    depends_on:
-      - eurekaservice
+#    depends_on:
+#      - eurekaservice
 
 
 #  maintenanceservice:
@@ -102,7 +102,7 @@ services:
     tty: true
     depends_on:
       - eurekaservice
-      - adsservice
+#      - adsservice
 #      - authservice
 #      - maintenanceservice
 #      - orderservice
