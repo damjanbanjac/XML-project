@@ -21,6 +21,7 @@ public class Agent {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "agent_id_seq")
     private Long id;
 
+    /*
     @OneToMany(fetch = FetchType.EAGER)
-    public List<Order> orders;
+    public List<Order> orders;*/
 }

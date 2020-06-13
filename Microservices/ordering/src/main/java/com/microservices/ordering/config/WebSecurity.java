@@ -1,4 +1,4 @@
-package com.agent.agentapp.config;
+package com.microservices.ordering.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
