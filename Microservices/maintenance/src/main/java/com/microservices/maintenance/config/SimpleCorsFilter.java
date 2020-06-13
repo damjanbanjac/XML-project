@@ -1,6 +1,5 @@
 package com.microservices.maintenance.config;
 
-
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
