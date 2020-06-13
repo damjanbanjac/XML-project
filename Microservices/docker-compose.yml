@@ -16,36 +16,36 @@ services:
     tty: true
     environment:
       - REGISTRY_HOST=eurekaservice
-     # - MYSQL_HOST=users-database
+      - MYSQL_HOST=users-database
 
     depends_on:
       - eurekaservice
 
 
-#  maintenanceservice:
-#    build: ./maintenance
-#    ports:
-#      - "8086:8086"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#      - MYSQL_HOST=users-database
-#
-#    tty: true
-#    depends_on:
-   #   - users-database
-     # - eurekaservice
-
-  orderservice:
-    build: ./ordering
+  maintenanceservice:
+    build: ./maintenance
     ports:
-      - "8089:8089"
+      - "8086:8086"
     environment:
       - REGISTRY_HOST=eurekaservice
       - MYSQL_HOST=users-database
+
     tty: true
     depends_on:
       - users-database
       - eurekaservice
+
+#  orderservice:
+#    build: ./ordering
+#    ports:
+#      - "8089:8089"
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#      - MYSQL_HOST=users-database
+#    tty: true
+#    depends_on:
+#      - users-database
+#      - eurekaservice
 
 #  searchsevice:
 #   build: ./search
@@ -106,6 +106,8 @@ services:
 #      - authservice
 #      - maintenanceservice
       - orderservice
+      - maintenanceservice
+#      - orderservice
 #      - paymentservice
 #      - searchsevice
 

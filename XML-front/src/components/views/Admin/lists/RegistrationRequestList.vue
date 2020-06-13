@@ -31,9 +31,14 @@
         items: [
             { Firstname: 'Lara', Lastname: 'Mimica'},
             
-        ]
+        ],
+        error: ""
       }
+    },
+    methods: {
+
     }
+    
   }
 </script>
 

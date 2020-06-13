@@ -84,7 +84,7 @@
               <button
                 type="button"
                 class="btn btn-info btn-block z-depth-2"
-              
+                @click="newCar()"
               >Add Car</button>
             </div>
           <div v-if="changeButton" >
