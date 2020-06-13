@@ -101,8 +101,10 @@ public class RequestService implements IRequestService {
             Request newRequest= new Request();
             newRequest.setBundle(bundle);
             newRequest.setStatus("PENDING");
-            bundleOrders.add(orderRepositiory.findOneById(order.getId()));
+            Order orderFalse = orderRepositiory.findOneById(order.getId());
+            bundleOrders.add(orderFalse);
             newRequest.setOrderList(bundleOrders);
+            requestRepository.save(newRequest);
             RequestDTO requestDTO = new RequestDTO(newRequest);
 
             return requestDTO;
@@ -137,7 +139,7 @@ public class RequestService implements IRequestService {
 
         for (Request req:requests){
             for(int i=0; i<req.getOrderList().size(); i++) {
-                if (req.getOrderList().get(i).equals(order.getAdCar().getId())){
+                if (req.getOrderList().get(i).getAdCar().getId().equals(order.getAdCar().getId())){
                     Request request1= requestRepository.getOne(req.getId());
                     request1.setStatus("CACELED");
                     requestRepository.save(request1);
@@ -149,4 +151,91 @@ public class RequestService implements IRequestService {
         RequestDTO requestDTO = new RequestDTO(newRequest);
         return  requestDTO;
     }
+
+    @Override
+    public List<RequestDTO> agentRequests(Long agentId) {
+
+        List<Request> requests = requestRepository.findAll();
+        List<RequestDTO> requestsDTO= new ArrayList<>();
+
+        for(Request req:requests){
+            for(int i=0; i<req.getOrderList().size(); i++){
+                if(req.getOrderList().get(i).getAgentIzdao().getId().equals(agentId)){
+                    requestsDTO.add(new RequestDTO(req));
+                }
+            }
+        }
+        return requestsDTO;
+    }
+
+    @Override
+    public RequestDTO acceptRequest(Long idRequest) {
+
+        Request request = requestRepository.findOneById(idRequest);
+        request.setStatus("RESERVED");
+        requestRepository.save(request);
+
+        RequestDTO requestDTO= new RequestDTO(request);
+
+        return requestDTO;
+    }
+
+    @Override
+    public RequestDTO declineRequest(Long idRequest) {
+
+        Request request = requestRepository.findOneById(idRequest);
+        request.setStatus("CANCELED");
+        requestRepository.save(request);
+
+        RequestDTO requestDTO= new RequestDTO(request);
+
+        return requestDTO;
+    }
+
+    @Override
+    public List<RequestDTO> userRequests(Long idUser) {
+
+        List<Request> requets =requestRepository.findAll();
+        List<RequestDTO> requestsDTO= new ArrayList<>();
+
+        for(Request req: requets) {
+            for (int i = 0; i < req.getOrderList().size(); i++) {
+                if (req.getOrderList().get(i).getUserr().getId().equals(idUser)) {
+                    if (req.getStatus().equals("RESERVED")) {
+                        requestsDTO.add(new RequestDTO(req));
+                    }
+                }
+            }
+        }
+        return requestsDTO;
+    }
+
+    @Override
+    public RequestDTO paidRequest(Long idRequest) {
+
+        Request request = requestRepository.findOneById(idRequest);
+        request.setStatus("PAID");
+        requestRepository.save(request);
+
+        List<Request> requests = requestRepository.findAll();
+
+        for(Request req:requests){
+            for (int i = 0; i < req.getOrderList().size(); i++) {
+                for (int j=0; j < request.getOrderList().size(); j++){
+                    if (!req.getId().equals(request.getId()) && req.getOrderList().get(i).getAdCar().getId().equals(request.getOrderList().get(j).getAdCar().getId())) {
+                        Request request1= requestRepository.getOne(req.getId());
+                        request1.setStatus("CANCELED");
+                        requestRepository.save(request1);
+                    }
+
+                }
+            }
+        }
+
+        RequestDTO requestDTO= new RequestDTO(request);
+
+        return requestDTO;
+    }
+
+
 }

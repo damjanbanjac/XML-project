@@ -1,7 +1,10 @@
 package com.microservices.ordering.service.implementation;
 
 import com.microservices.ordering.dto.OrderDTO;
+import com.microservices.ordering.model.AdCar;
+import com.microservices.ordering.model.Agent;
 import com.microservices.ordering.model.Order;
+import com.microservices.ordering.model.Users;
 import com.microservices.ordering.repository.AdCarRepository;
 import com.microservices.ordering.repository.AgentRepository;
 import com.microservices.ordering.repository.OrderRepository;
@@ -43,6 +46,12 @@ public class OrderService implements IOrderService {
     public OrderDTO createOrder(OrderDTO request) {
         Order order = new Order();
 
+        Users user = new Users();
+        userRepository.save(user);
+        AdCar adCar = new AdCar();
+        adCarRepository.save(adCar);
+        Agent agent = new Agent();
+        agentRepository.save(agent);
         order.setAvailableFrom(request.getAvailableFrom());
         order.setAvailableTo(request.getAvailableTo());
         order.setAdCar(adCarRepository.findOneById(request.getAdCar().getId()));

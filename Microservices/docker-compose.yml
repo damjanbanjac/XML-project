@@ -104,6 +104,8 @@ services:
       - eurekaservice
       - adsservice
 #      - authservice
+#      - maintenanceservice
+      - orderservice
       - maintenanceservice
 #      - orderservice
 #      - paymentservice
