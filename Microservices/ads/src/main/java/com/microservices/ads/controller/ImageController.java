@@ -14,6 +14,7 @@ import java.util.List;
 
 @JsonSerialize
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/images")
 public class ImageController {
 

@@ -52,7 +52,7 @@ export default {
   mounted() {
       console.log("usao");
     axios
-      .get("/ads")
+      .get("ads/ads")
       .then(ads => {
           console.log("usao u listu")
         this.ads = ads.data;

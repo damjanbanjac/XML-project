@@ -157,7 +157,7 @@ export default {
   methods: {
       getImage() {
         axios
-      .get("/ads/" + this.$route.params.id + "/image")
+      .get("ads/ads/" + this.$route.params.id + "/image")
       .then(res => {
         console.log("usao uvrati sliku");
         //this.retriveResponse = res;
@@ -184,7 +184,7 @@ export default {
           uploadImageData.append('imageFile', this.selectedFile,this.selectedFile.name);
          // var idAdCar = 5;
         axios
-        .post("/images/" + this.$route.params.id + "/Ad",uploadImageData)
+        .post("ads/images/" + this.$route.params.id + "/Ad",uploadImageData)
         .then(form => {
           this.error = form;
          this.success = false;
@@ -207,7 +207,7 @@ export default {
   mounted() {
     console.log("usao");
     axios
-      .get("/ads/" + this.$route.params.id + "/ad")
+      .get("ads/ads/" + this.$route.params.id + "/ad")
       .then(ad => {
         console.log("usao u then")
         this.form = ad.data;

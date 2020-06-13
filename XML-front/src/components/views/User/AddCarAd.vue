@@ -178,7 +178,7 @@ import axios from "axios";
           uploadImageData.append('imageFile', this.selectedFile,this.selectedFile.name);
          // var idAdCar = 5;
         axios
-        .post("/images/" + this.idAd + "/Ad",uploadImageData)
+        .post("ads/images/" + this.idAd + "/Ad",uploadImageData)
         .then(form => {
           this.error = form;
           this.error = false;
@@ -253,7 +253,7 @@ import axios from "axios";
     },
     mounted() {
     axios
-      .get("/brands")
+      .get("ads/brands")
       .then(brands => {
         this.brands = brands.data;
       })
@@ -262,7 +262,7 @@ import axios from "axios";
       });
 
       axios
-      .get("/models")
+      .get("ads/models")
       .then(models => {
         this.models = models.data;
       })
@@ -271,7 +271,7 @@ import axios from "axios";
       });
 
       axios
-      .get("/classes")
+      .get("ads/classes")
       .then(classes => {
         this.classes = classes.data;
       })
@@ -280,7 +280,7 @@ import axios from "axios";
       });
 
       axios
-      .get("/fuel-types")
+      .get("ads/fuel-types")
       .then(fuels => {
         this.fuels = fuels.data;
       })
@@ -289,7 +289,7 @@ import axios from "axios";
       });
 
        axios
-      .get("/gearshift-types")
+      .get("ads/gearshift-types")
       .then(gears => {
         this.gears = gears.data;
       })
