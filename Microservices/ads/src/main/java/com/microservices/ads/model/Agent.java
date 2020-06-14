@@ -12,17 +12,17 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="CarBrandAd")
-public class CarBrand {
+@Table(name = "AgentAd")
+public class Agent {
 
     @Id
-    @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
+    @SequenceGenerator(name = "agent_id_seq", sequenceName = "agent_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "agent_id_seq")
     private Long id;
 
     private String name;
 
-    private String label;
+    private String address;
 
-    private boolean deleted;
+    private String pib;
 }

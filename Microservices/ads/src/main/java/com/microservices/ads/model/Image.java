@@ -1,6 +1,8 @@
 package com.microservices.ads.model;
 
-import com.microservices.ads.dto.ImageDTO;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.microservices.ads.dto.response.ImageResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +15,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "Image")
 public class Image {
 
     @Id
@@ -20,6 +23,7 @@ public class Image {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "image_id_seq")
     private Long id;
     private String name;
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private AdCar adCar;
 
@@ -28,9 +32,16 @@ public class Image {
     @Lob
     private byte[] pic;
 
-    public Image(ImageDTO imageDTO) {
+    public Image(ImageResponse imageDTO) {
         name = imageDTO.getName();
         type = imageDTO.getType();
         pic = imageDTO.getPic();
+        adCar = imageDTO.getAdCar();
+    }
+
+    public Image(String name, String type, byte[] pic) {
+        this.name =name;
+        this.type = type;
+        this.pic = pic;
     }
 }

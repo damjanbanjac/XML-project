@@ -5,15 +5,17 @@ import lombok.Data;
 
 import java.util.Date;
 
+
+
 @Data
 public class AdCarResponse {
-
-    private long carBrand_id;
-    private long carClass_id;
-    private long userAd;
-    private long carModel_id;
-    private long fuelType_id;
-    private long gearShift_id;
+    private Long id;
+    private CarBrand carBrand_id;
+    private CarClass carClass_id;
+    private User userAd;
+    private CarModel carModel_id;
+    private TypeOfFuel fuelType_id;
+    private TypeOfGearshift gearShift_id;
     private Integer grade;
     private String kmRestriction;
     private Integer kmTraveled;
@@ -21,14 +23,16 @@ public class AdCarResponse {
     private  Integer kidsSeats;
     private Date availableFrom;
     private Date availableTo;
+    private  String city;
 
     public AdCarResponse(AdCar adCar) {
-        carBrand_id = adCar.getCarBrand_id().getId();
-        userAd = adCar.getUserAd().getId();
-        carModel_id = adCar.getCarModel_id().getId();
-//        fuelType_id = adCar.getFuelTypeCar_id().getId();
-      //  gearShift_id = adCar.getGearShiftCar_id().getId();
-        carClass_id = adCar.getCarClass_id().getId();
+        id = adCar.getId();
+        carBrand_id = adCar.getCarBrand_id();
+        //  userAd = adCar.getUserAd().getId();
+        carModel_id = adCar.getCarModel_id();
+        fuelType_id = adCar.getFuelTypeCar_id();
+        gearShift_id = adCar.getGearShiftCar_id();
+        carClass_id = adCar.getCarClass_id();
         grade = adCar.getGrade();
         kmRestriction = adCar.getKmRestriction();
         kmTraveled = adCar.getKmTraveled();
@@ -36,5 +40,6 @@ public class AdCarResponse {
         kidsSeats = adCar.getKidsSeats();
         availableFrom = adCar.getAvailableFrom();
         availableTo = adCar.getAvailableTo();
+        city = adCar.getCity();
     }
 }

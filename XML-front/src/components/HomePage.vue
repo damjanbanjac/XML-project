@@ -23,6 +23,7 @@
                     right
                     >
                     <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
+                     <router-link to="/adsList" tag="b-dropdown-item">AdsList</router-link>
                 </b-nav-item-dropdown>
                 <b-nav-item-dropdown text="Admin maintenance" left>
                     <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
