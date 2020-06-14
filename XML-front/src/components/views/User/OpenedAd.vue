@@ -22,43 +22,51 @@
               <div class="col">
                 <div class="md-form">
                   <label for="Form-carBrand">Car Brand</label>
-                   <input type="text" id="Form-carCity" class="form-control" v-model="form.carBrand_id.name" />
+                   <input type="text" id="Form-carCity" class="form-control" v-model="form.carBrand_id.name" disabled />
 
                   <label for="Form-phone">Car Class</label>
-                    <input type="text" id="Form-carCity" class="form-control" v-model="form.carClass_id.car_class" />
+                    <input type="text" id="Form-carCity" class="form-control" v-model="form.carClass_id.car_class" disabled />
 
                   <label for="Form-email">Car Model</label>
-                    <input type="text" id="Form-carCity" class="form-control" v-model="form.carModel_id.model" />
+                    <input type="text" id="Form-carCity" class="form-control" v-model="form.carModel_id.model" disabled />
 
                   <label for="Form-adresa">City</label>
-                  <input type="text" id="Form-carCity" class="form-control" v-model="form.city" />
+                  <input type="text" id="Form-carCity" class="form-control" v-model="form.city" :disabled="!change" />
 
                   <label for="Form-radnoDo">Available From</label>
-                  <input type="date" id="Form-availableFrom" class="form-control" v-model="form.availableFrom" />
+                  <input type="date" id="Form-availableFrom" class="form-control" v-model="form.availableFrom" :disabled="!change" />
                    <label for="Form-radnoDo">Available To</label>
-                  <input type="date" id="Form-availableTo" class="form-control" v-model="form.availableTo" >
+                  <input type="date" id="Form-availableTo" class="form-control" v-model="form.availableTo" :disabled="!change" >
                 </div>  
               </div>
               <div class="col">
                 <div class="md-form pb-3">
                   <label for="Form-grad">Type of fuel</label>
-                    <input type="text" id="Form-carCity" class="form-control" v-model="form.fuelType_id.type" />
+                    <input type="text" id="Form-carCity" class="form-control" v-model="form.fuelType_id.type" disabled />
                   
 
                   <label for="Form-država">Type of gearshift</label>
-                    <input type="text" id="Form-carCity" class="form-control" v-model="form.gearShift_id.type" />
+                    <input type="text" id="Form-carCity" class="form-control" v-model="form.gearShift_id.type" disabled />
 
                   <label for="Form-br">Kids Seats</label>
-                  <input type="text" id="Form-kidsSeats" class="form-control" v-model="form.kidsSeats" />
+                  <input type="text" id="Form-kidsSeats" class="form-control" v-model="form.kidsSeats" :disabled="!change" />
 
                   <label for="Form-radnoOd">KM restricted</label>
-                  <input type="text" id="Form-restriction" class="form-control" v-model="form.kmRestriction" />
+                  <input type="text" id="Form-restriction" class="form-control" v-model="form.kmRestriction" :disabled="!change" />
 
                   <label for="Form-radnoOd">KM traveled</label>
-                  <input type="text" id="Form-traveled" class="form-control" v-model="form.kmTraveled" />
+                  <input type="text" id="Form-traveled" class="form-control" v-model="form.kmTraveled" :disabled="!change" />
 
                    <label for="Form-radnoOd">CDW</label>
-                  <input type="checkbox" id="Form-cdw" class="form-control" v-model="form.cdw" />
+                  <input type="checkbox" id="Form-cdw" class="form-control" v-model="form.cdw" :disabled="!change" />
+
+                  <template v-if="!change">
+            <button type="button" class="btn btn-danger btn-block z-depth-2" @click="changeClick" >Izmeni</button>
+            </template>
+            <template v-else>
+            <button type="button" class="btn btn-success btn-block z-depth-2" @click ="saveData" >Sačuvaj</button>
+            
+            </template>
 
             <!--      <button
           type="button"
@@ -148,6 +156,7 @@ export default {
         error: '',
          success: false,
       successmessages: "",
+      change: false
    
  
             
@@ -155,6 +164,21 @@ export default {
   },
    
   methods: {
+    saveData() {
+     
+      axios
+      .put("ads/ads/" + this.$route.params.id + "/ad" , this.form)
+      .then(user =>{
+        this.form = user.data;
+        this.change = false;
+      })
+      .catch(error => {
+          console.log(error)
+      });
+    },
+    changeClick() {
+      this.change = true
+    },
       getImage() {
         axios
       .get("ads/ads/" + this.$route.params.id + "/image")
