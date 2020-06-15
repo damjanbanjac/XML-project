@@ -60,21 +60,21 @@ export default {
     deleteCarBrand(id) {
         axios
         .delete("/brands/" + id + "/brand")
-        .then(carbrands => {
-          this.carbrands = carbrands.data;
+        .then(() => {
+          axios
+          .get("/brands")
+          .then(carbrands => {
+              this.carbrands = carbrands.data;
+              console.log(carbrands.data)
+          })
+          .catch(error => {
+              console.log(error);
+          });
         })
         .catch(error => {
           console.log(error);
         });
-        axios
-        .get("/brands")
-        .then(carbrands => {
-            this.carbrands = carbrands.data;
-            console.log(carbrands.data)
-        })
-        .catch(error => {
-            console.log(error);
-        });
+        
     },
   },
 

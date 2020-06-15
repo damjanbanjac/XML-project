@@ -58,16 +58,19 @@ export default {
     deleteGearshiftType(id) {
         axios
         .delete("/gearshift-types/" + id + "/gearshift-type")
-        axios
-        .get("/gearshift-types")
-        .then(gearshifttypes => {
-            console.log("usao u listu")
-            this.gearshifttypes = gearshifttypes.data;
+        .then(() => {
+          axios
+          .get("/gearshift-types")
+          .then(gearshifttypes => {
+              this.gearshifttypes = gearshifttypes.data;
+          })
+          .catch(error => {
+              console.log(error);
+          });
         })
         .catch(error => {
-            console.log(error);
+          console.log(error);
         });
-        // location.reload();
     },
   },
 
