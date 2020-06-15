@@ -1,36 +1,37 @@
 package com.agent.agentapp.entity;
 
-
+import com.agent.agentapp.utils.OrderRequestState;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "Users")
-@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
+public class Order {
 
-public class User {
     @Id
     @SequenceGenerator(name = "users_id", sequenceName = "users_id", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id")
     private Long id;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    private String email;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ad_car_id")
+    private AdCar adCar;
 
-    private Boolean blocked;
+    private boolean deleted;
 
-    private Boolean active;
+    @Enumerated(EnumType.STRING)
+    private OrderRequestState state;
 
+    private boolean usingTimeUp;
 }
