@@ -55,6 +55,10 @@
                 
                 </b-nav-item-dropdown>
 
+                <b-nav-item-dropdown text="Ordering" left>
+                    <router-link to="/adCarListOrder" tag="b-dropdown-item">Ads</router-link>
+                </b-nav-item-dropdown>
+
                 <router-link to="/agentRegistration" tag="b-nav-item">Agent registration</router-link>
             
         </b-navbar-nav>

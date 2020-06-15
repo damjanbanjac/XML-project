@@ -1,5 +1,6 @@
 package com.microservices.ordering.service.implementation;
 
+import com.microservices.ordering.dto.AdCarDTO;
 import com.microservices.ordering.dto.OrderDTO;
 import com.microservices.ordering.model.AdCar;
 import com.microservices.ordering.model.Agent;
@@ -46,12 +47,7 @@ public class OrderService implements IOrderService {
     public OrderDTO createOrder(OrderDTO request) {
         Order order = new Order();
 
-        Users user = new Users();
-        userRepository.save(user);
-        AdCar adCar = new AdCar();
-        adCarRepository.save(adCar);
-        Agent agent = new Agent();
-        agentRepository.save(agent);
+
         order.setAvailableFrom(request.getAvailableFrom());
         order.setAvailableTo(request.getAvailableTo());
         order.setAdCar(adCarRepository.findOneById(request.getAdCar().getId()));
@@ -81,5 +77,36 @@ public class OrderService implements IOrderService {
         }
 
         return ordersOfUser;
+    }
+
+    @Override
+    public OrderDTO createPotrebno() {
+
+        Users user = new Users();
+        userRepository.save(user);
+        Users user1 = new Users();
+        userRepository.save(user1);
+        Agent agent = new Agent();
+        agentRepository.save(agent);
+        AdCar adCar = new AdCar();
+        adCar.setAgentIzdaoAd(agentRepository.findOneById(agent.getId()));
+        adCar.setUserIzdavaoAd((null));
+        adCarRepository.save(adCar);
+
+        return null;
+    }
+
+    @Override
+    public List<AdCarDTO> getAllOglasi() {
+
+        List<AdCarDTO> oglasiDTO= new ArrayList<>();
+        List<AdCar> oglasi=adCarRepository.findAll();
+
+        for(AdCar oglas: oglasi){
+            oglasiDTO.add(new AdCarDTO(oglas));
+
+        }
+        
+        return oglasiDTO;
     }
 }

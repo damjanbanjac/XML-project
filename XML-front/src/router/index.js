@@ -29,6 +29,8 @@ import CarModelList from '../components/views/Admin/lists/CarModelList.vue'
 import FuelTypeList from '../components/views/Admin/lists/FuelTypeList.vue'
 import GearshiftTypeList from '../components/views/Admin/lists/GearshiftTypeList.vue'
 
+import AdCarListOrder from '../components/views/Order/AdCarListOrder.vue'
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -215,6 +217,14 @@ const routes = [
     path: '/updateTypeOfGearshift/:id',
     name: 'update-type-of-gearshift',
     component: UpdateTypeOfGearshift,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/adCarListOrder',
+    name: 'ad-car-list-order',
+    component: AdCarListOrder,
     meta: {
       requiresAuth: true
     }
