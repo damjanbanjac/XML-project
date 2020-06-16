@@ -7,3 +7,5 @@ INSERT INTO `services`.`car_model_ad` (`id`,`deleted`, `model`) VALUES ('1',fals
 INSERT INTO `services`.`type_of_fuel_ad` (`id`,`deleted`, `type`) VALUES ('1',false,'dizel');
 
 INSERT INTO `services`.`type_of_gearshift_ad` (`id`,`deleted`, `type`) VALUES ('1',false,'manuel');
+
+INSERT INTO `services`.`agent_ad` (`id`,`name`, `address`,`pib`) VALUES ('1','damjan','janka','123A');
