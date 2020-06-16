@@ -58,6 +58,8 @@ public class AuthenticationController {
         User user = (User) authentication.getPrincipal();
         User subject = userService.findOne(user.getId());
         System.out.println(subject.getId());
+        System.out.println(subject.getAuthorities().toArray());
+
         if (subject == null) {
             Collection<?> roles = user.getAuthorities();
             String jwt = tokenUtils.generateToken(user, (Authority) roles.iterator().next());

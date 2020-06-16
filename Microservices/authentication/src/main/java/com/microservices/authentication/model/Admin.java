@@ -16,6 +16,5 @@ import javax.persistence.Table;
 
 @AllArgsConstructor
 @Table(name = "AdminAuth")
-@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
 public class Admin extends  User {
 }

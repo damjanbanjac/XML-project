@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "AgentAuth")
-@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
 public class Agent extends User {
 
     private String address;

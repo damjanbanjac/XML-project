@@ -1,6 +1,6 @@
-May 26, 2020 4:48:28 PM com.microservices.authentication.service.UserService createLogFileSuccess
+Jun 17, 2020 1:27:39 AM com.microservices.authentication.service.UserService createLogFileSuccess
 INFO: type: SUCCESS
-May 26, 2020 4:48:28 PM com.microservices.authentication.service.UserService createLogFileSuccess
-INFO: userdamjanbanjac@gmail.com
-May 26, 2020 4:48:28 PM com.microservices.authentication.service.UserService createLogFileSuccess
+Jun 17, 2020 1:27:39 AM com.microservices.authentication.service.UserService createLogFileSuccess
+INFO: userbole@gmail.com
+Jun 17, 2020 1:27:39 AM com.microservices.authentication.service.UserService createLogFileSuccess
 INFO: messages: Register success by user
