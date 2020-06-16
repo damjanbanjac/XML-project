@@ -86,7 +86,7 @@ import VueJwtDecode from "vue-jwt-decode";
         // console.log(this.user.email + "" + this.user.password)
 
         axios
-        .post("/auth/login", this.user)
+        .post("auth/auth/login", this.user)
         .then(response => {
           this.user.email = "";
           this.user.password = "";

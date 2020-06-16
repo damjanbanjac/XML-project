@@ -9,6 +9,10 @@ import AddCarAd from '../components/views/User/AddCarAd.vue'
 import AdsList from '../components/views/User/AdsList.vue'
 import OpenedAd from '../components/views/User/OpenedAd.vue'
 
+import NewAd from '../components/views/Agent/NewAd.vue'
+import AgentAdList from '../components/views/Agent/AgentAdList.vue'
+import MakeReport from '../components/views/Agent/MakeReport.vue'
+
 import AgentRegistrationForm from '../components/views/Admin/AgentRegistrationForm.vue'
 
 import AddCarBrand from '../components/views/Admin/add/AddCarBrand.vue'
@@ -78,6 +82,30 @@ const routes = [
     path: '/addCarAd',
     name: 'add-car-ad',
     component: AddCarAd,
+    meta: {
+      requiresAuth: true
+    } 
+  },
+  {
+    path: '/newAd',
+    name: 'new-ad',
+    component: NewAd,
+    meta: {
+      requiresAuth: true
+    } 
+  },
+  {
+    path: '/agentAdList',
+    name: 'agent-ad-list',
+    component: AgentAdList,
+    meta: {
+      requiresAuth: true
+    } 
+  },
+  {
+    path: '/makeReport',
+    name: 'make-report',
+    component: MakeReport,
     meta: {
       requiresAuth: true
     } 
