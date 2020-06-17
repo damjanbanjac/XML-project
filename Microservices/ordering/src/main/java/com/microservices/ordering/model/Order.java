@@ -38,7 +38,7 @@ public class Order {
     //koji agent je izdao oglas
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Agent agentIzdao;
-    /*
+/*
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Request request;*/
 }

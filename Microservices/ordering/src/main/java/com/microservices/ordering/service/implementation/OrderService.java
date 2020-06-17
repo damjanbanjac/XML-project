@@ -47,13 +47,13 @@ public class OrderService implements IOrderService {
     public OrderDTO createOrder(OrderDTO request) {
         Order order = new Order();
 
-
+        System.out.println(request.getAdCar().getId());
         order.setAvailableFrom(request.getAvailableFrom());
         order.setAvailableTo(request.getAvailableTo());
         order.setAdCar(adCarRepository.findOneById(request.getAdCar().getId()));
-        order.setUserr(userRepository.findOneById(request.getUser().getId()));
-        order.setUserIzdavao(userRepository.findOneById(request.getUserIzdao().getId()));
-        order.setAgentIzdao(agentRepository.findOneById(request.getAgentIzdao().getId()));
+        order.setUserr(userRepository.findOneById(1));
+        order.setUserIzdavao(userRepository.findOneById(request.getAdCar().getUserIzdavaoAd().getId()));
+        order.setAgentIzdao(agentRepository.findOneById(request.getAdCar().getAgentIzdaoAd().getId()));
 
         orderRepositiory.save(order);
 
@@ -90,7 +90,7 @@ public class OrderService implements IOrderService {
         agentRepository.save(agent);
         AdCar adCar = new AdCar();
         adCar.setAgentIzdaoAd(agentRepository.findOneById(agent.getId()));
-        adCar.setUserIzdavaoAd((null));
+        adCar.setUserIzdavaoAd((userRepository.findOneById(user1.getId())));
         adCarRepository.save(adCar);
 
         return null;
@@ -108,5 +108,19 @@ public class OrderService implements IOrderService {
         }
         
         return oglasiDTO;
+    }
+
+    @Override
+    public List<AdCarDTO> getAgentsAds(Long agentId) {
+
+        List<AdCar> ads= adCarRepository.findAll();
+        List<AdCarDTO> adsDTO= new ArrayList<>();
+
+        for(AdCar ad:ads){
+            if(ad.getAgentIzdaoAd().getId().equals(agentId)){
+                adsDTO.add(new AdCarDTO(ad));
+            }
+        }
+        return adsDTO;
     }
 }

@@ -1,5 +1,5 @@
 <template>
-<div>
+  <div>
   <div class="container d-flex justify-content-center" style="margin-top: 20px">
     <!--Form with header-->
     <div class="card" style="width: 60%">
@@ -71,7 +71,7 @@
                   <button
                     type="button"
                     class="btn btn-danger btn-block z-depth-2"
-                  @click="naruci()">Add to bag</button>
+                  @click="go()">Gogo</button>
                 </div>
               </div>
             </div>
@@ -85,14 +85,12 @@
     
   </div>
 </div>
-    
-
 </template>
 
 <script>
 import axios from "axios";
 export default {
-  data() {
+    data() {
     return {
       oglasi: [],
       prepare: false,
@@ -109,10 +107,10 @@ export default {
       this.prepare = true;
       this.order.adCar = oglas;
     },
-    naruci(){
+    go(){
       console.log(this.order)
       axios
-          .post("/order/orders", this.order)
+          .post("/order/requests/personally", this.order)
           .then(response => {
             this.order= response.data;
             this.prepare = false;
@@ -122,9 +120,9 @@ export default {
           });
     },
   },
-   mounted() {
+  mounted() {
     axios
-      .get("/order/orders/oglasi")
+      .get("/order/orders/oglasi/"+1)
       .then(oglasi => {
         this.oglasi = oglasi.data;
         
@@ -133,7 +131,7 @@ export default {
         console.log(error);
       });
    }
-};
+}
 </script>
 
 <style>

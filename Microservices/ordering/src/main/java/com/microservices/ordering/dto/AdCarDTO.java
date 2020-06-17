@@ -4,13 +4,13 @@ import com.microservices.ordering.model.AdCar;
 import com.microservices.ordering.model.Agent;
 import com.microservices.ordering.model.Order;
 import com.microservices.ordering.model.Users;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class AdCarDTO {
 
     private Long id;
