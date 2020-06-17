@@ -61,4 +61,7 @@ public class AdCar {
     @OneToMany(mappedBy = "adCar", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Grade> grades = new ArrayList<>();
 
+    @OneToMany(mappedBy = "adCar", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
+
 }

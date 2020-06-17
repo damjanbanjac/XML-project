@@ -44,7 +44,7 @@ public class GradeService implements IGradeService {
         for (Order o: adCar.getOrders()) {
             if(o.getUser() == user && o.isUsingTimeUp()) {
                 order = o;
-                return;
+                break;
             }
         }
 
