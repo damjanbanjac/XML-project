@@ -1,5 +1,7 @@
 package com.agent.agentapp.controller;
 
+import com.agent.agentapp.dto.request.ApproveCommentRequest;
+import com.agent.agentapp.dto.request.DenyCommentRequest;
 import com.agent.agentapp.dto.response.CommentResponse;
 import com.agent.agentapp.service.IAdminService;
 import org.springframework.web.bind.annotation.*;
@@ -36,11 +38,11 @@ public class AdminController {
         _adminService.deactivateUser(id);
     }
 
-    @PutMapping("/approve/{id}/comment")
-    public void approveComment(@PathVariable Long id) { _adminService.approveComment(id); }
+    @PutMapping("/approve/comment")
+    public void approveComment(@RequestBody ApproveCommentRequest id) { _adminService.approveComment(id); }
 
-    @PutMapping("/deny/{id}/comment")
-    public void denyComment(@PathVariable Long id) { _adminService.denyComment(id); }
+    @PutMapping("/deny/comment")
+    public void denyComment(@RequestBody DenyCommentRequest id) { _adminService.denyComment(id); }
 
 
 }

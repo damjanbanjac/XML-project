@@ -1,7 +1,9 @@
 package com.agent.agentapp.service;
 
 
+import com.agent.agentapp.dto.request.ApproveCommentRequest;
 import com.agent.agentapp.dto.request.CreateAdminRequest;
+import com.agent.agentapp.dto.request.DenyCommentRequest;
 import com.agent.agentapp.dto.request.UpdateAdminRequest;
 import com.agent.agentapp.dto.response.AdminResponse;
 import com.agent.agentapp.dto.response.CommentResponse;
@@ -30,7 +32,7 @@ public interface IAdminService {
 
     List<CommentResponse> getAllPendingComments();
 
-    void approveComment(Long id);
+    void approveComment(ApproveCommentRequest request);
 
-    void denyComment(Long id);
+    void denyComment(DenyCommentRequest request);
 }

@@ -1,6 +1,8 @@
 package com.agent.agentapp.service.implementation;
 
+import com.agent.agentapp.dto.request.ApproveCommentRequest;
 import com.agent.agentapp.dto.request.CreateAdminRequest;
+import com.agent.agentapp.dto.request.DenyCommentRequest;
 import com.agent.agentapp.dto.request.UpdateAdminRequest;
 import com.agent.agentapp.dto.response.AdminResponse;
 import com.agent.agentapp.dto.response.CommentResponse;
@@ -103,15 +105,15 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public void approveComment(Long id) {
-        Comment comment = _commentRepository.findOneById(id);
+    public void approveComment(ApproveCommentRequest request) {
+        Comment comment = _commentRepository.findOneById(request.getId());
         comment.setState(CommentRequestState.APPROVED);
         _commentRepository.save(comment);
     }
 
     @Override
-    public void denyComment(Long id) {
-        Comment comment = _commentRepository.findOneById(id);
+    public void denyComment(DenyCommentRequest request) {
+        Comment comment = _commentRepository.findOneById(request.getId());
         comment.setState(CommentRequestState.DENIED);
         _commentRepository.save(comment);
     }
