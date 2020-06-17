@@ -35,4 +35,10 @@ public class AdminController {
     public void deactivateUser(@PathVariable Long id) {
         _adminService.deactivateUser(id);
     }
+
+    @PutMapping("/approve/{id}/comment")
+    public void approveComment(@PathVariable Long id) { _adminService.approveComment(id); }
+
+    @PutMapping("/deny/{id}/comment")
+    public void denyComment(@PathVariable Long id) { _adminService.denyComment(id); }
 }
