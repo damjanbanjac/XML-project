@@ -1,8 +1,9 @@
-package com.microservices.search.service;
+package com.microservices.search.service.implementation;
 
 import com.microservices.search.dto.SearchAdDTO;
 import com.microservices.search.model.*;
 import com.microservices.search.repository.*;
+import com.microservices.search.service.ISearchAdService;
 import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,19 +21,19 @@ public class SearchAdService implements ISearchAdService {
     private SearchAdRepository searchAdRepository;
 
     @Autowired
-    private CarBrandRepository carBrandRepository;
+    private ICarBrandRepository carBrandRepository;
 
     @Autowired
-    private CarModelRepository carModelRepository;
+    private ICarModelRepository carModelRepository;
 
     @Autowired
-    private CarClassRepository carClassRepository;
+    private ICarClassRepository carClassRepository;
 
     @Autowired
-    private FuelTypeRepository fuelTypeRepository;
+    private IFuelTypeRepository fuelTypeRepository;
 
     @Autowired
-    private GearShiftTypeRepository gearShiftTypeRepository;
+    private IGearShiftTypeRepository gearShiftTypeRepository;
 
     @Override
     public List<SearchAdDTO> getAllSearchAds() {
@@ -76,15 +77,17 @@ public class SearchAdService implements ISearchAdService {
 
         SearchAd searchAd = new SearchAd();
 
-        CarBrand cb = new CarBrand((long) 1,null);
+        CarBrand cb = new CarBrand((long) 1, "Merzedes", "labela", false);
         carBrandRepository.save(cb);
-        CarModel cm = new CarModel((long) 2, null);
+        CarBrand cba = new CarBrand((long) 2, "Merzedes", "labela", false);
+        carBrandRepository.save(cba);
+        CarModel cm = new CarModel((long) 2, "CLio", false);
         carModelRepository.save(cm);
-        CarClass cc = new CarClass((long) 3, null);
+        CarClass cc = new CarClass((long) 3, "Karavan", false);
         carClassRepository.save(cc);
-        FuelType tf = new FuelType((long) 4, null);
+        FuelType tf = new FuelType((long) 4, "Dizel", false);
         fuelTypeRepository.save(tf);
-        GearShiftType tg = new GearShiftType((long) 5, null);
+        GearShiftType tg = new GearShiftType((long) 5, "Manual", false);
         gearShiftTypeRepository.save(tg);
 
         searchAd.setId(searchAdDTO.getId());

@@ -21,8 +21,8 @@ public class GearShiftType {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
     private Long id;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "gearShiftType")
-    private List<SearchAd> adList;
+    private String type;
+
+    private boolean deleted;
 }
 
