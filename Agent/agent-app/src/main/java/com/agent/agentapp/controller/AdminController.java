@@ -1,10 +1,10 @@
 package com.agent.agentapp.controller;
 
+import com.agent.agentapp.dto.response.CommentResponse;
 import com.agent.agentapp.service.IAdminService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/admins")
@@ -41,4 +41,6 @@ public class AdminController {
 
     @PutMapping("/deny/{id}/comment")
     public void denyComment(@PathVariable Long id) { _adminService.denyComment(id); }
+
+
 }

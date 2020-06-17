@@ -12,10 +12,12 @@ import com.agent.agentapp.repository.IOrderRepository;
 import com.agent.agentapp.repository.IUserRepository;
 import com.agent.agentapp.service.ICommentService;
 import com.agent.agentapp.utils.CommentRequestState;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class CommentService implements ICommentService {
 
     private final AdCarRepository _adCarRepository;
