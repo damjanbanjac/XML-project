@@ -58,7 +58,7 @@ public class AdCar {
     private Date availableTo;
     private String city;
 
-    @OneToMany(mappedBy = "adCar", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "adCar_id", cascade = CascadeType.DETACH, orphanRemoval = true)
     private List<Order> orders = new ArrayList<>();
 
     @OneToMany(mappedBy = "adCar", cascade = CascadeType.ALL, orphanRemoval = true)

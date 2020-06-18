@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import NewAd from '../components/Ad/NewAd.vue'
-import OpenedAd from '../components/Ad/OpenedAd.vue'
+import NewAd from '../components/Agent/Ad/NewAd.vue'
+import OpenedAd from '../components/Agent/Ad/OpenedAd.vue'
 
-import AdsList from '../components/Ad/AdsList.vue'
+import MakeReport from '../components/Agent/Ad/MakeReport.vue'
+
+import AdsList from '../components/Agent/Ad/AdsList.vue'
 
 import AgentRegistrationForm from '../components/views/Admin/AgentRegistrationForm.vue'
 
@@ -40,6 +42,11 @@ const routes = [
         path: '/adsList',
         name: 'ads-list',
         component: AdsList
+      },
+      {
+        path: '/makeReport',
+        name: 'make-riport',
+        component: MakeReport
       },
       {
         path: '/openedAd/:id',

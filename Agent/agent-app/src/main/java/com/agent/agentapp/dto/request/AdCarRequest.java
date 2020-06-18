@@ -23,5 +23,5 @@ public class AdCarRequest {
     private  Integer kidsSeats;
     private Date availableFrom;
     private Date availableTo;
-    private String sity;
+    private String city;
 }
