@@ -48,7 +48,7 @@ public class CommentService implements ICommentService {
         }
         Order order = null;
         for (Order o: allOrders) {
-            if(o.getAdCar()==adCar) {
+            if(o.getAdCar_id()==adCar) {
                 order = o;
                 break;
             }

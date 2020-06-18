@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name="OrderAd")
 public class Order {
 
     @Id
@@ -20,13 +21,13 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ad_car_id")
-    private AdCar adCar;
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ad_car")
+    private AdCar adCar_id;
 
     private boolean deleted;
 

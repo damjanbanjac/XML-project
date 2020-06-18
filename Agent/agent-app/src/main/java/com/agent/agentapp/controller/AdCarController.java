@@ -40,6 +40,11 @@ public class AdCarController {
         return adsCarService.createAdAgent(request,id);
     }
 
+    @GetMapping("/{id}/agent")
+    public List<AdCarResponse> getAllAdsFromAgent(@PathVariable long id) throws Exception{
+        return adsCarService.getAllAdsAgent(id);
+    }
+
     @PutMapping("/{id}/ad")
     public AdCarResponse updateAd(@RequestBody AdCarRequest request, @PathVariable long id) throws Exception{
         return adsCarService.updateAd(request, id);
@@ -57,6 +62,11 @@ public class AdCarController {
     @GetMapping
     public List<AdCarResponse> getAllAds() throws Exception{
         return adsCarService.getAllAds();
+    }
+
+    @GetMapping("report/{id}/ad")
+    public List<AdCarResponse> getAllAdsForReport(@PathVariable long id) throws Exception{
+        return adsCarService.getAllAdsForReport(id);
     }
 
     @GetMapping("/{id}/image")
