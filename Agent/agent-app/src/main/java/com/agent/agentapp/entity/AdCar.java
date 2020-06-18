@@ -25,6 +25,9 @@ public class AdCar {
     private Long id;
 
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private Agent AgentAd;
+
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private User userAd;
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)

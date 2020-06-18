@@ -34,6 +34,12 @@ public class AdCarController {
         return adsCarService.createAd(request);
     }
 
+
+    @PostMapping("/{id}/agent")
+    public AdCarResponse addAdAgent(@RequestBody AdCarRequest request,@PathVariable long id) throws Exception{
+        return adsCarService.createAdAgent(request,id);
+    }
+
     @PutMapping("/{id}/ad")
     public AdCarResponse updateAd(@RequestBody AdCarRequest request, @PathVariable long id) throws Exception{
         return adsCarService.updateAd(request, id);

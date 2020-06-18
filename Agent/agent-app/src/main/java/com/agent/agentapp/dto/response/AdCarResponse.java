@@ -11,6 +11,7 @@ public class AdCarResponse {
     private CarBrand carBrand_id;
     private CarClass carClass_id;
     private User userAd;
+    private Agent agentAd;
     private CarModel carModel_id;
     private TypeOfFuel fuelType_id;
     private TypeOfGearshift gearShift_id;
@@ -27,6 +28,7 @@ public class AdCarResponse {
         id = adCar.getId();
         carBrand_id = adCar.getCarBrand_id();
       //  userAd = adCar.getUserAd().getId();
+        agentAd = adCar.getAgentAd();
         carModel_id = adCar.getCarModel_id();
         fuelType_id = adCar.getFuelTypeCar_id();
         gearShift_id = adCar.getGearShiftCar_id();
