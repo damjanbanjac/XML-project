@@ -52,6 +52,8 @@ export default {
             sortable: true},
              {key: 'city',
             sortable: true},
+            {key: 'kmTraveled',
+            sortable: true},
             
         ],
 
