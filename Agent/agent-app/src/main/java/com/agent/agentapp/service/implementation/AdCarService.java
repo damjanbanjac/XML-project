@@ -103,11 +103,11 @@ public class AdCarService implements IAdCarService {
 
         List<AdCar> adCarList = adCarRepository.findAll();
 
-        for (AdCar ad: adCarList) {
+       /* for (AdCar ad: adCarList) {
             if(ad.getUserAd().getId().equals(request.getUserAd()) && ad.getUserAd() != null ) {
 
             }
-        }
+        } */
 
 
 
