@@ -3,6 +3,8 @@ package com.agent.agentapp.dto.response;
 import com.agent.agentapp.entity.*;
 import lombok.Data;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Data
@@ -20,8 +22,8 @@ public class AdCarResponse {
     private Integer kmTraveled;
     private Boolean cdw;
     private  Integer kidsSeats;
-    private Date availableFrom;
-    private Date availableTo;
+    private String availableFrom;
+    private String availableTo;
     private  String city;
 
     public AdCarResponse(AdCar adCar) {
@@ -38,8 +40,11 @@ public class AdCarResponse {
         kmTraveled = adCar.getKmTraveled();
         cdw = adCar.getCdw();
         kidsSeats = adCar.getKidsSeats();
-        availableFrom = adCar.getAvailableFrom();
-        availableTo = adCar.getAvailableTo();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate = dateFormat.format(adCar.getAvailableFrom());
+        String strDate2 = dateFormat.format(adCar.getAvailableTo());
+        availableFrom = strDate;
+        availableTo = strDate2;
         city = adCar.getCity();
     }
 }
