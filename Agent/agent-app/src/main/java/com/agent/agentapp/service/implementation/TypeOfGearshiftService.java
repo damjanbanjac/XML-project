@@ -26,7 +26,7 @@ public class TypeOfGearshiftService implements ITypeOfGearshiftService {
 
         TypeOfGearshiftResponse typeOfGearshiftResponse = new TypeOfGearshiftResponse();
         typeOfGearshiftResponse.setId(typeOfGearshift.getId());
-        typeOfGearshiftResponse.setType(typeOfGearshiftResponse.getType());
+        typeOfGearshiftResponse.setType(typeOfGearshift.getType());
 
         return typeOfGearshiftResponse;
     }

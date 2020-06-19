@@ -58,14 +58,18 @@ export default {
     deleteCarClass(id) {
         axios
         .delete("/classes/" + id + "/class")
-        axios
-        .get("/classes")
-        .then(carclasses => {
-            console.log("usao u listu")
-            this.carclasses = carclasses.data;
+        .then(() => {
+          axios
+          .get("/classes")
+          .then(carclasses => {
+              this.carclasses = carclasses.data;
+          })
+          .catch(error => {
+              console.log(error);
+          });
         })
         .catch(error => {
-            console.log(error);
+          console.log(error);
         });
     },
 

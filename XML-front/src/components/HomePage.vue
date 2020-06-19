@@ -23,6 +23,19 @@
                     right
                     >
                     <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
+                     <router-link to="/adsList" tag="b-dropdown-item">Ads List</router-link>
+                     
+                </b-nav-item-dropdown>
+                 <b-nav-item-dropdown
+                    id="my-nav-dropdown"
+                    text="Agent"
+                    toggle-class="nav-link-custom"
+                    right
+                    >
+                    <router-link  to="/newAd" tag="b-dropdown-item">Add Car</router-link>
+                    <router-link  to="/agentAdList" tag="b-dropdown-item">Ad List</router-link>
+                     <router-link to="/makeReport" tag="b-dropdown-item">Make Report</router-link>
+                    
                 </b-nav-item-dropdown>
                 <b-nav-item-dropdown text="Admin maintenance" left>
                     <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
@@ -55,6 +68,7 @@
                 
                 </b-nav-item-dropdown>
 
+<<<<<<< HEAD
                 <b-nav-item-dropdown text="Ordering" left>
                     <router-link to="/adCarListOrder" tag="b-dropdown-item">Ads</router-link>
                     <router-link to="/bag" tag="b-dropdown-item">User bag</router-link>
@@ -64,6 +78,9 @@
                 </b-nav-item-dropdown>
 
                 <router-link to="/agentRegistration" tag="b-nav-item">Agent registration</router-link>
+=======
+                <router-link to="/clientRegistration" tag="b-nav-item">Agent registration</router-link>
+>>>>>>> origin/master
             
         </b-navbar-nav>
         </b-collapse>

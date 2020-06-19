@@ -58,14 +58,18 @@ export default {
     deleteCarModel(id) {
         axios
         .delete("/models/" + id + "/model")
-        axios
-        .get("/models")
-        .then(carmodels => {
-            console.log("usao u listu")
-            this.carmodels = carmodels.data;
+        .then(() => {
+          axios
+          .get("/models")
+          .then(carmodels => {
+              this.carmodels = carmodels.data;
+          })
+          .catch(error => {
+              console.log(error);
+          });
         })
         .catch(error => {
-            console.log(error);
+          console.log(error);
         });
     },
   },

@@ -58,14 +58,18 @@ export default {
     deleteFuelType(id) {
         axios
         .delete("/fuel-types/" + id + "/fuel-type")
-        axios
-        .get("/fuel-types")
-        .then(fueltypes => {
-            console.log("usao u listu")
-            this.fueltypes = fueltypes.data;
+        .then(() => {
+          axios
+          .get("/fuel-types")
+          .then(fueltypes => {
+              this.fueltypes = fueltypes.data;
+          })
+          .catch(error => {
+              console.log(error);
+          });
         })
         .catch(error => {
-            console.log(error);
+          console.log(error);
         });
     },
   },

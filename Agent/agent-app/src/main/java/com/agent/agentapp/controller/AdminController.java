@@ -1,10 +1,12 @@
 package com.agent.agentapp.controller;
 
+import com.agent.agentapp.dto.request.ApproveCommentRequest;
+import com.agent.agentapp.dto.request.DenyCommentRequest;
+import com.agent.agentapp.dto.response.CommentResponse;
 import com.agent.agentapp.service.IAdminService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/admins")
@@ -35,4 +37,12 @@ public class AdminController {
     public void deactivateUser(@PathVariable Long id) {
         _adminService.deactivateUser(id);
     }
+
+    @PutMapping("/approve/comment")
+    public void approveComment(@RequestBody ApproveCommentRequest id) { _adminService.approveComment(id); }
+
+    @PutMapping("/deny/comment")
+    public void denyComment(@RequestBody DenyCommentRequest id) { _adminService.denyComment(id); }
+
+
 }

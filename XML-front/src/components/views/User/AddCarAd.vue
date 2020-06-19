@@ -29,13 +29,31 @@
               <div class="col">
                 <div class="md-form">
                   <label for="Form-carBrand">Car Brand</label>
-                  <input type="text" id="Form-carBrand" class="form-control" v-model="form.carBrand" />
+                  <b-form-select v-model="selectedBrand">
+                    <option
+                      v-for="brand in brands"
+                      :value="brand.id"
+                      :key="brand.id"
+                    >{{brand.name}}</option>
+                  </b-form-select>
 
                   <label for="Form-phone">Car Class</label>
-                  <input type="text" id="Form-carClass" class="form-control" v-model="form.carClass" />
+                  <b-form-select v-model="selectedClass">
+                    <option
+                      v-for="clas in classes"
+                      :value="clas.id"
+                      :key="clas.id"
+                    >{{clas.car_class}}</option>
+                  </b-form-select>
 
                   <label for="Form-email">Car Model</label>
-                  <input type="text" id="Form-carModel" class="form-control" v-model="form.carModel" />
+                   <b-form-select v-model="selectedModel">
+                    <option
+                      v-for="model in models"
+                      :value="model.id"
+                      :key="model.id"
+                    >{{model.model}}</option>
+                  </b-form-select>
 
                   <label for="Form-adresa">City</label>
                   <input type="text" id="Form-carCity" class="form-control" v-model="form.city" />
@@ -49,10 +67,22 @@
               <div class="col">
                 <div class="md-form pb-3">
                   <label for="Form-grad">Type of fuel</label>
-                  <input type="text" id="Form-fuel" class="form-control" v-model="form.fuelType" />
+                   <b-form-select v-model="selectedFuel">
+                    <option
+                      v-for="fuel in fuels"
+                      :value="fuel.id"
+                      :key="fuel.id"
+                    >{{fuel.type}}</option>
+                  </b-form-select>
 
                   <label for="Form-država">Type of gearshift</label>
-                  <input type="text" id="Form-gearshift" class="form-control" v-model="form.typeOfGearshift" />
+                   <b-form-select v-model="selectedGear">
+                    <option
+                      v-for="gear in gears"
+                      :value="gear.id"
+                      :key="gear.id"
+                    >{{gear.type}}</option>
+                  </b-form-select>
 
                   <label for="Form-br">Kids Seats</label>
                   <input type="text" id="Form-kidsSeats" class="form-control" v-model="form.kidsSeats" />
@@ -61,19 +91,12 @@
                   <input type="text" id="Form-restriction" class="form-control" v-model="form.kmRestriction" />
 
                   <label for="Form-radnoOd">KM traveled</label>
-                  <input type="text" id="Form-traveled" class="form-control" v-model="form.traveled" />
+                  <input type="text" id="Form-traveled" class="form-control" v-model="form.kmTraveled" />
 
                    <label for="Form-radnoOd">CDW</label>
                   <input type="checkbox" id="Form-cdw" class="form-control" v-model="form.cdw" />
 
-               <!--   <label for="Form-klinika">Tipovi pregleda</label>
-                  <b-form-select v-model="selektovaniTip">
-                    <option
-                      v-for="tip in tipoviPregleda"
-                      :value="tip.id"
-                      :key="tip.id"
-                    >{{tip.naziv}}</option>
-                  </b-form-select> -->
+           
                 </div>
               </div>
             </div>
@@ -87,12 +110,12 @@
                 @click="newCar()"
               >Add Car</button>
             </div>
-          <div v-if="changeButton" >
-              <input style="display:none" ref="fileInput" type="file" @change="onFileSelected()"/>
+          <div  v-if="changeButton" >
+              <input style="display:none" ref="fileInput" type="file" @change="onFileSelected($event)"/>
               <button type="button"
                 class="btn btn-info btn-block z-depth-2" @click="$refs.fileInput.click()">Choose image</button>
               <button type="button"
-                class="btn btn-outline-info btn-block z-depth-2" @click="uploadImages()">Upload Image</button>
+                class="btn btn-outline-info btn-block z-depth-2"  @click="uploadImages()">Upload Image</button>
         </div>
           </div>
         </div>
@@ -108,18 +131,18 @@ import axios from "axios";
     data() {
       return {
         form: {
-          carClass: '',
-          carBrand: '',
-          carModel: '',
-          fuelType: '',
-          typeOfGearshift: '',
+          carClass_id: {},
+          carBrand_id: {},
+          carModel_id: {},
+          fuelType_id: {},
+          gearShift_id: {},
           cdw: false,
           kidsSeats: '',
           availableFrom: '',
           availableTo: '',
           city: '',
           kmRestriction: '',
-          kmTraveled: ''
+          kmTraveled: null
 
         },
         selectedFile: null,
@@ -129,20 +152,82 @@ import axios from "axios";
       success: false,
       successmessages: "",
       newAd: true,
-      changeButton: false
+      changeButton: false,
+      selectedBrand: "",
+       brands: [],
+      selectedClass: "",
+       classes: [],
+      selectedModel: "",
+       models: [],
+      selectedFuel: "",
+       fuels: [],
+       selectedGear: "",
+       gears: [],
+       idAd: null
+      
       }
     },
     methods: {
         onFileSelected(event){
+            console.log(event);
             this.selectedFile = event.target.files[0];
         },
         uploadImages() {
-            this.success = false;
+          console.log("u uploadu" + this.idAd);
+          const uploadImageData = new FormData();
+          uploadImageData.append('imageFile', this.selectedFile,this.selectedFile.name);
+         // var idAdCar = 5;
+        axios
+        .post("ads/images/" + this.idAd + "/Ad",uploadImageData)
+        .then(form => {
+          this.error = form;
+          this.error = false;
+           this.success = false;
             this.newAd = true;
             this.changeButton = false;
+            
+         
+        })
+        .catch(error => {
+          console.log(error);
+         
+
+
+          
+        });
+
+          
         },
         newCar() {
-           axios
+
+            this.brands.forEach(brand => {
+            if (brand.id === this.selectedBrand) {
+            this.form.carBrand_id = brand;
+            }
+           });
+
+           this.classes.forEach(clas => {
+            if (clas.id === this.selectedClass) {
+            this.form.carClass_id = clas;
+            }
+           });
+           this.models.forEach(model => {
+            if (model.id === this.selectedModel) {
+            this.form.carModel_id = model;
+            }
+           });
+           this.fuels.forEach(fuel => {
+            if (fuel.id === this.selectedFuel) {
+            this.form.fuelType_id = fuel;
+            }
+           });
+           this.gears.forEach(gear => {
+            if (gear.id === this.selectedGear) {
+            this.form.gearShift_id = gear;
+            }
+           });
+
+        axios
         .post("/ads/ads" , this.form)
         .then(form => {
           this.error = form,
@@ -163,8 +248,56 @@ import axios from "axios";
           this.error = true;
         });
 
+           
         }
-    }
+    },
+    mounted() {
+    axios
+      .get("ads/brands")
+      .then(brands => {
+        this.brands = brands.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+      axios
+      .get("ads/models")
+      .then(models => {
+        this.models = models.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+      axios
+      .get("ads/classes")
+      .then(classes => {
+        this.classes = classes.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+      axios
+      .get("ads/fuel-types")
+      .then(fuels => {
+        this.fuels = fuels.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+       axios
+      .get("ads/gearshift-types")
+      .then(gears => {
+        this.gears = gears.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+      
+  }
 }
 </script>
 

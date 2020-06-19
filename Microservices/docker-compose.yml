@@ -8,18 +8,18 @@ services:
     tty: true
 
 
+  adsservice:
+    build: ./ads
+    ports:
+      - "8098:8098"
+    tty: true
+    environment:
+      - REGISTRY_HOST=eurekaservice
+      - MYSQL_HOST=users-database
+    depends_on:
+     - eurekaservice
+     - users-database
 
-#  adsservice:
-#    build: ./ads
-#    ports:
-#      - "8098:8098"
-#    tty: true
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#      - MYSQL_HOST=users-database
-#    depends_on:
-#      - eurekaservice
-#      - users-database
 
 #  maintenanceservice:
 #    build: ./maintenance
@@ -33,6 +33,7 @@ services:
 #      - users-database
 #      - eurekaservice
 
+
   orderservice:
     build: ./ordering
     ports:
@@ -44,6 +45,7 @@ services:
     depends_on:
       - users-database
       - eurekaservice
+
 
 #  searchsevice:
 #   build: ./search
@@ -69,16 +71,16 @@ services:
 #      - eurekaservice
 #      - users-database
 #
-#  authservice:
-#    build: ./authentication
-#    ports:
-#      - "8443:8443"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#    tty: true
-#    depends_on:
-#      - eurekaservice
-#
+  authservice:
+    build: ./authentication
+    ports:
+      - "8083:8083"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+    tty: true
+    depends_on:
+      - eurekaservice
+
 #  paymentservice:
 #    build: ./payment
 #    ports:
@@ -102,9 +104,10 @@ services:
       - eurekaservice
 #      - adsservice
 #      - authservice
-#      - maintenanceservice
+      - maintenanceservice
       - orderservice
-#      - maintenanceservice
+      - adsservice
+      - authservice
 #      - orderservice
 #      - paymentservice
 #      - searchsevice

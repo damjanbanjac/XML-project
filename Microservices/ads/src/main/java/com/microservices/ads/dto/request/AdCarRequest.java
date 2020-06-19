@@ -5,15 +5,19 @@ import lombok.Data;
 
 import java.util.Date;
 
+import java.util.Date;
+
 @Data
 public class AdCarRequest {
 
-    private long carBrand_id;
-    private long carClass_id;
-    private long userAd;
-    private long carModel_id;
-    private long fuelType_id;
-    private long gearShift_id;
+    private CarBrand carBrand_id;
+    private CarClass carClass_id;
+    private User userAd;
+    private Agent agentAd;
+    private CarModel carModel_id;
+    private TypeOfFuel fuelType_id;
+    private TypeOfGearshift gearShift_id;
+
     private Integer grade;
     private String kmRestriction;
     private Integer kmTraveled;
@@ -21,4 +25,5 @@ public class AdCarRequest {
     private  Integer kidsSeats;
     private Date availableFrom;
     private Date availableTo;
+    private String city;
 }
