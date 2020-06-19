@@ -39,4 +39,7 @@ public class OrderController {
     @GetMapping("/oglasi/{agentId}")
     public List<AdCarDTO> getAgentsAds(@PathVariable Long agentId){return iorderService.getAgentsAds(agentId);}
 
+    @GetMapping("/ad")
+    public List<AdCarDTO> getAd(@RequestBody AdCarDTO adCar){return iorderService.getAd(adCar);}
+
 }

@@ -80,6 +80,7 @@ export default {
       .get("/order/requests/"+1+"/user")
       .then(zahtevi => {
         this.zahtevi = zahtevi.data;
+        console.log(this.zahtevi);
       })
       .catch(error => {
         console.log(error);

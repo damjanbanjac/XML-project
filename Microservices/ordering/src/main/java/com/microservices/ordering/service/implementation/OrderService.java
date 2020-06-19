@@ -123,4 +123,14 @@ public class OrderService implements IOrderService {
         }
         return adsDTO;
     }
+
+    @Override
+    public List<AdCarDTO> getAd(AdCarDTO adCar) {
+
+        AdCar adCar1=adCarRepository.findOneById(adCar.getId());
+        AdCarDTO adCarDTO=new AdCarDTO(adCar1);
+        List<AdCarDTO> adsDTOlist= new ArrayList<>();
+        adsDTOlist.add(adCarDTO);
+        return adsDTOlist;
+    }
 }

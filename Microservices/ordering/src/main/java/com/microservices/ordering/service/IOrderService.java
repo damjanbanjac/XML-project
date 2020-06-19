@@ -24,4 +24,6 @@ public interface IOrderService {
     List<AdCarDTO> getAllOglasi();
 
     List<AdCarDTO> getAgentsAds(Long agentId);
+
+    List<AdCarDTO> getAd(AdCarDTO adCar);
 }

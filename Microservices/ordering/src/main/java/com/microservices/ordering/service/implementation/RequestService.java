@@ -10,11 +10,12 @@ import com.microservices.ordering.repository.*;
 import com.microservices.ordering.service.IRequestService;
 import org.bouncycastle.cert.ocsp.Req;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.*;
 
 @Service
 public class RequestService implements IRequestService {
@@ -178,6 +179,7 @@ public class RequestService implements IRequestService {
                 if(req.getOrderList().get(i).getAgentIzdao().getId().equals(agentId)){
                     requestsDTO.add(new RequestDTO(req));
                 }
+                break;
             }
         }
         return requestsDTO;
@@ -187,12 +189,40 @@ public class RequestService implements IRequestService {
     public RequestDTO acceptRequest(Long idRequest) {
 
         Request request = requestRepository.findOneById(idRequest);
+        //LocalDateTime now = LocalDateTime.now();
+        Calendar calendar= Calendar.getInstance();
+
+        System.out.println("Current Date and Time = " + calendar.getTime());
+        //Now, let us increment the hours using the calendar.add() method and Calendar.HOUR_OF_DAY constant.
+
+        calendar.add(Calendar.HOUR_OF_DAY, +12);
+        System.out.println("Drugi sati" +  calendar.getTime());
+
+        //calender.add(Calendar.HOUR_OF_DAY, 12);
         request.setStatus("RESERVED");
+        request.setAcceptDate(calendar.getTime());
         requestRepository.save(request);
 
         RequestDTO requestDTO= new RequestDTO(request);
 
         return requestDTO;
+    }
+
+    @Scheduled(fixedRate = 1000)
+    public void sistemskoOdbijanje(){
+
+        List<Request> requests= requestRepository.findAll();
+        Calendar calendar= Calendar.getInstance();
+
+        for(Request r:requests){
+            if(r.getStatus().equals("RESERVED")){
+                if(calendar.getTime().after(r.getAcceptDate())){
+                    Request request = requestRepository.findOneById(r.getId());
+                    request.setStatus("CANCELED");
+                    requestRepository.save(request);
+                }
+            }
+        }
     }
 
     @Override
@@ -219,6 +249,7 @@ public class RequestService implements IRequestService {
                     if (req.getStatus().equals("RESERVED")) {
                         requestsDTO.add(new RequestDTO(req));
                     }
+                    break;
                 }
             }
         }

@@ -98,6 +98,9 @@ export default {
       prepare: false,
       order:{
         adCar:{
+          id: "",
+          userIzdavaoAd: "",
+          agentIzdaoAd: "",
         },
       availableFrom: "",
       availableTo: "",
@@ -108,6 +111,16 @@ export default {
     priprema(oglas){
       this.prepare = true;
       this.order.adCar = oglas;
+      console.log(this.order.adCar)
+      axios
+          .get("/order/orders/ad", this.order)
+          .then(response => {
+            this.oglasi= response.data;
+            this.prepare = false;
+          })
+          .catch(error => {
+            console.log(error);
+          });
     },
     naruci(){
       console.log(this.order)
