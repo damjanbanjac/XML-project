@@ -8,17 +8,6 @@ services:
     tty: true
 
 
-
-
-#  adsservice:
-#    build: ./ads
-#    ports:
-#      - "8098:8098"
-#    tty: true
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-     # - MYSQL_HOST=users-database
-
   adsservice:
     build: ./ads
     ports:
@@ -26,9 +15,10 @@ services:
     tty: true
     environment:
       - REGISTRY_HOST=eurekaservice
-#      - MYSQL_HOST=users-database
+      - MYSQL_HOST=users-database
     depends_on:
      - eurekaservice
+     - users-database
 
 
 #  maintenanceservice:
@@ -38,23 +28,24 @@ services:
 #    environment:
 #      - REGISTRY_HOST=eurekaservice
 #      - MYSQL_HOST=users-database
-
 #    tty: true
 #    depends_on:
 #      - users-database
 #      - eurekaservice
 
-#  orderservice:
-#    build: ./ordering
-#    ports:
-#      - "8089:8089"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#      - MYSQL_HOST=users-database
-#    tty: true
-#    depends_on:
-#      - users-database
-#      - eurekaservice
+
+  orderservice:
+    build: ./ordering
+    ports:
+      - "8089:8089"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+      - MYSQL_HOST=users-database
+    tty: true
+    depends_on:
+      - users-database
+      - eurekaservice
+
 
 #  searchsevice:
 #   build: ./search
@@ -111,27 +102,28 @@ services:
     tty: true
     depends_on:
       - eurekaservice
+#      - adsservice
+#      - authservice
+      - maintenanceservice
+      - orderservice
       - adsservice
       - authservice
-#      - maintenanceservice
-#      - orderservice
-#      - maintenanceservice
 #      - orderservice
 #      - paymentservice
 #      - searchsevice
 
-#  users-database:
-#    image: mariadb:10.2
-#    container_name: users-database
-#    ports:
-#      - 3306:3306
-#    environment:
-#      MYSQL_DATABASE: services
-#      MYSQL_USER: root
-#      MYSQL_PASSWORD: root
-#      MYSQL_ROOT_PASSWORD: root
-#    volumes:
-#      - usersdata:/var/lib/mysql
+  users-database:
+    image: mariadb:10.2
+    container_name: users-database
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: services
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - usersdata:/var/lib/mysql
 
 
 volumes:
