@@ -11,7 +11,9 @@ import MakeReport from '../components/Agent/Ad/MakeReport.vue'
 import AdsListByAgent from '../components/Agent/Ad/AdsList.vue'
 import AdsListByUser from '../components/views/User/AdsList.vue'
 
+import Login from '../components/Login.vue'
 import AgentRegistrationForm from '../components/views/Admin/AgentRegistrationForm.vue'
+import UserRegistrationRequest from '../components/views/User/UserRegistrationRequest.vue'
 
 import AddCarBrand from '../components/views/Admin/add/AddCarBrand.vue'
 import AddCarClass from '../components/views/Admin/add/AddCarClass.vue'
@@ -39,7 +41,12 @@ import CommentRequestList from '../components/views/Admin/lists/CommentRequestLi
 Vue.use(VueRouter)
 
 const routes = [
-    {
+      {
+        path: '/login',
+        name: 'login',
+        component: Login
+      },
+      {
         path: '/newAd',
         name: 'new-ad',
         component: NewAd
@@ -73,6 +80,11 @@ const routes = [
         path: '/agentRegistration',
         name: 'agent-registration',
         component: AgentRegistrationForm
+      },
+      {
+        path: '/userRegistrationRequest',
+        name: 'user-registration-request',
+        component: UserRegistrationRequest
       },
       // lists
       {

@@ -5,13 +5,20 @@
       <b-nav-item href="/">Home</b-nav-item>
 
       <!-- Navbar dropdowns -->
+
+      <!-- Login/Reg -->
+      <router-link to="/login" tag="b-nav-item">Login</router-link>
+      <router-link to="/agentRegistration" tag="b-nav-item">Agent registration</router-link>
+      <router-link to="/userRegistrationRequest" tag="b-nav-item">Client registration</router-link>
+
+      <!-- Agent -->
       <b-nav-item-dropdown text="Agent" left>
         <router-link to="/newAd" tag="b-dropdown-item">New Ad</router-link>
         <router-link to="/adsListByAgent" tag="b-dropdown-item">AdsList</router-link>
-         <router-link to="/makeReport" tag="b-dropdown-item">Make Report</router-link>
-        <!--<router-link to="/openedAd" tag="b-dropdown-item">Ad profile</router-link>-->
+        <router-link to="/makeReport" tag="b-dropdown-item">Make Report</router-link>
       </b-nav-item-dropdown>
 
+      <!-- Admin -->
       <b-nav-item-dropdown text="Admin" left>
         <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
         <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
@@ -44,12 +51,13 @@
       
       </b-nav-item-dropdown>
 
-      <router-link to="/agentRegistration" tag="b-nav-item">Agent registration</router-link>
-
+      <!-- User -->
       <b-nav-item-dropdown text="User" left>
         <router-link to="/adsListByUser" tag="b-dropdown-item">AdsList</router-link>
-        <b-dropdown-item href="#">Logout</b-dropdown-item>
       </b-nav-item-dropdown>
+
+      <!-- Log out -->
+      <b-nav-item href="/">Log out</b-nav-item>
 
     </b-navbar-nav>
   </b-navbar>
