@@ -38,11 +38,15 @@ public class AdminController {
         _adminService.deactivateUser(id);
     }
 
-    @PutMapping("/approve/comment")
-    public void approveComment(@RequestBody ApproveCommentRequest id) { _adminService.approveComment(id); }
+    @PutMapping("/approve/{id}/comment")
+    public CommentResponse approveComment(@PathVariable Long id) { return _adminService.approveComment(id); }
 
     @PutMapping("/deny/comment")
-    public void denyComment(@RequestBody DenyCommentRequest id) { _adminService.denyComment(id); }
+    public CommentResponse denyComment(@RequestBody DenyCommentRequest id) { return _adminService.denyComment(id); }
 
+    @GetMapping("/pending-comments")
+    public List<CommentResponse> getAllPendingComments(){
+        return _adminService.getAllPendingComments();
+    }
 
 }

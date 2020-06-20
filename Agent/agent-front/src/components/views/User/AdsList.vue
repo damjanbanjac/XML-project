@@ -61,7 +61,7 @@ methods: {
       
     
         
-        this.$router.push("/openedAdByAgent/" + idAd[0].id);
+        this.$router.push("/openedAdByUser/" + idAd[0].id);
         
         
       
