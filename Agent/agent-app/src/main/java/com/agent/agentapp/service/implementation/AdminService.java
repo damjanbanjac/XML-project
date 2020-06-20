@@ -98,6 +98,7 @@ public class AdminService implements IAdminService {
         List<CommentResponse> commentResponses = new ArrayList<>();
         for(Comment c: pendingComments){
             CommentResponse response = new CommentResponse();
+            response.setCommId(c.getId());
             response.setComment(c.getComment());
             commentResponses.add(response);
         }
@@ -105,16 +106,24 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public void approveComment(ApproveCommentRequest request) {
-        Comment comment = _commentRepository.findOneById(request.getId());
+    public CommentResponse approveComment(Long id) {
+        Comment comment = _commentRepository.findOneById(id);
         comment.setState(CommentRequestState.APPROVED);
         _commentRepository.save(comment);
+        CommentResponse response = new CommentResponse();
+        response.setCommId(comment.getId());
+        response.setComment(comment.getComment());
+        return response;
     }
 
     @Override
-    public void denyComment(DenyCommentRequest request) {
+    public CommentResponse denyComment(DenyCommentRequest request) {
         Comment comment = _commentRepository.findOneById(request.getId());
         comment.setState(CommentRequestState.DENIED);
         _commentRepository.save(comment);
+        CommentResponse response = new CommentResponse();
+        response.setCommId(comment.getId());
+        response.setComment(comment.getComment());
+        return response;
     }
 }

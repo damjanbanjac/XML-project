@@ -39,16 +39,13 @@ export default {
     return {
       ads: [],
       fields: [
-        {key: 'id',
-            sortable: true},
-             {key: 'carBrand_id.name',
-            sortable: true},
-             {key: 'grade',
-            sortable: true},
-             {key: 'city',
-            sortable: true},
-            {key: 'kmTraveled',
-            sortable: true},
+        {
+          key: 'id',
+        sortable: true},
+          {key: 'carBrand_id.name',
+        sortable: true},
+          {key: 'city',
+        sortable: true},
         ],
 
       idAd: ""
@@ -64,7 +61,7 @@ methods: {
       
     
         
-        this.$router.push("/openedAdByAgent/" + idAd[0].id);
+        this.$router.push("/openedAdByUser/" + idAd[0].id);
         
         
       

@@ -2,11 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import NewAd from '../components/Agent/Ad/NewAd.vue'
-import OpenedAd from '../components/Agent/Ad/OpenedAd.vue'
+import OpenedAdByAgent from '../components/Agent/Ad/OpenedAd.vue'
+
+import OpenedAdByUser from '../components/views/User/OpenedAd.vue'
 
 import MakeReport from '../components/Agent/Ad/MakeReport.vue'
 
-import AdsList from '../components/Agent/Ad/AdsList.vue'
+import AdsListByAgent from '../components/Agent/Ad/AdsList.vue'
+import AdsListByUser from '../components/views/User/AdsList.vue'
 
 import AgentRegistrationForm from '../components/views/Admin/AgentRegistrationForm.vue'
 
@@ -29,6 +32,9 @@ import CarClassList from '../components/views/Admin/lists/CarClassList.vue'
 import CarModelList from '../components/views/Admin/lists/CarModelList.vue'
 import FuelTypeList from '../components/views/Admin/lists/FuelTypeList.vue'
 import GearshiftTypeList from '../components/views/Admin/lists/GearshiftTypeList.vue'
+import CommentList from '../components/Agent/Ad/CommentList.vue'
+import CommentRequestList from '../components/views/Admin/lists/CommentRequestList.vue'
+
 
 Vue.use(VueRouter)
 
@@ -39,9 +45,14 @@ const routes = [
         component: NewAd
       },
       {
-        path: '/adsList',
-        name: 'ads-list',
-        component: AdsList
+        path: '/adsListByAgent',
+        name: 'ads-list-by-agent',
+        component: AdsListByAgent
+      },
+      {
+        path: '/adsListByUser',
+        name: 'ads-list-by-user',
+        component: AdsListByUser
       },
       {
         path: '/makeReport',
@@ -49,9 +60,14 @@ const routes = [
         component: MakeReport
       },
       {
-        path: '/openedAd/:id',
-        name: 'opened-ad',
-        component: OpenedAd
+        path: '/OpenedAdByAgent/:id',
+        name: 'opened-ad-by-agent',
+        component: OpenedAdByAgent
+      },
+      {
+        path: '/OpenedAdByUser/:id',
+        name: 'opened-ad-by-user',
+        component: OpenedAdByUser
       },
       {
         path: '/agentRegistration',
@@ -94,6 +110,17 @@ const routes = [
         name: 'gearshift-type-list',
         component: GearshiftTypeList
       },
+      {
+        path: '/commentList/:id',
+        name: 'comment-list',
+        component: CommentList
+      },
+      {
+        path: '/commentRequestList',
+        name: 'comment-request-list',
+        component: CommentRequestList
+      },
+
       // add
       {
         path: '/addCarBrand',

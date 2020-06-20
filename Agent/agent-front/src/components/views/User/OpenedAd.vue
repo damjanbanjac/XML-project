@@ -141,23 +141,30 @@
               style="font-size: 3rem;
               font-weight: 300;
               line-height: 1.2;
-              margin-top: -12%;">Feedback insight</h3>
+              margin-top: -12%;">Send feedback</h3>
             </div>
           </div>
 
           <div class="card-body mx-4 mt-4">
-            
+            <label for="Form-text">Comment</label>
+            <input type="text" id="Form-text" class="form-control" v-model="comm" />
             <br/>
             <button
             type="button"
                   class="btn btn-info btn-block z-depth-2"
-                  @click="seeComments()">See comments
+                  @click="comment()">Comment
             </button>
             <br/>
-            <label>Average grade</label>
+            <b-form-select v-model="selected" :options="options" size="sm" class="mt-3"></b-form-select>
+            <!-- <label for="Form-text">Grade</label>
+            <input type="text" id="Form-text" class="form-control" v-model="gr" /> -->
             <br/>
-            <input type="text" id="Form-grade" class="form-control" v-model="avg.avgGrade" disabled/>
-
+            <br/>
+            <button
+            type="button"
+                  class="btn btn-info btn-block z-depth-2"
+                  @click="grade()">Grade
+            </button>
           </div>
         </div>
       </div>
@@ -187,6 +194,8 @@ export default {
           kmRestriction: '',
           kmTraveled: null
       },
+      comm: '',
+      // gr: '',
       retrievedImage: null,
       retriveResponse: [],
       base64Data: null,
@@ -195,23 +204,63 @@ export default {
       success: false,
       successmessages: "",
       change: false,
-      idAd: "",
-      avg: null,
+      selected: null,
+      options: [
+        { value: null, text: 'Select grade' },
+        { value: '1', text: '1' },
+        { value: '2', text: '2' },
+        { value: '3', text: '3' },
+        { value: '4', text: '4' },
+        { value: '5', text: '5' },
+      ]
+   
+ 
+            
     };
   },
    
   methods: {
 
-    seeComments() {
+    grade() {
+      const body = {
+        grade: this.selected,
+        adCarId: this.$route.params.id
+      }
+      axios
+        .post("/grades", body)
+        .then(() => {
+          this.selected = null;
+          // this.success = true;
+          // this.successmessage = "You have successfully graded this car ad.";
+        })
+        .catch(error => {
+          console.log(error);
+          this.error = true;
+        });
+    },
 
-      this.$router.push("/commentList/" + this.$route.params.id);
-      
+    comment() {
+      const body = {
+        comment: this.comm,
+        adCarId: this.$route.params.id
+      }
+      axios
+        .post("/comments", body)
+        .then(() => {
+          this.comm = "";
+          // this.success = true;
+          // this.successmessage = "You have successfully commented this car ad.";
+        })
+        .catch(error => {
+          console.log(error);
+          this.error = true;
+        });
     },
 
     saveData() {
      
       axios
-      .put("ads/" + this.$route.params.id + "/ad" , this.form)
+      .put("ads/ads/" + this.$route.params.id + "/ad" , this.form)
       .then(user =>{
         this.form = user.data;
         this.change = false;
@@ -220,13 +269,11 @@ export default {
           console.log(error)
       });
     },
-    
     changeClick() {
       this.change = true
     },
-      
     getImage() {
-      axios
+        axios
       .get("/ads/" + this.$route.params.id + "/image")
       .then(res => {
         console.log("usao uvrati sliku");
@@ -234,14 +281,13 @@ export default {
         console.log(res)
         this.retriveResponse =res.data;
       //  this.base64Data = this.retriveResponse.data.pic;
-        // this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+       // this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
         //console.log(this.base64Data)
       })
       .catch(error => {
         console.log(error);
       });
     },
-
     onFileSelected(event){
       console.log(event);
       this.selectedFile = event.target.files[0];
@@ -259,14 +305,14 @@ export default {
         this.error = form;
         this.success = false;
         this.success = true;
-          this.successmessages = "Your image has succesfully been uploaded, reload the gallery";
+        this.successmessages = "Your image has succesfully been uploaded, reload the gallery";
           
       })
       .catch(error => {
         console.log(error);
       });
     }
-  },
+},
   mounted() {
     console.log("usao");
     axios
@@ -274,16 +320,6 @@ export default {
       .then(ad => {
         console.log("usao u then")
         this.form = ad.data;
-
-        axios
-        .get("grades/avg-grade/" + this.$route.params.id + "/ad-car")
-        .then(response => {
-          this.avg = response.data;
-        })
-        .catch(error => {
-          console.log(error);
-          this.error = true;
-        });
       })
       .catch(error => {
         console.log(error);
