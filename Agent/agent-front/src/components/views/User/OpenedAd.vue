@@ -59,6 +59,7 @@
 
                    <label for="Form-radnoOd">CDW</label>
                   <input type="checkbox" id="Form-cdw" class="form-control" v-model="form.cdw" :disabled="!change" />
+                  <br/>
 
                     <template v-if="!change">
             <button type="button" class="btn btn-danger btn-block z-depth-2" @click="changeClick" >Change data</button>
@@ -156,8 +157,6 @@
             </button>
             <br/>
             <b-form-select v-model="selected" :options="options" size="sm" class="mt-3"></b-form-select>
-            <!-- <label for="Form-text">Grade</label>
-            <input type="text" id="Form-text" class="form-control" v-model="gr" /> -->
             <br/>
             <br/>
             <button
@@ -166,6 +165,7 @@
                   @click="grade()">Grade
             </button>
           </div>
+          
         </div>
       </div>
     </div>
@@ -195,7 +195,6 @@ export default {
           kmTraveled: null
       },
       comm: '',
-      // gr: '',
       retrievedImage: null,
       retriveResponse: [],
       base64Data: null,
@@ -204,7 +203,7 @@ export default {
       success: false,
       successmessages: "",
       change: false,
-      selected: null,
+      selected: "",
       options: [
         { value: null, text: 'Select grade' },
         { value: '1', text: '1' },

@@ -59,6 +59,7 @@
 
                    <label for="Form-radnoOd">CDW</label>
                   <input type="checkbox" id="Form-cdw" class="form-control" v-model="form.cdw" :disabled="!change" />
+                  <br/>
 
                     <template v-if="!change">
             <button type="button" class="btn btn-danger btn-block z-depth-2" @click="changeClick" >Change data</button>
