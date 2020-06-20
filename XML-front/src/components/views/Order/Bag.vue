@@ -1,5 +1,6 @@
 <template>
   <div>
+
     
   <div class="container d-flex justify-content-center" style="margin-top: 20px">
     <!--Form with header-->
@@ -12,7 +13,15 @@
       </div>
       <!--Header-->
 
-
+      <b-container>
+      <label>Bundle:</label>
+              <input
+                      type="checkbox"
+                      id="checkbox"
+                      class="form-control"
+                      v-model="bundle"
+                    />
+    </b-container>
 
       <div class="form-group" v-for="oglas in oglasi" :key="oglas.id">
         <div class="card-body mx-8 mt-4">
@@ -48,15 +57,6 @@
                 </div>
               </div>
             </div>
-            </b-col>
-            <b-col>
-              <label>Bundle:</label>
-              <input
-                      type="checkbox"
-                      id="checkbox"
-                      class="form-control"
-                      v-model="bundle"
-                    />
             </b-col>
           </div>
           <!--Body-->

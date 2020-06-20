@@ -42,7 +42,7 @@
             <b-col v-if="prepare">
                 <div class="col">
               <div class="md-form">
-                <label for="Form-ime">Id</label>
+                <!--<label for="Form-ime">Id</label>
                 <label id="Form-ime" class="form-control">{{order.adCar.id}}</label>
                 
                 <label for="Form-ime">Agent issued</label>
@@ -52,7 +52,7 @@
                       class="form-control"
                       v-model="order.adCar.agentIzdaoAd.id"
                       disabled
-                    />
+                    />-->
                 <label for="Form-ime">Start date</label>
                 <input
                       type="text"
@@ -112,15 +112,7 @@ export default {
       this.prepare = true;
       this.order.adCar = oglas;
       console.log(this.order.adCar)
-      axios
-          .get("/order/orders/ad", this.order)
-          .then(response => {
-            this.oglasi= response.data;
-            this.prepare = false;
-          })
-          .catch(error => {
-            console.log(error);
-          });
+      
     },
     naruci(){
       console.log(this.order)
