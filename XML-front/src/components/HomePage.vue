@@ -23,6 +23,8 @@
                     right
                     >
                     <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
+                    <router-link to="/searchCarAds" tag="b-dropdown-item">Search cars</router-link>
+
                 </b-nav-item-dropdown>
                 <b-nav-item-dropdown
                     id="my-nav-dropdown"
