@@ -11,7 +11,7 @@ INSERT INTO `agentxml`.`type_of_fuel` (`id`,`deleted`, `type`) VALUES ('1',false
 
 INSERT INTO `agentxml`.`type_of_gearshift` (`id`,`deleted`, `type`) VALUES ('1',false,'manuel');
 
-INSERT INTO `agentxml`.`ad_car` (`id`, `available_from`, `available_to`, `cdw`, `city`, `grade`, `kids_seats`, `km_restriction`, `km_traveled`, `agent_ad_id`, `car_brand_id_id`, `car_class_id_id`, `car_model_id_id`, `fuel_type_car_id_id`, `gear_shift_car_id_id`) VALUES ('1', '2020-6-20', '2020-6-27', true, 'novi sad', '0', '2', '3000', '1000', '1', '1', '1', '1', '1', '1');
+INSERT INTO `agentxml`.`ad_car` (`id`, `available_from`, `available_to`, `cdw`, `city`, `grade`, `kids_seats`, `km_restriction`, `km_traveled`, `agent_ad_id`, `car_brand_id_id`, `car_class_id_id`, `car_model_id_id`, `fuel_type_car_id_id`, `gear_shift_car_id_id`) VALUES ('1', '2020-6-19 12:10:59', '2020-6-24 12:10:59', true, 'novi sad', '0', '2', '3000', '1000', '1', '1', '1', '1', '1', '1');
 
 INSERT INTO `agentxml`.`users` (`id`, `active`, `blocked`, `email`) VALUES ('1', true, false, 'lala');
 

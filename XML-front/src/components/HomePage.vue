@@ -68,7 +68,19 @@
                 
                 </b-nav-item-dropdown>
 
-                <router-link to="/clientRegistration" tag="b-nav-item">Agent registration</router-link>
+
+                <b-nav-item-dropdown text="Ordering" left>
+                    <router-link to="/adCarListOrder" tag="b-dropdown-item">Ads</router-link>
+                    <router-link to="/bag" tag="b-dropdown-item">User bag</router-link>
+                    <router-link to="/agentRequests" tag="b-dropdown-item">Owner requests</router-link>
+                    <router-link to="/userRequests" tag="b-dropdown-item">User requests</router-link>
+                    <router-link to="/reservePayGo" tag="b-dropdown-item">Reserve-Pay-Go</router-link>
+                </b-nav-item-dropdown>
+
+                <!--<router-link to="/agentRegistration" tag="b-nav-item">Agent registration</router-link>-->
+
+                <router-link to="/clientRegistration" tag="b-nav-item">Client registration</router-link>
+
             
         </b-navbar-nav>
         </b-collapse>

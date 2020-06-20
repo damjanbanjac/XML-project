@@ -2,11 +2,15 @@ package com.microservices.ordering.dto;
 
 import com.microservices.ordering.model.Order;
 import com.microservices.ordering.model.Request;
-import lombok.Data;
+import lombok.*;
 
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class RequestDTO {
 
     private Long id;
