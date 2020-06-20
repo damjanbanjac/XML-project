@@ -1,7 +1,7 @@
 <template>
   <div class="container d-flex justify-content-center" style="margin-top: 20px">
     <!--Form with header-->
-    <div class="card" style="width: 60%">
+    <div class="card" style="width: 80%">
       <!--Header-->
       <div class="header pt-3 grey lighten-2">
         <div class="row d-flex justify-content-start">
@@ -28,6 +28,8 @@
 
       
     </div>
+
+     
     
   </div>
 </template>
@@ -49,6 +51,9 @@ export default {
             sortable: true},
             {key: 'kmTraveled',
             sortable: true},
+            {key: 'comments',
+            sortable: true}
+           
         ],
 
       idAd: ""
