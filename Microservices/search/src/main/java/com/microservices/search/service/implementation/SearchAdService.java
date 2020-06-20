@@ -51,11 +51,11 @@ public class SearchAdService implements ISearchAdService {
     private SearchAdDTO mapToResponse(SearchAd searchAd) {
         SearchAdDTO response = new SearchAdDTO();
         response.setId(searchAd.getId());
-        response.setCarBrand(searchAd.getCarBrand().getId());
-        response.setCarModel(searchAd.getCarModel().getId());
-        response.setFuelType(searchAd.getFuelType().getId());
-        response.setGearShiftType(searchAd.getGearShiftType().getId());
-        response.setCarClass(searchAd.getCarClass().getId());
+        response.setCarBrand(searchAd.getCarBrand());
+        response.setCarModel(searchAd.getCarModel());
+        response.setFuelType(searchAd.getFuelType());
+        response.setGearShiftType(searchAd.getGearShiftType());
+        response.setCarClass(searchAd.getCarClass());
         response.setCity(searchAd.getCity());
         response.setGrade(searchAd.getGrade());
         response.setKmRestriction(searchAd.getKmRestriction());
@@ -73,38 +73,73 @@ public class SearchAdService implements ISearchAdService {
             return searchAdRepository.findAll();
     }
 
-    public SearchAdDTO addAd(SearchAdDTO searchAdDTO) {
+    public SearchAdDTO addAd(SearchAdDTO searchAdDTO) throws ParseException {
 
         SearchAd searchAd = new SearchAd();
 
-        CarBrand cb = new CarBrand((long) 1, "Merzedes", "labela", false);
-        carBrandRepository.save(cb);
-        CarBrand cba = new CarBrand((long) 2, "Merzedes", "labela", false);
-        carBrandRepository.save(cba);
-        CarModel cm = new CarModel((long) 2, "CLio", false);
-        carModelRepository.save(cm);
-        CarClass cc = new CarClass((long) 3, "Karavan", false);
-        carClassRepository.save(cc);
-        FuelType tf = new FuelType((long) 4, "Dizel", false);
-        fuelTypeRepository.save(tf);
-        GearShiftType tg = new GearShiftType((long) 5, "Manual", false);
-        gearShiftTypeRepository.save(tg);
+//        CarBrand cb = new CarBrand((long) 1, "Merzedes", "labela", false);
+//        carBrandRepository.save(cb);
+//        CarBrand cba = new CarBrand((long) 2, "Merzedes", "labela", false);
+//        carBrandRepository.save(cba);
+//        CarModel cm = new CarModel((long) 2, "CLio", false);
+//        carModelRepository.save(cm);
+//        CarClass cc = new CarClass((long) 3, "Karavan", false);
+//        carClassRepository.save(cc);
+//        FuelType tf = new FuelType((long) 4, "Dizel", false);
+//        fuelTypeRepository.save(tf);
+//        GearShiftType tg = new GearShiftType((long) 5, "Manual", false);
+//        gearShiftTypeRepository.save(tg);
+//
+//
+//
+//        //TODO ovo vrati posle
+//        searchAd.setId((long)2);
+//        searchAd.setAvailableFrom(searchAdDTO.getAvailableFrom());
+//        searchAd.setAvailableTo(searchAdDTO.getAvailableTo());
+//        searchAd.setCdw(searchAdDTO.getCdw());
+//        searchAd.setCity(searchAdDTO.getCity());
+//        searchAd.setGrade(searchAdDTO.getGrade());
+//        searchAd.setKidsSeats(searchAdDTO.getKidsSeats());
+//        searchAd.setKmRestriction(searchAdDTO.getKmRestriction());
+//        searchAd.setKmTraveled(searchAdDTO.getKmTraveled());
+//        searchAd.setCarBrand(carBrandRepository.findById(searchAdDTO.getCarBrand()).orElse(null));
+//        searchAd.setCarClass(carClassRepository.findById(searchAdDTO.getCarClass()).orElse(null));
+//        searchAd.setCarModel(carModelRepository.findById(searchAdDTO.getCarModel()).orElse(null));
+//        searchAd.setFuelType(fuelTypeRepository.findById(searchAdDTO.getFuelType()).orElse(null));
+//        searchAd.setGearShiftType(gearShiftTypeRepository.findById(searchAdDTO.getGearShiftType()).orElse(null));
+//        searchAd.setPrice(searchAdDTO.getPrice());
+//        searchAdRepository.save(searchAd);
 
-        searchAd.setId(searchAdDTO.getId());
-        searchAd.setAvailableFrom(searchAdDTO.getAvailableFrom());
-        searchAd.setAvailableTo(searchAdDTO.getAvailableTo());
-        searchAd.setCdw(searchAdDTO.getCdw());
-        searchAd.setCity(searchAdDTO.getCity());
-        searchAd.setGrade(searchAdDTO.getGrade());
-        searchAd.setKidsSeats(searchAdDTO.getKidsSeats());
-        searchAd.setKmRestriction(searchAdDTO.getKmRestriction());
-        searchAd.setKmTraveled(searchAdDTO.getKmTraveled());
-        searchAd.setCarBrand(carBrandRepository.findById(searchAdDTO.getCarBrand()).orElse(null));
-        searchAd.setCarClass(carClassRepository.findById(searchAdDTO.getCarClass()).orElse(null));
-        searchAd.setCarModel(carModelRepository.findById(searchAdDTO.getCarModel()).orElse(null));
-        searchAd.setFuelType(fuelTypeRepository.findById(searchAdDTO.getFuelType()).orElse(null));
-        searchAd.setGearShiftType(gearShiftTypeRepository.findById(searchAdDTO.getGearShiftType()).orElse(null));
-        searchAd.setPrice(searchAdDTO.getPrice());
+
+        CarBrand cb = carBrandRepository.findOneById(2);
+        CarModel cm = carModelRepository.findOneById((long)4);
+        CarClass cc = carClassRepository.findOneById(6);
+        FuelType ft = fuelTypeRepository.findOneById((long)8);
+        GearShiftType gst = gearShiftTypeRepository.findOneById((long)10);
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dat = new String("2020-06-18");
+        Date od = sdf.parse(dat);
+        String dooo = new String("2020-06-29");
+        Date doo = sdf.parse(dooo);
+
+
+        searchAd.setId((long)3);
+        searchAd.setAvailableFrom(od);
+        searchAd.setAvailableTo(doo);
+        searchAd.setCdw(true);
+        searchAd.setCity("Novi Sad");
+        searchAd.setGrade(4);
+        searchAd.setKidsSeats(2);
+        searchAd.setKmRestriction(200);
+        searchAd.setKmTraveled(5000);
+        searchAd.setCarBrand(cb);
+        searchAd.setCarClass(cc);
+        searchAd.setCarModel(cm);
+        searchAd.setFuelType(ft);
+        searchAd.setGearShiftType(gst);
+        searchAd.setPrice(200);
         searchAdRepository.save(searchAd);
 
         SearchAdDTO searchaddto =new SearchAdDTO(searchAd);
@@ -235,8 +270,8 @@ public class SearchAdService implements ISearchAdService {
 
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd-MM-yyyy");
-        Date dateFormatTakeOver = sdf.parse(searchAd.getAvailableFrom()); //ili promeni na Date u modelu ali onda sta sa onim hh:mm...
-        Date dateFormatReturn = sdf.parse(searchAd.getAvailableTo());
+        //Date dateFormatTakeOver = sdf.parse(searchAd.getAvailableFrom()); //ili promeni na Date u modelu ali onda sta sa onim hh:mm...
+        //Date dateFormatReturn = sdf.parse(searchAd.getAvailableTo());
 
         //TODO ima ovo 48h od trenutka pretrage mora da bude preuzimanje al to se validira na frontu kontam
 //        long milisecondsTakeOver = dateFormatTakeOver.getTime();
@@ -248,33 +283,33 @@ public class SearchAdService implements ISearchAdService {
         List<SearchAd> searchAdsReturn = new ArrayList<>();
 
         for(SearchAd ad : ads) {
-            Date adDateTakeOver = sdf.parse(ad.getAvailableFrom());
-            Date adDateReturn = sdf.parse(ad.getAvailableTo());
-            if(dateFormatTakeOver.compareTo(adDateTakeOver) >= 0) {
-                if(dateFormatReturn.compareTo(adDateReturn) <= 0) {
+            //Date adDateTakeOver = sdf.parse(ad.getAvailableFrom());
+            //Date adDateReturn = sdf.parse(ad.getAvailableTo());
+            if(searchAd.getAvailableFrom().compareTo(ad.getAvailableFrom()) >= 0) {
+                if(searchAd.getAvailableTo().compareTo(ad.getAvailableTo()) <= 0) {
                     if(searchAd.getCity().equals(ad.getCity())) {
-                        if(searchAd.getCarBrand() != null) {
-                            if (!(ad.getCarBrand().getId().equals(searchAd.getCarBrand()))) {
+                        if(!searchAd.getCarBrand().getName().equals("Null")) {
+                            if (!(ad.getCarBrand().getId().equals(searchAd.getCarBrand().getId()))) {
                                 continue;
                             }
                         }
-                        if(searchAd.getCarModel() != null) {
-                            if (!(ad.getCarModel().getId().equals(searchAd.getCarModel()))) {
+                        if(!searchAd.getCarModel().getModel().equals("Null")) {
+                            if (!(ad.getCarModel().getId().equals(searchAd.getCarModel().getId()))) {
                                 continue;
                             }
                         }
-                        if(searchAd.getFuelType() != null) {
-                            if (!(ad.getFuelType().getId().equals(searchAd.getFuelType()))) {
+                        if(!searchAd.getFuelType().getType().equals("Null")) {
+                            if (!(ad.getFuelType().getId().equals(searchAd.getFuelType().getId()))) {
                                 continue;
                             }
                         }
-                        if(searchAd.getGearShiftType() != null) {
-                            if (!(ad.getGearShiftType().getId().equals(searchAd.getGearShiftType()))) {
+                        if(!searchAd.getGearShiftType().getType().equals("Null")) {
+                            if (!(ad.getGearShiftType().getId().equals(searchAd.getGearShiftType().getId()))) {
                                 continue;
                             }
                         }
-                        if(searchAd.getCarClass() != null) {
-                            if (!(ad.getCarClass().getId().equals(searchAd.getCarClass()))) {
+                        if(!searchAd.getCarClass().getCar_class().equals("Null")) {
+                            if (!(ad.getCarClass().getId().equals(searchAd.getCarClass().getId()))) {
                                 continue;
                             }
                         }

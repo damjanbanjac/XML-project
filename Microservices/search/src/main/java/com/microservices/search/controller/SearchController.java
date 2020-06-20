@@ -42,24 +42,6 @@ public class SearchController {
         return new ResponseEntity<>(adsDTO.values(), HttpStatus.OK);
     }
 
-
-
-    @PostMapping()
-    public List<SearchAdDTO> searchAdss(@RequestBody SearchAdDTO searchAd) throws ParseException {
-        List<SearchAdDTO> adsDTO = new ArrayList<>();
-        searchAdsResult = searchAdService.searchAds(searchAd);
-
-        for(SearchAd searchAdReturn : searchAdsResult) {
-            adsDTO.add(new SearchAdDTO(searchAdReturn));
-        }
-
-        return adsDTO;
-    }
-
-
-
-
-
     @GetMapping(value="/{sortBy}/{sortType}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<SearchAdDTO>> sortAds(@PathVariable String sortBy, @PathVariable String sortType) {
         List<SearchAd> sortedSearchAds = null;
