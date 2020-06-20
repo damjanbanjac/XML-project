@@ -13,14 +13,18 @@
 
       <!-- Agent -->
       <b-nav-item-dropdown text="Agent" left>
-        <router-link to="/newAd" tag="b-dropdown-item">New Ad</router-link>
-        <router-link to="/adsListByAgent" tag="b-dropdown-item">AdsList</router-link>
-        <router-link to="/makeReport" tag="b-dropdown-item">Make Report</router-link>
+        <router-link to="/adsListByAgent" tag="b-dropdown-item">Car ads</router-link>
+        <router-link to="/newAd" tag="b-dropdown-item">Add Car ad</router-link>
+        <router-link to="/makeReport" tag="b-dropdown-item">Issue Report</router-link>
       </b-nav-item-dropdown>
 
       <!-- Admin -->
       <b-nav-item-dropdown text="Admin" left>
-        <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
+
+        <router-link to="/userList" tag="b-dropdown-item">Client profiles</router-link>
+
+        <div class="dropdown-divider"></div>
+        
         <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
         <router-link to="/commentRequestList" tag="b-dropdown-item">Comment requests</router-link>
         
@@ -52,8 +56,8 @@
       </b-nav-item-dropdown>
 
       <!-- User -->
-      <b-nav-item-dropdown text="User" left>
-        <router-link to="/adsListByUser" tag="b-dropdown-item">AdsList</router-link>
+      <b-nav-item-dropdown text="Client" left>
+        <router-link to="/adsListByUser" tag="b-dropdown-item">Car ads</router-link>
       </b-nav-item-dropdown>
 
       <!-- Log out -->

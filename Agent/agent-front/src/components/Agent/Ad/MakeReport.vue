@@ -8,7 +8,7 @@
       <h2 style="font-size: 4rem;
         font-weight: 300;
         line-height: 1.2;
-        margin-left: 26%;">
+        margin-left: 4%;">
         Make report
       </h2>
 
@@ -30,7 +30,7 @@
               v-model="report.text"
               type="text"
               required
-              placeholder="text"
+              placeholder="Text"
             
             ></b-form-input>
           </b-form-group>
@@ -41,7 +41,7 @@
               v-model="report.km"
               type="text"
               required
-              placeholder="set km"
+              placeholder="Set km"
    
             ></b-form-input>
           </b-form-group>

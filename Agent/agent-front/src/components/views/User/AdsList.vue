@@ -41,11 +41,14 @@ export default {
       fields: [
         {
           key: 'id',
-        sortable: true},
+        sortable: true,
+        label: 'Id'},
           {key: 'carBrand_id.name',
-        sortable: true},
+        sortable: true,
+        label: 'Car brand'},
           {key: 'city',
-        sortable: true},
+        sortable: true,
+        label: 'City'},
         ],
 
       idAd: ""

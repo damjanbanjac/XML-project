@@ -42,18 +42,17 @@ export default {
       ads: [],
       fields: [
         {key: 'id',
-            sortable: true},
+            sortable: true,
+            label: 'Id'},
              {key: 'carBrand_id.name',
-            sortable: true},
-             {key: 'grade',
-            sortable: true},
+            sortable: true,
+            label: 'Car Brand'},
              {key: 'city',
-            sortable: true},
+            sortable: true,
+            label: 'City'},
             {key: 'kmTraveled',
-            sortable: true},
-            {key: 'comments',
-            sortable: true}
-           
+            sortable: true,
+            label: 'Traveled km'},
         ],
 
       idAd: ""

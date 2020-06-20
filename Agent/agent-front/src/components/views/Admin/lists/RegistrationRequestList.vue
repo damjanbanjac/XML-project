@@ -20,11 +20,13 @@
         fields: [
           {
             key: 'Firstname',
-            sortable: true
+            sortable: true,
+            label: 'First name'
           },
           {
             key: 'Lastname',
-            sortable: true
+            sortable: true,
+            label: 'Last name'
           },
           { key: 'actions1', label: 'Activation' }
         ],
