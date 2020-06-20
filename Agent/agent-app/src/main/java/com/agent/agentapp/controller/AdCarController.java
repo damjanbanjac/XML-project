@@ -59,6 +59,12 @@ public class AdCarController {
     public AdCarResponse getAd(@PathVariable long id) throws Exception{
         return adsCarService.getAd(id);
     }
+
+   /* @GetMapping("/comment")
+    public AdCarResponse getAdWithMostComments() throws Exception{
+        return adsCarService.getAdWithMostComments();
+    } */
+
     @GetMapping
     public List<AdCarResponse> getAllAds() throws Exception{
         return adsCarService.getAllAds();
