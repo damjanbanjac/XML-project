@@ -22,7 +22,7 @@
     <div class="col">
 
         <b-container v-if="success">
-          <b-alert show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
+          <b-alert style="width: 100%;" show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
         </b-container>
 
         <div class="card" style="width: 96%;">
@@ -80,7 +80,7 @@ export default {
         .then(() => {
           this.comm = "";
           this.success = true;
-          this.successmessage = "You have successfully commented this car ad.";
+          this.successmessages = "You have successfully commented this car ad.";
         })
         .catch(error => {
           console.log(error);

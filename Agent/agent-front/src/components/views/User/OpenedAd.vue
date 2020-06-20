@@ -96,7 +96,7 @@
         </div>
       <div class="col">
         <b-container v-if="success">
-      <b-alert show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
+      <b-alert style="width: 100%;" show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
     </b-container>
         <div class="card" style="width: 120%">
         <!--Header-->
@@ -131,9 +131,6 @@
 
 <!-- kom i ocene -->
       <div class="col">
-        <b-container v-if="success">
-          <b-alert show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
-        </b-container>
         <div class="card" style="width: 46%; margin: -325px 1px 1px 683px;">
           <!--Header-->
           <div class="header pt-3 grey lighten-2">
@@ -229,8 +226,8 @@ export default {
         .post("/grades", body)
         .then(() => {
           this.selected = null;
-          // this.success = true;
-          // this.successmessage = "You have successfully graded this car ad.";
+          this.success = true;
+          this.successmessages = "You have successfully graded this car ad.";
         })
         .catch(error => {
           console.log(error);
@@ -247,8 +244,8 @@ export default {
         .post("/comments", body)
         .then(() => {
           this.comm = "";
-          // this.success = true;
-          // this.successmessage = "You have successfully commented this car ad.";
+          this.success = true;
+          this.successmessages = "You have successfully commented this car ad.";
         })
         .catch(error => {
           console.log(error);
