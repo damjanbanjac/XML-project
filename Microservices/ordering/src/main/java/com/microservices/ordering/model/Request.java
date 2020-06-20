@@ -26,6 +26,7 @@ public class Request {
     private String status;
     private Boolean bundle;
 
+    private Date paymentDate;
     private Date acceptDate;
 
     @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)

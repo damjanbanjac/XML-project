@@ -76,6 +76,10 @@ public class RequestService implements IRequestService {
         System.out.println("Bunleeeee"+bundle);
         Users userProvera = userRepository.findOneById(1);
 
+        Calendar calendar= Calendar.getInstance();
+
+        calendar.add(Calendar.HOUR_OF_DAY, +24);
+
         if(bundle==true){
             for(Order ord:orders){
                 if(ord.getUserr().getId().equals(userProvera.getId())){
@@ -100,6 +104,7 @@ public class RequestService implements IRequestService {
             Request newRequest= new Request();
             newRequest.setBundle(bundle);
             newRequest.setStatus("PENDING");
+            newRequest.setPaymentDate(calendar.getTime());
             newRequest.setOrderList(bundleOrders);
 
             requestRepository.save(newRequest);
@@ -112,6 +117,7 @@ public class RequestService implements IRequestService {
                 Request newRequest= new Request();
                 newRequest.setBundle(bundle);
                 newRequest.setStatus("PENDING");
+                newRequest.setPaymentDate(calendar.getTime());
                 Order orderFalse = orderRepositiory.findOneById(order.getId());
                 bundleOrders.add(orderFalse);
                 newRequest.setOrderList(bundleOrders);
@@ -125,6 +131,22 @@ public class RequestService implements IRequestService {
         }
     }
 
+    @Scheduled(fixedRate = 1000)
+    public void sistemskoOdbijanje24h(){
+
+        List<Request> requests= requestRepository.findAll();
+        Calendar calendar= Calendar.getInstance();
+
+        for(Request r:requests){
+            if(r.getStatus().equals("PENDING")){
+                if(calendar.getTime().after(r.getPaymentDate())){
+                    Request request = requestRepository.findOneById(r.getId());
+                    request.setStatus("CANCELED");
+                    requestRepository.save(request);
+                }
+            }
+        }
+    }
 
 
     @Override
@@ -174,13 +196,15 @@ public class RequestService implements IRequestService {
         List<RequestDTO> requestsDTO= new ArrayList<>();
         System.out.println("Agent iddddddddddd"+agentId);
         for(Request req:requests){
-            for(int i=0; i<req.getOrderList().size(); i++){
-                System.out.println("Agent u petljiiiii"+req.getOrderList().get(i).getAgentIzdao().getId());
-                if(req.getOrderList().get(i).getAgentIzdao().getId().equals(agentId)){
-                    requestsDTO.add(new RequestDTO(req));
-                }
-                break;
-            }
+           if(req.getStatus().equals("PENDING")) {
+               for (int i = 0; i < req.getOrderList().size(); i++) {
+                   System.out.println("Agent u petljiiiii" + req.getOrderList().get(i).getAgentIzdao().getId());
+                   if (req.getOrderList().get(i).getAgentIzdao().getId().equals(agentId)) {
+                       requestsDTO.add(new RequestDTO(req));
+                   }
+                   break;
+               }
+           }
         }
         return requestsDTO;
     }
@@ -189,18 +213,13 @@ public class RequestService implements IRequestService {
     public RequestDTO acceptRequest(Long idRequest) {
 
         Request request = requestRepository.findOneById(idRequest);
-        //LocalDateTime now = LocalDateTime.now();
+
         Calendar calendar= Calendar.getInstance();
 
-        System.out.println("Current Date and Time = " + calendar.getTime());
-        //Now, let us increment the hours using the calendar.add() method and Calendar.HOUR_OF_DAY constant.
-
         calendar.add(Calendar.HOUR_OF_DAY, +12);
-        System.out.println("Drugi sati" +  calendar.getTime());
 
-        //calender.add(Calendar.HOUR_OF_DAY, 12);
         request.setStatus("RESERVED");
-        request.setAcceptDate(calendar.getTime());
+        request.setPaymentDate(calendar.getTime());
         requestRepository.save(request);
 
         RequestDTO requestDTO= new RequestDTO(request);
@@ -216,7 +235,7 @@ public class RequestService implements IRequestService {
 
         for(Request r:requests){
             if(r.getStatus().equals("RESERVED")){
-                if(calendar.getTime().after(r.getAcceptDate())){
+                if(calendar.getTime().after(r.getPaymentDate())){
                     Request request = requestRepository.findOneById(r.getId());
                     request.setStatus("CANCELED");
                     requestRepository.save(request);
