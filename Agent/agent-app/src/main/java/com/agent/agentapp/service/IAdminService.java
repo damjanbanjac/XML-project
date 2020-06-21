@@ -32,7 +32,7 @@ public interface IAdminService {
 
     List<CommentResponse> getAllPendingComments();
 
-    void approveComment(ApproveCommentRequest request);
+    CommentResponse approveComment(Long id);
 
-    void denyComment(DenyCommentRequest request);
+    CommentResponse denyComment(DenyCommentRequest request);
 }

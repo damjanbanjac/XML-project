@@ -226,4 +226,20 @@ public class AdCarService implements IAdCarService {
     public Integer getAverageGrade(long id) {
         return null;
     }
+
+   /* public AdCarResponse getAdWithMostComments() {
+        AdCarResponse adCarResponse = new AdCarResponse();
+        List<AdCar> adCars = new ArrayList<>();
+        int most = 0;
+
+        for (AdCar ad: adCars) {
+            int current = 0;
+            current = ad.getComments().size();
+            if(current > most) {
+                 adCarResponse = new AdCarResponse(ad);
+            }
+
+        }
+        return  adCarResponse;
+    } */
 }

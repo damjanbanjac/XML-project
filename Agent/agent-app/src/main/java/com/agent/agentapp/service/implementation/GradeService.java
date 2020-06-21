@@ -38,31 +38,31 @@ public class GradeService implements IGradeService {
     @Override
     public void gradeOrder(GradeAdCarRequest request) throws Exception {
         AdCar adCar = adCarRepository.findOneById(request.getAdCarId());
-        User user = userRepository.findOneById(request.getUserId());
+//        User user = userRepository.findOneById(request.getUserId());
 
-        Order order = null;
-        for (Order o: adCar.getOrders()) {
-            if(o.getUser() == user && o.isUsingTimeUp()) {
-                order = o;
-                break;
-            }
-        }
-
-        if(order == null){
-            throw new Exception("You cannot grade this ad.");
-        }
-
-        for (Grade g: adCar.getGrades()) {
-            if(g.getUserId() == user.getId()) {
-                throw new Exception("You have already graded this ad.");
-            }
-        }
+//        Order order = null;
+//        for (Order o: adCar.getOrders()) {
+//            if(o.getUser() == user && o.isUsingTimeUp()) {
+//                order = o;
+//                break;
+//            }
+//        }
+//
+//        if(order == null){
+//            throw new Exception("You cannot grade this ad.");
+//        }
+//
+//        for (Grade g: adCar.getGrades()) {
+//            if(g.getUserId() == user.getId()) {
+//                throw new Exception("You have already graded this ad.");
+//            }
+//        }
 
         Grade grade = new Grade();
         grade.setAdCar(adCar);
         grade.setDeleted(false);
         grade.setGrade(request.getGrade());
-        grade.setUserId(user.getId());
+//        grade.setUserId(user.getId());
         gradeRepository.save(grade);
         adCar.getGrades().add(grade);
         adCarRepository.save(adCar);

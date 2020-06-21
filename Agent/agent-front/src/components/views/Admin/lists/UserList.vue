@@ -25,11 +25,13 @@
         fields: [
           {
             key: 'Firstname',
-            sortable: true
+            sortable: true,
+            label: 'First name'
           },
           {
             key: 'Lastname',
-            sortable: true
+            sortable: true,
+            label: 'Last name'
           },
           { key: 'actions1', label: 'Blocking' },
           { key: 'actions2', label: 'Deleting' }

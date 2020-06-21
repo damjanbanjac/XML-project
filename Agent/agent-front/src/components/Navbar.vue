@@ -5,16 +5,28 @@
       <b-nav-item href="/">Home</b-nav-item>
 
       <!-- Navbar dropdowns -->
-      <b-nav-item-dropdown text="Ad" left>
-        <router-link to="/newAd" tag="b-dropdown-item">New Ad</router-link>
-        <router-link to="/adsList" tag="b-dropdown-item">AdsList</router-link>
-         <router-link to="/makeReport" tag="b-dropdown-item">Make Report</router-link>
-        <!--<router-link to="/openedAd" tag="b-dropdown-item">Ad profile</router-link>-->
+
+      <!-- Login/Reg -->
+      <router-link to="/login" tag="b-nav-item">Login</router-link>
+      <router-link to="/agentRegistration" tag="b-nav-item">Agent registration</router-link>
+      <router-link to="/userRegistrationRequest" tag="b-nav-item">Client registration</router-link>
+
+      <!-- Agent -->
+      <b-nav-item-dropdown text="Agent" left>
+        <router-link to="/adsListByAgent" tag="b-dropdown-item">Car ads</router-link>
+        <router-link to="/newAd" tag="b-dropdown-item">Add Car ad</router-link>
+        <router-link to="/makeReport" tag="b-dropdown-item">Issue Report</router-link>
       </b-nav-item-dropdown>
 
-      <b-nav-item-dropdown text="Admin maintenance" left>
-        <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
+      <!-- Admin -->
+      <b-nav-item-dropdown text="Admin" left>
+
+        <router-link to="/userList" tag="b-dropdown-item">Client profiles</router-link>
+
+        <div class="dropdown-divider"></div>
+        
         <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
+        <router-link to="/commentRequestList" tag="b-dropdown-item">Comment requests</router-link>
         
         <div class="dropdown-divider"></div>
         
@@ -43,11 +55,13 @@
       
       </b-nav-item-dropdown>
 
-      <router-link to="/agentRegistration" tag="b-nav-item">Agent registration</router-link>
-
-      <b-nav-item-dropdown text="User" left>
-        <b-dropdown-item href="#">Logout</b-dropdown-item>
+      <!-- User -->
+      <b-nav-item-dropdown text="Client" left>
+        <router-link to="/adsListByUser" tag="b-dropdown-item">Car ads</router-link>
       </b-nav-item-dropdown>
+
+      <!-- Log out -->
+      <b-nav-item href="/">Log out</b-nav-item>
 
     </b-navbar-nav>
   </b-navbar>

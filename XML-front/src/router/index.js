@@ -35,6 +35,12 @@ import CarModelList from '../components/views/Admin/lists/CarModelList.vue'
 import FuelTypeList from '../components/views/Admin/lists/FuelTypeList.vue'
 import GearshiftTypeList from '../components/views/Admin/lists/GearshiftTypeList.vue'
 
+import AdCarListOrder from '../components/views/Order/AdCarListOrder.vue'
+import Bag from '../components/views/Order/Bag.vue'
+import AgentRequests from '../components/views/Order/AgentRequests.vue'
+import UserRequests from '../components/views/Order/UserRequests.vue'
+import ReservePayGo from '../components/views/Order/ReservePayGo.vue'
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -262,6 +268,46 @@ const routes = [
     path: '/updateTypeOfGearshift/:id',
     name: 'update-type-of-gearshift',
     component: UpdateTypeOfGearshift,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/adCarListOrder',
+    name: 'ad-car-list-order',
+    component: AdCarListOrder,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/bag',
+    name: 'bag',
+    component: Bag,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/agentRequests',
+    name: 'agent-requests',
+    component: AgentRequests,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/userRequests',
+    name: 'user-requests',
+    component: UserRequests,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/reservePayGo',
+    name: 'reserve-pay-go',
+    component: ReservePayGo,
     meta: {
       requiresAuth: true
     }

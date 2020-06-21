@@ -25,6 +25,7 @@ public class AdCarResponse {
     private String availableFrom;
     private String availableTo;
     private  String city;
+    private int comments;
 
     public AdCarResponse(AdCar adCar) {
         id = adCar.getId();
@@ -46,5 +47,6 @@ public class AdCarResponse {
         availableFrom = strDate;
         availableTo = strDate2;
         city = adCar.getCity();
+        comments = adCar.getComments().size();
     }
 }

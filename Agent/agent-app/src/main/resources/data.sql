@@ -17,4 +17,8 @@ INSERT INTO `agentxml`.`users` (`id`, `active`, `blocked`, `email`) VALUES ('1',
 
 INSERT INTO `agentxml`.`order_ad` (`id`, `deleted`, `state`, `using_time_up`, `ad_car`, `user_id`) VALUES ('1', false, 'PAID', true, '100', '1');
 
+
+INSERT INTO `agentxml`.`order_ad` (`id`, `deleted`, `state`, `using_time_up`, `ad_car`, `user_id`) VALUES ('1', false, 'PAID', true, '100', '1');
+
 INSERT INTO `agentxml`.`order_ad` (`id`, `deleted`, `state`, `using_time_up`, `ad_car`, `user_id`) VALUES ('2', false, 'PAID', true, '100', '1');
+
