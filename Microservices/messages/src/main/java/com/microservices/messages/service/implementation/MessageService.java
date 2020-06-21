@@ -46,11 +46,16 @@ public class MessageService implements IMessageService {
         String chat_id = sender.getEmail().concat(receiver.getEmail());
         Chat chat = chatRepository.findById(chat_id);
         if(chat == null) {
+            chat_id = receiver.getEmail().concat(sender.getEmail());
+        }
+        chat = chatRepository.findById(chat_id);
+
+        if(chat == null) {
             chat = new Chat(chat_id);
         }
 
-        message.setSender(sender);
-        message.setReceiver(receiver);
+        message.setSender(receiver);
+        message.setReceiver(sender);
         message.setMessageText(messageDTO.getMessageText());
         message.setDate(new Date());
         messageRepository.save(message);
