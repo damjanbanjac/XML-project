@@ -33,9 +33,9 @@ public class UserService implements IUserService {
     @Override
     public UserDTO createUser(UserDTO userDTO)  {
         User user = new User();
-        user.setId((long)4);
-        user.setName("Bozo");
-        user.setEmail("bozo@gmail.com");
+        user.setId((long)3);
+        user.setName("Laro");
+        user.setEmail("lala@gmail.com");
         userRepository.save(user);
         UserDTO userdto = new UserDTO(user);
         return userdto;

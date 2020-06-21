@@ -54,8 +54,8 @@ public class MessageService implements IMessageService {
             chat = new Chat(chat_id);
         }
 
-        message.setSender(receiver);
-        message.setReceiver(sender);
+        message.setSender(sender);
+        message.setReceiver(receiver);
         message.setMessageText(messageDTO.getMessageText());
         message.setDate(new Date());
         messageRepository.save(message);
