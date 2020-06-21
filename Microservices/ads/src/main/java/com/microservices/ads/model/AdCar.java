@@ -11,7 +11,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -60,6 +62,14 @@ public class AdCar {
     private Date availableTo;
     private String city;
 
+    @OneToMany(mappedBy = "adCar_id", cascade = CascadeType.DETACH, orphanRemoval = true)
+    private List<Order> orders = new ArrayList<>();
+
+    @OneToMany(mappedBy = "adCar", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Grade> grades = new ArrayList<>();
+
+    @OneToMany(mappedBy = "adCar", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
 
 
 }

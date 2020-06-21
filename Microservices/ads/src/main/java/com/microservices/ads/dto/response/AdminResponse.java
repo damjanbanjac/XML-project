@@ -7,9 +7,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentResponse {
+public class AdminResponse {
 
-    private Long commId;
+    private long id;
 
-    private String comment;
+    private String name;
+
+    private String surname;
+
+    private String email;
+
+    private String phone_number;
 }

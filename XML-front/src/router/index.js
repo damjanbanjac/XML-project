@@ -10,7 +10,8 @@ import SearchCarAds from '../components/views/User/SearchCarAds.vue'
 import Messages from '../components/views/User/Messages.vue'
 
 import AdsList from '../components/views/User/AdsList.vue'
-import OpenedAd from '../components/views/User/OpenedAd.vue'
+import OpenedAdByAgent from '../components/views/Agent/OpenedAd.vue'
+import OpenedAdByUser from '../components/views/User/OpenedAd.vue'
 
 import NewAd from '../components/views/Agent/NewAd.vue'
 import AgentAdList from '../components/views/Agent/AgentAdList.vue'
@@ -37,6 +38,8 @@ import CarClassList from '../components/views/Admin/lists/CarClassList.vue'
 import CarModelList from '../components/views/Admin/lists/CarModelList.vue'
 import FuelTypeList from '../components/views/Admin/lists/FuelTypeList.vue'
 import GearshiftTypeList from '../components/views/Admin/lists/GearshiftTypeList.vue'
+import CommentRequestList from '../components/views/Admin/lists/CommentRequestList.vue'
+import CommentList from '../components/views/Agent/CommentList.vue'
 
 import AdCarListOrder from '../components/views/Order/AdCarListOrder.vue'
 import Bag from '../components/views/Order/Bag.vue'
@@ -159,12 +162,20 @@ const routes = [
     } 
   },
   {
-    path: '/openedAd/:id',
-    name: 'opened-ad',
-    component: OpenedAd,
+    path: '/openedAdByAgent/:id',
+    name: 'opened-ad-by-agent',
+    component: OpenedAdByAgent,
     meta: {
       requiresAuth: true
-    } 
+    }
+  },
+  {
+    path: '/openedAdByUser/:id',
+    name: 'opened-ad-by-user',
+    component: OpenedAdByUser,
+    meta: {
+      requiresAuth: true
+    }
   },
  
   {
@@ -195,6 +206,22 @@ const routes = [
     path: '/gearshiftTypeList',
     name: 'gearshift-type-list',
     component: GearshiftTypeList,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/commentRequestList',
+    name: 'comment-request-list',
+    component: CommentRequestList,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/commentList/:id',
+    name: 'comment-list',
+    component: CommentList,
     meta: {
       requiresAuth: true
     }

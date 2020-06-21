@@ -8,7 +8,7 @@
       <h2 style="font-size: 4rem;
         font-weight: 300;
         line-height: 1.2;
-        margin-left: 26%;">
+        margin-left: 4%;">
         Make report
       </h2>
 

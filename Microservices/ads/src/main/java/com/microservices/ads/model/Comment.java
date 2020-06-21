@@ -1,30 +1,38 @@
 package com.microservices.ads.model;
 
+import com.microservices.ads.utils.CommentRequestState;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 public class Comment {
 
     @Id
-    @SequenceGenerator(name = "comment_id_seq", sequenceName = "comment_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_id_seq")
+    @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
     private Long id;
 
-    //na koji oglas se odnosi komentar
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    private AdCar adCar;
     private String comment;
-    // ko je komentarisao
-    private Long userId;
-    private  boolean accepted;
+
+    @Enumerated(EnumType.STRING)
+    private CommentRequestState state;
+
+    private long userId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ad_car_id")
+    private AdCar adCar;
+
+    private boolean deleted;
+
+    public Comment() {
+        this.deleted = false;
+        this.state = CommentRequestState.PENDING;
+    }
 }

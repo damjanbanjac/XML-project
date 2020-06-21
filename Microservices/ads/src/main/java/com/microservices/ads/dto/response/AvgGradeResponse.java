@@ -5,11 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class CommentResponse {
+@NoArgsConstructor
+public class AvgGradeResponse {
 
-    private Long commId;
-
-    private String comment;
+    private float avgGrade;
 }
