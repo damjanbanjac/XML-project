@@ -24,6 +24,7 @@
                     >
                     <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
                     <router-link to="/searchCarAds" tag="b-dropdown-item">Search cars</router-link>
+                    <router-link to="/messages" tag="b-dropdown-item">Messages</router-link>
 
                 </b-nav-item-dropdown>
                 <b-nav-item-dropdown
@@ -35,6 +36,7 @@
                     <router-link to="/agentRegistration" tag="b-dropdown-item">Register agent/company</router-link>
                     <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
                     <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
+
                 </b-nav-item-dropdown>
             
         </b-navbar-nav>

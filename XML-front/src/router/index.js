@@ -9,7 +9,9 @@ import PriceList from '../components/PriceList.vue'
 import UserList from '../components/views/Admin/UserList.vue'
 import RegistrationRequestList from '../components/views/Admin/RegistrationRequestList.vue'
 import AddCarAd from '../components/views/User/AddCarAd.vue'
-import SearchCarAds from '../components/views/User/SearchCarAds.vue' 
+import SearchCarAds from '../components/views/User/SearchCarAds.vue'
+import Messages from '../components/views/User/Messages.vue'
+
 
 
 Vue.use(VueRouter);
@@ -83,6 +85,14 @@ const routes = [
     path: '/searchCarAds',
     name: 'search-car-ads',
     component: SearchCarAds,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/messages',
+    name: 'messages',
+    component: Messages,
     meta: {
       requiresAuth: true
     }
