@@ -2,8 +2,8 @@
     <div class="container d-flex justify-content-left" style="margin-top: 20px">
       <!--Form with header-->
       <div class="row">
-        <div class="col" style="margin-right:20%">
-      <div class="card" style="width: 150%">
+        <div class="col" style="margin-right:30%">
+      <div class="card" style="width: 190%">
         <!--Header-->
         <div class="header pt-3 grey lighten-2">
           <div class="row d-flex justify-content-start">
@@ -11,13 +11,13 @@
             style="font-size: 3rem;
             font-weight: 300;
             line-height: 1.2;
-            margin-top: -12%;">Car</h3>
+            margin-top: -5%;">Car</h3>
           </div>
         </div>
         <!--Header-->
 
         <div class="form-group">
-          <div class="card-body mx-4 mt-4">
+          <div class="card-body mx-4 mt-2">
             <div  class="row">
               <div class="col">
                 <div class="md-form">
@@ -37,6 +37,17 @@
                   <input type="date" id="Form-availableFrom" class="form-control" v-model="form.availableFrom" :disabled="!change" />
                    <label for="Form-radnoDo">Available To</label>
                   <input type="date" id="Form-availableTo" class="form-control" v-model="form.availableTo" :disabled="!change" >
+
+                  <label>Average grade</label>
+            <br/>
+            <input type="text" id="Form-grade" class="form-control" v-model="avg.avgGrade" disabled/>
+                    <button
+            type="button"
+                  class="btn btn-info btn-block mt-4 z-depth-2"
+                  @click="seeComments()">See comments
+            </button>
+            <br/>
+            
                 </div>  
               </div>
               <div class="col">
@@ -98,7 +109,7 @@
         <b-container v-if="success">
       <b-alert show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
     </b-container>
-        <div class="card" style="width: 120%">
+        <div class="card" style="width: 200%">
         <!--Header-->
         <div class="header pt-3 grey lighten-2">
           <div class="row d-flex justify-content-start">
@@ -130,13 +141,13 @@
       </div>
 
 <!-- kom i ocene -->
-      <div class="col">
+ <!--     <div class="col">
         <b-container v-if="success">
           <b-alert show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
         </b-container>
         <div class="card" style="width: 46%; margin: -325px 1px 1px 683px;">
-          <!--Header-->
-          <div class="header pt-3 grey lighten-2">
+          Header-->
+    <!--      <div class="header pt-3 grey lighten-2">
             <div class="row d-flex justify-content-start">
               <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5" 
               style="font-size: 3rem;
@@ -161,7 +172,7 @@
 
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
 

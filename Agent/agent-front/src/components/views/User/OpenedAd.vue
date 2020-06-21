@@ -61,13 +61,13 @@
                   <input type="checkbox" id="Form-cdw" class="form-control" v-model="form.cdw" :disabled="!change" />
                   <br/>
 
-                    <template v-if="!change">
+                 <!--   <template v-if="!change">
             <button type="button" class="btn btn-danger btn-block z-depth-2" @click="changeClick" >Change data</button>
             </template>
             <template v-else>
             <button type="button" class="btn btn-success btn-block z-depth-2" @click ="saveData" >Save</button>
             
-            </template>
+            </template> -->
 
             <!--      <button
           type="button"
@@ -102,26 +102,43 @@
         <!--Header-->
         <div class="header pt-3 grey lighten-2">
           <div class="row d-flex justify-content-start">
-            <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5" 
+            <h3 class="deep-grey-text mt-2 mb-4 pb-1 mx-5" 
             style="font-size: 3rem;
             font-weight: 300;
             line-height: 1.2;
-            margin-top: -12%;">Gallery</h3>
+            margin-top: -12%;">Gallery and feedback</h3>
           </div>
         </div>
 
-        <div class="card-body mx-4 mt-4">
+        <div class="card-body mx-4 mt-2">
+           <label for="Form-text">Comment</label>
+            <input type="text" id="Form-text" class="form-control" v-model="comm" />
+            <br/>
+            <button
+            type="button"
+                  class="btn btn-outline-info btn-block z-depth-2"
+                  @click="comment()">Comment
+            </button>
+            <br/>
+            <b-form-select v-model="selected" :options="options" size="sm" class="mt-2"></b-form-select>
+            <br/>
+            <br/>
+            <button
+            type="button"
+                  class="btn btn-outline-info btn-block z-depth-2"
+                  @click="grade()">Grade
+            </button>
            <button
           type="button"
                 class="btn btn-info btn-block z-depth-2"
-                @click="getImage()">Gallery
+                @click="getImage()">Open Gallery
           </button> 
-            <input style="display:none" ref="fileInput" type="file" @change="onFileSelected($event)"/>
+         <!--   <input style="display:none" ref="fileInput" type="file" @change="onFileSelected($event)"/>
               <button type="button"
                 class="btn btn-info btn-block z-depth-2 mt-2" @click="$refs.fileInput.click()">Choose image</button>
               <button type="button"
-                class="btn btn-outline-info btn-block z-depth-2"  @click="uploadImages()">Upload Image</button>
-          <div>
+                class="btn btn-outline-info btn-block z-depth-2"  @click="uploadImages()">Upload Image</button> -->
+          <div> 
            <!-- <input type="image" v-model="retrivedImage"/> -->
           <b-img  width="300" height="180" v-for="res in retriveResponse" :key="res.id" :src=" 'data:image/jpeg;base64,' + res.pic">  </b-img>         
           </div>
@@ -130,41 +147,7 @@
       </div>
 
 <!-- kom i ocene -->
-      <div class="col">
-        <div class="card" style="width: 46%; margin: -325px 1px 1px 683px;">
-          <!--Header-->
-          <div class="header pt-3 grey lighten-2">
-            <div class="row d-flex justify-content-start">
-              <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5" 
-              style="font-size: 3rem;
-              font-weight: 300;
-              line-height: 1.2;
-              margin-top: -12%;">Send feedback</h3>
-            </div>
-          </div>
-
-          <div class="card-body mx-4 mt-4">
-            <label for="Form-text">Comment</label>
-            <input type="text" id="Form-text" class="form-control" v-model="comm" />
-            <br/>
-            <button
-            type="button"
-                  class="btn btn-info btn-block z-depth-2"
-                  @click="comment()">Comment
-            </button>
-            <br/>
-            <b-form-select v-model="selected" :options="options" size="sm" class="mt-3"></b-form-select>
-            <br/>
-            <br/>
-            <button
-            type="button"
-                  class="btn btn-info btn-block z-depth-2"
-                  @click="grade()">Grade
-            </button>
-          </div>
-          
-        </div>
-      </div>
+     
     </div>
 
 
