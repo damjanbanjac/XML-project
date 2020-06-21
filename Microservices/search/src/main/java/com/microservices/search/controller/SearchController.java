@@ -2,7 +2,7 @@ package com.microservices.search.controller;
 
 import com.microservices.search.dto.SearchAdDTO;
 import com.microservices.search.model.SearchAd;
-import com.microservices.search.service.SearchAdService;
+import com.microservices.search.service.implementation.SearchAdService;
 import com.netflix.discovery.converters.Auto;
 import com.netflix.ribbon.proxy.annotation.Http;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +26,12 @@ public class SearchController {
     List<SearchAd> searchAdsResult = null;
 
 
-    @GetMapping(value = "/ad")
+    @PostMapping(value="/ad")
     public ResponseEntity<Collection<SearchAdDTO>> searchAds(@RequestBody SearchAdDTO searchAd) throws ParseException {
         Map<Long,SearchAdDTO> adsDTO = new HashMap();
 
         if(searchAd == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         searchAdsResult = searchAdService.searchAds(searchAd);
 
@@ -41,7 +41,6 @@ public class SearchController {
 
         return new ResponseEntity<>(adsDTO.values(), HttpStatus.OK);
     }
-
 
     @GetMapping(value="/{sortBy}/{sortType}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<SearchAdDTO>> sortAds(@PathVariable String sortBy, @PathVariable String sortType) {
@@ -67,15 +66,6 @@ public class SearchController {
 
     @PostMapping(value = "/addad")
     public ResponseEntity<SearchAdDTO> addAd(@RequestBody SearchAdDTO searchAdDTO) throws Exception {
-
-        SearchAdDTO searchaddto = new SearchAdDTO();
-        searchaddto = searchAdService.addAd(searchAdDTO);
-
-        return new ResponseEntity<>(searchaddto, HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/addCarBrand")
-    public ResponseEntity<SearchAdDTO> addCarBrand(@RequestBody SearchAdDTO searchAdDTO) throws Exception {
 
         SearchAdDTO searchaddto = new SearchAdDTO();
         searchaddto = searchAdService.addAd(searchAdDTO);

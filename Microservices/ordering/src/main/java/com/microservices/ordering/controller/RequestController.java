@@ -18,7 +18,7 @@ public class RequestController {
     private IRequestService irequestService;
 
     @PostMapping("/{bundle}/request")
-    public RequestDTO createRequestForUser(@PathVariable Boolean bundle,@RequestBody OrderDTO order) {
+    public List<OrderDTO> createRequestForUser(@PathVariable Boolean bundle,@RequestBody OrderDTO order) {
         return irequestService.createRquestForUser(bundle, order);
     }
 
