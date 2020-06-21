@@ -34,8 +34,8 @@ public class UserService implements IUserService {
     public UserDTO createUser(UserDTO userDTO)  {
         User user = new User();
         user.setId((long)3);
-        user.setName("Laro");
-        user.setEmail("lala@gmail.com");
+        user.setName("Lazo");
+        user.setEmail("lazo@gmail.com");
         userRepository.save(user);
         UserDTO userdto = new UserDTO(user);
         return userdto;

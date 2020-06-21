@@ -43,11 +43,11 @@
             <div class = "col">
                 <div class="col">
                     <label class = "treca">{{user.name}} , {{ user.email}}</label>
-                    <b-button @click="showChat()" type="button"
+                    <b-button @click="showChat(user.id)" type="button"
                 class="btn btn-info z-depth-2">Chat with {{user.name}}</b-button>
                 </div>
             </div>
-            <div class="big" v-if="true">
+            <div class="big" v-if="user.id === show">
                 <div class = "col ajmo" v-for="chat in chats" :key="chat.id">
                     <div v-if="'srbija@gmail.com' + user.email  === chat.id || user.email + 'srbija@gmail.com' === chat.id">
                         <div v-for="message in chat.messages" :key="message.id">
@@ -107,13 +107,16 @@ export default {
             users: [],
             chata: '',
             chats: [],
-            messages: []
+            messages: [],
+            showUserMap: [],
+            show: 0
         }
     },
 
     methods: {
 
         sendMessage(user) {
+            
             this.form.receiver = user;
             this.form.date = new Date();
             axios
@@ -121,6 +124,7 @@ export default {
             .then(chata => {
                 this.chata = chata.data
                 //this.error = false;
+                this.form.messageText = "";
             })
             .catch(error => {
                 console.log(error);
@@ -138,7 +142,9 @@ export default {
             });
         },
 
-        showChat() {
+        showChat(id) {
+            this.form.messageText = "";
+            this.show = id;
             axios
             .get("/message/chats")
             .then(chats => {
@@ -158,6 +164,7 @@ export default {
     },
 
     mounted() {
+        this.show = 0;
         axios
         .get("/agent/agents")
         .then(agents => {
@@ -172,6 +179,19 @@ export default {
         .get("/user/users")
         .then(users => {
             this.users = users.data;
+            // this.users.forEach(user => {
+            //     this.showUserMap = new Map(false,user);
+            // })
+            this.showUserMap = new Array(4);
+            this.showUserMap.forEach(map => {
+                map = false;
+                map;
+            })
+            
+    
+            // this.chats.forEach(chat => {
+                //     chat.show = true;
+                // })
         })
         .catch(error => {
             console.log(error);
