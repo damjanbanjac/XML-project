@@ -2,8 +2,8 @@
     <div class="container d-flex justify-content-left" style="margin-top: 20px">
       <!--Form with header-->
       <div class="row">
-        <div class="col" style="margin-right:20%">
-      <div class="card" style="width: 150%">
+        <div class="col" style="margin-right:30%">
+      <div class="card" style="width: 190%">
         <!--Header-->
         <div class="header pt-3 grey lighten-2">
           <div class="row d-flex justify-content-start">
@@ -11,42 +11,53 @@
             style="font-size: 3rem;
             font-weight: 300;
             line-height: 1.2;
-            margin-top: -12%;">Car</h3>
+            margin-top: -5%;">Car</h3>
           </div>
         </div>
         <!--Header-->
 
         <div class="form-group">
-          <div class="card-body mx-4 mt-4">
+          <div class="card-body mx-4 mt-2">
             <div  class="row">
               <div class="col">
                 <div class="md-form">
                   <label for="Form-carBrand">Car Brand</label>
-                   <input type="text" id="Form-carCity" class="form-control" v-model="form.carBrand_id.name" disabled />
+                   <input type="text" id="Form-carBrand" class="form-control" v-model="form.carBrand_id.name" disabled />
 
                   <label for="Form-phone">Car Class</label>
-                    <input type="text" id="Form-carCity" class="form-control" v-model="form.carClass_id.car_class" disabled />
+                    <input type="text" id="Form-carClass" class="form-control" v-model="form.carClass_id.car_class" disabled />
 
                   <label for="Form-email">Car Model</label>
-                    <input type="text" id="Form-carCity" class="form-control" v-model="form.carModel_id.model" disabled />
+                    <input type="text" id="Form-carModel" class="form-control" v-model="form.carModel_id.model" disabled />
 
                   <label for="Form-adresa">City</label>
-                  <input type="text" id="Form-carCity" class="form-control" v-model="form.city" :disabled="!change" />
+                  <input type="text" id="Form-carCity" class="form-control" v-model="form.city" disabled />
 
                   <label for="Form-radnoDo">Available From</label>
                   <input type="date" id="Form-availableFrom" class="form-control" v-model="form.availableFrom" :disabled="!change" />
                    <label for="Form-radnoDo">Available To</label>
                   <input type="date" id="Form-availableTo" class="form-control" v-model="form.availableTo" :disabled="!change" >
+
+                  <label>Average grade</label>
+            <br/>
+            <input type="text" id="Form-grade" class="form-control" v-model="avg.avgGrade" disabled/>
+                    <button
+            type="button"
+                  class="btn btn-info btn-block mt-4 z-depth-2"
+                  @click="seeComments()">See comments
+            </button>
+            <br/>
+            
                 </div>  
               </div>
               <div class="col">
                 <div class="md-form pb-3">
                   <label for="Form-grad">Type of fuel</label>
-                    <input type="text" id="Form-carCity" class="form-control" v-model="form.fuelType_id.type" disabled />
+                    <input type="text" id="Form-carFuelType" class="form-control" v-model="form.fuelType_id.type" disabled />
                   
 
                   <label for="Form-država">Type of gearshift</label>
-                    <input type="text" id="Form-carCity" class="form-control" v-model="form.gearShift_id.type" disabled />
+                    <input type="text" id="Form-carGearshiftType" class="form-control" v-model="form.gearShift_id.type" disabled />
 
                   <label for="Form-br">Kids Seats</label>
                   <input type="text" id="Form-kidsSeats" class="form-control" v-model="form.kidsSeats" :disabled="!change" />
@@ -61,11 +72,11 @@
                   <input type="checkbox" id="Form-cdw" class="form-control" v-model="form.cdw" :disabled="!change" />
                   <br/>
 
-                  <template v-if="!change">
-            <button type="button" class="btn btn-danger btn-block z-depth-2" @click="changeClick" >Izmeni</button>
+                    <template v-if="!change">
+            <button type="button" class="btn btn-danger btn-block z-depth-2" @click="changeClick" >Change data</button>
             </template>
             <template v-else>
-            <button type="button" class="btn btn-success btn-block z-depth-2" @click ="saveData" >Sačuvaj</button>
+            <button type="button" class="btn btn-success btn-block z-depth-2" @click ="saveData" >Save</button>
             
             </template>
 
@@ -98,7 +109,7 @@
         <b-container v-if="success">
       <b-alert show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
     </b-container>
-        <div class="card" style="width: 120%">
+        <div class="card" style="width: 200%">
         <!--Header-->
         <div class="header pt-3 grey lighten-2">
           <div class="row d-flex justify-content-start">
@@ -106,32 +117,15 @@
             style="font-size: 3rem;
             font-weight: 300;
             line-height: 1.2;
-            margin-top: -12%;">Gallery and feedback</h3>
+            margin-top: -12%;">Gallery</h3>
           </div>
         </div>
+
         <div class="card-body mx-4 mt-4">
-          <label for="Form-text">Comment</label>
-            <input type="text" id="Form-text" class="form-control" v-model="comm" />
-            <br/>
-            <button
-            type="button"
-                  class="btn btn-outline-info btn-block z-depth-2"
-                  @click="comment()">Comment
-            </button>
-            <br/>
-            <b-form-select v-model="selected" :options="options" size="sm" class="mt-2"></b-form-select>
-            <br/>
-            <br/>
-            <button
-            type="button"
-                  class="btn btn-outline-info btn-block z-depth-2"
-                  @click="grade()">Grade
-            </button>
-            <br/>
            <button
           type="button"
                 class="btn btn-info btn-block z-depth-2"
-                @click="getImage()">Open Gallery
+                @click="getImage()">Gallery
           </button> 
             <input style="display:none" ref="fileInput" type="file" @change="onFileSelected($event)"/>
               <button type="button"
@@ -144,8 +138,45 @@
           </div>
         </div>
         </div>
+      </div>
+
+<!-- kom i ocene -->
+ <!--     <div class="col">
+        <b-container v-if="success">
+          <b-alert show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
+        </b-container>
+        <div class="card" style="width: 46%; margin: -325px 1px 1px 683px;">
+          Header-->
+    <!--      <div class="header pt-3 grey lighten-2">
+            <div class="row d-flex justify-content-start">
+              <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5" 
+              style="font-size: 3rem;
+              font-weight: 300;
+              line-height: 1.2;
+              margin-top: -12%;">Feedback insight</h3>
+            </div>
+          </div>
+
+          <div class="card-body mx-4 mt-4">
+            
+            <br/>
+            <button
+            type="button"
+                  class="btn btn-info btn-block z-depth-2"
+                  @click="seeComments()">See comments
+            </button>
+            <br/>
+            <label>Average grade</label>
+            <br/>
+            <input type="text" id="Form-grade" class="form-control" v-model="avg.avgGrade" disabled/>
+
+          </div>
+        </div>
+      </div> -->
     </div>
-  </div>
+
+
+    
 </div>
 </template>
 
@@ -168,7 +199,6 @@ export default {
           kmRestriction: '',
           kmTraveled: null
       },
-      comm: '',
       retrievedImage: null,
       retriveResponse: [],
       base64Data: null,
@@ -177,59 +207,21 @@ export default {
       success: false,
       successmessages: "",
       change: false,
-      selected: "",
-      options: [
-        { value: null, text: 'Select grade' },
-        { value: '1', text: '1' },
-        { value: '2', text: '2' },
-        { value: '3', text: '3' },
-        { value: '4', text: '4' },
-        { value: '5', text: '5' },
-      ]
- 
-            
+      idAd: "",
+      avg: null,
     };
   },
    
   methods: {
 
-    grade() {
-      const body = {
-        grade: this.selected,
-        adCarId: this.$route.params.id
-      }
-      axios
-        .post("ads/grades", body)
-        .then(() => {
-          this.selected = null;
-          this.success = true;
-          this.successmessages = "You have successfully graded this car ad.";
-        })
-        .catch(error => {
-          console.log(error);
-          this.error = true;
-        });
-    },
+    seeComments() {
 
-    comment() {
-      const body = {
-        comment: this.comm,
-        adCarId: this.$route.params.id
-      }
-      axios
-        .post("ads/comments", body)
-        .then(() => {
-          this.comm = "";
-          this.success = true;
-          this.successmessages = "You have successfully commented this car ad.";
-        })
-        .catch(error => {
-          console.log(error);
-          this.error = true;
-        });
+      this.$router.push("/commentList/" + this.$route.params.id);
+      
     },
 
     saveData() {
+     
       axios
       .put("ads/ads/" + this.$route.params.id + "/ad" , this.form)
       .then(user =>{
@@ -240,14 +232,14 @@ export default {
           console.log(error)
       });
     },
-
+    
     changeClick() {
       this.change = true
     },
-
+      
     getImage() {
       axios
-      .get("ads/ads/" + this.$route.params.id + "/image")
+      .get("ads/" + this.$route.params.id + "/image")
       .then(res => {
         console.log("usao uvrati sliku");
         //this.retriveResponse = res;
@@ -266,27 +258,26 @@ export default {
       console.log(event);
       this.selectedFile = event.target.files[0];
       this.success = true;
-      this.successmessages = "Your image is succesfully added.";
+      this.successmessages = "Your image is succesfully added";
     },
-
     uploadImages() {
       console.log("u uploadu");
       const uploadImageData = new FormData();
       uploadImageData.append('imageFile', this.selectedFile,this.selectedFile.name);
       // var idAdCar = 5;
-    axios
-    .post("ads/images/" + this.$route.params.id + "/Ad",uploadImageData)
-    .then(form => {
-      this.error = form;
-      this.success = false;
-      this.success = true;
-      this.successmessages = "Your image has succesfully been uploaded, reload the gallery";
-    })
-    .catch(error => {
-      console.log(error);
-    });
-    },
-
+      axios
+      .post("/images/" + this.$route.params.id + "/Ad",uploadImageData)
+      .then(form => {
+        this.error = form;
+        this.success = false;
+        this.success = true;
+          this.successmessages = "Your image has succesfully been uploaded, reload the gallery";
+          
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    }
   },
   mounted() {
     console.log("usao");
@@ -295,6 +286,16 @@ export default {
       .then(ad => {
         console.log("usao u then")
         this.form = ad.data;
+
+        axios
+        .get("ads/grades/avg-grade/" + this.$route.params.id + "/ad-car")
+        .then(response => {
+          this.avg = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+          this.error = true;
+        });
       })
       .catch(error => {
         console.log(error);

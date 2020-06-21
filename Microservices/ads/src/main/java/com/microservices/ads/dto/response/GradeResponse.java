@@ -1,14 +1,15 @@
 package com.microservices.ads.dto.response;
 
-import com.microservices.ads.model.AdCar;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class GradeResponse {
 
-    private AdCar adCar;
-    private Integer grade;
-    // ko je dao ocenu
-    private Long userId;
+    private float grade;
 
+    private String userEmail;
 }

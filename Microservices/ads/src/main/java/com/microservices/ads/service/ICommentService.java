@@ -1,23 +1,13 @@
 package com.microservices.ads.service;
 
-import com.microservices.ads.dto.request.CommentRequest;
+import com.microservices.ads.dto.request.CommentAdCarRequest;
 import com.microservices.ads.dto.response.CommentResponse;
 
-
-import java.util.Set;
+import java.util.List;
 
 public interface ICommentService {
 
-    CommentResponse getComment(long id);
+    void commentAdCar(CommentAdCarRequest request) throws Exception;
 
-    Set<CommentResponse> getAllComments();
-
-    CommentResponse createComement(CommentRequest request);
-
-    CommentResponse updateComment(CommentRequest request, long id);
-
-    void deleteComment(long id);
-
-    boolean acceptComment(long id);
-
+    List<CommentResponse> getAllCommentsByAdCarId(Long id);
 }

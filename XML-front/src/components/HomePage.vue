@@ -23,7 +23,7 @@
                     right
                     >
                     <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
-                     <router-link to="/adsList" tag="b-dropdown-item">Ads List</router-link>
+                     <router-link to="/adsList" tag="b-dropdown-item">Car ads</router-link>
                      
                 </b-nav-item-dropdown>
                  <b-nav-item-dropdown
@@ -33,13 +33,18 @@
                     right
                     >
                     <router-link  to="/newAd" tag="b-dropdown-item">Add Car</router-link>
-                    <router-link  to="/agentAdList" tag="b-dropdown-item">Ad List</router-link>
+                    <router-link  to="/agentAdList" tag="b-dropdown-item">Car ads</router-link>
                      <router-link to="/makeReport" tag="b-dropdown-item">Make Report</router-link>
                     
                 </b-nav-item-dropdown>
-                <b-nav-item-dropdown text="Admin maintenance" left>
-                    <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
+                <b-nav-item-dropdown text="Admin" left>
+                    
+                    <router-link to="/userList" tag="b-dropdown-item">Client profiles</router-link>
+
+                    <div class="dropdown-divider"></div>
+                    
                     <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
+                    <router-link to="/commentRequestList" tag="b-dropdown-item">Comment requests</router-link>
 
                     <div class="dropdown-divider"></div>
                     
@@ -70,7 +75,7 @@
 
 
                 <b-nav-item-dropdown text="Ordering" left>
-                    <router-link to="/adCarListOrder" tag="b-dropdown-item">Ads</router-link>
+                    <router-link to="/adCarListOrder" tag="b-dropdown-item">Car ads</router-link>
                     <router-link to="/bag" tag="b-dropdown-item">User bag</router-link>
                     <router-link to="/agentRequests" tag="b-dropdown-item">Owner requests</router-link>
                     <router-link to="/userRequests" tag="b-dropdown-item">User requests</router-link>

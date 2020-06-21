@@ -16,13 +16,8 @@
 <b-container>
          <div>
     <b-table class="mt-2 mb-2" striped hover :items="ads" @row-selected="activateAd" select-mode="single" :fields="fields"   selectable caption-top >
-          <template v-slot:table-caption><h3>Ads list</h3>
-          </template>
-          <template v-slot:cell>
-        <b-button size="sm"  class="mr-2">
-          Profil pacijenta
-        </b-button>
-      </template>
+          <!-- <template v-slot:table-caption><h3>Ads list</h3>
+          </template> -->
     </b-table>
   </div>
 </b-container>
@@ -45,13 +40,20 @@ export default {
       ads: [],
       fields: [
         {key: 'id',
-            sortable: true},
+            sortable: true,
+            label: 'Id'},
              {key: 'carBrand_id.name',
-            sortable: true},
-             {key: 'grade',
-            sortable: true},
+            sortable: true,
+            label: 'Car brand'},
              {key: 'city',
-            sortable: true},
+            sortable: true,
+            label: 'City'},
+            {key: 'grade',
+            sortable: true,
+            label: 'Grade'},
+             {key: 'comments',
+            sortable: true,
+            label: 'Number of comments'},
             
         ],
 
@@ -68,7 +70,7 @@ methods: {
       
     
         
-        this.$router.push("/openedAd/" + idAd[0].id);
+        this.$router.push("/openedAdByAgent/" + idAd[0].id);
         
         
       

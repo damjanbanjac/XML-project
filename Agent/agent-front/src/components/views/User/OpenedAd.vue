@@ -128,6 +128,7 @@
                   class="btn btn-outline-info btn-block z-depth-2"
                   @click="grade()">Grade
             </button>
+            <br/>
            <button
           type="button"
                 class="btn btn-info btn-block z-depth-2"
@@ -145,13 +146,8 @@
         </div>
         </div>
       </div>
-
-<!-- kom i ocene -->
-     
     </div>
 
-
-    
 </div>
 </template>
 

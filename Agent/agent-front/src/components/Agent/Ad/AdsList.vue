@@ -55,10 +55,10 @@ export default {
             label: 'Traveled km'},
              {key: 'grade',
             sortable: true,
-            label: 'grade'},
+            label: 'Grade'},
              {key: 'comments',
             sortable: true,
-            label: 'number of comments'},
+            label: 'Number of comments'},
         ],
 
       idAd: ""

@@ -67,12 +67,12 @@ const routes = [
         component: MakeReport
       },
       {
-        path: '/OpenedAdByAgent/:id',
+        path: '/openedAdByAgent/:id',
         name: 'opened-ad-by-agent',
         component: OpenedAdByAgent
       },
       {
-        path: '/OpenedAdByUser/:id',
+        path: '/openedAdByUser/:id',
         name: 'opened-ad-by-user',
         component: OpenedAdByUser
       },

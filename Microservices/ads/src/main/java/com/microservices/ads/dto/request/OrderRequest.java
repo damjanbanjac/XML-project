@@ -1,6 +1,6 @@
-package com.agent.agentapp.dto.request;
+package com.microservices.ads.dto.request;
 
-import com.agent.agentapp.entity.User;
+import com.microservices.ads.model.User;
 import lombok.Data;
 
 @Data

@@ -22,7 +22,7 @@
               
 
                 <div class="text-center mb-4">
-                  <router-link :to="'/openedAd/'+ ad.id"
+                  <router-link :to="'/openedAdByUser/'+ ad.id"
                       tag="button"
                       class="btn btn-info mt-2 btn-block z-depth-2" >Open ad</router-link>
                 </div>

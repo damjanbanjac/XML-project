@@ -1,5 +1,6 @@
 package com.microservices.ads.model;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,20 +13,19 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Grade {
+public class Admin {
 
     @Id
     @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
     private Long id;
 
-    private float grade;
+    private String name;
 
-    private long userId;
+    private String surname;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ad_car_id")
-    private AdCar adCar;
+    private String email;
 
-    private boolean deleted;
+    private String phone_number;
+
 }
