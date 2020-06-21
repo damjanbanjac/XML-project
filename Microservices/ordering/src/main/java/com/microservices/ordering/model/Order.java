@@ -22,6 +22,7 @@ public class Order {
 
     private String availableFrom;
     private String availableTo;
+    private Boolean required;
 
     //na koji oglas se odnosi zahtev
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)

@@ -50,6 +50,7 @@ public class OrderService implements IOrderService {
         System.out.println(request.getAdCar().getId());
         order.setAvailableFrom(request.getAvailableFrom());
         order.setAvailableTo(request.getAvailableTo());
+        order.setRequired(false);
         order.setAdCar(adCarRepository.findOneById(request.getAdCar().getId()));
         order.setUserr(userRepository.findOneById(1));
         order.setUserIzdavao(userRepository.findOneById(request.getAdCar().getUserIzdavaoAd().getId()));
@@ -71,9 +72,11 @@ public class OrderService implements IOrderService {
         List<Order> orders= orderRepositiory.findAll();
 
         for(Order order: orders){
-            if(order.getUserr().getId().equals(id)){
-                ordersOfUser.add(new OrderDTO(order));
-            }
+            if(order.getRequired()==false) {
+                if (order.getUserr().getId().equals(id)) {
+                    ordersOfUser.add(new OrderDTO(order));
+                }
+            }   
         }
 
         return ordersOfUser;

@@ -85,7 +85,7 @@ export default {
       axios
           .post("order/requests/"+this.bundle+"/request", oglas)
           .then(response => {
-              this.request= response.data
+              this.oglasi= response.data
           })
           .catch(error => {
             console.log(error);

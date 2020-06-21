@@ -64,7 +64,7 @@ public class RequestService implements IRequestService {
     }
 
     @Override
-    public RequestDTO createRquestForUser(Boolean bundle, OrderDTO order) {
+    public List<OrderDTO> createRquestForUser(Boolean bundle, OrderDTO order) {
 
 
         Long agentIzdaoId = order.getAdCar().getAgentIzdaoAd().getId();
@@ -89,6 +89,8 @@ public class RequestService implements IRequestService {
                         if (ord.getAgentIzdao().getId().equals(agentIzdaoId)) {
                             System.out.println("Agent provera jednakosti"+ord.getAgentIzdao().getId());
                             Order orderTrue = orderRepositiory.findOneById(ord.getId());
+                            orderTrue.setRequired(true);
+                            orderRepositiory.save(orderTrue);
                             bundleOrders.add(orderTrue);
                         }
                     }
@@ -104,28 +106,52 @@ public class RequestService implements IRequestService {
             Request newRequest= new Request();
             newRequest.setBundle(bundle);
             newRequest.setStatus("PENDING");
-            newRequest.setPaymentDate(calendar.getTime());
+            newRequest.setAcceptDate(calendar.getTime());
             newRequest.setOrderList(bundleOrders);
 
             requestRepository.save(newRequest);
             RequestDTO requestDTO = new RequestDTO(newRequest);
 
-            return requestDTO;
+            List<OrderDTO> ordersOfUser= new ArrayList<>();
+            List<Order> orderss= orderRepositiory.findAll();
+
+            for(Order o: orderss){
+                if(o.getRequired()==false) {
+                    if (o.getUserr().getId().equals(1)) {
+                        ordersOfUser.add(new OrderDTO(o));
+                    }
+                }
+            }
+
+            return ordersOfUser;
 
         } else{
 
                 Request newRequest= new Request();
                 newRequest.setBundle(bundle);
                 newRequest.setStatus("PENDING");
-                newRequest.setPaymentDate(calendar.getTime());
+                newRequest.setAcceptDate(calendar.getTime());
                 Order orderFalse = orderRepositiory.findOneById(order.getId());
+                orderFalse.setRequired(true);
+                orderRepositiory.save(orderFalse);
                 bundleOrders.add(orderFalse);
                 newRequest.setOrderList(bundleOrders);
                 requestRepository.save(newRequest);
                 RequestDTO requestDTO = new RequestDTO(newRequest);
 
 
-            return requestDTO;
+            List<OrderDTO> ordersOfUser= new ArrayList<>();
+            List<Order> orderss= orderRepositiory.findAll();
+
+            for(Order o: orderss){
+                if(o.getRequired()==false) {
+                    if (o.getUserr().getId().equals(1)) {
+                        ordersOfUser.add(new OrderDTO(o));
+                    }
+                }
+            }
+
+            return ordersOfUser;
 
 
         }
@@ -157,7 +183,8 @@ public class RequestService implements IRequestService {
         order1.setAvailableFrom(order.getAvailableFrom());
         order1.setAvailableTo(order.getAvailableTo());
         order1.setAdCar(adCarRepository.findOneById(order.getAdCar().getId()));
-        order1.setUserr(userRepository.findOneById(1));
+        order1.setRequired(true);
+        order1.setUserr(userRepository.findOneById(2));
         order1.setUserIzdavao(userRepository.findOneById(order.getAdCar().getUserIzdavaoAd().getId()));
         order1.setAgentIzdao(agentRepository.findOneById(order.getAdCar().getAgentIzdaoAd().getId()));
 
@@ -169,7 +196,7 @@ public class RequestService implements IRequestService {
 
         Request newRequest= new Request();
         newRequest.setBundle(false);
-        newRequest.setStatus("RESERVED");
+        newRequest.setStatus("PAID");
         bundleOrders.add(order1);
         newRequest.setOrderList(bundleOrders);
         requestRepository.save(newRequest);

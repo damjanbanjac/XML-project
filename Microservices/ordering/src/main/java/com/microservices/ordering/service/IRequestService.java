@@ -20,7 +20,7 @@ public interface IRequestService {
 
     void acceptRequestFromAgent(long id, long idAgent);
 
-    RequestDTO createRquestForUser(Boolean bundle, OrderDTO order);
+    List<OrderDTO> createRquestForUser(Boolean bundle, OrderDTO order);
 
     RequestDTO presonallyRequest(OrderDTO order);
 
