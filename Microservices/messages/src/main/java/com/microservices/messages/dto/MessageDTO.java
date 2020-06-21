@@ -2,6 +2,7 @@ package com.microservices.messages.dto;
 
 import com.microservices.messages.model.Message;
 import com.microservices.messages.model.Person;
+import com.microservices.messages.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,10 +16,11 @@ public class MessageDTO {
 
     private Long id;
 
-    private Person sender;
+    private User sender;
     private String messageText;
-    private Person receiver;
+    private User receiver;
     private Date date;
+    private String chatId;
 
     public MessageDTO(Message message) {
         this.id = message.getId();
@@ -26,5 +28,6 @@ public class MessageDTO {
         this.messageText = message.getMessageText();
         this.receiver = message.getReceiver();
         this.date = message.getDate();
+        this.chatId = message.getChatId();
     }
 }

@@ -26,14 +26,16 @@ public class UserService implements IUserService {
         UserDTO response = new UserDTO();
         response.setId(user.getId());
         response.setName(user.getName());
+        response.setEmail(user.getEmail());
         return response;
     }
 
     @Override
     public UserDTO createUser(UserDTO userDTO)  {
         User user = new User();
-        user.setId((long)2);
-        user.setName("Civilcina");
+        user.setId((long)3);
+        user.setName("Treci");
+        user.setEmail("srbija@gmail.com");
         userRepository.save(user);
         UserDTO userdto = new UserDTO(user);
         return userdto;

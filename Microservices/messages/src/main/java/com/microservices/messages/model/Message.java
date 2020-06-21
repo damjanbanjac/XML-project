@@ -49,7 +49,7 @@ public class Message {
 //    @Resource(name = "sender")
 //    private transient Person sender;
 //    @Resource(name = "receiver")
-//    private transient Person receiver;W
+//    private transient Person receiver;
     @OneToOne
     private User sender;
 
@@ -59,4 +59,7 @@ public class Message {
     private String messageText;
 
     private Date date;
+
+    @Column(name = "chat_id")
+    private String chatId;
 }

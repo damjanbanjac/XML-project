@@ -34,8 +34,8 @@ public class AgentService implements IAgentService {
     @Override
     public AgentDTO createAgent(AgentDTO agentDTO)  {
         Agent agent = new Agent();
-        agent.setId((long)4);
-        agent.setName("Kimi");
+        agent.setId((long)3);
+        agent.setName("Zabranjeni");
         agent.setAddress("Adresa");
         agent.setPib("123");
         agentRepository.save(agent);

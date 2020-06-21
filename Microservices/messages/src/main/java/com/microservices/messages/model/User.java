@@ -22,4 +22,5 @@ public class User extends Person {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id")
     private Long id;
     private String name;
+    private String email;
 }

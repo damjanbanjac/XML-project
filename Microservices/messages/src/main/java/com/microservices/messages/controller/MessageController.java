@@ -1,15 +1,20 @@
 package com.microservices.messages.controller;
 
+import com.microservices.messages.dto.ChatDTO;
 import com.microservices.messages.dto.MessageDTO;
+import com.microservices.messages.dto.UserDTO;
 import com.microservices.messages.service.implementation.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
+import java.util.List;
 
 @RestController
 //@RequestMapping(value = "/message")
@@ -30,6 +35,12 @@ public class MessageController {
         MessageDTO messagedto = new MessageDTO();
         messagedto = messageService.createMessage(messageDTO);
         return new ResponseEntity<>(messagedto, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/message/chats", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<ChatDTO>> getAllChats() throws Exception {
+        List<ChatDTO> response = messageService.getAllChats();
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }
