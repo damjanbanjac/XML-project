@@ -40,12 +40,12 @@ public class CarBrandController {
         return _carBrandService.getAllCarBrands();
     }
 
-    @PostMapping
+  /*  @PostMapping
     public CarBrandResponse createCarBrand(@RequestBody CreateCarBrandRequest request) {
         return _carBrandService.createCarBrand(request);
-    }
+    } */
 
-    @PostMapping("/soup")
+    @PostMapping
     public GetcarBrandResponse createBrand(@RequestBody CreateCarBrandRequest request) throws IOException {
         System.out.println(request.getLabel());
         System.out.println(request.getName());
