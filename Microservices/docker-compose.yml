@@ -8,19 +8,18 @@ services:
     tty: true
 
 
+#  adsservice:
+#    build: ./ads
+#    ports:
+#      - "8098:8098"
+#    tty: true
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#      - MYSQL_HOST=users-database
+#    depends_on:
+#     - eurekaservice
+#     - users-database
 
-  adsservice:
-    build: ./ads
-    ports:
-      - "8098:8098"
-    tty: true
-    environment:
-      - REGISTRY_HOST=eurekaservice
-      - MYSQL_HOST=users-database
-
-    depends_on:
-      - users-database
-      - eurekaservice
 
   maintenanceservice:
     build: ./maintenance
@@ -29,28 +28,16 @@ services:
     environment:
       - REGISTRY_HOST=eurekaservice
       - MYSQL_HOST=users-database
-
     tty: true
     depends_on:
       - users-database
       - eurekaservice
 
-#  orderservice:
-#    build: ./ordering
-#    ports:
-#      - "8089:8089"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#      - MYSQL_HOST=users-database
-#    tty: true
-#    depends_on:
-#      - users-database
-#      - eurekaservice
 
-  searchsevice:
-    build: ./search
+  orderservice:
+    build: ./ordering
     ports:
-      - "8091:8091"
+      - "8089:8089"
     environment:
       - REGISTRY_HOST=eurekaservice
       - MYSQL_HOST=users-database
@@ -58,6 +45,19 @@ services:
     depends_on:
       - users-database
       - eurekaservice
+
+
+#  searchsevice:
+#   build: ./search
+#   ports:
+#      - "8091:8091"
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#      - MYSQL_HOST=users-database
+#    tty: true
+#    depends_on:
+  #    - users-database
+#      - eurekaservice
 #
   messageservice:
     build: ./messages
@@ -74,24 +74,24 @@ services:
 #  authservice:
 #    build: ./authentication
 #    ports:
-#      - "8443:8443"
+#      - "8083:8083"
 #    environment:
 #      - REGISTRY_HOST=eurekaservice
 #    tty: true
 #    depends_on:
 #      - eurekaservice
-#
-  paymentservice:
-    build: ./payment
-    ports:
-      - "8090:8090"
-    environment:
-      - REGISTRY_HOST=eurekaservice
-      - MYSQL_HOST=users-database
-    tty: true
-    depends_on:
-      - eurekaservice
-      - users-database
+
+#  paymentservice:
+#    build: ./payment
+#    ports:
+#      - "8090:8090"
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#      - MYSQL_HOST=users-database
+#    tty: true
+#    depends_on:
+#     - eurekaservice
+   #   - users-database
 
   zuul:
     build: ./zuul
@@ -102,11 +102,14 @@ services:
     tty: true
     depends_on:
       - eurekaservice
-      - adsservice
+#      - adsservice
 #      - authservice
       - maintenanceservice
+      - orderservice
+#      - adsservice
+#      - authservice
 #      - orderservice
-      - paymentservice
+#      - paymentservice
 #      - searchsevice
 
   users-database:

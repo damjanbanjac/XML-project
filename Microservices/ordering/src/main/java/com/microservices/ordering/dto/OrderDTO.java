@@ -5,25 +5,25 @@ import com.microservices.ordering.model.AdCar;
 import com.microservices.ordering.model.Agent;
 import com.microservices.ordering.model.Order;
 import com.microservices.ordering.model.Users;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class OrderDTO {
 
     private Long id;
-    private Date availableFrom;
-    private Date availableTo;
+    private String availableFrom;
+    private String availableTo;
 
     private AdCar adCar;
-    private Users user;
-    private Users userIzdao;
-    private Agent agentIzdao;
+    //private Users user;
+    //private Users userIzdao;
+    //private Agent agentIzdao;
 
 
     public OrderDTO(Order order) {
@@ -31,8 +31,8 @@ public class OrderDTO {
         this.availableFrom=order.getAvailableFrom();
         this.availableTo=order.getAvailableTo();
         this.adCar=order.getAdCar();
-        this.user=order.getUserr();
-        this.userIzdao=order.getUserIzdavao();
-        this.agentIzdao=order.getAgentIzdao();
+        //this.user=order.getUserr();
+        //this.userIzdao=order.getUserIzdavao();
+        //this.agentIzdao=order.getAgentIzdao();
     }
 }
