@@ -21,7 +21,13 @@ public class CarBrand {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
     private Long id;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "carBrand")
-    public List<SearchAd> adsCar;
+//    @OneToMany(fetch = FetchType.LAZY)
+////    @JoinColumn(name = "carBrand")
+////    public List<SearchAd> adsCar;
+
+    private String name;
+
+    private String label;
+
+    private boolean deleted;
 }

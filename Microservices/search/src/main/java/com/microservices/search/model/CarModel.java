@@ -21,7 +21,7 @@ public class CarModel {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
     private Long id;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "carModel")
-    public List<SearchAd> adsCar;
+    private String model;
+
+    private boolean deleted;
 }

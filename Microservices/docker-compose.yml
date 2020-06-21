@@ -59,17 +59,17 @@ services:
   #    - users-database
 #      - eurekaservice
 #
-#  messageservice:
-#    build: ./messages
-#    ports:
-#      - "8084:8084"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#      -  MYSQL_HOST=users-database
-#    tty: true
-#    depends_on:
-#      - eurekaservice
-#      - users-database
+  messageservice:
+    build: ./messages
+    ports:
+      - "8084:8084"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+      -  MYSQL_HOST=users-database
+    tty: true
+    depends_on:
+      - eurekaservice
+      - users-database
 #
 #  authservice:
 #    build: ./authentication

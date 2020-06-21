@@ -6,6 +6,9 @@ import ClientRegistrationForm from '../components/ClientRegistrationForm.vue'
 import HomePage from '../components/HomePage.vue'
 import PriceList from '../components/PriceList.vue'
 import AddCarAd from '../components/views/User/AddCarAd.vue'
+import SearchCarAds from '../components/views/User/SearchCarAds.vue'
+import Messages from '../components/views/User/Messages.vue'
+
 import AdsList from '../components/views/User/AdsList.vue'
 import OpenedAd from '../components/views/User/OpenedAd.vue'
 
@@ -139,7 +142,13 @@ const routes = [
     component: CarBrandList,
     meta: {
       requiresAuth: true
-    } 
+    },
+  },
+  {
+    path: '/searchCarAds',
+    name: 'search-car-ads',
+    component: SearchCarAds,
+     
   },
   {
     path: '/adsList',
@@ -265,6 +274,14 @@ const routes = [
     }
   },
   {
+    path: '/messages',
+    name: 'messages',
+    component: Messages,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/updateTypeOfGearshift/:id',
     name: 'update-type-of-gearshift',
     component: UpdateTypeOfGearshift,
@@ -312,7 +329,6 @@ const routes = [
       requiresAuth: true
     }
   },
-
 
 ]
 

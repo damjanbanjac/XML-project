@@ -23,6 +23,9 @@
                     right
                     >
                     <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
+                    <router-link to="/searchCarAds" tag="b-dropdown-item">Search cars</router-link>
+                    <router-link to="/messages" tag="b-dropdown-item">Messages</router-link>
+
                      <router-link to="/adsList" tag="b-dropdown-item">Ads List</router-link>
                      
                 </b-nav-item-dropdown>
@@ -39,6 +42,7 @@
                 </b-nav-item-dropdown>
                 <b-nav-item-dropdown text="Admin maintenance" left>
                     <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
+
                     <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
 
                     <div class="dropdown-divider"></div>
