@@ -175,6 +175,7 @@ public class AdCarService implements IAdCarService {
 
             adCar.setCarModel_id(carModelRepository.findOneById(request.getCarModel_id().getId()));
             adCar.setCdw(request.getCdw());
+            //adCar.setAgentAd(agentRepository.findOneById(long (1)));
            // adCar.setUserAd(userAdRepository.findById(request.getUserAd()).orElse(null));
             adCar.setFuelTypeCar_id(typeOfFuelTypeRepository.findOneById(request.getFuelType_id().getId()));
             adCar.setGearShiftCar_id(typeOfGearShiftRepository.findOneById(request.getGearShift_id().getId()));

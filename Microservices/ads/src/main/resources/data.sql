@@ -1,4 +1,4 @@
-INSERT INTO `services`.`car_brand_ad` (`id`,`deleted`, `name`) VALUES ('2',false,'mercedes');
+--INSERT INTO `services`.`car_brand_ad` (`id`,`deleted`, `name`) VALUES ('2',false,'mercedes');
 
 INSERT INTO `services`.`car_class_ad` (`id`,`deleted`, `car_class`) VALUES ('1',false,'A');
 

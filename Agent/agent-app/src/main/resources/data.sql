@@ -1,7 +1,7 @@
 INSERT INTO `agentxml`.`agent` (`id`, `address`, `name`, `pib`) VALUES ('1', 'janka', 'damjan', '123A');
 
 
-INSERT INTO `agentxml`.`car_brand` (`id`,`deleted`, `name`) VALUES ('1',false,'mercedes');
+--INSERT INTO `agentxml`.`car_brand` (`id`,`deleted`, `name`) VALUES ('1',false,'mercedes');
 
 INSERT INTO `agentxml`.`car_class` (`id`,`deleted`, `car_class`) VALUES ('1',false,'A');
 
@@ -15,6 +15,10 @@ INSERT INTO `agentxml`.`ad_car` (`id`, `available_from`, `available_to`, `cdw`, 
 
 INSERT INTO `agentxml`.`users` (`id`, `active`, `blocked`, `email`) VALUES ('1', true, false, 'lala');
 
-INSERT INTO `agentxml`.`order_ad` (`id`, `deleted`, `state`, `using_time_up`, `ad_car`, `user_id`) VALUES ('1', false, 'PAID', true, '1', '1');
+INSERT INTO `agentxml`.`order_ad` (`id`, `deleted`, `state`, `using_time_up`, `ad_car`, `user_id`) VALUES ('1', false, 'PAID', true, '100', '1');
 
-INSERT INTO `agentxml`.`order_ad` (`id`, `deleted`, `state`, `using_time_up`, `ad_car`, `user_id`) VALUES ('2', false, 'PAID', true, '1', '1');
+
+INSERT INTO `agentxml`.`order_ad` (`id`, `deleted`, `state`, `using_time_up`, `ad_car`, `user_id`) VALUES ('1', false, 'PAID', true, '100', '1');
+
+INSERT INTO `agentxml`.`order_ad` (`id`, `deleted`, `state`, `using_time_up`, `ad_car`, `user_id`) VALUES ('2', false, 'PAID', true, '100', '1');
+
