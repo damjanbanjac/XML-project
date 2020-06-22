@@ -1,5 +1,6 @@
 package com.microservices.messages.controller;
 
+import com.microservices.messages.dto.RequestDTO;
 import com.microservices.messages.dto.UserDTO;
 import com.microservices.messages.service.implementation.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,15 @@ public class UserController {
         List<UserDTO> response = userService.getAllUsers();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    @GetMapping("/user/loggedUser")
+    public ResponseEntity<UserDTO> getUser(){
+        long idUser = 1;
+        UserDTO response = userService.getUser(idUser);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
 
     @PostMapping(value = "/user/user")
     public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDTO) throws Exception {

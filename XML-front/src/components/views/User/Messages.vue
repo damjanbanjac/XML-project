@@ -40,16 +40,18 @@
           </div>
         </div>
         <div class="form-group" v-for="user in users" :key="user.id">
-            <div class = "col">
-                <div class="col">
-                    <label class = "treca">{{user.name}} , {{ user.email}}</label>
-                    <b-button @click="showChat(user.id)" type="button"
-                class="btn btn-info z-depth-2">Chat with {{user.name}}</b-button>
+            <div v-for="showUser in userPendingRequest" :key="showUser">
+                <div class = "col" v-if="user.id != loggedUser.id && user.id === showUser">
+                    <div class="col">
+                        <label class = "treca">{{user.name}} , {{ user.email}}</label>
+                        <b-button @click="showChat(user.id)" type="button"
+                    class="btn btn-info z-depth-2">Chat with {{user.name}}</b-button>
+                    </div>
                 </div>
             </div>
             <div class="big" v-if="user.id === show">
                 <div class = "col ajmo" v-for="chat in chats" :key="chat.id">
-                    <div v-if="'srbija@gmail.com' + user.email  === chat.id || user.email + 'srbija@gmail.com' === chat.id">
+                    <div v-if="loggedUser.email + user.email  === chat.id || user.email + loggedUser.email === chat.id">
                         <div v-for="message in chat.messages" :key="message.id">
                             {{message.sender.name}}: {{message.messageText}}
                         </div>
@@ -109,37 +111,37 @@ export default {
             chats: [],
             messages: [],
             showUserMap: [],
-            show: 0
+            show: 0,
+            userPendingRequest: [],
+            loggedUser: '',
+            idLogged: 1
         }
     },
 
     methods: {
 
         sendMessage(user) {
-            
+            if(this.form.messageText == "") {
+                return;
+            }
             this.form.receiver = user;
             this.form.date = new Date();
+    
             axios
             .post("/message/message",this.form)
             .then(chata => {
                 this.chata = chata.data
-                //this.error = false;
                 this.form.messageText = "";
+                return axios.get("/message/chats");
             })
-            .catch(error => {
-                console.log(error);
-                //this.errormessage = "Mail vec postoji";
-                //this.error = true;
-            });
-
-            axios
-            .get("/message/chats")
             .then(chats => {
                 this.chats = chats.data;
             })
             .catch(error => {
                 console.log(error);
             });
+
+
         },
 
         showChat(id) {
@@ -206,6 +208,37 @@ export default {
         .catch(error => {
             console.log(error);
         });
+
+
+        axios
+        .get("/message/chats")
+        .then(chats => {
+            this.chats = chats.data;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+        axios
+        .get("/message/show")
+        .then(userPendingRequest => {
+            this.userPendingRequest = userPendingRequest.data;
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+
+        axios
+          .get("user/loggedUser")
+          .then(loggedUser => {
+              this.loggedUser= loggedUser.data
+          })
+          .catch(error => {
+            console.log(error);
+          });
+
+
     }
 }
 </script>

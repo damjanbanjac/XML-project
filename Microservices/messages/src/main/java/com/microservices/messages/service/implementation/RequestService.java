@@ -2,6 +2,7 @@ package com.microservices.messages.service.implementation;
 
 import com.microservices.messages.dto.OrderDTO;
 import com.microservices.messages.dto.RequestDTO;
+import com.microservices.messages.dto.UserDTO;
 import com.microservices.messages.model.Order;
 import com.microservices.messages.model.Request;
 import com.microservices.messages.model.User;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class RequestService implements IRequestService {
@@ -43,9 +45,35 @@ public class RequestService implements IRequestService {
     }
 
     @Override
-    public Set<RequestDTO> getAllRequests() {
-        return null;
+    public List<RequestDTO> getAllRequests() {
+            List<Request> requestList = requestRepository.findAll();
+            return requestList.stream().map(patient -> mapToResponse(patient)).collect(Collectors.toList());
     }
+
+    private RequestDTO mapToResponse(Request request) {
+        RequestDTO response = new RequestDTO();
+        response.setId(request.getId());
+        response.setStatus(request.getStatus());
+        response.setBundle(request.getBundle());
+        response.setOrderList(request.getOrderList());
+        return response;
+    }
+
+
+
+//    @Override
+//    public List<UserDTO> getAllUsers() {
+//        List<User> userList = userRepository.findAll();
+//        return userList.stream().map(patient -> mapToResponse(patient)).collect(Collectors.toList());
+//    }
+//
+//    private UserDTO mapToResponse(User user) {
+//        UserDTO response = new UserDTO();
+//        response.setId(user.getId());
+//        response.setName(user.getName());
+//        response.setEmail(user.getEmail());
+//        return response;
+//    }
 
     @Override
     public void cancelRequest(long id) {

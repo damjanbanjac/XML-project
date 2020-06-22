@@ -1,10 +1,13 @@
 package com.microservices.messages.controller;
 
+import com.microservices.messages.dto.ChatDTO;
 import com.microservices.messages.dto.OrderDTO;
 import com.microservices.messages.dto.RequestDTO;
 import com.microservices.messages.service.IRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,6 +53,12 @@ public class RequestController {
     @PostMapping("/{idRequest}/paid")
     public RequestDTO paidRequest(@PathVariable Long idRequest){
         return irequestService.paidRequest(idRequest);
+    }
+
+    @GetMapping(value = "/requests", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<RequestDTO>> getAllRequests() throws Exception {
+        List<RequestDTO> response = irequestService.getAllRequests();
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }

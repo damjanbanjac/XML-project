@@ -111,11 +111,11 @@ public class SearchAdService implements ISearchAdService {
 //        searchAdRepository.save(searchAd);
 
 
-        CarBrand cb = carBrandRepository.findOneById(2);
-        CarModel cm = carModelRepository.findOneById((long)4);
-        CarClass cc = carClassRepository.findOneById(6);
-        FuelType ft = fuelTypeRepository.findOneById((long)8);
-        GearShiftType gst = gearShiftTypeRepository.findOneById((long)10);
+        CarBrand cb = carBrandRepository.findOneById(1);
+        CarModel cm = carModelRepository.findOneById((long)2);
+        CarClass cc = carClassRepository.findOneById(3);
+        FuelType ft = fuelTypeRepository.findOneById((long)4);
+        GearShiftType gst = gearShiftTypeRepository.findOneById((long)5);
 
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

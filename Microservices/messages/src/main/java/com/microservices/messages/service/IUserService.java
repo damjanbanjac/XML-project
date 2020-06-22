@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IUserService {
 
-//    UserDTO getUser(long id);
+    UserDTO getUser(long id);
 
     List<UserDTO> getAllUsers();
 

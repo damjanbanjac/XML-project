@@ -151,6 +151,9 @@ const routes = [
     path: '/searchCarAds',
     name: 'search-car-ads',
     component: SearchCarAds,
+    meta: {
+      requiresAuth: true
+    }
      
   },
   {
