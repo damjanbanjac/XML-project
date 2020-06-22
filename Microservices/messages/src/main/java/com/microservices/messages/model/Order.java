@@ -27,10 +27,12 @@ public class Order {
     @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private AdCar adCar;
     //na kog korisnika se odnosi zahtev
+    //renter
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private User userr;
 
     //koji korisnik je izdao oglas
+    //owner
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private User userIzdavao;
 

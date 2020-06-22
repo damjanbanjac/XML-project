@@ -2,16 +2,14 @@ package com.microservices.messages.controller;
 
 import com.microservices.messages.dto.ChatDTO;
 import com.microservices.messages.dto.MessageDTO;
+import com.microservices.messages.dto.RequestDTO;
 import com.microservices.messages.dto.UserDTO;
 import com.microservices.messages.service.implementation.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.List;
@@ -49,4 +47,14 @@ public class MessageController {
         return new ResponseEntity<>(chatDTO, HttpStatus.OK);
     }
 
+//    @PostMapping(value = "/message/show/{idOwner}/{idRenter}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<List<Long>> getPendingRequestsShow(@PathVariable Long idOwner, @PathVariable Long idRenter) throws ParseException {
+//        List<Long> returnList = messageService.getPendingRequestUsers(idOwner,idRenter);
+//        return new ResponseEntity<>(returnList, HttpStatus.OK);
+//    }
+        @GetMapping(value = "/message/show", produces = MediaType.APPLICATION_JSON_VALUE)
+        public ResponseEntity<List<Long>> getPendingRequestsShow() throws ParseException {
+        List<Long> returnList = messageService.getPendingRequestUsers();
+        return new ResponseEntity<>(returnList, HttpStatus.OK);
+    }
 }

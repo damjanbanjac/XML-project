@@ -10,7 +10,7 @@ public interface IRequestService {
 
     RequestDTO getRequest(long id);
 
-    Set<RequestDTO> getAllRequests();
+    List<RequestDTO> getAllRequests();
 
     //RequestDTO createRequest(RequestDTO request);
 

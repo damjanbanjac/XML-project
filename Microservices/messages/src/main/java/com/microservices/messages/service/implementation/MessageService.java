@@ -3,13 +3,8 @@ package com.microservices.messages.service.implementation;
 import com.microservices.messages.dto.ChatDTO;
 import com.microservices.messages.dto.MessageDTO;
 import com.microservices.messages.dto.UserDTO;
-import com.microservices.messages.model.Chat;
-import com.microservices.messages.model.Message;
-import com.microservices.messages.model.User;
-import com.microservices.messages.repository.IAgentRepository;
-import com.microservices.messages.repository.IChatRepository;
-import com.microservices.messages.repository.IMessageRepository;
-import com.microservices.messages.repository.IUserRepository;
+import com.microservices.messages.model.*;
+import com.microservices.messages.repository.*;
 import com.microservices.messages.service.IMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +28,9 @@ public class MessageService implements IMessageService {
 
     @Autowired
     private IChatRepository chatRepository;
+
+    @Autowired
+    private RequestRepository requestRepository;
 
     @Override
     public MessageDTO createMessage(MessageDTO messageDTO) {
@@ -94,6 +92,27 @@ public class MessageService implements IMessageService {
         Chat chat = chatRepository.findById(id);
         ChatDTO chatDTO = new ChatDTO(chat);
         return chatDTO;
+    }
+
+
+    public List<Long> getPendingRequestUsers() {
+        long id_owner = 1;
+        List<Request> requestList = requestRepository.findAll();
+        List<Long> returnListOfId = new ArrayList<>();
+        for(Request request : requestList) {
+            if(request.getStatus().equals("PENDING")) {
+                for(Order order : request.getOrderList()) {
+                    if(order.getUserIzdavao().getId().equals(id_owner)) {
+                        for(User user : userRepository.findAll()) {
+                            if(order.getUserr().getId().equals(user.getId())) {
+                                returnListOfId.add(user.getId());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return returnListOfId;
     }
 
 }
