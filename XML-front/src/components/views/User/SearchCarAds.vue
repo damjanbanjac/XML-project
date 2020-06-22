@@ -348,7 +348,8 @@ import axios from "axios";
        },
        gearShiftTypeNull : {
          type : "Null"
-       }
+       },
+       loggedUser: ""
       
       }
     },

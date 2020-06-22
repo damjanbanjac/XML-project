@@ -41,7 +41,7 @@
         </div>
         <div class="form-group" v-for="user in users" :key="user.id">
             <div v-for="showUser in userPendingRequest" :key="showUser">
-                <div class = "col" v-if="user.id != 1 && user.id === showUser">
+                <div class = "col" v-if="user.id != loggedUser.id && user.id === showUser">
                     <div class="col">
                         <label class = "treca">{{user.name}} , {{ user.email}}</label>
                         <b-button @click="showChat(user.id)" type="button"
@@ -51,7 +51,7 @@
             </div>
             <div class="big" v-if="user.id === show">
                 <div class = "col ajmo" v-for="chat in chats" :key="chat.id">
-                    <div v-if="'srbija@gmail.com' + user.email  === chat.id || user.email + 'srbija@gmail.com' === chat.id">
+                    <div v-if="loggedUser.email + user.email  === chat.id || user.email + loggedUser.email === chat.id">
                         <div v-for="message in chat.messages" :key="message.id">
                             {{message.sender.name}}: {{message.messageText}}
                         </div>
@@ -112,7 +112,9 @@ export default {
             messages: [],
             showUserMap: [],
             show: 0,
-            userPendingRequest: []
+            userPendingRequest: [],
+            loggedUser: '',
+            idLogged: 1
         }
     },
 
@@ -225,6 +227,17 @@ export default {
         .catch(error => {
             console.log(error);
         });
+
+
+        axios
+          .get("user/loggedUser")
+          .then(loggedUser => {
+              this.loggedUser= loggedUser.data
+          })
+          .catch(error => {
+            console.log(error);
+          });
+
 
     }
 }

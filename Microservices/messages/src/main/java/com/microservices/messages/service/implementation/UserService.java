@@ -1,6 +1,8 @@
 package com.microservices.messages.service.implementation;
 
+import com.microservices.messages.dto.ChatDTO;
 import com.microservices.messages.dto.UserDTO;
+import com.microservices.messages.model.Chat;
 import com.microservices.messages.model.User;
 import com.microservices.messages.repository.IUserRepository;
 import com.microservices.messages.service.IUserService;
@@ -39,5 +41,12 @@ public class UserService implements IUserService {
         userRepository.save(user);
         UserDTO userdto = new UserDTO(user);
         return userdto;
+    }
+
+    @Override
+    public UserDTO getUser(long id) {
+        User user = userRepository.findById(id);
+        UserDTO userDTO = new UserDTO(user);
+        return userDTO;
     }
 }

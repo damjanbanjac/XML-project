@@ -42,7 +42,7 @@ public class MessageController {
     }
 
     @GetMapping(value = "/message/chat", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<ChatDTO> getChat(String id) throws Exception {
+    public ResponseEntity<ChatDTO> getChat(@RequestBody String id) throws Exception {
         ChatDTO chatDTO = messageService.getChat(id);
         return new ResponseEntity<>(chatDTO, HttpStatus.OK);
     }
