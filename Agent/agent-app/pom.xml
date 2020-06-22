@@ -81,28 +81,28 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
-				<version>0.14.0</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<schemaLanguage>WSDL</schemaLanguage>
-					<generatePackage>com.xml.AdsApp.wsdl</generatePackage>
-					<schemas>
-						<schema>
-							<url>http://localhost:8098/ws/adsSchema.wsdl</url>
-						</schema>
+<!--			<plugin>-->
+<!--				<groupId>org.jvnet.jaxb2.maven2</groupId>-->
+<!--				<artifactId>maven-jaxb2-plugin</artifactId>-->
+<!--				<version>0.14.0</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<goals>-->
+<!--							<goal>generate</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--				<configuration>-->
+<!--					<schemaLanguage>WSDL</schemaLanguage>-->
+<!--					<generatePackage>com.xml.AdsApp.wsdl</generatePackage>-->
+<!--					<schemas>-->
+<!--						<schema>-->
+<!--							<url>http://localhost:8098/ws/adsSchema.wsdl</url>-->
+<!--						</schema>-->
 
-					</schemas>
-				</configuration>
-			</plugin>
+<!--					</schemas>-->
+<!--				</configuration>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
