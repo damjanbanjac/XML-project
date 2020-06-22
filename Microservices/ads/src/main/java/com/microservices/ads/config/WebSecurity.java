@@ -17,11 +17,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
 
-        http
+    /*    http
 
                 .authorizeRequests().antMatchers( "/ws/**").permitAll()
 
-                .anyRequest().authenticated().and();
+                .anyRequest().authenticated().and(); */
     }
 
 
