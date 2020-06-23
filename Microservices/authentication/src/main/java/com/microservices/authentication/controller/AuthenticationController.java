@@ -88,6 +88,17 @@ public class AuthenticationController {
         userService.save(userRequest);
 
         UserResponse userResponse = new UserResponse();
+        userResponse.setActive(userRequest.getActive());
+        userResponse.setBlocked(userRequest.getBlocked());
+        userResponse.setCountry(userRequest.getCountry());
+        userResponse.setEmail(userRequest.getEmail());
+        userResponse.setName(userRequest.getName());
+        userResponse.setSurname(userRequest.getSurname());
+        userResponse.setPhoneNumber(userRequest.getPhoneNumber());
+        userResponse.setPermissionBlocked(userRequest.getPermissionBlocked());
+        userResponse.setRate(userRequest.getRate());
+        userResponse.setTown(userRequest.getTown());
+
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
     }

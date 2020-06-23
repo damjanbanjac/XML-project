@@ -70,16 +70,16 @@ services:
     depends_on:
       - eurekaservice
       - users-database
-#
-#  authservice:
-#    build: ./authentication
-#    ports:
-#      - "8083:8083"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#    tty: true
-#    depends_on:
-#      - eurekaservice
+
+  authservice:
+    build: ./authentication
+    ports:
+      - "8083:8083"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+    tty: true
+    depends_on:
+      - eurekaservice
 
 #  paymentservice:
 #    build: ./payment
@@ -103,7 +103,7 @@ services:
     depends_on:
       - eurekaservice
       - adsservice
-#      - authservice
+      - authservice
       - maintenanceservice
       - orderservice
       - messageservice
