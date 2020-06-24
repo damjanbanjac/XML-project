@@ -14,23 +14,10 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @Table(name = "Users")
 @Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
 
-public class User {
-    @Id
-    @SequenceGenerator(name = "users_id", sequenceName = "users_id", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id")
-    private Long id;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders = new ArrayList<>();
-
-    private String email;
-
-    private Boolean blocked;
-
-    private Boolean active;
+public class User extends  SimpleUser {
 
 }

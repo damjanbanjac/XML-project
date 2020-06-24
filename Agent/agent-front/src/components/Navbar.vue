@@ -56,7 +56,7 @@
       </b-nav-item-dropdown>
 
       <!-- User -->
-      <b-nav-item-dropdown text="Client" left>
+      <b-nav-item-dropdown text="Client"   v-if="this.$store.state.user.role.authority == 'USER'" left>
         <router-link to="/adsListByUser" tag="b-dropdown-item">Car ads</router-link>
       </b-nav-item-dropdown>
 
