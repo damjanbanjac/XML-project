@@ -1,5 +1,7 @@
 package com.agent.agentapp.service.implementation;
 
+import ch.qos.logback.core.db.ConnectionSource;
+import ch.qos.logback.core.db.DriverManagerConnectionSource;
 import com.agent.agentapp.dto.request.UserRequest;
 import com.agent.agentapp.entity.Authority;
 import com.agent.agentapp.entity.User;
@@ -10,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.FileHandler;
@@ -36,13 +39,17 @@ public class UserService {
    //     return userRepository.findByEmail(mail);
  //   }
 
-    public void save(UserRequest user) {
+    public void save(UserRequest user) throws SQLException {
 
 
         User subject = new User();
         Authority auth = this.authorityRepository.findByName("USER");
         List<Authority> auths = new ArrayList<>();
+
+
         auths.add(auth);
+
+
         subject.setName(user.getName());
         subject.setEmail(user.getEmail());
         subject.setPhoneNumber(user.getPhoneNumber());
