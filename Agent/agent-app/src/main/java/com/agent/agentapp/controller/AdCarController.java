@@ -8,6 +8,7 @@ import com.agent.agentapp.repository.ImageRepository;
 import com.agent.agentapp.service.implementation.AdCarService;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -30,17 +31,20 @@ public class AdCarController {
 
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public AdCarResponse addAd(@RequestBody AdCarRequest request) throws Exception{
         return adsCarService.createAd(request);
     }
 
 
     @PostMapping("/{id}/agent")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public AdCarResponse addAdAgent(@RequestBody AdCarRequest request,@PathVariable long id) throws Exception{
         return adsCarService.createAdAgent(request,id);
     }
 
     @GetMapping("/{id}/agent")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<AdCarResponse> getAllAdsFromAgent(@PathVariable long id) throws Exception{
         return adsCarService.getAllAdsAgent(id);
     }
@@ -66,6 +70,7 @@ public class AdCarController {
     } */
 
     @GetMapping
+    @PreAuthorize("hasAuthority('AGENT')")
     public List<AdCarResponse> getAllAds() throws Exception{
         return adsCarService.getAllAds();
     }
