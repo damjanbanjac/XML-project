@@ -31,20 +31,20 @@ public class AdCarController {
 
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+   // @PreAuthorize("hasAuthority('USER')")
     public AdCarResponse addAd(@RequestBody AdCarRequest request) throws Exception{
         return adsCarService.createAd(request);
     }
 
 
     @PostMapping("/{id}/agent")
-    @PreAuthorize("hasAuthority('ADMIN')")
+   // @PreAuthorize("hasAuthority('USER')")
     public AdCarResponse addAdAgent(@RequestBody AdCarRequest request,@PathVariable long id) throws Exception{
         return adsCarService.createAdAgent(request,id);
     }
 
     @GetMapping("/{id}/agent")
-    @PreAuthorize("hasAuthority('ADMIN')")
+   // @PreAuthorize("hasAuthorit('USER')")
     public List<AdCarResponse> getAllAdsFromAgent(@PathVariable long id) throws Exception{
         return adsCarService.getAllAdsAgent(id);
     }
@@ -70,7 +70,7 @@ public class AdCarController {
     } */
 
     @GetMapping
-    @PreAuthorize("hasAuthority('AGENT')")
+    //@PreAuthorize("hasAuthority('USER')")
     public List<AdCarResponse> getAllAds() throws Exception{
         return adsCarService.getAllAds();
     }
