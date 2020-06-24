@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import Home from '../components/HomePage.vue'
 import NewAd from '../components/Agent/Ad/NewAd.vue'
 import OpenedAdByAgent from '../components/Agent/Ad/OpenedAd.vue'
 
@@ -44,146 +45,239 @@ const routes = [
       {
         path: '/login',
         name: 'login',
-        component: Login
+        component: Login,
+        meta: {
+          requiresAuth: true
+        } 
+
       },
       {
         path: '/newAd',
         name: 'new-ad',
-        component: NewAd
+        component: NewAd,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/adsListByAgent',
         name: 'ads-list-by-agent',
-        component: AdsListByAgent
+        component: AdsListByAgent,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/adsListByUser',
         name: 'ads-list-by-user',
-        component: AdsListByUser
+        component: AdsListByUser,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/makeReport',
         name: 'make-riport',
-        component: MakeReport
+        component: MakeReport,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/openedAdByAgent/:id',
         name: 'opened-ad-by-agent',
-        component: OpenedAdByAgent
+        component: OpenedAdByAgent,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/openedAdByUser/:id',
         name: 'opened-ad-by-user',
-        component: OpenedAdByUser
+        component: OpenedAdByUser,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/agentRegistration',
         name: 'agent-registration',
-        component: AgentRegistrationForm
+        component: AgentRegistrationForm,
+        meta: {
+          requiresAuth: true
+        } 
       },
       {
         path: '/userRegistrationRequest',
         name: 'user-registration-request',
-        component: UserRegistrationRequest
+        component: UserRegistrationRequest,
+        meta: {
+          requiresAuth: true
+        } 
       },
       // lists
       {
         path: '/userList',
         name: 'user-list',
-        component: UserList
+        component: UserList,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/registrationRequests',
         name: 'registration-requests',
-        component: RegistrationRequestList
+        component: RegistrationRequestList,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/carBrandList',
         name: 'car-brand-list',
-        component: CarBrandList
+        component: CarBrandList,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/carClassList',
         name: 'car-class-list',
-        component: CarClassList
+        component: CarClassList,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/carModelList',
         name: 'car-model-list',
-        component: CarModelList
+        component: CarModelList,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/fuelTypeList',
         name: 'fuel-type-list',
-        component: FuelTypeList
+        component: FuelTypeList,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/gearshiftTypeList',
         name: 'gearshift-type-list',
-        component: GearshiftTypeList
+        component: GearshiftTypeList,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/commentList/:id',
         name: 'comment-list',
-        component: CommentList
+        component: CommentList,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/commentRequestList',
         name: 'comment-request-list',
-        component: CommentRequestList
+        component: CommentRequestList,
+        meta: {
+          requiresAuth: false
+        } 
       },
 
       // add
       {
         path: '/addCarBrand',
         name: 'add-car-brand',
-        component: AddCarBrand
+        component: AddCarBrand,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/addCarClass',
         name: 'add-car-class',
-        component: AddCarClass
+        component: AddCarClass,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/addCarModel',
         name: 'add-car-model',
-        component: AddCarModel
+        component: AddCarModel,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/addTypeOfFuel',
         name: 'add-type-of-fuel',
-        component: AddTypeOfFuel
+        component: AddTypeOfFuel,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/addTypeOfGearshift',
         name: 'add-type-of-gearshift',
-        component: AddTypeOfGearshift
+        component: AddTypeOfGearshift,
+        meta: {
+          requiresAuth: false
+        } 
       },
       // update
       {
         path: '/updateCarBrand/:id',
         name: 'update-car-brand',
-        component: UpdateCarBrand
+        component: UpdateCarBrand,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/updateCarClass/:id',
         name: 'update-car-class',
-        component: UpdateCarClass
+        component: UpdateCarClass,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/updateCarModel/:id',
         name: 'update-car-model',
-        component: UpdateCarModel
+        component: UpdateCarModel,
+        meta: {
+          requiresAuth: false
+        } 
       },
       {
         path: '/updateTypeOfFuel/:id',
         name: 'update-type-of-fuel',
-        component: UpdateTypeOfFuel
+        component: UpdateTypeOfFuel,
+        meta: {
+          requiresAuth: false
+        } 
+      },
+      {
+        path: '/',
+        name: 'home',
+        component: Home,
+        meta: {
+          requiresAuth: true
+        } 
       },
       {
         path: '/updateTypeOfGearshift/:id',
         name: 'update-type-of-gearshift',
-        component: UpdateTypeOfGearshift
+        component: UpdateTypeOfGearshift,
+        meta: {
+          requiresAuth: false
+        } 
       },
 ]
 
@@ -191,6 +285,23 @@ const router = new VueRouter({
 
     routes
 
+})
+
+router.beforeEach((to, from, next) => {
+
+  if (to.meta.requiresAuth) {
+    next();
+    return;
+  }
+  
+  if(localStorage.getItem('jwt'))
+  {
+    next();
+    return;
+  }
+   
+  next("/")
+  
 })
 
 export default router

@@ -1,5 +1,8 @@
-INSERT INTO `agentxml`.`agent` (`id`, `address`, `name`, `pib`) VALUES ('1', 'janka', 'damjan', '123A');
+--INSERT INTO `agentxml`.`agent` (`id`, `address`, `name`, `pib`) VALUES ('1', 'janka', 'damjan', '123A');
 
+INSERT INTO `agentxml`.`authority` (`id`, `name`) VALUES ('1', 'USER');
+--INSERT INTO `services`.`authority` (`id`, `name`) VALUES ('2', 'ADMIN');
+--INSERT INTO `services`.`authority` (`id`, `name`) VALUES ('3', 'AGENT');
 
 INSERT INTO `agentxml`.`car_brand` (`id`,`deleted`, `name`) VALUES ('100',false,'mercedes');
 
