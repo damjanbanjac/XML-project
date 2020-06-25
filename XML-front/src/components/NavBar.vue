@@ -30,9 +30,14 @@
         <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
                      <router-link to="/adsList" tag="b-dropdown-item">AdsList</router-link>
                 </b-nav-item-dropdown>
-                <b-nav-item-dropdown text="Admin maintenance" left>
-                    <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
+                <b-nav-item-dropdown text="Admin" left>
+
+                    <router-link to="/userList" tag="b-dropdown-item">Client profiles</router-link>
+
+                    <div class="dropdown-divider"></div>
+
                     <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
+                    <router-link to="/commentRequestList" tag="b-dropdown-item">Comment requests</router-link>
 
                     <div class="dropdown-divider"></div>
                     

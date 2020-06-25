@@ -4,9 +4,9 @@
     
   <div class="container d-flex justify-content-center" style="margin-top: 20px">
     <!--Form with header-->
-    <div class="card" style="width: 60%">
+    <div class="card" style="width: 40%">
       <!--Header-->
-      <div class="header pt-3 grey lighten-2">
+      <div style="margin-left:-1%" class="header pt-3 grey lighten-2">
          <div class="row d-flex justify-content-start">
           <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5">Bag</h3>
         </div>
@@ -14,7 +14,7 @@
       <!--Header-->
 
       <b-container>
-      <label>Bundle:</label>
+      <label style="margin-left:4%">Bundle:</label>
               <input
                       type="checkbox"
                       id="checkbox"
@@ -47,12 +47,13 @@
                 <div class="md-form">
                 <label for="Form-ime">End data:</label>
                 <label id="Form-ime" class="form-control">{{oglas.availableTo}}</label>
+                <br/>
                 
               </div>
                 <div class="text-center mb-4">
                   <button
                     type="button"
-                    class="btn btn-danger btn-block z-depth-2"
+                    class="btn btn-info btn-block z-depth-2"
                   @click="reserve(oglas)">Create request</button>
                 </div>
               </div>
