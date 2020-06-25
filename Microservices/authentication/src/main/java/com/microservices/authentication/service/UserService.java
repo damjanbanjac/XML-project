@@ -5,6 +5,7 @@ import com.microservices.authentication.model.Authority;
 import com.microservices.authentication.model.User;
 import com.microservices.authentication.repository.AuthorityRepository;
 import com.microservices.authentication.repository.UserRepository;
+import com.microservices.authentication.utils.RegistrationState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -54,9 +55,8 @@ public class UserService {
         subject.setAuthorities(auths);
         subject.setPassword(passwordEncoder.encode(user.getPassword()));
         createLogFileSuccess(user);
+        subject.setRegistrationState(RegistrationState.PENDING);
         userRepository.save(subject);
-
-
     }
 
     public void createLogFileSuccess(UserRequest user) {

@@ -1,6 +1,7 @@
 package com.microservices.authentication.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.microservices.authentication.utils.RegistrationState;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class User implements UserDetails {
     @SequenceGenerator(name = "users_id", sequenceName = "users_id", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id")
     private Long id;
+    @Column(unique = true)
     private String email;
     private String name;
     private String surname;
@@ -36,6 +38,9 @@ public class User implements UserDetails {
     private Boolean permissionBlocked;
     private String rate;
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private RegistrationState registrationState;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
