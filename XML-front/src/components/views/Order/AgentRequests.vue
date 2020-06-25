@@ -3,7 +3,7 @@
     
   <div class="container d-flex justify-content-center" style="margin-top: 20px">
     <!--Form with header-->
-    <div class="card" style="width: 60%">
+    <div class="card" style="width: 40%">
       <!--Header-->
       <div class="header pt-3 grey lighten-2">
          <div class="row d-flex justify-content-start">
@@ -28,26 +28,25 @@
                 <label id="Form-ime" class="form-control">{{oglas.id}}</label>
                 
               </div>
-            </div>
-            <div class="col">
+
               <div class="md-form pb-3">
                 
                 <div class="text-center mb-4">
                   <button
                     type="button"
-                    class="btn btn-danger btn-block z-depth-2"
+                    class="btn btn-info btn-block z-depth-2"
                   @click="accept(zahtev.id)">Accept request</button>
                 </div>
                 <div class="text-center mb-4">
                   <button
                     type="button"
-                    class="btn btn-danger btn-block z-depth-2"
+                    class="btn btn-info btn-block z-depth-2"
                   @click="decline(zahtev.id)">Decline request</button>
                 </div>
               </div>
+
             </div>
           </div>
-          <!--Body-->
         </div>
       </div>
     </div>

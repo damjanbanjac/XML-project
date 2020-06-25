@@ -180,4 +180,26 @@ public class AdminService implements IAdminService {
         }
         return responses;
     }
+
+    @Override
+    public List<RegistrationResponse> getAllApprovedRegistrations() {
+        List<User> allUsers = _userRepository.findAll();
+        List<User> approvedUsers = new ArrayList<>();
+        for(User user: allUsers){
+            if(user.getRegistrationState().equals(RegistrationState.APPROVED)){
+                approvedUsers.add(user);
+            }
+        }
+        List<RegistrationResponse> responses = new ArrayList<>();
+        for(User user: approvedUsers){
+            RegistrationResponse response = new RegistrationResponse();
+            response.setEmail(user.getEmail());
+            response.setId(user.getId());
+            response.setName(user.getName());
+            response.setSurname(user.getSurname());
+            response.setBlocked(user.getBlocked());
+            responses.add(response);
+        }
+        return responses;
+    }
 }

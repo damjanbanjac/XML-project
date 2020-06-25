@@ -36,7 +36,7 @@
                     >
                     <router-link  to="/newAd" tag="b-dropdown-item">Add Car</router-link>
                     <router-link  to="/agentAdList" tag="b-dropdown-item">Car ads</router-link>
-                     <router-link to="/makeReport" tag="b-dropdown-item">Make Report</router-link>
+                     <router-link to="/makeReport" tag="b-dropdown-item">Issue Report</router-link>
                     
                 </b-nav-item-dropdown>
 
