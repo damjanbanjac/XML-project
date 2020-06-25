@@ -8,7 +8,7 @@
 
     <div style="border-left:1px solid #000; height:40px; margin-right:1%"></div>
 
-    <b-navbar-nav class="ml-auto" v-if="this.$store.state.user.enabled == true">
+    <b-navbar-nav class="ml-auto">
       <b-nav-item-dropdown
         text="Sidebar"
         right
@@ -25,12 +25,14 @@
        <b-nav-item-dropdown
         text="Sidebar"
         right
-       v-if="this.$store.state.user.role.authority == 'ADMIN'"
+       v-if="this.$store.state.user.role.authority == 'AGENT'"
       >
         <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
                      <router-link to="/adsList" tag="b-dropdown-item">AdsList</router-link>
-                </b-nav-item-dropdown>
-                <b-nav-item-dropdown text="Admin maintenance" left>
+                       <b-dropdown-item @click="odjavaFun">Log Out</b-dropdown-item>
+      </b-nav-item-dropdown>
+
+      <b-nav-item-dropdown  v-if="this.$store.state.user.role.authority == 'ADMIN'" text="Admin maintenance" left>
                     <router-link to="/userList" tag="b-dropdown-item">Users</router-link>
                     <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
 
