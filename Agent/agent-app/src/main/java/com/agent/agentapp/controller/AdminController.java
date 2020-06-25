@@ -81,4 +81,9 @@ public class AdminController {
     public List<RegistrationResponse> getPendingRegistrations(){
         return _adminService.getAllPendingRegistrations();
     }
+
+    @GetMapping("/approved-registrations")
+    public List<RegistrationResponse> getApprovedRegistrations() {
+        return _adminService.getAllApprovedRegistrations();
+    }
 }

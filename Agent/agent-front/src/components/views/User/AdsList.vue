@@ -49,7 +49,7 @@ export default {
           {key: 'city',
         sortable: true,
         label: 'City'},
-        ],
+        ], 
 
       idAd: ""
      
