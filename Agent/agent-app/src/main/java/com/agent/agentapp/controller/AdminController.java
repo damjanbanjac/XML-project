@@ -2,7 +2,9 @@ package com.agent.agentapp.controller;
 
 import com.agent.agentapp.dto.request.ApproveCommentRequest;
 import com.agent.agentapp.dto.request.DenyCommentRequest;
+import com.agent.agentapp.dto.request.GetIdRequest;
 import com.agent.agentapp.dto.response.CommentResponse;
+import com.agent.agentapp.dto.response.RegistrationResponse;
 import com.agent.agentapp.service.IAdminService;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,4 +51,18 @@ public class AdminController {
         return _adminService.getAllPendingComments();
     }
 
+    @PostMapping("/approve-registration")
+    public void approveRegistration(@RequestBody GetIdRequest request){
+        _adminService.approveRegistration(request);
+    }
+
+    @PostMapping("/deny-registration")
+    public void denyRegistration(@RequestBody GetIdRequest request){
+        _adminService.denyRegistration(request);
+    }
+
+    @GetMapping("/pending-registrations")
+    public List<RegistrationResponse> getPendingRegistrations(){
+        return _adminService.getAllPendingRegistrations();
+    }
 }
