@@ -30,16 +30,22 @@ public class CarClassController {
     }
 
     @PostMapping
+    // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public CarClassResponse createCarClass(@RequestBody CreateCarClassRequest request) {
         return _carClassService.createCarClass(request);
     }
 
     @PutMapping("/{id}/class")
+    // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public CarClassResponse updateCarClass(@RequestBody UpdateCarClassRequest request, @PathVariable Long id) {
         return _carClassService.updateCarClass(request, id);
     }
 
     @DeleteMapping("/{id}/class")
+    // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public void deleteCarClass(@PathVariable Long id) {
         _carClassService.deleteCarClass(id);
     }

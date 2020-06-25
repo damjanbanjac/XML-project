@@ -19,6 +19,8 @@ public class GradeController {
     }
 
     @PostMapping
+    // @PreAuthorize("hasAuthority('POST-GRADE')")
+    // @PreAuthorize("hasAuthority('USER')")
     public void gradeAdCar(@RequestBody GradeAdCarRequest request) throws Exception {
         gradeService.gradeOrder(request);
     }
