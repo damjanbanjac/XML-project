@@ -1,6 +1,7 @@
 package com.agent.agentapp.entity;
 
 
+import com.agent.agentapp.utils.RegistrationState;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,10 +15,12 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Table(name = "Users")
 @Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
 
 public class User extends  SimpleUser {
 
+    @Enumerated(EnumType.STRING)
+    private RegistrationState registrationState;
 }

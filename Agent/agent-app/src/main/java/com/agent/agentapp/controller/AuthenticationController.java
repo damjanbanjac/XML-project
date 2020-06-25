@@ -5,8 +5,10 @@ import com.agent.agentapp.dto.request.UserRequest;
 import com.agent.agentapp.dto.request.UserTokenState;
 import com.agent.agentapp.dto.response.UserResponse;
 import com.agent.agentapp.entity.Authority;
+import com.agent.agentapp.entity.FirstLoginHelperEntity;
 import com.agent.agentapp.entity.SimpleUser;
 import com.agent.agentapp.entity.User;
+import com.agent.agentapp.repository.IFirtLoginHelperEntityRepository;
 import com.agent.agentapp.security.TokenUtils;
 import com.agent.agentapp.service.implementation.CustomUserDetailsService;
 import com.agent.agentapp.service.implementation.SimpleUserService;
@@ -24,6 +26,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 @RestController
@@ -46,9 +49,15 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
 
+    private final IFirtLoginHelperEntityRepository helperEntityRepository;
+
+    public AuthenticationController(IFirtLoginHelperEntityRepository repository) {
+        this.helperEntityRepository = repository;
+    }
+
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException, IOException {
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException, IOException, Exception {
 
         System.out.println(authenticationRequest.getEmail() + " " + authenticationRequest.getPassword());
         final Authentication authentication = authenticationManager
@@ -60,6 +69,21 @@ public class AuthenticationController {
         SimpleUser user = (SimpleUser) authentication.getPrincipal();
         User subject = userService.findOne(user.getId());
         System.out.println(subject.getId());
+
+        FirstLoginHelperEntity helperEntity = helperEntityRepository.findOneByEmail(subject.getEmail());
+        if(helperEntity == null){
+            throw new Exception("Bad credentials.");
+        }
+        if(!helperEntity.isAlreadyLogged()){
+            LocalDateTime now = LocalDateTime.now();
+            if(helperEntity.getRegistrationDateTime().plusHours(24L).isBefore(now)){
+//            if(helperEntity.getRegistrationDateTime().plusMinutes(2L).isBefore(now)){
+                throw new Exception("Your registration has been denied.");
+            }
+            helperEntity.setAlreadyLogged(true);
+            helperEntityRepository.save(helperEntity);
+        }
+
         if (subject == null) {
             Collection<?> roles = user.getAuthorities();
             String jwt = tokenUtils.generateToken(user, (Authority) roles.iterator().next());
@@ -85,7 +109,6 @@ public class AuthenticationController {
         }
 
         System.out.println(userRequest.getCountry());
-
 
         userService.save(userRequest);
 

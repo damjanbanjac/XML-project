@@ -26,6 +26,7 @@ public class SimpleUser implements UserDetails {
     @SequenceGenerator(name = "users_simple_id", sequenceName = "users_simple_id", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_simple_id")
     private Long id;
+    @Column(unique = true)
     private String email;
     private String name;
     private String surname;
