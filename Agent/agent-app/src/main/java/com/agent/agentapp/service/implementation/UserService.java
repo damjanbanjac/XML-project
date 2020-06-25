@@ -2,14 +2,18 @@ package com.agent.agentapp.service.implementation;
 
 import com.agent.agentapp.dto.request.UserRequest;
 import com.agent.agentapp.entity.Authority;
+import com.agent.agentapp.entity.FirstLoginHelperEntity;
 import com.agent.agentapp.entity.User;
 import com.agent.agentapp.repository.AuthorityRepository;
+import com.agent.agentapp.repository.IFirtLoginHelperEntityRepository;
 import com.agent.agentapp.repository.IUserRepository;
+import com.agent.agentapp.utils.RegistrationState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.FileHandler;
@@ -54,9 +58,8 @@ public class UserService {
         subject.setAuthorities(auths);
         subject.setPassword(passwordEncoder.encode(user.getPassword()));
        // createLogFileSuccess(user);
+        subject.setRegistrationState(RegistrationState.PENDING);
         userRepository.save(subject);
-
-
     }
 
     public void createLogFileSuccess(UserRequest user) {
