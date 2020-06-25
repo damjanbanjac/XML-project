@@ -226,6 +226,29 @@ import axios from "axios";
             this.form.gearShift_id = gear;
             }
            });
+          
+          if (this.form.carClass_id === "" || this.form.carBrand_id === "" || this.form.carModel_id === "" || this.form.fuelType_id === "" || this.form.gearShift_id === "" || this.form.kidsSeats === "" || this.form.city === "" || this.form.kmRestriction === ""){
+          this.errormessage = "Please fill all fields";
+          this.error = true;
+          return;
+        }
+        var rexx = /^[a-zA-Z\-0-9\s]+$/;
+        if (!rexx.test(String(this.form.city.trim()))) {
+        this.errormessage = "City must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
+      var rexxx = /^[0-9\s]+$/;
+        if (!rexxx.test(String(this.form.kidsSeats.trim()))) {
+        this.errormessage = "Kids seats must be a number value";
+        this.error = true;
+        return;
+      }
+        if (!rexxx.test(String(this.form.kmRestriction.trim()))) {
+        this.errormessage = "Km restriction must be a number value";
+        this.error = true;
+        return;
+      }
 
         axios
         .post("ads/1/agent" , this.form)
@@ -235,6 +258,7 @@ import axios from "axios";
           console.log(this.idAd);
           this.form.kidsSeats = "",
            this.success = true,
+           this.error = false;
             this.successmessages = "You have succesfully added a new car ad. Now you can upload images for the car."
             this.changeButton = true;
             this.newAd = false;
