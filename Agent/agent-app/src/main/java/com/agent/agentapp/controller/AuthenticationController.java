@@ -22,6 +22,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -68,7 +69,9 @@ public class AuthenticationController {
 
         SimpleUser user = (SimpleUser) authentication.getPrincipal();
         User subject = userService.findOne(user.getId());
-//        System.out.println("da li je ovo null" + subject.getId());
+
+
+
 
         if (subject == null) {
             Collection<?> roles = user.getAuthorities();

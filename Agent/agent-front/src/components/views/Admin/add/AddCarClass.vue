@@ -75,11 +75,18 @@ import axios from "axios";
           this.error = true;
           return;
         }
+        var rexx = /^[a-zA-Z\-0-9\s]+$/;
+        if (!rexx.test(String(this.form.car_class.trim()))) {
+        this.errormessage = "Car class must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
         axios
         .post("/classes", this.form)
         .then(() => {
           this.form.car_class = "";
           this.success = true;
+          this.error = false;
           this.successmessage = "You have successfully added a new car class."
         })
         .catch(error => {
