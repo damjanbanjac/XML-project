@@ -1,4 +1,6 @@
---INSERT INTO `agentxml`.`agent` (`id`, `address`, `name`, `pib`) VALUES ('1', 'janka', 'damjan', '123A');
+INSERT INTO `agentxml`.`admin` (`id`, `name`, `surname`, `town`, `country`, `phone_number`, `email`, `password`) VALUES
+(100, 'Admin', 'Administrator', 'Novi Sad', 'Srbija', '+381/65-000000', 'admin@gmail.com', '$2y$12$eCqXW3NAYv6Nue.27FyPLO18vmfq1hWndODWunZouuIFv3UNUM5u2');
+--sifra: Admin!123
 
 INSERT INTO `agentxml`.`permission` (`id`, `name`) VALUES ('1', 'CREATE-AD');
 INSERT INTO `agentxml`.`permission` (`id`, `name`) VALUES ('2', 'UPADATE-AD');
@@ -56,6 +58,6 @@ INSERT INTO `agentxml`.`type_of_gearshift` (`id`,`deleted`, `type`) VALUES ('1',
 
 --INSERT INTO `agentxml`.`agent` (`id`, `active`, `blocked`, `country`, `email`, `name`, `password`, `permission_blocked`, `phone_number`, `rate`, `surname`, `town`, `pib`) VALUES ('1', false, false, 'srb', 'agent@gmail.com', 'Admin', '$2a$04$Vbug2lwwJGrvUXTj6z7ff.97IzVBkrJ1XfApfGNl.Z695zqcnPYra', false, '0658545544', '5', 'Admin', 'Novi Sad', '12');
 --INSERT INTO `agentxml`.`users` (`id`, `active`, `blocked`, `country`, `email`, `name`, `password`, `permission_blocked`, `phone_number`, `rate`, `surname`, `town`) VALUES ('2', false, false, 'srb', 'user@gmail.com', 'Admin', '123', false, '0658545544', '5', 'Admin', 'Novi Sad');
---INSERT INTO `agentxml`.`user_authority`(`user_simple_id`,`authority_id`) VALUES ('1', '2')
+INSERT INTO `agentxml`.`user_authority`(`user_simple_id`,`authority_id`) VALUES ('100', '1');
 
 

@@ -8,8 +8,8 @@
 
       <!-- Login/Reg -->
       <router-link to="/login" v-if="this.$store.state.user.role.authority == ''" tag="b-nav-item">Login</router-link>
-      <router-link to="/agentRegistration" v-if="this.$store.state.user.role.authority == ''" tag="b-nav-item">Agent registration</router-link>
-      <router-link to="/userRegistrationRequest" v-if="this.$store.state.user.role.authority == ''" tag="b-nav-item">Client registration</router-link>
+      <!-- <router-link to="/agentRegistration" v-if="this.$store.state.user.role.authority == ''" tag="b-nav-item">Agent registration</router-link> -->
+      <!-- <router-link to="/userRegistrationRequest" v-if="this.$store.state.user.role.authority == ''" tag="b-nav-item">Client registration</router-link> -->
 
       <!-- Agent -->
       <b-nav-item-dropdown v-if="this.$store.state.user.role.authority == 'AGENT'" text="Agent" left>
