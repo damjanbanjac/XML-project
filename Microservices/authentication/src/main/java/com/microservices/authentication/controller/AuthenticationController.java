@@ -67,6 +67,15 @@ public class AuthenticationController {
         User user = (User) authentication.getPrincipal();
         User subject = userService.findOne(user.getId());
         System.out.println(subject.getId());
+
+        if (subject == null) {
+            Collection<?> roles = user.getAuthorities();
+            String jwt = tokenUtils.generateToken(user, (Authority) roles.iterator().next());
+            int expiresIn = tokenUtils.getExpiredIn();
+            System.out.println("usao ovde");
+            return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
+        }
+
         FirstLoginHelperEntity helperEntity = helperEntityRepository.findOneByEmail(subject.getEmail());
         if(helperEntity == null){
             throw new Exception("Bad credentials.");
@@ -81,7 +90,7 @@ public class AuthenticationController {
             helperEntityRepository.save(helperEntity);
         }
         if (subject == null) {
-            System.out.println("usao ovde");
+            System.out.println("usao i ovde");
             Collection<?> roles = user.getAuthorities();
             String jwt = tokenUtils.generateToken(user, (Authority) roles.iterator().next());
             int expiresIn = tokenUtils.getExpiredIn();
