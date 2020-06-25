@@ -59,6 +59,7 @@ public class AuthenticationController {
         User subject = userService.findOne(user.getId());
         System.out.println(subject.getId());
         if (subject == null) {
+            System.out.println("usao ovde");
             Collection<?> roles = user.getAuthorities();
             String jwt = tokenUtils.generateToken(user, (Authority) roles.iterator().next());
             int expiresIn = tokenUtils.getExpiredIn();

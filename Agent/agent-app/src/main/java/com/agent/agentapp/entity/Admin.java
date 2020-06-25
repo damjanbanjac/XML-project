@@ -13,6 +13,8 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 //@AllArgsConstructor
+@Table(name = "AdminApp")
+@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
 public class Admin extends SimpleUser {
 
 

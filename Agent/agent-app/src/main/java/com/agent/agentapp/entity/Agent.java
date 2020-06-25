@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
 public class Agent extends  SimpleUser {
 
 

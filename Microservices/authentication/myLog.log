@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Jun 25, 2020 4:41:41 PM com.microservices.authentication.service.UserService createLogFileSuccess
 INFO: type: SUCCESS
 Jun 25, 2020 4:41:41 PM com.microservices.authentication.service.UserService createLogFileSuccess
@@ -9,4 +10,11 @@ INFO: type: SUCCESS
 Jun 25, 2020 4:43:50 PM com.microservices.authentication.service.UserService createLogFileSuccess
 INFO: userlala@gmail.com
 Jun 25, 2020 4:43:50 PM com.microservices.authentication.service.UserService createLogFileSuccess
+=======
+Jun 25, 2020 4:03:38 PM com.microservices.authentication.service.UserService createLogFileSuccess
+INFO: type: SUCCESS
+Jun 25, 2020 4:03:38 PM com.microservices.authentication.service.UserService createLogFileSuccess
+INFO: userdamjanbanjac10@gmail.com
+Jun 25, 2020 4:03:38 PM com.microservices.authentication.service.UserService createLogFileSuccess
+>>>>>>> origin/master
 INFO: messages: Register success by user

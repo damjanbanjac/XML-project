@@ -68,7 +68,16 @@ public class AuthenticationController {
 
         SimpleUser user = (SimpleUser) authentication.getPrincipal();
         User subject = userService.findOne(user.getId());
-        System.out.println(subject.getId());
+        System.out.println("da li je ovo null" + subject.getId());
+
+        if (subject == null) {
+            Collection<?> roles = user.getAuthorities();
+            String jwt = tokenUtils.generateToken(user, (Authority) roles.iterator().next());
+            int expiresIn = tokenUtils.getExpiredIn();
+            System.out.println("usao ovde");
+            return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
+        }
+
 
         FirstLoginHelperEntity helperEntity = helperEntityRepository.findOneByEmail(subject.getEmail());
         if(helperEntity == null){
@@ -85,6 +94,7 @@ public class AuthenticationController {
         }
 
         if (subject == null) {
+            System.out.println("usao i ovde");
             Collection<?> roles = user.getAuthorities();
             String jwt = tokenUtils.generateToken(user, (Authority) roles.iterator().next());
             int expiresIn = tokenUtils.getExpiredIn();
