@@ -5,7 +5,9 @@ import com.microservices.authentication.dto.request.UserRequest;
 import com.microservices.authentication.dto.request.UserTokenState;
 import com.microservices.authentication.dto.response.UserResponse;
 import com.microservices.authentication.model.Authority;
+import com.microservices.authentication.model.FirstLoginHelperEntity;
 import com.microservices.authentication.model.User;
+import com.microservices.authentication.repository.IFirstLoginHelperEntityRepository;
 import com.microservices.authentication.security.TokenUtils;
 import com.microservices.authentication.service.CustomUserDetailsService;
 import com.microservices.authentication.service.UserService;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 @RestController
@@ -44,9 +47,15 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
 
+    private final IFirstLoginHelperEntityRepository helperEntityRepository;
+
+    public AuthenticationController(IFirstLoginHelperEntityRepository repository) {
+        this.helperEntityRepository = repository;
+    }
+
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException, IOException {
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException, IOException, Exception {
 
         System.out.println(authenticationRequest.getEmail() + " " + authenticationRequest.getPassword());
         final Authentication authentication = authenticationManager
@@ -58,6 +67,19 @@ public class AuthenticationController {
         User user = (User) authentication.getPrincipal();
         User subject = userService.findOne(user.getId());
         System.out.println(subject.getId());
+        FirstLoginHelperEntity helperEntity = helperEntityRepository.findOneByEmail(subject.getEmail());
+        if(helperEntity == null){
+            throw new Exception("Bad credentials.");
+        }
+        if(!helperEntity.isAlreadyLogged()){
+            LocalDateTime now = LocalDateTime.now();
+            if(helperEntity.getRegistrationDateTime().plusHours(24L).isBefore(now)){
+//            if(helperEntity.getRegistrationDateTime().plusMinutes(2L).isBefore(now)){
+                throw new Exception("Your registration has been denied.");
+            }
+            helperEntity.setAlreadyLogged(true);
+            helperEntityRepository.save(helperEntity);
+        }
         if (subject == null) {
             System.out.println("usao ovde");
             Collection<?> roles = user.getAuthorities();
@@ -103,5 +125,7 @@ public class AuthenticationController {
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
     }
+
+
 
 }
