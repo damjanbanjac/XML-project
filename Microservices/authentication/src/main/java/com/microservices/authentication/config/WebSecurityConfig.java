@@ -54,39 +54,38 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+   //     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
-                .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
+     //           .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
 
                 // svim korisnicima dopusti da pristupe putanjama /auth/**, /h2-console/** i
                 // /api/foo
-                .authorizeRequests().antMatchers("/**").permitAll()
+       //         .authorizeRequests().antMatchers("/**").permitAll()
 
-                .anyRequest().authenticated().and()
+        //        .anyRequest().authenticated().and()
 
-                .cors().and()
+       //         .cors().and()
 
-                .addFilterBefore(new TokenAuthenticationFilter(tokenUtils, jwtUserDetailsService),
-                        BasicAuthenticationFilter.class);
+          //      .addFilterBefore(new TokenAuthenticationFilter(tokenUtils, jwtUserDetailsService),
+               //         BasicAuthenticationFilter.class);
 
         http.csrf().disable();
 
-        http
+   /*     http
                 .requiresChannel()
                 .anyRequest()
-                .requiresSecure();
+                .requiresSecure(); */
     }
 
     // Generalna bezbednost aplikacije
-    @Override
+ /*  @Override
     public void configure(WebSecurity web) throws Exception {
         // TokenAuthenticationFilter ce ignorisati sve ispod navedene putanjess
         web.ignoring().antMatchers(HttpMethod.POST, "/auth/**");
         web.ignoring().antMatchers(HttpMethod.POST, "/auth/login");
         web.ignoring().antMatchers(HttpMethod.POST, "/auth/register");
 
-        web.ignoring().antMatchers(HttpMethod.GET, "/", "/webjars/**", "/*.html", "/favicon.ico", "/**/*.html",
-                "/**/*.css", "/**/*.js");
-    }
+
+    } */
 }
 
