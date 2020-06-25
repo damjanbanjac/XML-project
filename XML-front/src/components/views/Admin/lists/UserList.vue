@@ -1,45 +1,114 @@
 <template>
-    <div>
-        <b-table table-variant="light" head-variant="dark" small="true" bordered="true" responsive="sm" stickyHeader="1000px" hover :items="items" :fields="fields">
-            <template v-slot:cell(actions1)="row">
-                <b-button variant="dark" size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
-                Block
-                </b-button>
-                <b-button variant="secondary" size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
-                Unblock
-                </b-button>
-            </template>
-            <template v-slot:cell(actions2)="row">
-                <b-button variant="danger" size="sm" @click="info(row.item, row.index, $event.target)" class="mr-1">
-                Delete
-                </b-button>
-            </template>
-        </b-table>
+    <div class="container d-flex justify-content-center" style="margin-top: 20px">
+    
+    <div class="card" style="width: 40%">
+      
+        <div class="header pt-3 grey lighten-2">
+            <div class="row d-flex justify-content-start">
+                <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5"
+                style="font-size: 3rem;
+                font-weight: 300;
+                line-height: 1.2;
+                margin-top: -12%;">Clients</h3>
+            </div>
+        </div>
+
+        <div class="form-group" v-for="client in clients" :key="client.id">
+            <div class="card-body mx-4 mt-4">
+                <div class="row">
+                    <div class="col">
+                        <div class="md-form">
+                            <label for="Form-email">Email</label>
+                            <label id="Form-email" class="form-control">{{client.email}}</label>
+
+                            <label for="Form-name">Name</label>
+                            <label id="Form-name" class="form-control">{{client.name}}</label>
+
+                            <label for="Form-surname">Surname</label>
+                            <label id="Form-surname" class="form-control">{{client.surname}}</label>
+
+                            <label for="Form-surname">Current status</label>
+                            <div v-if="client.blocked">
+                              <label>Blocked</label>
+                            </div>
+                            <div v-else>
+                              <label>Active</label>
+                            </div>
+
+                            <br/>
+
+                            <div v-if="!client.blocked" class="text-center mb-4">
+                                <button
+                                type="button"
+                                class="btn btn-danger btn-block z-depth-2"
+                                @click="block(client.id)"
+                                >Block</button>
+                            </div>
+                            
+                            <div v-if="client.blocked" class="text-center mb-4">
+                                <button
+                                type="button"
+                                class="btn btn-secondary btn-block z-depth-2"
+                                @click="unblock(client.id)"
+                                >Unblock</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+  </div>
 </template>
 
 <script>
+  import axios from "axios";
   export default {
     data() {
       return {
-        fields: [
-          {
-            key: 'Firstname',
-            sortable: true
-          },
-          {
-            key: 'Lastname',
-            sortable: true
-          },
-          { key: 'actions1', label: 'Blocking' },
-          { key: 'actions2', label: 'Deleting' }
-        ],
-        items: [
-            { Firstname: 'Lara', Lastname: 'Mimica'},
-            
-        ]
+        clients: []
       }
-    }
+    },
+    methods: {
+
+      block(id) {
+
+        axios
+        .put("auth/admins/block/" + id + "/user")
+        .then(()=>{
+            window.location.reload();
+        })
+        .catch(error => {
+          console.log(error);
+        }); 
+    },
+
+    unblock(id) {
+
+        axios
+        .put("auth/admins/unblock/" + id + "/user")
+        .then(()=>{
+            window.location.reload();
+        })
+        .catch(error => {
+          console.log(error);
+        }); 
+    },
+
+    },
+    mounted() {
+    axios
+      .get("auth/admins/approved-registrations")
+      .then(clients => {
+        this.clients = clients.data;
+        
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+    
   }
 </script>
 

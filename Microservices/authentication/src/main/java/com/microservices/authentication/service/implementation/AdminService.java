@@ -71,6 +71,10 @@ public class AdminService implements IAdminService {
             response.setId(user.getId());
             response.setName(user.getName());
             response.setSurname(user.getSurname());
+            response.setBlocked(user.getBlocked());
+            response.setCountry(user.getCountry());
+            response.setPhoneNumber(user.getPhoneNumber());
+            response.setTown(user.getTown());
             responses.add(response);
         }
         return responses;
