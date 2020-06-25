@@ -39,6 +39,8 @@ public class CarBrandController {
     }
 
     @PostMapping
+    // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public CarBrandResponse createCarBrand(@RequestBody CreateCarBrandRequest request) {
         return _carBrandService.createCarBrand(request);
     }
@@ -52,11 +54,15 @@ public class CarBrandController {
 //    }
 
     @PutMapping("/{id}/brand")
+    // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public CarBrandResponse updateCarBrand(@RequestBody UpdateCarBrandRequest request, @PathVariable Long id) {
         return _carBrandService.updateCarBrand(request, id);
     }
 
     @DeleteMapping("/{id}/brand")
+    // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public void deleteCarBrand(@PathVariable Long id) {
         _carBrandService.deleteCarBrand(id);
     }

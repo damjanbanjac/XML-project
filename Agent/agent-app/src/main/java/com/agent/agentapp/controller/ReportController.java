@@ -17,6 +17,8 @@ public class ReportController {
 
 
     @PostMapping
+    // @PreAuthorize("hasAuthority('CREATE-REPORT'')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public ReportResponse createReport(@RequestBody ReportRequest reportRequest) {
         return  reportService.createReport(reportRequest);
     }
