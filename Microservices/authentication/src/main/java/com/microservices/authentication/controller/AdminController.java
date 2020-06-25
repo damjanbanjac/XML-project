@@ -17,15 +17,6 @@ public class AdminController {
         _adminService = adminService;
     }
 
-//    @PutMapping("/block/{id}/user")
-//    public void blockUser(@PathVariable Long id) {
-//        _adminService.blockUser(id);
-//    }
-//    @PutMapping("/unblock/{id}/user")
-//    public void unblockUser(@PathVariable Long id) {
-//        _adminService.unblockUser(id);
-//    }
-
     @PostMapping("/approve-registration")
     public void approveRegistration(@RequestBody GetIdRequest request){
         _adminService.approveRegistration(request);

@@ -9,11 +9,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RegistrationResponse {
 
-    private String email;
-
-    private String name;
-
-    private String surname;
-
     private Long id;
+    private String email;
+    private String name;
+    private String surname;
+    private String phoneNumber;
+    private String country;
+    private String town;
+    private Boolean blocked;
 }

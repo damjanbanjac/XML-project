@@ -1,3 +1,7 @@
+--INSERT INTO `services`.`admin_auth` (`id`, `name`, `surname`, `town`, `country`, `phone_number`, `email`, `password`) VALUES
+--(100, 'Admin', 'Administrator', 'Novi Sad', 'Srbija', '+381/65-000000', 'admin@gmail.com', '$2y$12$eCqXW3NAYv6Nue.27FyPLO18vmfq1hWndODWunZouuIFv3UNUM5u2');
+----sifra: Admin!123
+
 INSERT INTO `services`.`authority` (`id`, `name`) VALUES ('1', 'USER');
 INSERT INTO `services`.`authority` (`id`, `name`) VALUES ('2', 'ADMIN');
 INSERT INTO `services`.`authority` (`id`, `name`) VALUES ('3', 'AGENT');
@@ -7,7 +11,6 @@ INSERT INTO `services`.`admin_auth` (`id`, `active`, `blocked`, `country`, `emai
 INSERT INTO `services`.`agent_auth` (`id`, `active`, `blocked`, `country`, `email`, `name`, `password`, `permission_blocked`, `phone_number`) VALUES ('200', true, false, 'serbia', 'damjanbanjac@gmail.com', 'damjan', '$2a$10$mzFkdgfA8T.UiOJLXLIe7.tcEgaoUyXDpDuBlsAZQrqQoDRyMw6Ae', false, '333');
 
 INSERT INTO `services`.`user_authority`(`user_id`,`authority_id`) VALUES ('100', '2');
-
 
 INSERT INTO `services`.`user_authority`(`user_id`,`authority_id`) VALUES ('200', '3');
 
