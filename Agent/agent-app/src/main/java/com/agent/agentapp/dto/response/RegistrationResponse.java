@@ -16,4 +16,6 @@ public class RegistrationResponse {
     private String surname;
 
     private Long id;
+
+    private boolean blocked;
 }

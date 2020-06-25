@@ -39,4 +39,6 @@ public interface IAdminService {
     void denyRegistration(GetIdRequest request);
 
     List<RegistrationResponse> getAllPendingRegistrations();
+
+    List<RegistrationResponse> getAllApprovedRegistrations();
 }
