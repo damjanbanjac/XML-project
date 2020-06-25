@@ -10,9 +10,9 @@
     width: 465px;
     height: 460px;">
       <h2 style="font-size: 4rem;
-        font-weight: 300;
+        font-weight: 200;
         line-height: 1.2;
-        margin-left: 2%;">
+        margin-left: 1%;">
         Log In
       </h2>
 
@@ -48,7 +48,7 @@
         </b-form>
       </template>
 
-      <b-form-group style="margin-left: 2%;">
+      <b-form-group style="margin-left: -2%;">
         <label style="margin-right: 2%">Don't have an account?</label>
         <router-link to="/userRegistrationRequest">Register!</router-link>
         <br/>
@@ -60,9 +60,9 @@
 
 <script>
 import axios from "axios";
-// import VueJwtDecode from "vue-jwt-decode";
+import VueJwtDecode from "vue-jwt-decode";
   var counter = 0;
-//   localStorage.setItem('counter', counter)
+  localStorage.setItem('counter', counter)
   export default {
     data() {
       return {
@@ -77,26 +77,23 @@ import axios from "axios";
     },
     methods: {
       loginFun() {
-        if(localStorage.getItem('counter') == 3){
-          this.errorMessage = "You have reached your logging attempts limit.";
-          this.error = true;
-          return;
-        }
+      
         this.error = false;
         // console.log(this.user.email + "" + this.user.password)
+
         axios
         .post("auth/login", this.user)
-        // .then(response => {
-        //   this.user.email = "";
-        //   this.user.password = "";
-        //   console.log("usao");
-        //   localStorage.setItem("jwt", response.data.accessToken);
-        //   this.$store.state.user = VueJwtDecode.decode(
-        //     localStorage.getItem("jwt")
-        //   );
-        //   
-        //   this.$router.push("/");
-        // })
+        .then(response => {
+          this.user.email = "";
+          this.user.password = "";
+          // console.log("usao");
+          localStorage.setItem("jwt", response.data.accessToken);
+          this.$store.state.user = VueJwtDecode.decode(
+            localStorage.getItem("jwt")
+          );
+          
+          this.$router.push("/");
+        })
         .catch(error => {
           // console.log(show);
           console.log(error);
@@ -105,20 +102,24 @@ import axios from "axios";
           counter++;
           localStorage.setItem('counter', counter)
         });
+
       }
     }
 }
 </script>
 
 <style>
+
 form {
     display: block;
     margin-top: 10%;
     margin-left: 10%;
     width: 320px;
 }
+
 .jumbotron {
     padding: 2rem 2rem;
     margin-bottom: 2rem;
 }
+
 </style>

@@ -1,12 +1,10 @@
 package com.agent.agentapp.service;
 
 
-import com.agent.agentapp.dto.request.ApproveCommentRequest;
-import com.agent.agentapp.dto.request.CreateAdminRequest;
-import com.agent.agentapp.dto.request.DenyCommentRequest;
-import com.agent.agentapp.dto.request.UpdateAdminRequest;
+import com.agent.agentapp.dto.request.*;
 import com.agent.agentapp.dto.response.AdminResponse;
 import com.agent.agentapp.dto.response.CommentResponse;
+import com.agent.agentapp.dto.response.RegistrationResponse;
 
 import java.util.List;
 
@@ -35,4 +33,12 @@ public interface IAdminService {
     CommentResponse approveComment(Long id);
 
     CommentResponse denyComment(DenyCommentRequest request);
+
+    void approveRegistration(GetIdRequest request);
+
+    void denyRegistration(GetIdRequest request);
+
+    List<RegistrationResponse> getAllPendingRegistrations();
+
+    List<RegistrationResponse> getAllApprovedRegistrations();
 }

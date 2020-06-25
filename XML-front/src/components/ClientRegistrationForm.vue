@@ -8,14 +8,13 @@
     <b-jumbotron bg-variant="light" text-variant="dark" style="width: 510px;
     height: 910px;
     margin-top: 0.6%;
-    margin-left: 3%;">
+    margin-left: 3%;"> 
         <template>
-            <h2 style="font-size: 3rem;
+            <h2 style="font-size: 2rem;
             font-weight: 300;
             line-height: 1.2;
             margin-top: -12%;
-            margin-bottom: -1.5rem;
-            margin-left: 6%">Client Registration</h2>
+            margin-bottom: -1rem;">Client Registration</h2>
         </template>
 
         <template>

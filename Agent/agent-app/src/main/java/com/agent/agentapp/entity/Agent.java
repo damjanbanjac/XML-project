@@ -12,16 +12,10 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Agent {
+@Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
+public class Agent extends  SimpleUser {
 
-    @Id
-    @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
-    private Long id;
 
-    private String name;
-
-    private String address;
 
     private String pib;
 }

@@ -8,7 +8,7 @@
     <b-jumbotron bg-variant="light" text-variant="dark" style="width: 510px;
     height: 910px;
     margin-top: 0.6%;
-    margin-left: 3%;">
+    margin-left: 3%;"> 
         <template>
             <h2 style="font-size: 2rem;
             font-weight: 300;
@@ -163,76 +163,76 @@ import axios from "axios";
       //   this.error = true;
       //   return;
       // }
-    //   let lowercase = this.form.password.match((/[a-z]+/g));
-    //   let uppercase = this.form.password.match((/[A-Z]+/g));
-    //   let digits = this.form.password.match((/[\d]+/g));
-    //   let special = this.form.password.match((/[!@#$%^&*_]+/g));
-    //   let lenght = this.form.password.match((/[A-Za-z\d!@#$%^&*_]{8,}/g));
+      let lowercase = this.form.password.match((/[a-z]+/g));
+      let uppercase = this.form.password.match((/[A-Z]+/g));
+      let digits = this.form.password.match((/[\d]+/g));
+      let special = this.form.password.match((/[!@#$%^&*_]+/g));
+      let lenght = this.form.password.match((/[A-Za-z\d!@#$%^&*_]{8,}/g));
       
-    //   if(lowercase == null){
-    //     this.errorMessage = "Lowercase necessary.";
-    //     this.error = true;
-    //     return;
-    //   }
-    //   if(uppercase == null){
-    //     this.errorMessage = "Uppercase necessary.";
-    //     this.error = true;
-    //     return;
-    //   }
+      if(lowercase == null){
+        this.errorMessage = "Lowercase necessary.";
+        this.error = true;
+        return;
+      }
+      if(uppercase == null){
+        this.errorMessage = "Uppercase necessary.";
+        this.error = true;
+        return;
+      }
       
-    //   if(digits == null){
-    //     this.errorMessage = "Digits necessary.";
-    //     this.error = true;
-    //     return;
-    //   }
-    //   if(special == null){
-    //     this.errorMessage = "Special character necessary.";
-    //     this.error = true;
-    //     return;
-    //   }
-    //   if(lenght == null){
-    //     this.errorMessage = "At least 8 characters necessary.";
-    //     this.error = true;
-    //     return;
-    //   }
-    //   if (this.form.password !== this.form.repassword) {
-    //     this.errorMessage = "Entered passwords do not match";
-    //     this.error = true;
-    //     return;
-    //   }
-    //   var rexx = /^[a-zA-Z\-0-9\s]+$/;
-    //     if (!rexx.test(String(this.form.name.trim()))) {
-    //     this.errorMessage = "Name must not contain unacceptable characters";
-    //     this.error = true;
-    //     return;
-    //   }
-    //   if (!rexx.test(String(this.form.surname.trim()))) {
-    //     this.errorMessage = "Surname must not contain unacceptable characters";
-    //     this.error = true;
-    //     return;
-    //   }
-    //   if (!rexx.test(String(this.form.address.trim()))) {
-    //       this.errorMessage = "Address must not contain unacceptable characters";
-    //       this.error = true;
-    //       return;
-    //   }
-    //   if (!rexx.test(String(this.form.town.trim()))) {
-    //     this.errorMessage = "Town must not contain unacceptable characters";
-    //     this.error = true;
-    //     return;
-    //   }
-    //     if (!rexx.test(String(this.form.country.trim()))) {
-    //     this.errorMessage = "Country must not contain unacceptable characters";
-    //     this.error = true;
-    //     return;
-    //   }
+      if(digits == null){
+        this.errorMessage = "Digits necessary.";
+        this.error = true;
+        return;
+      }
+      if(special == null){
+        this.errorMessage = "Special character necessary.";
+        this.error = true;
+        return;
+      }
+      if(lenght == null){
+        this.errorMessage = "At least 8 characters necessary.";
+        this.error = true;
+        return;
+      }
+      if (this.form.password !== this.form.repassword) {
+        this.errorMessage = "Entered passwords do not match";
+        this.error = true;
+        return;
+      }
+      var rexx = /^[a-zA-Z\-0-9\s]+$/;
+        if (!rexx.test(String(this.form.name.trim()))) {
+        this.errorMessage = "Name must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
+      if (!rexx.test(String(this.form.surname.trim()))) {
+        this.errorMessage = "Surname must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
+      if (!rexx.test(String(this.form.address.trim()))) {
+          this.errorMessage = "Address must not contain unacceptable characters";
+          this.error = true;
+          return;
+      }
+      if (!rexx.test(String(this.form.town.trim()))) {
+        this.errorMessage = "Town must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
+        if (!rexx.test(String(this.form.country.trim()))) {
+        this.errorMessage = "Country must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
       
-    //   var rex = /^\+38[0-9]\/6[0-9]-?[0-9]+(-[0-9]+)?$/;
-    //   if (!rex.test(String(this.form.phoneNumber.trim()))) {
-    //     this.errorMessage = "Phone number should be entered in +381/65-504205 format";
-    //     this.error = true;
-    //     return;
-    //   }
+      var rex = /^\+38[0-9]\/6[0-9]-?[0-9]+(-[0-9]+)?$/;
+      if (!rex.test(String(this.form.phoneNumber.trim()))) {
+        this.errorMessage = "Phone number should be entered in +381/65-504205 format";
+        this.error = true;
+        return;
+      }
     axios
         .post("auth/register/",this.form)
         .then(form=>{

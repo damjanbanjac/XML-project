@@ -8,6 +8,7 @@ import com.agent.agentapp.repository.ImageRepository;
 import com.agent.agentapp.service.implementation.AdCarService;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -30,12 +31,15 @@ public class AdCarController {
 
 
     @PostMapping
+   // @PreAuthorize("hasAuthority('CREATE-AD')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public AdCarResponse addAd(@RequestBody AdCarRequest request) throws Exception{
         return adsCarService.createAd(request);
     }
 
 
     @PostMapping("/{id}/agent")
+   // @PreAuthorize("hasAuthority('ADMIN')")
     public AdCarResponse addAdAgent(@RequestBody AdCarRequest request,@PathVariable long id) throws Exception{
         return adsCarService.createAdAgent(request,id);
     }
@@ -46,11 +50,15 @@ public class AdCarController {
     }
 
     @PutMapping("/{id}/ad")
+    // @PreAuthorize("hasAuthority('UPDATE-AD')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public AdCarResponse updateAd(@RequestBody AdCarRequest request, @PathVariable long id) throws Exception{
         return adsCarService.updateAd(request, id);
     }
 
     @DeleteMapping("/{id}/ad")
+    // @PreAuthorize("hasAuthority('DELETE-AD')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public void deleteAd(@PathVariable long id) throws Exception{
         adsCarService.deleteAdCar(id);
     }
@@ -66,6 +74,7 @@ public class AdCarController {
     } */
 
     @GetMapping
+    //@PreAuthorize("hasAuthority('USER')")
     public List<AdCarResponse> getAllAds() throws Exception{
         return adsCarService.getAllAds();
     }

@@ -23,11 +23,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37">
-        <schema name="services" object-types="procedure, function, view, table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37">
@@ -39,6 +35,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" dataset="services.users" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />

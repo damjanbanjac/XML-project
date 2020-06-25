@@ -19,26 +19,6 @@ import static org.springframework.http.HttpMethod.OPTIONS;
 public class WebConfig implements WebMvcConfigurer {
 
 
-    @Bean
-    public CorsFilter corsFilter() {
-        final CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod(GET);
-        config.addAllowedMethod(PUT);
-        config.addAllowedMethod(POST);
-        config.addAllowedMethod(PATCH);
-        config.addAllowedMethod(DELETE);
-        config.addAllowedMethod(OPTIONS);
-        config.setMaxAge(1800L);
-
-        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config);
-
-        return new CorsFilter(source);
-    }
-
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**").allowedOrigins("http://localhost:8082");

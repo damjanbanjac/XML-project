@@ -81,12 +81,24 @@ import axios from "axios";
           this.error = true;
           return;
         }
+        var rexx = /^[a-zA-Z\-0-9\s]+$/;
+        if (!rexx.test(String(this.form.name.trim()))) {
+        this.errormessage = "Name must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
+      if (!rexx.test(String(this.form.label.trim()))) {
+        this.errormessage = "Label must not contain unacceptable characters";
+        this.error = true;
+        return;
+      }
         axios
         .post("/brands", this.form)
         .then(() => {
           this.form.name = "";
           this.form.label = "";
           this.success = true;
+          this.error = false;
           this.successmessage = "You have successfully added a new car brand."
         })
         .catch(error => {
