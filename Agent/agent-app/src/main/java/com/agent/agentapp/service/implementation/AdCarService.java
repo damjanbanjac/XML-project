@@ -7,6 +7,8 @@ import com.agent.agentapp.entity.Order;
 import com.agent.agentapp.repository.*;
 import com.agent.agentapp.service.IAdCarService;
 import com.agent.agentapp.service.IAgentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +44,8 @@ public class AdCarService implements IAdCarService {
 
     @Autowired
     ITypeOfGearshiftRepository typeOfGearShiftRepository;
+
+    private final Logger logger = LoggerFactory.getLogger(AdCarService.class);
 
     @Override
     public AdCarResponse getAd(long id) {
@@ -126,7 +130,7 @@ public class AdCarService implements IAdCarService {
         adCar.setKmTraveled(request.getKmTraveled());
         adCar.setKmRestriction(request.getKmRestriction());
 
-
+        adCarSuccessLog();
         adCarRepository.save(adCar);
         AdCarResponse carResponse  = new AdCarResponse(adCar);
         return  carResponse;
@@ -242,4 +246,13 @@ public class AdCarService implements IAdCarService {
         }
         return  adCarResponse;
     } */
+
+
+   public void adCarSuccessLog() {
+//        if(logger.isErrorEnabled()) {
+            logger.info("SUCCESS Agent successfully added a car.");
+//        }
+   }
+
+
 }

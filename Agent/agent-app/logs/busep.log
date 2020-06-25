@@ -1,0 +1,17 @@
+2020-06-26 01:14:11.331+0200 [task-1] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.15.Final 
+2020-06-26 01:14:11.517+0200 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final} 
+2020-06-26 01:14:11.588+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2020-06-26 01:14:11.965+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2020-06-26 01:14:11.980+0200 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2020-06-26 01:14:16.893+0200 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020-06-26 01:14:16.906+0200 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020-06-26 01:14:17.374+0200 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: c96a5dc3-38f1-4d5e-a475-083a1e44dff5
+ 
+2020-06-26 01:14:17.424+0200 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3ed34ef5, org.springframework.security.web.context.SecurityContextPersistenceFilter@606f81b5, org.springframework.security.web.header.HeaderWriterFilter@6242ae3b, org.springframework.security.web.authentication.logout.LogoutFilter@444f44c5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44b21f9f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@326d27ac, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@553bc36c, org.springframework.security.web.session.SessionManagementFilter@600f5704, org.springframework.security.web.access.ExceptionTranslationFilter@3ae126d1] 
+2020-06-26 01:14:17.467+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8097"] 
+2020-06-26 01:14:17.485+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8097 (http) with context path '' 
+2020-06-26 01:14:17.486+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
+2020-06-26 01:14:17.713+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
+2020-06-26 01:14:17.721+0200 [main] INFO  c.agent.agentapp.AgentAppApplication - Started AgentAppApplication in 8.296 seconds (JVM running for 9.156) 

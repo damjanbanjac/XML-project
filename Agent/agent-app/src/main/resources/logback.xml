@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>UTF-8</charset>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSZ} [%thread] %-5level %logger{36} - %msg %n</Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/busep.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/busep-%i.log.gz</fileNamePattern>
+            <minIndex>1</minIndex>
+            <maxIndex>2</maxIndex>
+<!--            <maxHistory>6</maxHistory>-->
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>20KB</maxFileSize>
+<!--            <maxHistory>6</maxHistory>-->
+        </triggeringPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSZ} [%thread] %-5level %logger{36} - %msg %n</pattern>
+        </encoder>
+    </appender>
+    <!-- <logger name="org.springframework" level="debug" /> -->
+
+
+
+    <appender name="errorFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/errorBusep.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <fileNamePattern>logs/errorBusep-%i.log.gz</fileNamePattern>
+            <maxIndex>2</maxIndex>
+            <minIndex>1</minIndex>
+            <!--            <maxHistory>6</maxHistory>-->
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <maxFileSize>20KB</maxFileSize>
+            <!--            <maxHistory>6</maxHistory>-->
+        </triggeringPolicy>
+        <encoder>
+            <charset>UTF-8</charset>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSZ} [%thread] %-5level %logger{36} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+
+
+    <logger name="com.agent.agentapp.service.implementation.AdCarService" level="error" additivity="false">
+        <appender-ref ref="errorFILE"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="consoleAppender" />
+        <appender-ref ref="FILE"/>
+    </root>
+
+
+
+
+    <!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+    <!--PISALO OD POCETKA-->
+    <!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+    <!--       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+    <!--       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">-->
+    <!--</beans>-->
+
+
+    <!--JA PISAO PRE-->
+    <!--<configuration debug="true">-->
+    <!--    <property name="LOGDIR" value="D:\\logs\\"/>-->
+    <!--    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">-->
+    <!--        <encoder>-->
+    <!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSZ} [%thread] %-5level %logger{36} - %msg %n</pattern>-->
+    <!--        </encoder>-->
+    <!--    </appender>-->
+
+    <!--    <appender name="File" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+    <!--        <file>${LOGDIR}Busep.log</file>-->
+    <!--        <encoder>-->
+    <!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSZ} [%thread] %-5level %logger{36} - %msg %n</pattern>-->
+    <!--        </encoder>-->
+
+    <!--        <rollingPolicy class = "ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+    <!--            <fileNamePattern>${LOGDIR}Bookstore-%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+    <!--            <maxFileSize>5KB</maxFileSize>-->
+    <!--        </rollingPolicy>-->
+    <!--    </appender>-->
+
+    <!--    <logger name="com.agent.agentapp.service.implementation" level="info"/>-->
+
+
+
+
+
+
+
+
+    <!--    <root level="INFO">-->
+    <!--        <appender-ref ref="STDOUT"/>-->
+    <!--    </root>-->
+    <!--</configuration>-->
+
+
+
+</configuration>
+
+
+
+
+
