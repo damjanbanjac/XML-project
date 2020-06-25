@@ -1,7 +1,7 @@
 <template>
 <div>
     <b-jumbotron bg-variant="light" text-variant="dark" style="width: 510px;
-    height: 770px;
+    height: 750px;
     margin-top: 0.6%;
     margin-left: 3%;">
         <template>
@@ -10,8 +10,6 @@
             line-height: 1.2;
             margin-top: -12%;
             margin-bottom: -1rem;">Company Registration</h2>
-            <br/>
-            <br/>
         </template>
 
         <template>
