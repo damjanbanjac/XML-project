@@ -30,16 +30,22 @@ public class TypeOfFuelController {
     }
 
     @PostMapping()
+    // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public TypeOfFuelResponse createTypeOfFuel(@RequestBody CreateTypeOfFuelRequest request) {
         return _typeOfFuelService.createTypeOfFuel(request);
     }
 
     @PutMapping("/{id}/fuel-type")
+    // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public TypeOfFuelResponse updateTypeOfFuel(@RequestBody UpdateTypeOfFuelRequest request, @PathVariable Long id) {
         return _typeOfFuelService.updateTypeOfFuel(request, id);
     }
 
     @DeleteMapping("/{id}/fuel-type")
+    // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public void deleteTypeOfFuel(@PathVariable Long id) {
         _typeOfFuelService.deleteTypeOfFuel(id);
     }

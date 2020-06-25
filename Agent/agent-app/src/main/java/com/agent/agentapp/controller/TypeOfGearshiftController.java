@@ -30,16 +30,22 @@ public class TypeOfGearshiftController {
     }
 
     @PostMapping
+    // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public TypeOfGearshiftResponse createTypeOfGearshift(@RequestBody CreateTypeOfGearshiftRequest request) {
         return _typeOfGearshiftService.createTypeOfGearshift(request);
     }
 
     @PutMapping("/{id}/gearshift-type")
+    // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public TypeOfGearshiftResponse updateTypeOfGearshift(@RequestBody UpdateTypeOfGearshiftRequest request, @PathVariable Long id) {
         return _typeOfGearshiftService.updateTypeOfGearshift(request, id);
     }
 
     @DeleteMapping("/{id}/gearshift-type")
+    // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public void deleteTypeOfGearshift(@PathVariable Long id) {
         _typeOfGearshiftService.deleteTypeOfGearshift(id);
     }

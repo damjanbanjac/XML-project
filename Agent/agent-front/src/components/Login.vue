@@ -10,9 +10,9 @@
     width: 465px;
     height: 460px;">
       <h2 style="font-size: 4rem;
-        font-weight: 300;
+        font-weight: 200;
         line-height: 1.2;
-        margin-left: 26%;">
+        margin-left: 1%;">
         Log In
       </h2>
 
@@ -48,9 +48,9 @@
         </b-form>
       </template>
 
-      <b-form-group style="margin-left: 18%;">
+      <b-form-group style="margin-left: -2%;">
         <label style="margin-right: 2%">Don't have an account?</label>
-        <router-link to="/clientRegistration">Register!</router-link>
+        <router-link to="/userRegistrationRequest">Register!</router-link>
         <br/>
       </b-form-group>
 

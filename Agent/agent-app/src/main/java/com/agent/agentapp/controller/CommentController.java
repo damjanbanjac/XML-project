@@ -18,6 +18,8 @@ public class CommentController {
     }
 
     @PostMapping
+    // @PreAuthorize("hasAuthority('POST-COMMENT')")
+    // @PreAuthorize("hasAuthority('USER')")
     public void comment(@RequestBody CommentAdCarRequest request) throws Exception {
         commentService.commentAdCar(request);
     }

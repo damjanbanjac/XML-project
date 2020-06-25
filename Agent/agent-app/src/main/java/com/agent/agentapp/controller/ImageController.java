@@ -28,6 +28,8 @@ public class ImageController {
 
 
     @PostMapping("/{idAd}/Ad")
+    // @PreAuthorize("hasAuthority('CRUD-IMAGE')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public ImageResponse addImage(@RequestParam("imageFile") MultipartFile imageFile, @PathVariable String idAd) throws Exception{
         //System.out.println(idAd);
         Long id  = Long.parseLong(idAd);
@@ -61,6 +63,8 @@ public class ImageController {
     }
 
     @DeleteMapping("/{id}/image")
+    // @PreAuthorize("hasAuthority('CRUD-IMAGE')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public void deleteImage(@PathVariable long id) throws Exception{
         imageService.deleteAdCar(id);
     }

@@ -31,30 +31,34 @@ public class AdCarController {
 
 
     @PostMapping
-   // @PreAuthorize("hasAuthority('USER')")
+   // @PreAuthorize("hasAuthority('CREATE-AD')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public AdCarResponse addAd(@RequestBody AdCarRequest request) throws Exception{
         return adsCarService.createAd(request);
     }
 
 
     @PostMapping("/{id}/agent")
-   // @PreAuthorize("hasAuthority('USER')")
+   // @PreAuthorize("hasAuthority('ADMIN')")
     public AdCarResponse addAdAgent(@RequestBody AdCarRequest request,@PathVariable long id) throws Exception{
         return adsCarService.createAdAgent(request,id);
     }
 
     @GetMapping("/{id}/agent")
-   // @PreAuthorize("hasAuthorit('USER')")
     public List<AdCarResponse> getAllAdsFromAgent(@PathVariable long id) throws Exception{
         return adsCarService.getAllAdsAgent(id);
     }
 
     @PutMapping("/{id}/ad")
+    // @PreAuthorize("hasAuthority('UPDATE-AD')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public AdCarResponse updateAd(@RequestBody AdCarRequest request, @PathVariable long id) throws Exception{
         return adsCarService.updateAd(request, id);
     }
 
     @DeleteMapping("/{id}/ad")
+    // @PreAuthorize("hasAuthority('DELETE-AD')")
+    // @PreAuthorize("hasAuthority('AGENT')")
     public void deleteAd(@PathVariable long id) throws Exception{
         adsCarService.deleteAdCar(id);
     }
