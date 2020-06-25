@@ -75,7 +75,7 @@
       block(id) {
 
         axios
-        .put("auth/admins/block/" + id + "/user")
+        .put("maintenance/admins/block/" + id + "/user")
         .then(()=>{
             window.location.reload();
         })
@@ -87,7 +87,7 @@
     unblock(id) {
 
         axios
-        .put("auth/admins/unblock/" + id + "/user")
+        .put("maintenance/admins/unblock/" + id + "/user")
         .then(()=>{
             window.location.reload();
         })
@@ -99,7 +99,7 @@
     },
     mounted() {
     axios
-      .get("auth/admins/approved-registrations")
+      .get("maintenance/admins/approved-registrations")
       .then(clients => {
         this.clients = clients.data;
         

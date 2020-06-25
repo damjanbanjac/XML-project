@@ -54,7 +54,7 @@ public class UserService {
         subject.setBlocked(false);
         subject.setAuthorities(auths);
         subject.setPassword(passwordEncoder.encode(user.getPassword()));
-        createLogFileSuccess(user);
+     //   createLogFileSuccess(user);
         subject.setRegistrationState(RegistrationState.PENDING);
         userRepository.save(subject);
     }
