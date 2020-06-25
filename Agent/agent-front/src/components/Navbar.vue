@@ -61,6 +61,7 @@
       <!-- User -->
       <b-nav-item-dropdown text="Client"   v-if="this.$store.state.user.role.authority == 'USER'" left>
         <router-link to="/adsListByUser" tag="b-dropdown-item">Car ads</router-link>
+        <router-link to="/newAd" tag="b-dropdown-item">Add Car ad</router-link>
          <b-dropdown-item @click="odjavaFun">Log Out</b-dropdown-item>
       </b-nav-item-dropdown>
 

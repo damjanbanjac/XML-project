@@ -1,20 +1,25 @@
 <template>
   <div id="app">
     <navbar></navbar>
+    <router-view />
 
-   <router-view />
   </div>
 </template>
 
 <script>
-import Navbar from  './components/Navbar.vue'
+import Home from  './components/Navbar.vue'
 
-
+import VueJwtDecode from "vue-jwt-decode";
 export default {
   name: 'App',
   components: {
  
-    "navbar" : Navbar
+    "navbar" : Home
+  },
+   mounted() {
+    if (localStorage.getItem("jwt") != undefined) {
+      this.$store.state.user = VueJwtDecode.decode(localStorage.getItem("jwt"));
+    }
   }
 }
 </script>

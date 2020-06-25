@@ -23,8 +23,8 @@ import java.util.List;
 
 public class SimpleUser implements UserDetails {
     @Id
-    @SequenceGenerator(name = "users_id", sequenceName = "users_id", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id")
+    @SequenceGenerator(name = "users_simple_id", sequenceName = "users_simple_id", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_simple_id")
     private Long id;
     @Column(unique = true)
     private String email;
@@ -40,7 +40,7 @@ public class SimpleUser implements UserDetails {
     private String password;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
+    @JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "user_simple_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
     private List<Authority> authorities;
     public void setAuthorities(List<Authority> authorities) {
         this.authorities = authorities;
