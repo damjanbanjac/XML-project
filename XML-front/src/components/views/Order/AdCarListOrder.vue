@@ -21,19 +21,17 @@
               <div class="md-form">
                 <label for="Form-ime">Id</label>
                 <label id="Form-ime" class="form-control">{{oglas.id}}</label>
-                
-                
               </div>
             </div>
             <div class="col">
               <div class="md-form pb-3">
                 <label for="Form-ime">Agent issued</label>
                 <label id="Form-ime" class="form-control">{{oglas.agentIzdaoAd.id}}</label>
-            
+                <br/>
                 <div class="text-center mb-4">
                   <button
                     type="button"
-                    class="btn btn-danger btn-block z-depth-2"
+                    class="btn btn-info btn-block z-depth-2"
                   @click="priprema(oglas)">Prepare</button>
                 </div>
               </div>
@@ -60,17 +58,18 @@
                       class="form-control"
                       v-model="order.availableFrom"
                     />
-                <label for="Form-ime">End date</label>
+                <label style="margin-top:4%" for="Form-ime">End date</label>
                 <input
                       type="text"
                       id="Form-end"
                       class="form-control"
                       v-model="order.availableTo"
                     />
-                <div class="text-center mb-4">
+                    <br/>
+                <div style="margin-top:2%" class="text-center mb-4">
                   <button
                     type="button"
-                    class="btn btn-danger btn-block z-depth-2"
+                    class="btn btn-info btn-block z-depth-2"
                   @click="naruci()">Add to bag</button>
                 </div>
               </div>

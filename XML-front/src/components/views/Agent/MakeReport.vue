@@ -30,7 +30,7 @@
               v-model="report.text"
               type="text"
               required
-              placeholder="text"
+              placeholder="Text"
             
             ></b-form-input>
           </b-form-group>
@@ -41,7 +41,7 @@
               v-model="report.km"
               type="text"
               required
-              placeholder="set km"
+              placeholder="Set km"
    
             ></b-form-input>
           </b-form-group>

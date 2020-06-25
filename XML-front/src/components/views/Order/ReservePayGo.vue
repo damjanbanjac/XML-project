@@ -29,11 +29,12 @@
               <div class="md-form pb-3">
                 <label for="Form-ime">Agent issued</label>
                 <label id="Form-ime" class="form-control">{{oglas.agentIzdaoAd.id}}</label>
+                <br/>
             
                 <div class="text-center mb-4">
                   <button
                     type="button"
-                    class="btn btn-danger btn-block z-depth-2"
+                    class="btn btn-info btn-block z-depth-2"
                   @click="priprema(oglas)">Prepare</button>
                 </div>
               </div>
@@ -67,10 +68,11 @@
                       class="form-control"
                       v-model="order.availableTo"
                     />
+                <br/>
                 <div class="text-center mb-4">
                   <button
                     type="button"
-                    class="btn btn-danger btn-block z-depth-2"
+                    class="btn btn-info btn-block z-depth-2"
                   @click="go()">Gogo</button>
                 </div>
               </div>
