@@ -235,7 +235,7 @@ import axios from "axios";
         return;
       }
     axios
-        .post("auth/auth/register/",this.form)
+        .post("auth/register/",this.form)
         .then(form=>{
             this.form=form.data;
             this.error = false;
