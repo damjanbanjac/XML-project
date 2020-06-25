@@ -1,5 +1,5 @@
-INSERT INTO `agentxml`.`admin` (`id`, `name`, `surname`, `town`, `country`, `phone_number`, `email`, `password`) VALUES
-(100, 'Admin', 'Administrator', 'Novi Sad', 'Srbija', '+381/65-000000', 'admin@gmail.com', '$2y$12$eCqXW3NAYv6Nue.27FyPLO18vmfq1hWndODWunZouuIFv3UNUM5u2');
+--INSERT INTO `agentxml`.`admin` (`id`, `name`, `surname`, `town`, `country`, `phone_number`, `email`, `password`) VALUES
+--(100, 'Admin', 'Administrator', 'Novi Sad', 'Srbija', '+381/65-000000', 'admin@gmail.com', '$2y$12$eCqXW3NAYv6Nue.27FyPLO18vmfq1hWndODWunZouuIFv3UNUM5u2');
 --sifra: Admin!123
 
 INSERT INTO `agentxml`.`permission` (`id`, `name`) VALUES ('1', 'CREATE-AD');
@@ -18,10 +18,10 @@ INSERT INTO `agentxml`.`permission` (`id`, `name`) VALUES ('12', 'CREATE-REPORT'
 INSERT INTO `agentxml`.`authority` (`id`, `name`) VALUES ('1', 'ADMIN');
 INSERT INTO `agentxml`.`authority` (`id`, `name`) VALUES ('2', 'AGENT');
 
-INSERT INTO `agentxml`.`authority` (`id`, `name`) VALUES ('3', 'ADMIN');
+--INSERT INTO `agentxml`.`authority` (`id`, `name`) VALUES ('3', 'ADMIN');
 
-INSERT INTO `agentxml`.`admin_app` (`id`, `active`, `blocked`, `country`, `email`, `name`, `password`, `permission_blocked`, `phone_number`, `rate`, `surname`, `town`) VALUES ('100', false, false, 'srb', 'admin@gmail.com', 'Admin', '$2a$10$mzFkdgfA8T.UiOJLXLIe7.tcEgaoUyXDpDuBlsAZQrqQoDRyMw6Ae', false, '0658545544', '5', 'Admin', 'Novi Sad');
-INSERT INTO `agentxml`.`user_authority`(`user_simple_id`,`authority_id`) VALUES ('100', '3');
+INSERT INTO `agentxml`.`admin_app` (`id`, `active`, `blocked`, `country`, `email`, `name`, `password`, `permission_blocked`, `phone_number`, `rate`, `surname`, `town`) VALUES ('100', false, false, 'srb', 'admin@gmail.com', 'Admin', '$2a$10$Dndii84M0uqKGZvdDUPEp.sovm/cuaKm8p1HEaH.0QkG8.is1F4Sq', false, '0658545544', '5', 'Admin', 'Novi Sad');
+INSERT INTO `agentxml`.`user_authority`(`user_simple_id`,`authority_id`) VALUES ('100', '1');
 INSERT INTO `agentxml`.`authority` (`id`, `name`) VALUES ('3', 'USER');
 INSERT INTO `agentxml`.`authority` (`id`, `name`) VALUES ('4', 'USER-SELLER');
 

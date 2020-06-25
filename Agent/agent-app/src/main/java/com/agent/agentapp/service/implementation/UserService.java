@@ -3,12 +3,9 @@ package com.agent.agentapp.service.implementation;
 import ch.qos.logback.core.db.ConnectionSource;
 import ch.qos.logback.core.db.DriverManagerConnectionSource;
 import com.agent.agentapp.dto.request.UserRequest;
-import com.agent.agentapp.entity.Authority;
-import com.agent.agentapp.entity.FirstLoginHelperEntity;
-import com.agent.agentapp.entity.User;
-import com.agent.agentapp.repository.AuthorityRepository;
-import com.agent.agentapp.repository.IFirtLoginHelperEntityRepository;
-import com.agent.agentapp.repository.IUserRepository;
+import com.agent.agentapp.entity.*;
+import com.agent.agentapp.repository.*;
+import com.agent.agentapp.service.IAgentService;
 import com.agent.agentapp.utils.RegistrationState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -30,6 +27,13 @@ public class UserService {
     private IUserRepository userRepository;
 
     @Autowired
+    private IAdminRepository adminRepository;
+
+    @Autowired
+    private AgentRepository agentRepository;
+
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -43,11 +47,11 @@ public class UserService {
    //     return userRepository.findByEmail(mail);
  //   }
 
-    public void save(UserRequest user) throws SQLException {
+    public void saveAdmin(UserRequest user) throws SQLException {
 
-
-        User subject = new User();
-        Authority auth = this.authorityRepository.findByName("USER");
+        Admin subject = new Admin();
+       // User subject = new User();
+        Authority auth = this.authorityRepository.findByName("ADMIN");
         List<Authority> auths = new ArrayList<>();
 
 
@@ -65,8 +69,56 @@ public class UserService {
         subject.setAuthorities(auths);
         subject.setPassword(passwordEncoder.encode(user.getPassword()));
        // createLogFileSuccess(user);
-        subject.setRegistrationState(RegistrationState.PENDING);
-        userRepository.save(subject);
+       // subject.setRegistrationState(RegistrationState.PENDING);
+        adminRepository.save(subject);
+    }
+
+    public void save(UserRequest user) {
+         User subject = new User();
+        Authority auth = this.authorityRepository.findByName("USER");
+        List<Authority> auths = new ArrayList<>();
+
+
+        auths.add(auth);
+
+
+        subject.setName(user.getName());
+        subject.setEmail(user.getEmail());
+        subject.setPhoneNumber(user.getPhoneNumber());
+        subject.setSurname(user.getSurname());
+        subject.setCountry(user.getCountry());
+        subject.setTown(user.getTown());
+        subject.setActive(true);
+        subject.setBlocked(false);
+        subject.setAuthorities(auths);
+        subject.setPassword(passwordEncoder.encode(user.getPassword()));
+        // createLogFileSuccess(user);
+         subject.setRegistrationState(RegistrationState.PENDING);
+         userRepository.save(subject);
+    }
+
+    public void saveAgent(UserRequest user) {
+        Agent subject = new Agent();
+        Authority auth = this.authorityRepository.findByName("AGENT");
+        List<Authority> auths = new ArrayList<>();
+
+
+        auths.add(auth);
+
+
+        subject.setName(user.getName());
+        subject.setEmail(user.getEmail());
+        subject.setPhoneNumber(user.getPhoneNumber());
+        subject.setSurname(user.getSurname());
+        subject.setCountry(user.getCountry());
+        subject.setTown(user.getTown());
+        subject.setActive(true);
+        subject.setBlocked(false);
+        subject.setAuthorities(auths);
+        subject.setPassword(passwordEncoder.encode(user.getPassword()));
+        // createLogFileSuccess(user);
+        //subject.setRegistrationState(RegistrationState.PENDING);
+        agentRepository.save(subject);
     }
 
     public void createLogFileSuccess(UserRequest user) {
@@ -97,5 +149,7 @@ public class UserService {
 
 
     }
+
+
 
 }

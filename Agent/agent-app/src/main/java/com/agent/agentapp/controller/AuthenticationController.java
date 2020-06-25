@@ -68,7 +68,7 @@ public class AuthenticationController {
 
         SimpleUser user = (SimpleUser) authentication.getPrincipal();
         User subject = userService.findOne(user.getId());
-        System.out.println("da li je ovo null" + subject.getId());
+//        System.out.println("da li je ovo null" + subject.getId());
 
         if (subject == null) {
             Collection<?> roles = user.getAuthorities();
@@ -121,6 +121,64 @@ public class AuthenticationController {
         System.out.println(userRequest.getCountry());
 
         userService.save(userRequest);
+
+        UserResponse userResponse = new UserResponse();
+        userResponse.setActive(userRequest.getActive());
+        userResponse.setBlocked(userRequest.getBlocked());
+        userResponse.setCountry(userRequest.getCountry());
+        userResponse.setEmail(userRequest.getEmail());
+        userResponse.setName(userRequest.getName());
+        userResponse.setSurname(userRequest.getSurname());
+        userResponse.setPhoneNumber(userRequest.getPhoneNumber());
+        userResponse.setPermissionBlocked(userRequest.getPermissionBlocked());
+        userResponse.setRate(userRequest.getRate());
+        userResponse.setTown(userRequest.getTown());
+
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/register/agent")
+    public ResponseEntity<?> addAgent(@RequestBody UserRequest userRequest) throws Exception {
+
+
+        SimpleUser existUser = this.simpleUserService.findOne(userRequest.getEmail());
+        if (existUser != null) {
+            throw new Exception("Already exists");
+        }
+
+        System.out.println(userRequest.getCountry());
+
+        userService.saveAgent(userRequest);
+
+        UserResponse userResponse = new UserResponse();
+        userResponse.setActive(userRequest.getActive());
+        userResponse.setBlocked(userRequest.getBlocked());
+        userResponse.setCountry(userRequest.getCountry());
+        userResponse.setEmail(userRequest.getEmail());
+        userResponse.setName(userRequest.getName());
+        userResponse.setSurname(userRequest.getSurname());
+        userResponse.setPhoneNumber(userRequest.getPhoneNumber());
+        userResponse.setPermissionBlocked(userRequest.getPermissionBlocked());
+        userResponse.setRate(userRequest.getRate());
+        userResponse.setTown(userRequest.getTown());
+
+        HttpHeaders headers = new HttpHeaders();
+        return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/register/admin")
+    public ResponseEntity<?> addAdmin(@RequestBody UserRequest userRequest) throws Exception {
+
+
+        SimpleUser existUser = this.simpleUserService.findOne(userRequest.getEmail());
+        if (existUser != null) {
+            throw new Exception("Already exists");
+        }
+
+        System.out.println(userRequest.getCountry());
+
+        userService.saveAdmin(userRequest);
 
         UserResponse userResponse = new UserResponse();
         userResponse.setActive(userRequest.getActive());
