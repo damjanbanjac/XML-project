@@ -114,6 +114,7 @@ public class AdminService implements IAdminService {
         agent.setActive(true);
         agent.setPassword(passwordEncoder.encode(request.getPassword()));
 
+        agent.setAuthorities(auths);
         _agentRepository.save(agent);
 
         AgentResponse agentResponse = new AgentResponse();
