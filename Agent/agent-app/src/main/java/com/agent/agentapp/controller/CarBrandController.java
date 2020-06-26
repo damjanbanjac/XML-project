@@ -5,6 +5,7 @@ import com.agent.agentapp.dto.request.UpdateCarBrandRequest;
 import com.agent.agentapp.dto.response.CarBrandResponse;
 import com.agent.agentapp.service.ICarBrandService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -40,7 +41,7 @@ public class CarBrandController {
 
     @PostMapping
     // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
-    // @PreAuthorize("hasAuthority('AGENT')")
+     @PreAuthorize("hasAuthority('AGENT')")
     public CarBrandResponse createCarBrand(@RequestBody CreateCarBrandRequest request) {
         return _carBrandService.createCarBrand(request);
     }
@@ -55,14 +56,14 @@ public class CarBrandController {
 
     @PutMapping("/{id}/brand")
     // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
-    // @PreAuthorize("hasAuthority('AGENT')")
+     @PreAuthorize("hasAuthority('AGENT')")
     public CarBrandResponse updateCarBrand(@RequestBody UpdateCarBrandRequest request, @PathVariable Long id) {
         return _carBrandService.updateCarBrand(request, id);
     }
 
     @DeleteMapping("/{id}/brand")
     // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
-    // @PreAuthorize("hasAuthority('AGENT')")
+     @PreAuthorize("hasAuthority('AGENT')")
     public void deleteCarBrand(@PathVariable Long id) {
         _carBrandService.deleteCarBrand(id);
     }

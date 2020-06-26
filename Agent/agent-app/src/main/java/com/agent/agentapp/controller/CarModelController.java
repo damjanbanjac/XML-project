@@ -4,6 +4,7 @@ import com.agent.agentapp.dto.request.CreateCarModelRequest;
 import com.agent.agentapp.dto.request.UpdateCarModelRequest;
 import com.agent.agentapp.dto.response.CarModelResponse;
 import com.agent.agentapp.service.ICarModelService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,21 +32,21 @@ public class CarModelController {
 
     @PostMapping
     // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
-    // @PreAuthorize("hasAuthority('AGENT')")
+     @PreAuthorize("hasAuthority('AGENT')")
     public CarModelResponse createCarModel(@RequestBody CreateCarModelRequest request) {
         return _carModelService.createCarModel(request);
     }
 
     @PutMapping("/{id}/model")
     // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
-    // @PreAuthorize("hasAuthority('AGENT')")
+     @PreAuthorize("hasAuthority('AGENT')")
     public CarModelResponse updateCarModel(@RequestBody UpdateCarModelRequest request, @PathVariable Long id) {
         return _carModelService.updateCarModel(request, id);
     }
 
     @DeleteMapping("/{id}/model")
     // @PreAuthorize("hasAuthority('CRUD-CAR-COMPONENTS')")
-    // @PreAuthorize("hasAuthority('AGENT')")
+     @PreAuthorize("hasAuthority('AGENT')")
     public void deleteCarModel(@PathVariable Long id) {
         _carModelService.deleteCarModel(id);
     }

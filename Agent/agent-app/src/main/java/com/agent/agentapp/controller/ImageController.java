@@ -6,6 +6,7 @@ import com.agent.agentapp.repository.ImageRepository;
 import com.agent.agentapp.service.implementation.ImageService;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,7 +29,7 @@ public class ImageController {
 
 
     @PostMapping("/{idAd}/Ad")
-    // @PreAuthorize("hasAuthority('CRUD-IMAGE')")
+     @PreAuthorize("hasAuthority('CRUD-IMAGE')")
     // @PreAuthorize("hasAuthority('AGENT')")
     public ImageResponse addImage(@RequestParam("imageFile") MultipartFile imageFile, @PathVariable String idAd) throws Exception{
         //System.out.println(idAd);
