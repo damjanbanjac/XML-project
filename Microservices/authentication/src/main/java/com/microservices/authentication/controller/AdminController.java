@@ -1,6 +1,8 @@
 package com.microservices.authentication.controller;
 
+import com.microservices.authentication.dto.request.AgentRequest;
 import com.microservices.authentication.dto.request.GetIdRequest;
+import com.microservices.authentication.dto.response.AgentResponse;
 import com.microservices.authentication.dto.response.RegistrationResponse;
 import com.microservices.authentication.service.IAdminService;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +17,11 @@ public class AdminController {
 
     public AdminController(IAdminService adminService) {
         _adminService = adminService;
+    }
+
+    @PostMapping("/register-agent")
+    public AgentResponse registerAgent(@RequestBody AgentRequest request) {
+        return _adminService.registerAgent(request);
     }
 
     @PostMapping("/approve-registration")

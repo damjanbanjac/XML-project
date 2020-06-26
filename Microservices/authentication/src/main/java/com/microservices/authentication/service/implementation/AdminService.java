@@ -1,17 +1,24 @@
 package com.microservices.authentication.service.implementation;
 
+import com.microservices.authentication.dto.request.AgentRequest;
 import com.microservices.authentication.dto.request.GetIdRequest;
+import com.microservices.authentication.dto.response.AgentResponse;
 import com.microservices.authentication.dto.response.RegistrationResponse;
+import com.microservices.authentication.model.Agent;
+import com.microservices.authentication.model.Authority;
 import com.microservices.authentication.model.FirstLoginHelperEntity;
 import com.microservices.authentication.model.User;
-import com.microservices.authentication.repository.IAdminRepository;
-import com.microservices.authentication.repository.IFirstLoginHelperEntityRepository;
-import com.microservices.authentication.repository.UserRepository;
+import com.microservices.authentication.repository.*;
 import com.microservices.authentication.service.IAdminService;
 import com.microservices.authentication.service.IEmailService;
 import com.microservices.authentication.utils.RegistrationState;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,16 +34,27 @@ public class AdminService implements IAdminService {
 
     private IFirstLoginHelperEntityRepository _helperEntityRepository;
 
+    private IAgentRepository _agentRepository;
+
+    private AuthorityRepository authorityRepository;
+
     private final IEmailService _emailService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
 
     private final Logger logger = LoggerFactory.getLogger(AdminService.class);
 
 
-    public AdminService(UserRepository userRepository, IAdminRepository adminRepository, IFirstLoginHelperEntityRepository helperEntityRepository, IEmailService emailService) {
+    public AdminService(UserRepository userRepository, IAdminRepository adminRepository, IFirstLoginHelperEntityRepository helperEntityRepository, IAgentRepository agentRepository, IEmailService emailService, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository) {
         _userRepository = userRepository;
         _adminRepository = adminRepository;
         _helperEntityRepository = helperEntityRepository;
+        _agentRepository = agentRepository;
         _emailService = emailService;
+
+        this.authorityRepository = authorityRepository;
     }
 
     @Override
@@ -96,6 +114,42 @@ public class AdminService implements IAdminService {
     public void adminDeniedRegistrationLog() {
 //        if(logger.isErrorEnabled()) {
         logger.info("SUCCESS Agent successfully denied registration.");
-//        }
+        }
+
+    @Override
+    public AgentResponse registerAgent(AgentRequest request) {
+
+        Agent agent = new Agent();
+
+        Authority auth = this.authorityRepository.findByName("AGENT");
+        List<Authority> auths = new ArrayList<>();
+        auths.add(auth);
+        agent.setPib(request.getPib());
+        agent.setName(request.getName());
+        agent.setSurname(request.getSurname());
+        agent.setEmail(request.getEmail());
+        agent.setCountry(request.getCountry());
+        agent.setPhoneNumber(request.getPhoneNumber());
+        agent.setTown(request.getTown());
+        agent.setRegistrationState(RegistrationState.APPROVED);
+        agent.setBlocked(false);
+        agent.setActive(true);
+        agent.setPassword(passwordEncoder.encode(request.getPassword()));
+
+        agent.setAuthorities(auths);
+        _agentRepository.save(agent);
+
+        AgentResponse agentResponse = new AgentResponse();
+        agentResponse.setId(agent.getId());
+        agentResponse.setPib(agent.getPib());
+        agentResponse.setName(agent.getName());
+        agentResponse.setSurname(agent.getSurname());
+        agentResponse.setEmail(agent.getEmail());
+        agentResponse.setCountry(agent.getCountry());
+        agentResponse.setPhoneNumber(agent.getPhoneNumber());
+        agentResponse.setTown(agent.getTown());
+
+        return agentResponse;
+
     }
 }

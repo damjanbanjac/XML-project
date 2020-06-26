@@ -8,35 +8,52 @@
 
     <div style="border-left:1px solid #000; height:40px; margin-right:1%"></div>
 
-    <b-navbar-nav class="ml-auto">
+    <b-navbar-nav>
+      <router-link to="/login" tag="b-nav-item" v-if="this.$store.state.user.role.authority == ''" left>Log in</router-link>
       <b-nav-item-dropdown
         text="Sidebar"
-        right
+        left
        v-if="this.$store.state.user.role.authority == 'USER'"
       >
+        <router-link to="/bag" tag="b-dropdown-item">Bag</router-link>
+        <router-link to="/userRequests" tag="b-dropdown-item">My requests</router-link>
+        <div class="dropdown-divider"></div>
+        <router-link to="/adsList" tag="b-dropdown-item">My car ads</router-link>
+        <router-link to="/adCarListOrder" tag="b-dropdown-item">Car ads</router-link>
+        <router-link to="/searchCarAds" tag="b-dropdown-item">Search cars</router-link>
+        <div class="dropdown-divider"></div>
+        <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
         <router-link to="/createPriceList" tag="b-dropdown-item">Add pricelist</router-link>
-         <div class="dropdown-divider"></div>
-          <router-link to="/carBrandList" tag="b-dropdown-item">Car brands</router-link>
-          <router-link to="/addCarBrand" tag="b-dropdown-item">Add car brand</router-link>
+        <div class="dropdown-divider"></div>
+        <router-link to="/messages" tag="b-dropdown-item">Messages</router-link>
+        <div class="dropdown-divider"></div>
         <b-dropdown-item @click="odjavaFun">Log Out</b-dropdown-item>
         
       </b-nav-item-dropdown>
 
        <b-nav-item-dropdown
         text="Sidebar"
-        right
+        left
        v-if="this.$store.state.user.role.authority == 'AGENT'"
       >
+        <router-link to="/agentRequests" tag="b-dropdown-item">Owner requests</router-link>
+        <router-link to="/reservePayGo" tag="b-dropdown-item">Reserve-Pay-Go</router-link>
+        <div class="dropdown-divider"></div>
         <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
-        <router-link to="/adsList" tag="b-dropdown-item">AdsList</router-link>
+        <router-link to="/adsList" tag="b-dropdown-item">Car ads</router-link>
+        <div class="dropdown-divider"></div>
+        <router-link to="/makeReport" tag="b-dropdown-item">Issue Report</router-link>
 
-        </b-nav-item-dropdown>
+        <div class="dropdown-divider"></div>
 
         <b-dropdown-item @click="odjavaFun">Log Out</b-dropdown-item>
 
-      <b-nav-item-dropdown  v-if="this.$store.state.user.role.authority == 'ADMIN'" text="Admin" left>
+        </b-nav-item-dropdown>
+
+      <b-nav-item-dropdown left v-if="this.$store.state.user.role.authority == 'ADMIN'" text="Admin">
 
                     <router-link to="/userList" tag="b-dropdown-item">Client profiles</router-link>
+                    <router-link to="/agentRegistration" tag="b-dropdown-item">Agent registration</router-link>
 
                     <div class="dropdown-divider"></div>
 
@@ -67,7 +84,10 @@
                     
                     <router-link to="/gearshiftTypeList" tag="b-dropdown-item">Types of gearshift</router-link>
                     <router-link to="/addTypeOfGearshift" tag="b-dropdown-item">Add type of gearshift</router-link>
-        <b-dropdown-item @click="odjavaFun">Log Out</b-dropdown-item>
+
+                    <div class="dropdown-divider"></div>
+
+                    <b-dropdown-item @click="odjavaFun">Log Out</b-dropdown-item>
         
       </b-nav-item-dropdown>
      
