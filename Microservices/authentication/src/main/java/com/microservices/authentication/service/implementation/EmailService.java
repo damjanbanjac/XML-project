@@ -33,4 +33,11 @@ public class EmailService implements IEmailService {
         context.setVariable("name", String.format("%s %s", user.getName(), user.getSurname()));
         _emailConfig.send(to, subject, "registrationMail", context);
     }
+
+    public void customerRegistrationMail1() {
+        String to = "bozidar.kljajevic07@gmail.com";
+        String subject = "Dogodio se pokusaj napad, obratite paznju";
+        Context context = new Context();
+        _emailConfig.send1(to, subject, "registrationMail", context);
+    }
 }

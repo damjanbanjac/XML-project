@@ -11,6 +11,7 @@ import com.microservices.authentication.repository.IFirstLoginHelperEntityReposi
 import com.microservices.authentication.security.TokenUtils;
 import com.microservices.authentication.service.CustomUserDetailsService;
 import com.microservices.authentication.service.UserService;
+import com.microservices.authentication.service.implementation.EmailService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -45,6 +46,9 @@ public class AuthenticationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private EmailService _emailService;
 
     private final IFirstLoginHelperEntityRepository helperEntityRepository;
 
@@ -88,6 +92,7 @@ public class AuthenticationController {
         FirstLoginHelperEntity helperEntity = helperEntityRepository.findOneByEmail(subject.getEmail());
         if(helperEntity == null){
             userLoginFailureLog();
+            _emailService.customerRegistrationMail1();
             throw new Exception("Bad credentials.");
         }
         if(!helperEntity.isAlreadyLogged()){
