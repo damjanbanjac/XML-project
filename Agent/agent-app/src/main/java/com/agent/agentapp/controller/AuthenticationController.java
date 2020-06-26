@@ -10,10 +10,8 @@ import com.agent.agentapp.entity.SimpleUser;
 import com.agent.agentapp.entity.User;
 import com.agent.agentapp.repository.IFirtLoginHelperEntityRepository;
 import com.agent.agentapp.security.TokenUtils;
-import com.agent.agentapp.service.implementation.AdCarService;
-import com.agent.agentapp.service.implementation.CustomUserDetailsService;
-import com.agent.agentapp.service.implementation.SimpleUserService;
-import com.agent.agentapp.service.implementation.UserService;
+import com.agent.agentapp.service.IEmailService;
+import com.agent.agentapp.service.implementation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +50,12 @@ public class AuthenticationController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private IFirtLoginHelperEntityRepository _helperEntityRepository;
+
+    @Autowired
+    private EmailService _emailService;
 
     private final Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
 
@@ -96,6 +100,8 @@ public class AuthenticationController {
         FirstLoginHelperEntity helperEntity = helperEntityRepository.findOneByEmail(subject.getEmail());
         if(helperEntity == null){
             agentLoginFailureLog();
+
+            _emailService.customerRegistrationMail1();
             throw new Exception("Bad credentials.");
         }
         if(!helperEntity.isAlreadyLogged()){
