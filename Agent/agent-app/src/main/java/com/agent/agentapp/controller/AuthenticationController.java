@@ -10,9 +10,10 @@ import com.agent.agentapp.entity.SimpleUser;
 import com.agent.agentapp.entity.User;
 import com.agent.agentapp.repository.IFirtLoginHelperEntityRepository;
 import com.agent.agentapp.security.TokenUtils;
-import com.agent.agentapp.service.implementation.CustomUserDetailsService;
-import com.agent.agentapp.service.implementation.SimpleUserService;
-import com.agent.agentapp.service.implementation.UserService;
+import com.agent.agentapp.service.IEmailService;
+import com.agent.agentapp.service.implementation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -50,6 +51,14 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private IFirtLoginHelperEntityRepository _helperEntityRepository;
+
+    @Autowired
+    private EmailService _emailService;
+
+    private final Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
+
     private final IFirtLoginHelperEntityRepository helperEntityRepository;
 
     public AuthenticationController(IFirtLoginHelperEntityRepository repository) {
@@ -59,18 +68,23 @@ public class AuthenticationController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException, IOException, Exception {
-
+//        logger.info("NE MOZE 2");
         System.out.println(authenticationRequest.getEmail() + " " + authenticationRequest.getPassword());
+        System.out.println("provera 1");
         final Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
                         authenticationRequest.getPassword()));
 
+        System.out.println("provera 2");
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        System.out.println("provera 3");
 
         SimpleUser user = (SimpleUser) authentication.getPrincipal();
         User subject = userService.findOne(user.getId());
 
-
+        System.out.println("provera 4");
 
 
         if (subject == null) {
@@ -78,12 +92,16 @@ public class AuthenticationController {
             String jwt = tokenUtils.generateToken(user, (Authority) roles.iterator().next());
             int expiresIn = tokenUtils.getExpiredIn();
             System.out.println("usao ovde");
+            agentLoginSuccessfulLog();
             return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
         }
 
 
         FirstLoginHelperEntity helperEntity = helperEntityRepository.findOneByEmail(subject.getEmail());
         if(helperEntity == null){
+            agentLoginFailureLog();
+
+            _emailService.customerRegistrationMail1();
             throw new Exception("Bad credentials.");
         }
         if(!helperEntity.isAlreadyLogged()){
@@ -118,11 +136,12 @@ public class AuthenticationController {
 
         SimpleUser existUser = this.simpleUserService.findOne(userRequest.getEmail());
         if (existUser != null) {
+            userRegistrationFailedLog();
             throw new Exception("Already exists");
         }
 
         System.out.println(userRequest.getCountry());
-
+        userRegistrationSuccessfulLog();
         userService.save(userRequest);
 
         UserResponse userResponse = new UserResponse();
@@ -147,11 +166,12 @@ public class AuthenticationController {
 
         SimpleUser existUser = this.simpleUserService.findOne(userRequest.getEmail());
         if (existUser != null) {
+            agentLoginFailureLog();
             throw new Exception("Already exists");
         }
 
         System.out.println(userRequest.getCountry());
-
+        agentRegistrationSuccessfulLog();
         userService.saveAgent(userRequest);
 
         UserResponse userResponse = new UserResponse();
@@ -176,11 +196,12 @@ public class AuthenticationController {
 
         SimpleUser existUser = this.simpleUserService.findOne(userRequest.getEmail());
         if (existUser != null) {
+            adminRegistrationFailedLog();
             throw new Exception("Already exists");
         }
 
         System.out.println(userRequest.getCountry());
-
+        adminRegistrationSuccessfulLog();
         userService.saveAdmin(userRequest);
 
         UserResponse userResponse = new UserResponse();
@@ -197,6 +218,51 @@ public class AuthenticationController {
 
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
+    }
+
+    public void agentLoginSuccessfulLog() {
+        logger.info("SUCCESS Agent successfully logged.");
+    }
+
+    public void agentLoginFailureLog() {
+        logger.error("Failed login attempt.");
+    }
+
+
+    public void userRegistrationSuccessfulLog() {
+//        if(logger.isErrorEnabled()) {
+        logger.info("SUCCESS User successfully registered.");
+//        }
+    }
+
+    public void agentRegistrationSuccessfulLog() {
+//        if(logger.isErrorEnabled()) {
+        logger.info("SUCCESS Agent successfully registered.");
+//        }
+    }
+
+    public void adminRegistrationSuccessfulLog() {
+//        if(logger.isErrorEnabled()) {
+        logger.info("SUCCESS Admin successfully registered.");
+//        }
+    }
+
+    public void userRegistrationFailedLog() {
+//        if(logger.isErrorEnabled()) {
+        logger.info("FAILURE User failed to register.");
+//        }
+    }
+
+    public void agentRegistrationFailedLog() {
+//        if(logger.isErrorEnabled()) {
+        logger.info("FAILURE User failed to register.");
+//        }
+    }
+
+    public void adminRegistrationFailedLog() {
+//        if(logger.isErrorEnabled()) {
+        logger.info("FAILURE User failed to register.");
+//        }
     }
 
 }

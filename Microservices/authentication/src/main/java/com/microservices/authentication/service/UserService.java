@@ -6,6 +6,7 @@ import com.microservices.authentication.model.User;
 import com.microservices.authentication.repository.AuthorityRepository;
 import com.microservices.authentication.repository.UserRepository;
 import com.microservices.authentication.utils.RegistrationState;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,9 @@ public class UserService {
 
     @Autowired
     private AuthorityRepository authorityRepository;
+
+    private final org.slf4j.Logger logger = LoggerFactory.getLogger(UserService.class);
+
 
     public User findOne(Long id) {
         return userRepository.findById(id).orElse(null);
@@ -55,6 +59,7 @@ public class UserService {
         subject.setAuthorities(auths);
         subject.setPassword(passwordEncoder.encode(user.getPassword()));
      //   createLogFileSuccess(user);
+        userRegistrationSuccessfulLog();
         subject.setRegistrationState(RegistrationState.PENDING);
         userRepository.save(subject);
     }
@@ -123,6 +128,12 @@ public class UserService {
         }
 
 
+    }
+
+    public void userRegistrationSuccessfulLog() {
+//        if(logger.isErrorEnabled()) {
+        logger.info("SUCCESS User successfully registered.");
+//        }
     }
 
 
