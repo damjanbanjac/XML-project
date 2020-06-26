@@ -10,6 +10,8 @@ import com.microservices.authentication.repository.UserRepository;
 import com.microservices.authentication.service.IAdminService;
 import com.microservices.authentication.service.IEmailService;
 import com.microservices.authentication.utils.RegistrationState;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -27,6 +29,9 @@ public class AdminService implements IAdminService {
 
     private final IEmailService _emailService;
 
+    private final Logger logger = LoggerFactory.getLogger(AdminService.class);
+
+
     public AdminService(UserRepository userRepository, IAdminRepository adminRepository, IFirstLoginHelperEntityRepository helperEntityRepository, IEmailService emailService) {
         _userRepository = userRepository;
         _adminRepository = adminRepository;
@@ -38,6 +43,7 @@ public class AdminService implements IAdminService {
     public void approveRegistration(GetIdRequest request) {
         User subject = _userRepository.findOneById(request.getId());
         subject.setRegistrationState(RegistrationState.APPROVED);
+        adminApprovedRegistrationLog();
         _userRepository.save(subject);
         FirstLoginHelperEntity helperEntity = new FirstLoginHelperEntity();
         helperEntity.setEmail(subject.getEmail());
@@ -52,6 +58,7 @@ public class AdminService implements IAdminService {
     public void denyRegistration(GetIdRequest request) {
         User subject = _userRepository.findOneById(request.getId());
         subject.setRegistrationState(RegistrationState.DENIED);
+        adminDeniedRegistrationLog();
         _userRepository.save(subject);
     }
 
@@ -78,5 +85,17 @@ public class AdminService implements IAdminService {
             responses.add(response);
         }
         return responses;
+    }
+
+    public void adminApprovedRegistrationLog() {
+//        if(logger.isErrorEnabled()) {
+            logger.info("SUCCESS Agent successfully approved registration.");
+//        }
+    }
+
+    public void adminDeniedRegistrationLog() {
+//        if(logger.isErrorEnabled()) {
+        logger.info("SUCCESS Agent successfully denied registration.");
+//        }
     }
 }

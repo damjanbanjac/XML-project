@@ -214,6 +214,7 @@ public class AdCarService implements IAdCarService {
         adCar.setKidsSeats(request.getKidsSeats());
         adCar.setKmTraveled(request.getKmTraveled());
         adCar.setKmRestriction(request.getKmRestriction());
+        updateCarSuccessLog();
         adCarRepository.save(adCar);
         AdCarResponse response = new AdCarResponse(adCar);
         return response;
@@ -221,6 +222,7 @@ public class AdCarService implements IAdCarService {
 
     @Override
     public void deleteAdCar(long id) {
+        deleteCarSuccessLog();
         adCarRepository.deleteById(id);
 
 
@@ -253,6 +255,18 @@ public class AdCarService implements IAdCarService {
             logger.info("SUCCESS Agent successfully added a car.");
 //        }
    }
+
+    public void updateCarSuccessLog() {
+//        if(logger.isErrorEnabled()) {
+        logger.info("SUCCESS Agent successfully updated a car.");
+//        }
+    }
+
+    public void deleteCarSuccessLog() {
+//        if(logger.isErrorEnabled()) {
+        logger.info("SUCCESS Agent successfully deleted a car.");
+//        }
+    }
 
 
 }

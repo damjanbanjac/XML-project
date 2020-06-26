@@ -11,6 +11,7 @@ import com.microservices.authentication.repository.IFirstLoginHelperEntityReposi
 import com.microservices.authentication.security.TokenUtils;
 import com.microservices.authentication.service.CustomUserDetailsService;
 import com.microservices.authentication.service.UserService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -42,12 +43,12 @@ public class AuthenticationController {
     @Autowired
     private CustomUserDetailsService userDetailsService;
 
-
-
     @Autowired
     private UserService userService;
 
     private final IFirstLoginHelperEntityRepository helperEntityRepository;
+
+    private final org.slf4j.Logger logger = LoggerFactory.getLogger(UserService.class);
 
     public AuthenticationController(IFirstLoginHelperEntityRepository repository) {
         this.helperEntityRepository = repository;
@@ -79,12 +80,14 @@ public class AuthenticationController {
             Collection<?> roles = user.getAuthorities();
             String jwt = tokenUtils.generateToken(user, (Authority) roles.iterator().next());
             int expiresIn = tokenUtils.getExpiredIn();
+            userLoginSuccessfulLog();
             System.out.println("usao ovde");
             return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
         }
 
         FirstLoginHelperEntity helperEntity = helperEntityRepository.findOneByEmail(subject.getEmail());
         if(helperEntity == null){
+            userLoginFailureLog();
             throw new Exception("Bad credentials.");
         }
         if(!helperEntity.isAlreadyLogged()){
@@ -118,12 +121,13 @@ public class AuthenticationController {
 
         User existUser = this.userService.findOne(userRequest.getEmail());
         if (existUser != null) {
+            userRegistrationFailureLog();
             throw new Exception("Already exists");
         }
 
         System.out.println(userRequest.getCountry());
 
-
+        userRegistrationSuccessfulLog();
         userService.save(userRequest);
 
         UserResponse userResponse = new UserResponse();
@@ -142,6 +146,27 @@ public class AuthenticationController {
         return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
     }
 
+
+    public void userLoginSuccessfulLog() {
+        logger.info("SUCCESS User successfully logged.");
+    }
+
+    public void userLoginFailureLog() {
+        logger.error("User failed log.");
+    }
+
+    public void userRegistrationSuccessfulLog() {
+//        if(logger.isErrorEnabled()) {
+        logger.info("SUCCESS User successfully registered.");
+//        }
+    }
+
+
+    public void userRegistrationFailureLog() {
+//        if(logger.isErrorEnabled()) {
+        logger.info("FAILURE User failed to register.");
+//        }
+    }
 
 
 }

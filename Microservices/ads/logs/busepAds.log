@@ -1,0 +1,63 @@
+2020-06-26 07:37:48.675+0200 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020-06-26 07:37:48.706+0200 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020-06-26 07:37:49.168+0200 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+2020-06-26 07:37:49.168+0200 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+2020-06-26 07:37:49.172+0200 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+2020-06-26 07:37:49.172+0200 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+2020-06-26 07:37:49.349+0200 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 60bb698b-0d8b-4ba9-b749-53f3e0baaf28
+ 
+2020-06-26 07:37:49.406+0200 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@34414ffc, org.springframework.security.web.context.SecurityContextPersistenceFilter@61615b4a, org.springframework.security.web.header.HeaderWriterFilter@6e829e50, org.springframework.security.web.authentication.logout.LogoutFilter@7ca16adc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@33bb3f86, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@654e6a90, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1903b5d, org.springframework.security.web.session.SessionManagementFilter@5482bcac, org.springframework.security.web.access.ExceptionTranslationFilter@4b862408] 
+2020-06-26 07:37:49.712+0200 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project. 
+2020-06-26 07:37:50.19+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8098"] 
+2020-06-26 07:37:50.40+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8098 (http) with context path '' 
+2020-06-26 07:37:50.306+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
+2020-06-26 07:37:50.572+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
+2020-06-26 07:37:50.588+0200 [main] INFO  com.microservices.ads.AdsApplication - Started AdsApplication in 10.623 seconds (JVM running for 11.62) 
+2020-06-26 07:39:05.990+0200 [main] INFO  com.microservices.ads.AdsApplication - No active profile set, falling back to default profiles: default 
+2020-06-26 07:39:06.669+0200 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode. 
+2020-06-26 07:39:06.786+0200 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 108ms. Found 14 JPA repository interfaces. 
+2020-06-26 07:39:06.993+0200 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=9f9fa7f7-9ab5-3cdb-a913-a520bbdf465c 
+2020-06-26 07:39:07.65+0200 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'webServiceConfig' of type [com.microservices.ads.config.WebServiceConfig$$EnhancerBySpringCGLIB$$c810796f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020-06-26 07:39:07.66+0200 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$ca763791] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020-06-26 07:39:07.239+0200 [main] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0] 
+2020-06-26 07:39:07.558+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8098 (http) 
+2020-06-26 07:39:07.567+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8098"] 
+2020-06-26 07:39:07.568+0200 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2020-06-26 07:39:07.568+0200 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35] 
+2020-06-26 07:39:07.787+0200 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext 
+2020-06-26 07:39:07.788+0200 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1782 ms 
+2020-06-26 07:39:08.07+0200 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor' 
+2020-06-26 07:39:08.57+0200 [task-1] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020-06-26 07:39:08.74+0200 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2020-06-26 07:39:08.782+0200 [task-1] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.15.Final 
+2020-06-26 07:39:08.995+0200 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final} 
+2020-06-26 07:39:09.120+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2020-06-26 07:39:09.594+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2020-06-26 07:39:09.626+0200 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2020-06-26 07:39:15.763+0200 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020-06-26 07:39:15.763+0200 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020-06-26 07:39:16.297+0200 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+2020-06-26 07:39:16.297+0200 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+2020-06-26 07:39:16.297+0200 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+2020-06-26 07:39:16.297+0200 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+2020-06-26 07:39:16.469+0200 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 95e30564-90fa-493a-b78a-e84493e67669
+ 
+2020-06-26 07:39:16.547+0200 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4a9860, org.springframework.security.web.context.SecurityContextPersistenceFilter@ec7b5de, org.springframework.security.web.header.HeaderWriterFilter@4aa31ffc, org.springframework.security.web.authentication.logout.LogoutFilter@60743cdb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@373e6b9d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6ac4c3f7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7ca16adc, org.springframework.security.web.session.SessionManagementFilter@2a8a3ada, org.springframework.security.web.access.ExceptionTranslationFilter@6393bf8b] 
+2020-06-26 07:39:16.844+0200 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project. 
+2020-06-26 07:39:16.932+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8098"] 
+2020-06-26 07:39:16.950+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8098 (http) with context path '' 
+2020-06-26 07:39:17.205+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
+2020-06-26 07:39:17.683+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
+2020-06-26 07:39:17.683+0200 [main] INFO  com.microservices.ads.AdsApplication - Started AdsApplication in 13.199 seconds (JVM running for 17.239) 
+2020-06-26 07:39:28.823+0200 [http-nio-8098-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2020-06-26 07:39:28.824+0200 [http-nio-8098-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2020-06-26 07:39:28.832+0200 [http-nio-8098-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 8 ms 
+2020-06-26 07:39:28.857+0200 [http-nio-8098-exec-2] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /ads/models 
+2020-06-26 07:39:28.857+0200 [http-nio-8098-exec-4] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /ads/gearshift-types 
+2020-06-26 07:39:28.857+0200 [http-nio-8098-exec-1] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /ads/brands 
+2020-06-26 07:39:28.857+0200 [http-nio-8098-exec-3] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /ads/classes 
+2020-06-26 07:39:28.857+0200 [http-nio-8098-exec-6] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /ads/fuel-types 

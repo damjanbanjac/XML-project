@@ -8,13 +8,12 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/busepAgent.log</file>
+        <file>logs/busepAds.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-            <fileNamePattern>logs/busepAgent-%i.log.gz</fileNamePattern>
+            <fileNamePattern>logs/busepAds-%i.log.gz</fileNamePattern>
             <minIndex>1</minIndex>
             <maxIndex>2</maxIndex>
         </rollingPolicy>
-
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
             <maxFileSize>20KB</maxFileSize>
         </triggeringPolicy>
