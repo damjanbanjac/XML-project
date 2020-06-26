@@ -19,7 +19,5 @@ import javax.persistence.Table;
 @Inheritance( strategy = InheritanceType.TABLE_PER_CLASS)
 public class Agent extends User {
 
-    private String address;
-
     private String pib;
 }
