@@ -39,4 +39,24 @@ public class EmailConfig {
 
         }
     }
+
+    @Async
+    public void send1(String to, String subject, String templateName, Context context) {
+        String body = templateEngine.process(templateName, context);
+        sendMail1(to, subject, body, true);
+    }
+
+    private void sendMail1(String to, String subject, String text, Boolean isHtml) {
+        try {
+            MimeMessage mail = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mail, true);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText("Dogodio se pokusaj napada, obratite paznju");
+            javaMailSender.send(mail);
+
+        } catch (Exception e) {
+
+        }
+    }
 }
