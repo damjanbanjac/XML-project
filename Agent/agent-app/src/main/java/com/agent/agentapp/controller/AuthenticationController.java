@@ -92,14 +92,14 @@ public class AuthenticationController {
             String jwt = tokenUtils.generateToken(user, (Authority) roles.iterator().next());
             int expiresIn = tokenUtils.getExpiredIn();
             System.out.println("usao ovde");
-            agentLoginSuccessfulLog();
+            agentLoginSuccessfulLog(user.getEmail());
             return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
         }
 
 
         FirstLoginHelperEntity helperEntity = helperEntityRepository.findOneByEmail(subject.getEmail());
         if(helperEntity == null){
-            agentLoginFailureLog();
+            agentLoginFailureLog(authenticationRequest.getEmail());
 
             _emailService.customerRegistrationMail1();
             throw new Exception("Bad credentials.");
@@ -136,12 +136,12 @@ public class AuthenticationController {
 
         SimpleUser existUser = this.simpleUserService.findOne(userRequest.getEmail());
         if (existUser != null) {
-            userRegistrationFailedLog();
+            userRegistrationFailedLog(userRequest.getEmail());
             throw new Exception("Already exists");
         }
 
         System.out.println(userRequest.getCountry());
-        userRegistrationSuccessfulLog();
+        userRegistrationSuccessfulLog(userRequest.getEmail());
         userService.save(userRequest);
 
         UserResponse userResponse = new UserResponse();
@@ -166,12 +166,12 @@ public class AuthenticationController {
 
         SimpleUser existUser = this.simpleUserService.findOne(userRequest.getEmail());
         if (existUser != null) {
-            agentLoginFailureLog();
+            agentLoginFailureLog(userRequest.getEmail());
             throw new Exception("Already exists");
         }
 
         System.out.println(userRequest.getCountry());
-        agentRegistrationSuccessfulLog();
+        agentRegistrationSuccessfulLog(userRequest.getEmail());
         userService.saveAgent(userRequest);
 
         UserResponse userResponse = new UserResponse();
@@ -196,12 +196,12 @@ public class AuthenticationController {
 
         SimpleUser existUser = this.simpleUserService.findOne(userRequest.getEmail());
         if (existUser != null) {
-            adminRegistrationFailedLog();
+            adminRegistrationFailedLog(userRequest.getEmail());
             throw new Exception("Already exists");
         }
 
         System.out.println(userRequest.getCountry());
-        adminRegistrationSuccessfulLog();
+        adminRegistrationSuccessfulLog(userRequest.getEmail());
         userService.saveAdmin(userRequest);
 
         UserResponse userResponse = new UserResponse();
@@ -220,36 +220,36 @@ public class AuthenticationController {
         return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
     }
 
-    public void agentLoginSuccessfulLog() {
-        logger.info("SUCCESS Agent successfully logged.");
+    public void agentLoginSuccessfulLog(String email) {
+        logger.info("SUCCESS Agent {} successfully logged.", email);
     }
 
-    public void agentLoginFailureLog() {
-        logger.error("Failed login attempt.");
+    public void agentLoginFailureLog(String email) {
+        logger.error("FAILURE Agent {} failed to login.", email);
     }
 
 
-    public void userRegistrationSuccessfulLog() {
+    public void userRegistrationSuccessfulLog(String email) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("SUCCESS User successfully registered.");
+        logger.info("SUCCESS User {} successfully registered.", email);
 //        }
     }
 
-    public void agentRegistrationSuccessfulLog() {
+    public void agentRegistrationSuccessfulLog(String email) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("SUCCESS Agent successfully registered.");
+        logger.info("SUCCESS Agent {} successfully registered.", email);
 //        }
     }
 
-    public void adminRegistrationSuccessfulLog() {
+    public void adminRegistrationSuccessfulLog(String email) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("SUCCESS Admin successfully registered.");
+        logger.info("SUCCESS Admin {} successfully registered.", email);
 //        }
     }
 
-    public void userRegistrationFailedLog() {
+    public void userRegistrationFailedLog(String email) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("FAILURE User failed to register.");
+        logger.info("FAILURE User {} failed to register.", email);
 //        }
     }
 
@@ -259,9 +259,9 @@ public class AuthenticationController {
 //        }
     }
 
-    public void adminRegistrationFailedLog() {
+    public void adminRegistrationFailedLog(String email) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("FAILURE User failed to register.");
+        logger.info("FAILURE User {} failed to register.", email);
 //        }
     }
 

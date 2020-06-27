@@ -1,4 +1,4 @@
-2020-06-26 09:08:41.435+0200 [DiscoveryClient-InstanceInfoReplicator-0] ERROR c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/} 
+2020-06-27 04:28:16.225+0200 [DiscoveryClient-InstanceInfoReplicator-0] ERROR c.n.d.s.t.d.RedirectingEurekaHttpClient - Request execution error. endpoint=DefaultEndpoint{ serviceUrl='http://localhost:8761/eureka/} 
 com.sun.jersey.api.client.ClientHandlerException: java.net.ConnectException: Connection refused: connect
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:187)
 	at com.sun.jersey.api.client.filter.GZIPContentEncodingFilter.handle(GZIPContentEncodingFilter.java:123)
@@ -50,8 +50,8 @@ Caused by: java.net.ConnectException: Connection refused: connect
 	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56)
 	at com.sun.jersey.client.apache4.ApacheHttpClient4Handler.handle(ApacheHttpClient4Handler.java:173)
 	... 29 common frames omitted
-2020-06-26 09:08:41.435+0200 [DiscoveryClient-InstanceInfoReplicator-0] WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: java.net.ConnectException: Connection refused: connect 
-2020-06-26 09:08:41.435+0200 [DiscoveryClient-InstanceInfoReplicator-0] WARN  c.netflix.discovery.DiscoveryClient - DiscoveryClient_ADS/Sima:ads:8098 - registration failed Cannot execute request on any known server 
+2020-06-27 04:28:16.247+0200 [DiscoveryClient-InstanceInfoReplicator-0] WARN  c.n.d.s.t.d.RetryableEurekaHttpClient - Request execution failed with message: java.net.ConnectException: Connection refused: connect 
+2020-06-27 04:28:16.251+0200 [DiscoveryClient-InstanceInfoReplicator-0] WARN  c.netflix.discovery.DiscoveryClient - DiscoveryClient_ADS/Sima:ads:8098 - registration failed Cannot execute request on any known server 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
 	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
@@ -67,7 +67,7 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
-2020-06-26 09:08:41.435+0200 [DiscoveryClient-InstanceInfoReplicator-0] WARN  c.n.discovery.InstanceInfoReplicator - There was a problem with the instance info replicator 
+2020-06-27 04:28:16.251+0200 [DiscoveryClient-InstanceInfoReplicator-0] WARN  c.n.discovery.InstanceInfoReplicator - There was a problem with the instance info replicator 
 com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server
 	at com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112)
 	at com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.register(EurekaHttpClientDecorator.java:56)
@@ -83,3 +83,47 @@ com.netflix.discovery.shared.transport.TransportException: Cannot execute reques
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
+2020-06-27 04:28:42.872+0200 [main] INFO  com.microservices.ads.AdsApplication - No active profile set, falling back to default profiles: default 
+2020-06-27 04:28:43.436+0200 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode. 
+2020-06-27 04:28:43.564+0200 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 120ms. Found 14 JPA repository interfaces. 
+2020-06-27 04:28:43.799+0200 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=d450a43c-4ea4-3f48-b340-077e34759b51 
+2020-06-27 04:28:43.871+0200 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'webServiceConfig' of type [com.microservices.ads.config.WebServiceConfig$$EnhancerBySpringCGLIB$$f13eba37] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020-06-27 04:28:43.871+0200 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$f3a47859] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020-06-27 04:28:43.900+0200 [main] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0] 
+2020-06-27 04:28:44.132+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8098 (http) 
+2020-06-27 04:28:44.139+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8098"] 
+2020-06-27 04:28:44.140+0200 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2020-06-27 04:28:44.140+0200 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35] 
+2020-06-27 04:28:44.278+0200 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext 
+2020-06-27 04:28:44.279+0200 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1394 ms 
+2020-06-27 04:28:44.441+0200 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor' 
+2020-06-27 04:28:44.487+0200 [task-1] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020-06-27 04:28:44.582+0200 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2020-06-27 04:28:44.612+0200 [task-1] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.15.Final 
+2020-06-27 04:28:44.780+0200 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final} 
+2020-06-27 04:28:44.884+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2020-06-27 04:28:45.272+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2020-06-27 04:28:45.292+0200 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2020-06-27 04:28:51.987+0200 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020-06-27 04:28:52.02+0200 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020-06-27 04:28:52.457+0200 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+2020-06-27 04:28:52.457+0200 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+2020-06-27 04:28:52.460+0200 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+2020-06-27 04:28:52.461+0200 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+2020-06-27 04:28:52.628+0200 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: b7e04e50-86ca-4402-ac96-c5578f208b2d
+ 
+2020-06-27 04:28:52.688+0200 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@67e0ff3a, org.springframework.security.web.context.SecurityContextPersistenceFilter@78307a56, org.springframework.security.web.header.HeaderWriterFilter@49433c98, org.springframework.security.web.authentication.logout.LogoutFilter@33feda48, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@23ad71bf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@286855ea, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7b2bf745, org.springframework.security.web.session.SessionManagementFilter@7f13811b, org.springframework.security.web.access.ExceptionTranslationFilter@7f79edee] 
+2020-06-27 04:28:53.491+0200 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project. 
+2020-06-27 04:28:53.576+0200 [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING 
+2020-06-27 04:28:53.601+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1 
+2020-06-27 04:28:53.602+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Client configured to neither register nor query for data. 
+2020-06-27 04:28:53.607+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1593224933606 with initial instances count: 0 
+2020-06-27 04:28:53.611+0200 [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application ADS with eureka with status UP 
+2020-06-27 04:28:53.613+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8098"] 
+2020-06-27 04:28:53.630+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8098 (http) with context path '' 
+2020-06-27 04:28:53.631+0200 [main] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8098 
+2020-06-27 04:28:53.925+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
+2020-06-27 04:28:54.174+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
+2020-06-27 04:28:54.182+0200 [main] INFO  com.microservices.ads.AdsApplication - Started AdsApplication in 12.616 seconds (JVM running for 13.493) 

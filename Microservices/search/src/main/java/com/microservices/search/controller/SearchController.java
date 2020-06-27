@@ -85,15 +85,15 @@ public class SearchController {
     }
 
 
-    public void searchSuccessfulLog() {
+    public void searchSuccessfulLog(String email) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("SUCCESS User successfully searched ads.");
+        logger.info("SUCCESS User {} successfully searched ads.", email);
 //        }
     }
 
-    public void searchFailedLog() {
+    public void searchFailedLog(String email) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("FAILURE User failed to search ads.");
+        logger.info("FAILURE User {} failed to search ads.", email);
 //        }
     }
 

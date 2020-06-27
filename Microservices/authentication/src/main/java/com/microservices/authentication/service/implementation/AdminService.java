@@ -61,7 +61,7 @@ public class AdminService implements IAdminService {
     public void approveRegistration(GetIdRequest request) {
         User subject = _userRepository.findOneById(request.getId());
         subject.setRegistrationState(RegistrationState.APPROVED);
-        adminApprovedRegistrationLog();
+        adminApprovedRegistrationLog(subject.getEmail());
         _userRepository.save(subject);
         FirstLoginHelperEntity helperEntity = new FirstLoginHelperEntity();
         helperEntity.setEmail(subject.getEmail());
@@ -76,7 +76,7 @@ public class AdminService implements IAdminService {
     public void denyRegistration(GetIdRequest request) {
         User subject = _userRepository.findOneById(request.getId());
         subject.setRegistrationState(RegistrationState.DENIED);
-        adminDeniedRegistrationLog();
+        adminDeniedRegistrationLog(subject.getEmail());
         _userRepository.save(subject);
     }
 
@@ -105,16 +105,22 @@ public class AdminService implements IAdminService {
         return responses;
     }
 
-    public void adminApprovedRegistrationLog() {
+    public void adminApprovedRegistrationLog(String email) {
 //        if(logger.isErrorEnabled()) {
-            logger.info("SUCCESS Agent successfully approved registration.");
+            logger.info("SUCCESS Agent successfully approved registration for user {}.", email);
 //        }
     }
 
-    public void adminDeniedRegistrationLog() {
+    public void adminDeniedRegistrationLog(String email) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("SUCCESS Agent successfully denied registration.");
+        logger.info("SUCCESS Agent successfully denied registration for user {}.", email);
         }
+
+    public void agentRegistrationSuccessfulLog(String email) {
+//        if(logger.isErrorEnabled()) {
+        logger.info("SUCCESS Agent {} successfully registered.", email);
+//        }
+    }
 
     @Override
     public AgentResponse registerAgent(AgentRequest request) {
@@ -137,6 +143,7 @@ public class AdminService implements IAdminService {
         agent.setPassword(passwordEncoder.encode(request.getPassword()));
 
         agent.setAuthorities(auths);
+        agentRegistrationSuccessfulLog(agent.getEmail());
         _agentRepository.save(agent);
 
         AgentResponse agentResponse = new AgentResponse();

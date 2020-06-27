@@ -8,6 +8,8 @@ import com.microservices.messages.repository.*;
 import com.microservices.messages.service.IMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,6 +33,9 @@ public class MessageService implements IMessageService {
 
     @Autowired
     private RequestRepository requestRepository;
+
+    private final Logger logger = LoggerFactory.getLogger(MessageService.class);
+
 
     @Override
     public MessageDTO createMessage(MessageDTO messageDTO) {
@@ -65,6 +70,8 @@ public class MessageService implements IMessageService {
         nova_lista.add(message);
         chat.setMessages(nova_lista);
         chatRepository.save(chat);
+
+        sendMessageSuccessfulLog(sender.getEmail(),receiver.getEmail());
 
         MessageDTO messagedto = new MessageDTO(message);
         return messagedto;
@@ -113,6 +120,13 @@ public class MessageService implements IMessageService {
             }
         }
         return returnListOfId;
+    }
+
+
+    public void sendMessageSuccessfulLog(String sender, String receiver) {
+//        if(logger.isErrorEnabled()) {
+        logger.info("User {} successfully sent a message to user {}", sender, receiver);
+//        }
     }
 
 }

@@ -59,7 +59,7 @@ public class UserService {
         subject.setAuthorities(auths);
         subject.setPassword(passwordEncoder.encode(user.getPassword()));
      //   createLogFileSuccess(user);
-        userRegistrationSuccessfulLog();
+        userRegistrationSuccessfulLog(subject.getEmail());
         subject.setRegistrationState(RegistrationState.PENDING);
         userRepository.save(subject);
     }
@@ -130,9 +130,9 @@ public class UserService {
 
     }
 
-    public void userRegistrationSuccessfulLog() {
+    public void userRegistrationSuccessfulLog(String email) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("SUCCESS User successfully registered.");
+        logger.info("SUCCESS User {} successfully registered.", email);
 //        }
     }
 
