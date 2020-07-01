@@ -32,8 +32,8 @@
     <div class="card" style="width: 120%">
             <div class="header pt-3 grey lighten-2">
           <div class="row d-flex justify-content-start">
-            <h3 class="deep-grey-text mt-2 mb-4 pb-1 mx-5" 
-            style="font-size: 3rem;
+            <h3 class="deep-grey-text mt-3 mb-2 pb-1 mx-5" 
+            style="font-size: 2rem;
             font-weight: 300;
             line-height: 1.2;
             margin-top: -12%;">You have pending requests with:</h3>

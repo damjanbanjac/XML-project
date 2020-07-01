@@ -9,6 +9,7 @@
                 style="font-size: 3rem;
                 font-weight: 300;
                 line-height: 1.2;
+                margin-left: 18%;
                 margin-top: -12%;">Car brands</h3>
             </div>
         </div>

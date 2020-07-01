@@ -5,7 +5,7 @@
         <b-alert show variant="danger" class="d-flex justify-content-center">{{errorMessage}}</b-alert>
         </b-container>
     </div>
-    <b-jumbotron bg-variant="light" text-variant="dark" style="width: 510px;
+    <b-jumbotron bg-variant="light" text-variant="dark" style="width: 470px;
     height: 910px;
     margin-top: 0.6%;
     margin-left: 3%;"> 
@@ -14,6 +14,7 @@
             font-weight: 300;
             line-height: 1.2;
             margin-top: -12%;
+            margin-left: 18%;
             margin-bottom: -1rem;">Client Registration</h2>
         </template>
 
