@@ -15,5 +15,11 @@ public interface IAdminService {
 
     List<RegistrationResponse> getAllPendingRegistrations();
 
+    List<RegistrationResponse> getAllApprovedRegistrations();
+
     AgentResponse registerAgent(AgentRequest request);
+
+    void blockUser(GetIdRequest request);
+
+    void unblockUser(GetIdRequest request);
 }

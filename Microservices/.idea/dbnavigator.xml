@@ -25,8 +25,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37">
-        <schema name="mysql" object-types="view, function, table" />
-        <schema name="services" object-types="view, function, column, dataset trigger, index, constraint, procedure, table" />
+        <schema name="services" object-types="view, table" />
       </connection>
     </loaded-nodes>
   </component>
@@ -36,12 +35,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" object-ref="schemas/services/tables/authority" />
-      <object connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" object-ref="schemas/services/tables/agent_auth" />
-      <object connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" object-ref="schemas/services/tables/user_authority" />
-      <object connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" object-ref="schemas/services/tables/agent" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" />
@@ -82,7 +76,7 @@
           <description value="" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
-          <database-version value="5.5" />
+          <database-version value="8.0" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
