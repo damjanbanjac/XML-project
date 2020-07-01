@@ -38,4 +38,19 @@ public class AdminController {
     public List<RegistrationResponse> getPendingRegistrations(){
         return _adminService.getAllPendingRegistrations();
     }
+
+    @GetMapping("/approved-registrations")
+    public List<RegistrationResponse> getApprovedRegistrations() {
+        return _adminService.getAllApprovedRegistrations();
+    }
+
+    @PostMapping("/block-user")
+    public void blockUser(@RequestBody GetIdRequest request) {
+        _adminService.blockUser(request);
+    }
+//jesi tu???????????????????????????????????????????????????????????????????????
+    @PostMapping("/unblock-user")
+    public void unblockUser(@RequestBody GetIdRequest request) {
+        _adminService.unblockUser(request);
+    }
 }

@@ -74,8 +74,11 @@
 
       block(id) {
 
+        const body = {
+          id: id
+        }
         axios
-        .put("maintenance/admins/block/" + id + "/user")
+        .post("auth/admins/block-user", body)
         .then(()=>{
             window.location.reload();
         })
@@ -86,8 +89,11 @@
 
     unblock(id) {
 
+        const body = {
+          id: id
+        }
         axios
-        .put("maintenance/admins/unblock/" + id + "/user")
+        .post("auth/admins/unblock-user", body)
         .then(()=>{
             window.location.reload();
         })
@@ -99,7 +105,7 @@
     },
     mounted() {
     axios
-      .get("maintenance/admins/approved-registrations")
+      .get("auth/admins/approved-registrations")
       .then(clients => {
         this.clients = clients.data;
         
