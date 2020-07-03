@@ -37,6 +37,13 @@
                   <input type="date" id="Form-availableFrom" class="form-control" v-model="form.availableFrom" :disabled="!change" />
                    <label for="Form-radnoDo">Available To</label>
                   <input type="date" id="Form-availableTo" class="form-control" v-model="form.availableTo" :disabled="!change" >
+                   <button type="button" class="btn btn-info mt-4 btn-block z-depth-2" @click="showPricelist" >Pricelist</button>
+                     <template v-if="pricelist">
+                    <label for="">Price for workdays</label>
+                  <input type="text" id="Form-availableFrom" class="form-control" v-model="price.priceForWorkDay" disabled />
+                   <label for="">Price for weekday</label>
+                  <input type="text" id="Form-availableFrom" class="form-control" v-model="price.priceForWeekend" disabled />
+                    </template>
                 </div>  
               </div>
               <div class="col">
@@ -68,6 +75,13 @@
             <button type="button" class="btn btn-success btn-block z-depth-2" @click ="saveData" >Sačuvaj</button>
             
             </template>
+
+             <template v-if="pricelist">
+                    <label for="form-radnoOd">Price for workdays</label>
+                  <input type="text" id="Form-availableFrom" class="form-control" v-model="price.priceForKmRestriction" disabled />
+                   <label for="">Price for weekday</label>
+                  <input type="text" id="Form-availableFrom" class="form-control" v-model="price.priceForCDW" disabled />
+                    </template>
 
             <!--      <button
           type="button"
@@ -168,6 +182,14 @@ export default {
           kmRestriction: '',
           kmTraveled: null
       },
+      price: {
+          name : '',
+          priceForWorkend: '',
+          priceForWeekday: '',
+          priceForKmRestriction: '',
+          priceForCDW: ''
+      },
+      pricelist: false,
       comm: '',
       retrievedImage: null,
       retriveResponse: [],
@@ -245,6 +267,24 @@ export default {
       this.change = true
     },
 
+     showPricelist() {
+      this.pricelist = true;
+
+        axios
+      .get("ads/pricelist/" + this.$route.params.id + "/ad")
+      .then(ad => {
+        
+            console.log("usao u then")
+        console.log(ad.data)
+        this.price = ad.data;
+        
+      
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    },
+
     getImage() {
       axios
       .get("ads/ads/" + this.$route.params.id + "/image")
@@ -293,12 +333,15 @@ export default {
     axios
       .get("ads/ads/" + this.$route.params.id + "/ad")
       .then(ad => {
-        console.log("usao u then")
+       // console.log("usao u then")
         this.form = ad.data;
       })
       .catch(error => {
         console.log(error);
       });
+
+
+    
   }
 };
 </script>
