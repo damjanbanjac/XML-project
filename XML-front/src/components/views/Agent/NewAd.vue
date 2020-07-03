@@ -228,18 +228,32 @@ import axios from "axios";
            });
 
         axios
-        .post("/ads/ads/1/agent" , this.form)
+        .post("/ads/ads/" + this.$store.state.user.id + "/agent" , this.form)
         .then(form => {
           this.error = form,
           this.idAd = form.data.id,
           console.log(this.idAd);
-          this.form.kidsSeats = "",
-           this.success = true,
+          if(this.idAd == undefined) {
+          this.errormessage = "greska, probajte ponovo";
+          this.error = true;
+          }
+          else {
+            this.form.kidsSeats = "",
+            this.form.kmRestriction = "",
+            this.form.kmTraveled = "",
+            this.form.carModel_id = "",
+            this.form.carClass_id = "",
+            this.form.fuelType_id = "",
+            this.form.gearShift_id = "",
+            this.form.city = "",
+            this.success = true,
             this.successmessages = "You have succesfully added a new car ad. Now you can upload images for the car."
             this.changeButton = true;
             this.newAd = false;
 
-          this.error = false;
+            this.error = false;
+          }
+         
           
         })
         .catch(error => {

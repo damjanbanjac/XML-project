@@ -67,7 +67,7 @@ public class AdCarService implements IAdCarService {
         List<com.microservices.ads.dto.response.AdCarResponse> adCarResponses = new ArrayList<>();
         List<AdCar> ads = adCarRepository.findAll();
         for (AdCar ad: ads) {
-            if(ad.getUserAd().getId() == id) {
+            if(ad.getUserAd() == id) {
                 com.microservices.ads.dto.response.AdCarResponse adCarResponse = new com.microservices.ads.dto.response.AdCarResponse(ad);
                 adCarResponses.add(adCarResponse);
             }
@@ -80,7 +80,7 @@ public class AdCarService implements IAdCarService {
         List<com.microservices.ads.dto.response.AdCarResponse> adCarResponses = new ArrayList<>();
         List<AdCar> ads = adCarRepository.findAll();
         for (AdCar ad: ads) {
-            if(ad.getAgentAd().getId() == id) {
+            if(ad.getAgentAd() == id) {
                 com.microservices.ads.dto.response.AdCarResponse adCarResponse = new com.microservices.ads.dto.response.AdCarResponse(ad);
                 adCarResponses.add(adCarResponse);
             }
@@ -101,13 +101,6 @@ public class AdCarService implements IAdCarService {
 
         List<AdCar> adCarList = adCarRepository.findAll();
 
-        for (AdCar ad: adCarList) {
-            if(ad.getUserAd().getId().equals(request.getUserAd()) && ad.getUserAd() != null ) {
-
-            }
-        }
-
-
 
             AdCar adCar = new AdCar();
             adCar.setAvailableFrom(request.getAvailableFrom());
@@ -117,7 +110,7 @@ public class AdCarService implements IAdCarService {
             adCar.setCity(request.getCity());
             adCar.setCarModel_id(carModelRepository.findOneById(request.getCarModel_id().getId()));
             adCar.setCdw(request.getCdw());
-            adCar.setAgentAd(agentRepository.findOneById(id));
+            adCar.setAgentAd(id);
             adCar.setFuelTypeCar_id(typeOfFuelTypeRepository.findOneById(request.getFuelType_id().getId()));
             adCar.setGearShiftCar_id(typeOfGearShiftRepository.findOneById(request.getGearShift_id().getId()));
             adCar.setKidsSeats(request.getKidsSeats());
@@ -132,7 +125,7 @@ public class AdCarService implements IAdCarService {
 
     }
 
-    public AdCarResponse createAd(AdCarRequest request) {
+    public AdCarResponse createAd(AdCarRequest request,long id) {
 
         Integer cnt = 0;
 
@@ -142,7 +135,7 @@ public class AdCarService implements IAdCarService {
         List<AdCar> adCarList = adCarRepository.findAll();
 
         for (AdCar ad: adCarList) {
-            if(ad.getUserAd().getId().equals(request.getUserAd()) && ad.getUserAd() != null ) {
+            if(ad.getUserAd() == id) {
                 cnt++;
             }
         }
@@ -157,7 +150,7 @@ public class AdCarService implements IAdCarService {
             adCar.setCity(request.getCity());
             adCar.setCarModel_id(carModelRepository.findOneById(request.getCarModel_id().getId()));
             adCar.setCdw(request.getCdw());
-           // adCar.setUserAd(userAdRepository.findOneById(request.getUserAd()));
+            adCar.setUserAd(id);
             adCar.setFuelTypeCar_id(typeOfFuelTypeRepository.findOneById(request.getFuelType_id().getId()));
             adCar.setGearShiftCar_id(typeOfGearShiftRepository.findOneById(request.getGearShift_id().getId()));
             adCar.setKidsSeats(request.getKidsSeats());

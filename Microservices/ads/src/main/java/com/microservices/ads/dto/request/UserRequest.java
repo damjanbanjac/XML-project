@@ -1,11 +1,8 @@
-package com.microservices.authentication.dto.request;
+package com.microservices.ads.dto.request;
 
-import com.microservices.authentication.model.User;
-import lombok.Data;
-
-@Data
 public class UserRequest {
-    
+
+    private long id;
     private String email;
     private String name;
     private String surname;
@@ -17,7 +14,4 @@ public class UserRequest {
     private Boolean permissionBlocked;
     private String rate;
     private String password;
-
-
-
 }

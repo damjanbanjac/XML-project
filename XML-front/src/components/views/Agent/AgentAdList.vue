@@ -81,7 +81,7 @@ methods: {
    
   mounted() {
     axios
-      .get("/ads/ads/1/agent")
+      .get("/ads/ads/"+ this.$store.state.user.id + "/agent")
       .then(ads => {
         this.ads = ads.data;
         
