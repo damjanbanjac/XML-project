@@ -228,23 +228,34 @@ import axios from "axios";
            });
 
         axios
-        .post("/ads/ads" , this.form)
+        .post("/ads/ads/" + this.$store.state.user.id + "/user" , this.form)
         .then(form => {
           this.error = form,
           this.idAd = form.data.id,
           console.log(this.idAd);
-          this.form.kidsSeats = "",
-           this.success = true,
+          if(this.idAd == undefined) {
+          this.errormessage = "Ne mozete vise od 3 puta postaviti oglas";
+          this.error = true;
+          }
+          else {
+            this.selectedClass = "",
+            this.selectedModel = "",
+            this.selectedFuel = "",
+            this.selectedGear = "",
+            this.selectedBrand = "",
+            this.form.city = "",
+            this.success = true,
             this.successmessages = "You have succesfully added a new car ad. Now you can upload images for the car."
             this.changeButton = true;
             this.newAd = false;
 
-          this.error = false;
+            this.error = false;
+          }
           
         })
         .catch(error => {
           console.log(error);
-          this.errormessage = "Mail vec postoji";
+          this.errormessage = "POstoje vec 3 vasa oglasa ne mozete da dodate vise";
           this.error = true;
         });
 

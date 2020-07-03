@@ -12,8 +12,8 @@ public class AdCarRequest {
 
     private CarBrand carBrand_id;
     private CarClass carClass_id;
-    private User userAd;
-    private Agent agentAd;
+    private long userAd;
+    private long agentAd;
     private CarModel carModel_id;
     private TypeOfFuel fuelType_id;
     private TypeOfGearshift gearShift_id;

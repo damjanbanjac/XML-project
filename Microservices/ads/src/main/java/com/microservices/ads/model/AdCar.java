@@ -29,10 +29,10 @@ public class AdCar {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ad_id_seq")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    private User userAd;
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    private Agent AgentAd;
+ //   @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private long userAd;
+  //  @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private long AgentAd;
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private CarBrand carBrand_id;

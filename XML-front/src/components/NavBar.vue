@@ -23,6 +23,7 @@
         <div class="dropdown-divider"></div>
         <router-link to="/userRequests" tag="b-dropdown-item">My requests</router-link>
         <router-link to="/adsList" tag="b-dropdown-item">My car ads</router-link>
+        <router-link to="/searchCarAds" tag="b-dropdown-item">Search cars</router-link>
         <div class="dropdown-divider"></div>
         <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
         <router-link to="/createPriceList" tag="b-dropdown-item">Add pricelist</router-link>
@@ -39,8 +40,8 @@
         <router-link to="/agentRequests" tag="b-dropdown-item">Owner requests</router-link>
         <router-link to="/reservePayGo" tag="b-dropdown-item">Reserve-Pay-Go</router-link>
         <div class="dropdown-divider"></div>
-        <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
-        <router-link to="/adsList" tag="b-dropdown-item">Car ads</router-link>
+        <router-link  to="/newAd" tag="b-dropdown-item">Add Car</router-link>
+        <router-link to="/agentAdList" tag="b-dropdown-item">Car ads</router-link>
         <div class="dropdown-divider"></div>
         <router-link to="/makeReport" tag="b-dropdown-item">Issue Report</router-link>
 
