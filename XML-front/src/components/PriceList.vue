@@ -3,7 +3,7 @@
     <b-jumbotron bg-variant="light" text-variant="dark" style="width: 510px;
     height: 600px;
     margin-top: 2%;
-    margin-left: 3%;">
+    margin-left:32%">
         <template>
             <h2 style="font-size: 3rem;
             font-weight: 300;

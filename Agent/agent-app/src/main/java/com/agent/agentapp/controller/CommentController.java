@@ -3,6 +3,7 @@ package com.agent.agentapp.controller;
 import com.agent.agentapp.dto.request.CommentAdCarRequest;
 import com.agent.agentapp.dto.response.CommentResponse;
 import com.agent.agentapp.service.ICommentService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class CommentController {
     }
 
     @PostMapping
-    // @PreAuthorize("hasAuthority('POST-COMMENT')")
+   //  @PreAuthorize("hasAuthority('POST-COMMENT')")
     // @PreAuthorize("hasAuthority('USER')")
     public void comment(@RequestBody CommentAdCarRequest request) throws Exception {
         commentService.commentAdCar(request);

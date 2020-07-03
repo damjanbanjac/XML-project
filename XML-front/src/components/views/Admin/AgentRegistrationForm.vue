@@ -5,8 +5,8 @@
         <b-alert show variant="danger" class="d-flex justify-content-center">{{errorMessage}}</b-alert>
         </b-container>
     </div>
-    <b-jumbotron bg-variant="light" text-variant="dark" style="width: 510px;
-    height: 910px;
+    <b-jumbotron bg-variant="light" text-variant="dark" style="width: 470px;
+    height: 990px;
     margin-top: 0.6%;
     margin-left: 3%;"> 
         <template>
@@ -14,17 +14,14 @@
             font-weight: 300;
             line-height: 1.2;
             margin-top: -12%;
+            margin-left: 18%;
             margin-bottom: -1rem;">Agent Registration</h2>
         </template>
 
         <template>
             <b-form bg-variant="light">
-            <b-form-group
-                id="input-group-1"
-                label="Email address:"
-                label-for="input-1"
-            >
-                <b-form-input
+            <b-form-group id="input-group-1" label="Email address:" label-for="input-1">
+              <b-form-input
                 id="input-1"
                 v-model="form.email"
                 type="email"
@@ -51,45 +48,54 @@
                 ></b-form-input>
             </b-form-group>
 
-             <b-form-group id="input-group-7" label="Phone Number:" label-for="input-7">
+             <b-form-group id="input-group-4" label="Phone Number:" label-for="input-4">
                 <b-form-input
-                id="input-7"
+                id="input-4"
                 v-model="form.phoneNumber"
                 required
                 placeholder="Enter phone number"
                 ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-4" label="Company Id:" label-for="input-4">
+            <b-form-group id="input-group-5" label="Company Id:" label-for="input-5">
                 <b-form-input
-                id="input-4"
+                id="input-5"
                 v-model="form.pib"
                 required
-                placeholder="Enter pib"
+                placeholder="Enter company id"
                 ></b-form-input>
             </b-form-group>
 
-             <b-form-group id="input-group-8" label="Town:" label-for="input-8">
+            <b-form-group id="input-group-6" label="Address:" label-for="input-6">
                 <b-form-input
-                id="input-8"
+                id="input-6"
+                v-model="form.address"
+                required
+                placeholder="Enter address"
+                ></b-form-input>
+            </b-form-group>
+
+             <b-form-group id="input-group-7" label="Town:" label-for="input-7">
+                <b-form-input
+                id="input-7"
                 v-model="form.town"
                 required
                 placeholder="Enter town"
                 ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-9" label="Country:" label-for="input-9">
+            <b-form-group id="input-group-8" label="Country:" label-for="input-8">
                 <b-form-input
-                id="input-9"
+                id="input-8"
                 v-model="form.country"
                 required
                 placeholder="Enter country"
                 ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-5" label="Password:" label-for="input-5">
+            <b-form-group id="input-group-9" label="Password:" label-for="input-9">
                 <b-form-input
-                id="input-5"
+                id="input-9"
                 v-model="form.password"
                 required
                 type="password"
@@ -97,9 +103,9 @@
                 ></b-form-input>
             </b-form-group>
 
-            <b-form-group id="input-group-6" label="Password:" label-for="input-6">
+            <b-form-group id="input-group-10" label="Password:" label-for="input-10">
                 <b-form-input
-                id="input-6"
+                id="input-10"
                 v-model="form.repassword"
                 required
                 type="password"
@@ -129,6 +135,7 @@ import axios from "axios";
           surname: '',
           phoneNumber: '',
           pib: '',
+          address: '',
           town: '',
           country: '',
           password: '',
@@ -137,7 +144,7 @@ import axios from "axios";
         error: false,
         errorMessage: "",
         show: true
-      }
+      } 
     },
     methods: {
       regist(){
@@ -147,6 +154,7 @@ import axios from "axios";
         this.form.name == "" ||
         this.form.surname == "" ||
         this.form.phoneNumber == "" ||
+        this.form.address == "" ||
         this.form.pib == "" ||
         this.form.town == "" ||
         this.form.country == "" ||
@@ -211,11 +219,11 @@ import axios from "axios";
         this.error = true;
         return;
       }
-    //   if (!rexx.test(String(this.form.address.trim()))) {
-    //       this.errorMessage = "Address must not contain unacceptable characters";
-    //       this.error = true;
-    //       return;
-    //   }
+      if (!rexx.test(String(this.form.address.trim()))) {
+          this.errorMessage = "Address must not contain unacceptable characters";
+          this.error = true;
+          return;
+      }
       if (!rexx.test(String(this.form.town.trim()))) {
         this.errorMessage = "Town must not contain unacceptable characters";
         this.error = true;

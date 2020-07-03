@@ -1,28 +1,12 @@
-2020-06-26 14:01:32.910+0200 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
-2020-06-26 14:01:33.101+0200 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final} 
-2020-06-26 14:01:33.330+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
-2020-06-26 14:01:34.80+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
-2020-06-26 14:01:34.114+0200 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
-2020-06-26 14:05:01.711+0200 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
-2020-06-26 14:05:01.722+0200 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
-2020-06-26 14:05:03.59+0200 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7e77678c, org.springframework.security.web.context.SecurityContextPersistenceFilter@10dfa7ef, org.springframework.security.web.header.HeaderWriterFilter@2d74cbbd, org.springframework.security.web.authentication.logout.LogoutFilter@1736c1e4, com.agent.agentapp.security.auth.TokenAuthenticationFilter@113eed88, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1805383, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@ce561cc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5f0677f3, org.springframework.security.web.session.SessionManagementFilter@352f6727, org.springframework.security.web.access.ExceptionTranslationFilter@23c7cb18] 
-2020-06-26 14:05:03.224+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8097"] 
-2020-06-26 14:05:03.276+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8097 (http) with context path '' 
-2020-06-26 14:05:03.278+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
-2020-06-26 14:05:04.09+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
-2020-06-26 14:05:04.25+0200 [main] INFO  c.agent.agentapp.AgentAppApplication - Started AgentAppApplication in 217.746 seconds (JVM running for 220.145) 
-2020-06-26 14:05:43.392+0200 [http-nio-8097-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
-2020-06-26 14:05:43.392+0200 [http-nio-8097-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
-2020-06-26 14:05:43.421+0200 [http-nio-8097-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 27 ms 
-2020-06-26 14:05:44.48+0200 [http-nio-8097-exec-2] INFO  c.a.a.c.AuthenticationController - SUCCESS User successfully registered. 
-2020-06-26 14:05:57.870+0200 [http-nio-8097-exec-4] ERROR c.a.a.c.AuthenticationController - Failed login attempt. 
-2020-06-26 14:06:01.608+0200 [http-nio-8097-exec-4] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.Exception: Bad credentials.] with root cause 
-java.lang.Exception: Bad credentials.
-	at com.agent.agentapp.controller.AuthenticationController.createAuthenticationToken(AuthenticationController.java:105) ~[classes/:na]
+2020-07-01 21:44:31.283+0200 [https-jsse-nio-8080-exec-1] INFO  c.a.a.c.AuthenticationController - SUCCESS User lalos@gmail.com successfully registered. 
+2020-07-01 21:46:02.776+0200 [https-jsse-nio-8080-exec-1] INFO  c.a.a.c.AuthenticationController - FAILURE User laraAdmin@gmail.com failed to register. 
+2020-07-01 21:46:02.778+0200 [https-jsse-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.Exception: Already exists] with root cause 
+java.lang.Exception: Already exists
+	at com.agent.agentapp.controller.AuthenticationController.addAdmin(AuthenticationController.java:200) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.2.6.RELEASE.jar:5.2.6.RELEASE]
 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.2.6.RELEASE.jar:5.2.6.RELEASE]
 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:105) ~[spring-webmvc-5.2.6.RELEASE.jar:5.2.6.RELEASE]
@@ -81,7 +65,7 @@ java.lang.Exception: Bad credentials.
 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
 	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
 	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:666) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
 	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
 	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
 	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
@@ -91,8 +75,14 @@ java.lang.Exception: Bad credentials.
 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
 	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
-	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
-2020-06-26 14:31:34.593+0200 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58s727ms211µs300ns). 
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+2020-07-01 21:46:22.828+0200 [https-jsse-nio-8080-exec-1] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent laraAdmin@gmail.com successfully logged. 
+2020-07-01 21:48:41.216+0200 [https-jsse-nio-8080-exec-8] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent laraAdmin@gmail.com successfully logged. 
+2020-07-01 21:49:05.23+0200 [https-jsse-nio-8080-exec-2] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent laraAgent@gmail.com successfully registered. 
+2020-07-01 21:49:21.371+0200 [https-jsse-nio-8080-exec-7] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent laraAgent@gmail.com successfully logged. 
+2020-07-01 21:50:48.306+0200 [https-jsse-nio-8080-exec-3] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent laraAdmin@gmail.com successfully logged. 
+2020-07-01 21:51:06.707+0200 [https-jsse-nio-8080-exec-1] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent laraAgent@gmail.com successfully logged. 
+2020-07-01 21:53:56.745+0200 [https-jsse-nio-8080-exec-5] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent laraAgent@gmail.com successfully logged. 

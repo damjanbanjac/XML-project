@@ -14,11 +14,11 @@
         <!--Header-->
         <div class="header pt-3 grey lighten-2">
           <div class="row d-flex justify-content-start">
-            <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5" 
-            style="font-size: 3rem;
+            <h3 class="deep-grey-text mt-3 mb-2 pb-1 mx-5" 
+            style="font-size: 2rem;
             font-weight: 300;
             line-height: 1.2;
-            margin-top: -12%;">Add</h3>
+            margin-top: -12%;">Add car model</h3>
           </div>
         </div>
         <!--Header-->
@@ -31,7 +31,7 @@
                 <div class="md-form pb-3">
 
                   <label for="Form-model">Car model</label>
-                  <input type="text" id="Form-model" class="form-control" v-model="form.model" />
+                  <input type="text" placeholder="Enter car model" id="Form-model" class="form-control" v-model="form.model" />
            
                 </div>
               </div>
@@ -44,7 +44,8 @@
                 type="button"
                 class="btn btn-info btn-block z-depth-2"
                 @click="addCarModel()"
-              >Add car model</button>
+              >Add</button>
+              <hr>
             </div>
           </div>
         </div>

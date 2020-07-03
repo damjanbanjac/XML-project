@@ -5,7 +5,7 @@
       
       <div class="header pt-3 grey lighten-2">
         <div class="row d-flex justify-content-start">
-          <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5">Ads</h3>
+          <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5">Car ads</h3>
         </div>
       </div>
       
