@@ -61,6 +61,7 @@ public class AdCar {
     private Date availableFrom;
     private Date availableTo;
     private String city;
+    private long pricelist;
 
     @OneToMany(mappedBy = "adCar_id", cascade = CascadeType.DETACH, orphanRemoval = true)
     private List<Order> orders = new ArrayList<>();

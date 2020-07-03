@@ -26,4 +26,5 @@ public class AdCarRequest {
     private Date availableFrom;
     private Date availableTo;
     private String city;
+    private long pricelist;
 }

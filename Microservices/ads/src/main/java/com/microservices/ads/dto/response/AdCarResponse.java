@@ -28,6 +28,7 @@ public class AdCarResponse {
     private String availableTo;
     private  String city;
     private int comments;
+    private long pricelist;
 
     public AdCarResponse(AdCar adCar) {
         id = adCar.getId();
@@ -50,6 +51,7 @@ public class AdCarResponse {
         availableTo = strDate2;
         city = adCar.getCity();
         comments = adCar.getComments().size();
+        pricelist = adCar.getPricelist();
 
     }
 }
