@@ -116,7 +116,7 @@ public class AdCarService implements IAdCarService {
             adCar.setKidsSeats(request.getKidsSeats());
             adCar.setKmTraveled(request.getKmTraveled());
             adCar.setKmRestriction(request.getKmRestriction());
-            adCarSuccessLog();
+            adCarSuccessLog(id);
             adCarRepository.save(adCar);
             AdCarResponse carResponse  = new AdCarResponse(adCar);
             return  carResponse;
@@ -185,7 +185,7 @@ public class AdCarService implements IAdCarService {
         adCar.setKidsSeats(request.getKidsSeats());
         adCar.setKmTraveled(request.getKmTraveled());
         adCar.setKmRestriction(request.getKmRestriction());
-        updateCarSuccessLog();
+        updateCarSuccessLog(id);
         adCarRepository.save(adCar);
         AdCarResponse response = new AdCarResponse(adCar);
         return response;
@@ -193,7 +193,7 @@ public class AdCarService implements IAdCarService {
 
     @Override
     public void deleteAdCar(long id) {
-        deleteCarSuccessLog();
+        deleteCarSuccessLog(id);
         adCarRepository.deleteById(id);
 
 
@@ -205,21 +205,21 @@ public class AdCarService implements IAdCarService {
     }
 
 
-    public void adCarSuccessLog() {
+    public void adCarSuccessLog(Long id) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("SUCCESS Agent successfully added a car.");
+        logger.info("SUCCESS Agent {} successfully added a car.", id);
 //        }
     }
 
-    public void updateCarSuccessLog() {
+    public void updateCarSuccessLog(Long id) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("SUCCESS Agent successfully updated a car.");
+        logger.info("SUCCESS Agent {} successfully updated a car .", id);
 //        }
     }
 
-    public void deleteCarSuccessLog() {
+    public void deleteCarSuccessLog(Long id) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("SUCCESS Agent successfully deleted a car.");
+        logger.info("SUCCESS Agent {} successfully deleted a car .");
 //        }
     }
 
@@ -240,6 +240,8 @@ public class AdCarService implements IAdCarService {
         logger.info("FAILURE Agent failed to delete car.");
 //        }
     }
+
+
 
 }
 

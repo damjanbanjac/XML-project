@@ -84,14 +84,14 @@ public class AuthenticationController {
             Collection<?> roles = user.getAuthorities();
             String jwt = tokenUtils.generateToken(user, (Authority) roles.iterator().next());
             int expiresIn = tokenUtils.getExpiredIn();
-            userLoginSuccessfulLog();
+            userLoginSuccessfulLog(authenticationRequest.getEmail());
             System.out.println("usao ovde");
             return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
         }
 
         FirstLoginHelperEntity helperEntity = helperEntityRepository.findOneByEmail(subject.getEmail());
         if(helperEntity == null){
-            userLoginFailureLog();
+            userLoginFailureLog(authenticationRequest.getEmail());
             _emailService.customerRegistrationMail1();
             throw new Exception("Bad credentials.");
         }
@@ -126,13 +126,13 @@ public class AuthenticationController {
 
         User existUser = this.userService.findOne(userRequest.getEmail());
         if (existUser != null) {
-            userRegistrationFailureLog();
+            userRegistrationFailureLog(userRequest.getEmail());
             throw new Exception("Already exists");
         }
 
         System.out.println(userRequest.getCountry());
 
-        userRegistrationSuccessfulLog();
+        userRegistrationSuccessfulLog(userRequest.getEmail());
         userService.save(userRequest);
 
         UserResponse userResponse = new UserResponse();
@@ -151,27 +151,27 @@ public class AuthenticationController {
         return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
     }
 
-
-    public void userLoginSuccessfulLog() {
-        logger.info("SUCCESS User successfully logged.");
+    public void userLoginSuccessfulLog(String email) {
+        logger.info("SUCCESS User {} successfully logged.", email);
     }
 
-    public void userLoginFailureLog() {
-        logger.error("User failed log.");
+    public void userLoginFailureLog(String email) {
+        logger.error("FAILURE User {} failed to login.", email);
     }
 
-    public void userRegistrationSuccessfulLog() {
+    public void userRegistrationSuccessfulLog(String email) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("SUCCESS User successfully registered.");
+        logger.info("SUCCESS User {} successfully registered.", email);
 //        }
     }
 
 
-    public void userRegistrationFailureLog() {
+    public void userRegistrationFailureLog(String email) {
 //        if(logger.isErrorEnabled()) {
-        logger.info("FAILURE User failed to register.");
+        logger.info("FAILURE User {} failed to register.", email);
 //        }
     }
+
 
 
 }

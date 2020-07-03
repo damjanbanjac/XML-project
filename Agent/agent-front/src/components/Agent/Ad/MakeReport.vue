@@ -2,14 +2,14 @@
 <div>
 
     <b-jumbotron bg-variant="light" text-variant="dark" style="margin-top: 3%;
-    margin-left: 4%;
+    margin-left: 34%;
     width: 465px;
     height: 460px;">
-      <h2 style="font-size: 4rem;
+      <h2 style="font-size: 3rem;
         font-weight: 300;
         line-height: 1.2;
         margin-left: 4%;">
-        Make report
+        Issue report
       </h2>
 
       <template>
@@ -30,7 +30,7 @@
               v-model="report.text"
               type="text"
               required
-              placeholder="Text"
+              placeholder="Description"
             
             ></b-form-input>
           </b-form-group>

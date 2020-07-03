@@ -6,7 +6,7 @@
         <div class="header pt-3 grey lighten-2">
             <div class="row d-flex justify-content-start">
                 <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5"
-                style="font-size: 3rem;
+                style="font-size: 2rem;
                 font-weight: 300;
                 line-height: 1.2;
                 margin-top: -12%;">Clients</h3>
@@ -74,8 +74,11 @@
 
       block(id) {
 
+        const body = {
+          id: id
+        }
         axios
-        .put("maintenance/admins/block/" + id + "/user")
+        .post("auth/admins/block-user", body)
         .then(()=>{
             window.location.reload();
         })
@@ -86,8 +89,11 @@
 
     unblock(id) {
 
+        const body = {
+          id: id
+        }
         axios
-        .put("maintenance/admins/unblock/" + id + "/user")
+        .post("auth/admins/unblock-user", body)
         .then(()=>{
             window.location.reload();
         })
@@ -99,7 +105,7 @@
     },
     mounted() {
     axios
-      .get("maintenance/admins/approved-registrations")
+      .get("auth/admins/approved-registrations")
       .then(clients => {
         this.clients = clients.data;
         

@@ -4,10 +4,7 @@ import com.microservices.authentication.dto.request.AgentRequest;
 import com.microservices.authentication.dto.request.GetIdRequest;
 import com.microservices.authentication.dto.response.AgentResponse;
 import com.microservices.authentication.dto.response.RegistrationResponse;
-import com.microservices.authentication.model.Agent;
-import com.microservices.authentication.model.Authority;
-import com.microservices.authentication.model.FirstLoginHelperEntity;
-import com.microservices.authentication.model.User;
+import com.microservices.authentication.model.*;
 import com.microservices.authentication.repository.*;
 import com.microservices.authentication.service.IAdminService;
 import com.microservices.authentication.service.IEmailService;
@@ -105,6 +102,35 @@ public class AdminService implements IAdminService {
         return responses;
     }
 
+    @Override
+    public List<RegistrationResponse> getAllApprovedRegistrations() {
+        List<User> allUsers = _userRepository.findAll();
+        List<User> approvedUsers = new ArrayList<>();
+
+        List<Admin> allAdmins = _adminRepository.findAll();
+        List<Agent> allAgents = _agentRepository.findAll();
+
+        for(User user: allUsers){
+            if(user.getRegistrationState().equals(RegistrationState.APPROVED)){
+                if(!allAdmins.contains(_adminRepository.findOneById(user.getId()))
+                && !allAgents.contains(_agentRepository.findOneById(user.getId()))){
+                    approvedUsers.add(user);
+                }
+            }
+        }
+        List<RegistrationResponse> responses = new ArrayList<>();
+        for(User user: approvedUsers){
+            RegistrationResponse response = new RegistrationResponse();
+            response.setEmail(user.getEmail());
+            response.setId(user.getId());
+            response.setName(user.getName());
+            response.setSurname(user.getSurname());
+            response.setBlocked(user.getBlocked());
+            responses.add(response);
+        }
+        return responses;
+    }
+
     public void adminApprovedRegistrationLog() {
 //        if(logger.isErrorEnabled()) {
             logger.info("SUCCESS Agent successfully approved registration.");
@@ -151,5 +177,19 @@ public class AdminService implements IAdminService {
 
         return agentResponse;
 
+    }
+
+    @Override
+    public void blockUser(GetIdRequest request) {
+        User user = _userRepository.findOneById(request.getId());
+        user.setBlocked(true);
+        _userRepository.save(user);
+    }
+
+    @Override
+    public void unblockUser(GetIdRequest request) {
+        User user = _userRepository.findOneById(request.getId());
+        user.setBlocked(false);
+        _userRepository.save(user);
     }
 }

@@ -54,20 +54,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-   //     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+        //     http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
-     //           .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
+        //           .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
 
-                // svim korisnicima dopusti da pristupe putanjama /auth/**, /h2-console/** i
-                // /api/foo
-       //         .authorizeRequests().antMatchers("/**").permitAll()
+        // svim korisnicima dopusti da pristupe putanjama /auth/**, /h2-console/** i
+        // /api/foo
+        //         .authorizeRequests().antMatchers("/**").permitAll()
 
         //        .anyRequest().authenticated().and()
 
-       //         .cors().and()
+        //         .cors().and()
 
-          //      .addFilterBefore(new TokenAuthenticationFilter(tokenUtils, jwtUserDetailsService),
-               //         BasicAuthenticationFilter.class);
+        //      .addFilterBefore(new TokenAuthenticationFilter(tokenUtils, jwtUserDetailsService),
+        //         BasicAuthenticationFilter.class);
 
         http.csrf().disable();
 
@@ -88,4 +88,3 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     } */
 }
-
