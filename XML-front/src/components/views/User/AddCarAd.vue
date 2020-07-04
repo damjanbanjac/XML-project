@@ -255,13 +255,15 @@ import axios from "axios";
           this.error = true;
           }
           else {
-            this.selectedClass = "",
-            this.selectedModel = "",
-            this.selectedFuel = "",
-            this.selectedGear = "",
-            this.selectedBrand = "",
+            this.form.kidsSeats = "",
+            this.form.kmRestriction = "",
+            this.form.kmTraveled = "",
+            this.form.carModel_id = "",
+            this.form.carClass_id = "",
+            this.form.fuelType_id = "",
+            this.form.gearShift_id = "",
             this.form.city = "",
-            this.selectedPricelist = "",
+             this.selectedPricelist = "",
             this.success = true,
             this.successmessages = "You have succesfully added a new car ad. Now you can upload images for the car."
             this.changeButton = true;

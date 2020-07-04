@@ -41,11 +41,17 @@
                   <label>Average grade</label>
             <br/>
             <input type="text" id="Form-grade" class="form-control" v-model="avg.avgGrade" disabled/>
-                    <button
-            type="button"
-                  class="btn btn-info btn-block mt-4 z-depth-2"
-                  @click="seeComments()">See comments
-            </button>
+
+                  <button type="button" class="btn btn-info mt-4 btn-block z-depth-2" @click="showPricelist" >Pricelist</button>
+                    
+                     <template v-if="pricelist">
+                    <label for="">Price for workdays</label>
+                  <input type="text" id="Form-availableFrom" class="form-control" v-model="price.priceForWorkDay" disabled />
+                   <label for="">Price for weekday</label>
+                  <input type="text" id="Form-availableFrom" class="form-control" v-model="price.priceForWeekend" disabled />
+                    </template>
+                
+                 
             <br/>
             
                 </div>  
@@ -79,7 +85,17 @@
             <button type="button" class="btn btn-success btn-block z-depth-2" @click ="saveData" >Save</button>
             
             </template>
-
+               <button
+            type="button"
+                  class="btn btn-info btn-block mt-4 z-depth-2"
+                  @click="seeComments()">See comments
+            </button>
+             <template v-if="pricelist">
+                    <label for="form-radnoOd">Price for workdays</label>
+                  <input type="text" id="Form-availableFrom" class="form-control" v-model="price.priceForKmRestriction" disabled />
+                   <label for="">Price for weekday</label>
+                  <input type="text" id="Form-availableFrom" class="form-control" v-model="price.priceForCDW" disabled />
+                    </template>
             <!--      <button
           type="button"
                 class="btn btn-info btn-block z-depth-2"
@@ -199,6 +215,14 @@ export default {
           kmRestriction: '',
           kmTraveled: null
       },
+        price: {
+          name : '',
+          priceForWorkend: '',
+          priceForWeekday: '',
+          priceForKmRestriction: '',
+          priceForCDW: ''
+      },
+      pricelist: false,
       retrievedImage: null,
       retriveResponse: [],
       base64Data: null,
@@ -237,9 +261,27 @@ export default {
       this.change = true
     },
       
+       showPricelist() {
+      this.pricelist = true;
+
+        axios
+      .get("ads/pricelist/" + this.$route.params.id + "/ad")
+      .then(ad => {
+        
+            console.log("usao u then")
+        console.log(ad.data)
+        this.price = ad.data;
+        
+      
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    },
+
     getImage() {
       axios
-      .get("ads/" + this.$route.params.id + "/image")
+      .get("ads/ads/" + this.$route.params.id + "/image")
       .then(res => {
         console.log("usao uvrati sliku");
         //this.retriveResponse = res;
@@ -258,26 +300,26 @@ export default {
       console.log(event);
       this.selectedFile = event.target.files[0];
       this.success = true;
-      this.successmessages = "Your image is succesfully added";
+      this.successmessages = "Your image is succesfully added.";
     },
+
     uploadImages() {
       console.log("u uploadu");
       const uploadImageData = new FormData();
       uploadImageData.append('imageFile', this.selectedFile,this.selectedFile.name);
       // var idAdCar = 5;
-      axios
-      .post("/images/" + this.$route.params.id + "/Ad",uploadImageData)
-      .then(form => {
-        this.error = form;
-        this.success = false;
-        this.success = true;
-          this.successmessages = "Your image has succesfully been uploaded, reload the gallery";
-          
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    }
+    axios
+    .post("ads/images/" + this.$route.params.id + "/Ad",uploadImageData)
+    .then(form => {
+      this.error = form;
+      this.success = false;
+      this.success = true;
+      this.successmessages = "Your image has succesfully been uploaded, reload the gallery";
+    })
+    .catch(error => {
+      console.log(error);
+    });
+    },
   },
   mounted() {
     console.log("usao");

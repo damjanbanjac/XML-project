@@ -41,6 +41,7 @@
         <router-link to="/reservePayGo" tag="b-dropdown-item">Reserve-Pay-Go</router-link>
         <div class="dropdown-divider"></div>
         <router-link  to="/newAd" tag="b-dropdown-item">Add Car</router-link>
+         <router-link  to="/addPricelist" tag="b-dropdown-item">Add Pricelist</router-link>
         <router-link to="/agentAdList" tag="b-dropdown-item">Car ads</router-link>
         <div class="dropdown-divider"></div>
         <router-link to="/makeReport" tag="b-dropdown-item">Issue Report</router-link>
