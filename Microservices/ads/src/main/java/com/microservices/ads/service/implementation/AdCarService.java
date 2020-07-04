@@ -101,28 +101,25 @@ public class AdCarService implements IAdCarService {
 
         List<AdCar> adCarList = adCarRepository.findAll();
 
-
-        AdCar adCar = new AdCar();
-        adCar.setAvailableFrom(request.getAvailableFrom());
-        adCar.setAvailableTo(request.getAvailableTo());
-        adCar.setCarBrand_id(carBrandRepository.findOneById(request.getCarBrand_id().getId()));
-        adCar.setCarClass_id(carClassRepository.findOneById(request.getCarClass_id().getId()));
-        adCar.setCity(request.getCity());
-        adCar.setCarModel_id(carModelRepository.findOneById(request.getCarModel_id().getId()));
-        adCar.setCdw(request.getCdw());
-        adCar.setAgentAd(id);
-        adCar.setFuelTypeCar_id(typeOfFuelTypeRepository.findOneById(request.getFuelType_id().getId()));
-        adCar.setGearShiftCar_id(typeOfGearShiftRepository.findOneById(request.getGearShift_id().getId()));
-        adCar.setKidsSeats(request.getKidsSeats());
-        adCar.setKmTraveled(request.getKmTraveled());
-        adCar.setKmRestriction(request.getKmRestriction());
-        adCarSuccessLog(id);
-        //   adCar.setPricelist(request.getPricelist());
-        adCarRepository.save(adCar);
-        AdCarResponse carResponse  = new AdCarResponse(adCar);
-        return  carResponse;
-
-
+            AdCar adCar = new AdCar();
+            adCar.setAvailableFrom(request.getAvailableFrom());
+            adCar.setAvailableTo(request.getAvailableTo());
+            adCar.setCarBrand_id(carBrandRepository.findOneById(request.getCarBrand_id().getId()));
+            adCar.setCarClass_id(carClassRepository.findOneById(request.getCarClass_id().getId()));
+            adCar.setCity(request.getCity());
+            adCar.setCarModel_id(carModelRepository.findOneById(request.getCarModel_id().getId()));
+            adCar.setCdw(request.getCdw());
+            adCar.setAgentAd(id);
+            adCar.setFuelTypeCar_id(typeOfFuelTypeRepository.findOneById(request.getFuelType_id().getId()));
+            adCar.setGearShiftCar_id(typeOfGearShiftRepository.findOneById(request.getGearShift_id().getId()));
+            adCar.setKidsSeats(request.getKidsSeats());
+            adCar.setKmTraveled(request.getKmTraveled());
+            adCar.setKmRestriction(request.getKmRestriction());
+            adCarSuccessLog(id);
+            adCar.setPricelist(request.getPricelist());
+            adCarRepository.save(adCar);
+            AdCarResponse carResponse  = new AdCarResponse(adCar);
+            return  carResponse;
 
     }
 
