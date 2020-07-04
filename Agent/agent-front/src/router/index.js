@@ -38,6 +38,11 @@ import GearshiftTypeList from '../components/views/Admin/lists/GearshiftTypeList
 import CommentList from '../components/Agent/Ad/CommentList.vue'
 import CommentRequestList from '../components/views/Admin/lists/CommentRequestList.vue'
 
+import Bag from '../components/views/User/Bag.vue'
+import UserRequests from '../components/views/User/UserRequests.vue'
+
+import AgentRequests from '../components/Agent/AgentRequests.vue'
+import ReservePayGo from '../components/Agent/ReservePayGo.vue'
 
 Vue.use(VueRouter)
 
@@ -275,6 +280,38 @@ const routes = [
         path: '/updateTypeOfGearshift/:id',
         name: 'update-type-of-gearshift',
         component: UpdateTypeOfGearshift,
+        meta: {
+          requiresAuth: false
+        } 
+      },
+      {
+        path: '/bag',
+        name: 'bag',
+        component: Bag,
+        meta: {
+          requiresAuth: false
+        } 
+      },
+      {
+        path: '/userRequests',
+        name: 'user-requests',
+        component: UserRequests,
+        meta: {
+          requiresAuth: false
+        } 
+      },
+      {
+        path: '/agentRequests',
+        name: 'agent-requests',
+        component: AgentRequests,
+        meta: {
+          requiresAuth: false
+        } 
+      },
+      {
+        path: '/reservePayGo',
+        name: 'reserve-pay-go',
+        component: ReservePayGo,
         meta: {
           requiresAuth: false
         } 
