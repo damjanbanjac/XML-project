@@ -1,6 +1,6 @@
 package com.microservices.ads.controller;
 
-
+import com.microservices.ads.dto.request.CarBrandRequest;
 import com.microservices.ads.dto.response.CarBrandResponse;
 import com.microservices.ads.service.ICarBrandService;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +28,15 @@ public class CarBrandController {
         return _carBrandService.getAllCarBrands();
     }
 
+    @PostMapping
+    public CarBrandResponse createCarBrand(@RequestBody CarBrandRequest request) {
+        return _carBrandService.createCarBrand(request);
+    }
 
+    @PutMapping("/{id}/brand")
+    public CarBrandResponse updateCarBrand(@RequestBody CarBrandRequest request, @PathVariable Long id) {
+        return _carBrandService.updateCarBrand(request, id);
+    }
 
     @DeleteMapping("/{id}/brand")
     public void deleteCarBrand(@PathVariable Long id) {

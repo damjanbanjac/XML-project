@@ -1,6 +1,6 @@
 package com.microservices.ads.service.implementation;
 
-
+import com.microservices.ads.dto.request.CarBrandRequest;
 import com.microservices.ads.dto.response.CarBrandResponse;
 import com.microservices.ads.model.CarBrand;
 import com.microservices.ads.repository.ICarBrandRepository;
@@ -48,8 +48,8 @@ public class CarBrandService implements ICarBrandService {
         return carBrandResponses;
     }
 
- /*   @Override
-    public CarBrandResponse createCarBrand(CreateCarBrandRequest request) {
+    @Override
+    public CarBrandResponse createCarBrand(CarBrandRequest request) {
         CarBrand carBrand = new CarBrand();
 
         carBrand.setLabel(request.getLabel());
@@ -67,7 +67,7 @@ public class CarBrandService implements ICarBrandService {
     }
 
     @Override
-    public CarBrandResponse updateCarBrand(UpdateCarBrandRequest request, long id) {
+    public CarBrandResponse updateCarBrand(CarBrandRequest request, long id) {
         CarBrand carBrand = _carBrandRepository.findOneById(id);
         carBrand.setName(request.getName());
         carBrand.setLabel(request.getLabel());
@@ -80,7 +80,7 @@ public class CarBrandService implements ICarBrandService {
 
         return carBrandResponse;
     }
-*/
+
     @Override
     public void deleteCarBrand(long id) {
         CarBrand carBrand = _carBrandRepository.findOneById(id);

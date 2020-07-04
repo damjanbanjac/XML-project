@@ -79,7 +79,7 @@ public class PricelistService implements IPricelistService {
     public PricelistResponse updatePricelist(PricelistRequest request, long id) {
         Pricelist pricelist = pricelistRepository.findOneById(id);
         pricelist.setName(request.getName());
-       // pricelist.setAgent(id);
+        // pricelist.setAgent(id);
         pricelist.setPriceForCDW(request.getPriceForCDW());
         pricelist.setPriceForKmRestriction(request.getPriceForKmRestriction());
         pricelist.setPriceForWorkDay(request.getPriceForWorkDay());

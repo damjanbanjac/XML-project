@@ -1,6 +1,7 @@
 package com.microservices.ads.service.implementation;
 
 
+import com.microservices.ads.dto.request.TypeOfGearshiftRequest;
 import com.microservices.ads.dto.response.TypeOfGearshiftResponse;
 import com.microservices.ads.model.TypeOfGearshift;
 import com.microservices.ads.repository.ITypeOfGearshiftRepository;
@@ -46,8 +47,8 @@ public class TypeOfGearshiftService implements ITypeOfGearshiftService {
         return typeOfGearshiftResponses;
     }
 
- /*   @Override
-    public TypeOfGearshiftResponse createTypeOfGearshift(CreateTypeOfGearshiftRequest request) {
+    @Override
+    public TypeOfGearshiftResponse createTypeOfGearshift(TypeOfGearshiftRequest request) {
         TypeOfGearshift typeOfGearshift = new TypeOfGearshift();
         typeOfGearshift.setType(request.getType());
         typeOfGearshift.setDeleted(false);
@@ -62,7 +63,7 @@ public class TypeOfGearshiftService implements ITypeOfGearshiftService {
     }
 
     @Override
-    public TypeOfGearshiftResponse updateTypeOfGearshift(UpdateTypeOfGearshiftRequest request, long id) {
+    public TypeOfGearshiftResponse updateTypeOfGearshift(TypeOfGearshiftRequest request, long id) {
         TypeOfGearshift typeOfGearshift = _typeOfGearshiftRepository.findOneById(id);
         typeOfGearshift.setType(request.getType());
 
@@ -74,7 +75,7 @@ public class TypeOfGearshiftService implements ITypeOfGearshiftService {
 
         return typeOfGearshiftResponse;
     }
-*/
+
     @Override
     public void deleteTypeOfGearshift(long id) {
         TypeOfGearshift typeOfGearshift = _typeOfGearshiftRepository.findOneById(id);

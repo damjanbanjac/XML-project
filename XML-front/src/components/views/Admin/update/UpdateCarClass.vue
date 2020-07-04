@@ -77,7 +77,7 @@ import axios from "axios";
           this.errormessage = "";
           this.change = false;
           axios
-          .get("/maintenance/classes/" + this.$route.params.id + "/class")
+          .get("ads/classes/" + this.$route.params.id + "/class")
           .then(class1 => {
             this.form = class1.data;
           })
@@ -92,7 +92,7 @@ import axios from "axios";
             return;
           }
           axios
-          .put("/maintenance/classes/" + this.$route.params.id + "/class", this.form)
+          .put("ads/classes/" + this.$route.params.id + "/class", this.form)
           .then(class1 => {
           this.form = class1.data;
           this.change = false;
@@ -107,7 +107,7 @@ import axios from "axios";
     },
     mounted() {
       axios
-        .get("/maintenance/classes/" + this.$route.params.id + "/class")
+        .get("ads/classes/" + this.$route.params.id + "/class")
         .then(class1 => {
           this.form = class1.data;
           this.change = false;

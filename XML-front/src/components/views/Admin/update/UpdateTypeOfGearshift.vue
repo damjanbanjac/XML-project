@@ -78,7 +78,7 @@ import axios from "axios";
         this.errormessage = "";
         this.change = false;
         axios
-        .get("/maintenance/gearshift-types/" + this.$route.params.id + "/gearshift-type")
+        .get("ads/gearshift-types/" + this.$route.params.id + "/gearshift-type")
         .then(type => {
           this.form = type.data;
         })
@@ -93,7 +93,7 @@ import axios from "axios";
           return;
         }
         axios
-        .put("/maintenance/gearshift-types/" + this.$route.params.id + "/gearshift-type", this.form)
+        .put("ads/gearshift-types/" + this.$route.params.id + "/gearshift-type", this.form)
         .then(type => {
         this.form = type.data;
         this.change = false;
@@ -107,7 +107,7 @@ import axios from "axios";
     },
     mounted() {
       axios
-        .get("/maintenance/gearshift-types/" + this.$route.params.id + "/gearshift-type")
+        .get("ads/gearshift-types/" + this.$route.params.id + "/gearshift-type")
         .then(type => {
           this.form = type.data;
           this.change = false;

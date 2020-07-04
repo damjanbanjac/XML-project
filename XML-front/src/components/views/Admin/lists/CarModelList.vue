@@ -57,9 +57,9 @@ export default {
 
     deleteCarModel(id) {
         axios
-        .delete("/maintenance/models/" + id + "/model")
+        .delete("ads/models/" + id + "/model")
         axios
-        .get("/maintenance/models")
+        .get("ads/models")
         .then(carmodels => {
             console.log("usao u listu")
             this.carmodels = carmodels.data;
@@ -73,7 +73,7 @@ export default {
     mounted() {
         console.log("usao");
         axios
-        .get("/maintenance/models")
+        .get("ads/models")
         .then(carmodels => {
             console.log("usao u listu")
             this.carmodels = carmodels.data;

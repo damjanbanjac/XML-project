@@ -1,6 +1,7 @@
 package com.microservices.ads.service.implementation;
 
 
+import com.microservices.ads.dto.request.TypeOfFuelRequest;
 import com.microservices.ads.dto.response.TypeOfFuelResponse;
 import com.microservices.ads.model.TypeOfFuel;
 import com.microservices.ads.repository.ITypeOfFuelRepository;
@@ -46,8 +47,8 @@ public class TypeOfFuelService implements ITypeOfFuelService {
         return typeOfFuelResponses;
     }
 
-/*    @Override
-    public TypeOfFuelResponse createTypeOfFuel(CreateTypeOfFuelRequest request) {
+    @Override
+    public TypeOfFuelResponse createTypeOfFuel(TypeOfFuelRequest request) {
         TypeOfFuel typeOfFuel = new TypeOfFuel();
         typeOfFuel.setType(request.getType());
         typeOfFuel.setDeleted(false);
@@ -62,7 +63,7 @@ public class TypeOfFuelService implements ITypeOfFuelService {
     }
 
     @Override
-    public TypeOfFuelResponse updateTypeOfFuel(UpdateTypeOfFuelRequest request, long id) {
+    public TypeOfFuelResponse updateTypeOfFuel(TypeOfFuelRequest request, long id) {
         TypeOfFuel typeOfFuel = _typeOfFuelRepository.findOneById(id);
         typeOfFuel.setType(request.getType());
 
@@ -74,7 +75,7 @@ public class TypeOfFuelService implements ITypeOfFuelService {
 
         return typeOfFuelResponse;
     }
-*/
+
     @Override
     public void deleteTypeOfFuel(long id) {
         TypeOfFuel typeOfFuel = _typeOfFuelRepository.findOneById(id);
