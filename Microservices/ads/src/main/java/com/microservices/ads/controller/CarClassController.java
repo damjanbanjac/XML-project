@@ -1,6 +1,7 @@
 package com.microservices.ads.controller;
 
 
+import com.microservices.ads.dto.request.CarClassRequest;
 import com.microservices.ads.dto.response.CarClassResponse;
 import com.microservices.ads.service.ICarClassService;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +29,15 @@ public class CarClassController {
         return _carClassService.getAllCarClass();
     }
 
+    @PostMapping
+    public CarClassResponse createCarClass(@RequestBody CarClassRequest request) {
+        return _carClassService.createCarClass(request);
+    }
 
+    @PutMapping("/{id}/class")
+    public CarClassResponse updateCarClass(@RequestBody CarClassRequest request, @PathVariable Long id) {
+        return _carClassService.updateCarClass(request, id);
+    }
 
     @DeleteMapping("/{id}/class")
     public void deleteCarClass(@PathVariable Long id) {

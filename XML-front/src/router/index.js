@@ -9,9 +9,11 @@ import AddCarAd from '../components/views/User/AddCarAd.vue'
 import SearchCarAds from '../components/views/User/SearchCarAds.vue'
 import Messages from '../components/views/User/Messages.vue'
 
-import AdsList from '../components/views/User/AdsList.vue'
+import UserAdList from '../components/views/User/UserAdList.vue'
+import AllAdList from '../components/views/User/AllAdList.vue'
 import OpenedAdByAgent from '../components/views/Agent/OpenedAd.vue'
 import OpenedAdByUser from '../components/views/User/OpenedAd.vue'
+import OpenedMyAdByUser from '../components/views/User/OpenedMyAd.vue'
 
 import NewAd from '../components/views/Agent/NewAd.vue'
 import AddPricelist from '../components/views/Agent/AddPricelist.vue'
@@ -166,9 +168,17 @@ const routes = [
      
   },
   {
-    path: '/adsList',
-    name: 'ads-list',
-    component: AdsList,
+    path: '/userAdList',
+    name: 'user-ad-list',
+    component: UserAdList,
+    meta: {
+      requiresAuth: true
+    } 
+  },
+  {
+    path: '/allAdList',
+    name: 'all-ad-list',
+    component: AllAdList,
     meta: {
       requiresAuth: true
     } 
@@ -189,7 +199,14 @@ const routes = [
       requiresAuth: true
     }
   },
- 
+  {
+    path: '/openedMyAdByUser/:id',
+    name: 'opened-my-ad-by-user',
+    component: OpenedMyAdByUser,
+    meta: {
+      requiresAuth: true
+    }
+  },
   {
     path: '/carClassList',
     name: 'car-class-list',

@@ -1,6 +1,7 @@
 package com.microservices.ads.service.implementation;
 
 
+import com.microservices.ads.dto.request.CarModelRequest;
 import com.microservices.ads.dto.response.CarModelResponse;
 import com.microservices.ads.model.CarModel;
 import com.microservices.ads.repository.ICarModelRepository;
@@ -46,8 +47,8 @@ public class CarModelService implements ICarModelService {
         return carModelResponses;
     }
 
- /*   @Override
-    public CarModelResponse createCarModel(CreateCarModelRequest request) {
+    @Override
+    public CarModelResponse createCarModel(CarModelRequest request) {
         CarModel carModel = new CarModel();
         carModel.setModel(request.getModel());
         carModel.setDeleted(false);
@@ -62,7 +63,7 @@ public class CarModelService implements ICarModelService {
     }
 
     @Override
-    public CarModelResponse updateCarModel(UpdateCarModelRequest request, long id) {
+    public CarModelResponse updateCarModel(CarModelRequest request, long id) {
         CarModel carModel = _carModelRepository.findOneById(id);
         carModel.setModel(request.getModel());
 
@@ -74,7 +75,7 @@ public class CarModelService implements ICarModelService {
 
         return carModelResponse;
     }
-*/
+
     @Override
     public void deleteCarModel(long id) {
         CarModel carModel = _carModelRepository.findOneById(id);

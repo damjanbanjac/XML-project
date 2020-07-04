@@ -57,9 +57,9 @@ export default {
 
     deleteGearshiftType(id) {
         axios
-        .delete("/maintenance/gearshift-types/" + id + "/gearshift-type")
+        .delete("ads/gearshift-types/" + id + "/gearshift-type")
         axios
-        .get("/maintenance/gearshift-types")
+        .get("ads/gearshift-types")
         .then(gearshifttypes => {
             console.log("usao u listu")
             this.gearshifttypes = gearshifttypes.data;
@@ -74,7 +74,7 @@ export default {
     mounted() {
         console.log("usao");
         axios
-        .get("/maintenance/gearshift-types")
+        .get("ads/gearshift-types")
         .then(gearshifttypes => {
             console.log("usao u listu")
             this.gearshifttypes = gearshifttypes.data;

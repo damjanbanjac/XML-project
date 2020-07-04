@@ -60,7 +60,7 @@ export default {
 
     deleteCarBrand(id) {
         axios
-        .delete("/maintenance/brands/" + id + "/brand")
+        .delete("ads/brands/" + id + "/brand")
         .then(carbrands => {
           this.carbrands = carbrands.data;
         })
@@ -68,7 +68,7 @@ export default {
           console.log(error);
         });
         axios
-        .get("/maintenance/brands")
+        .get("ads/brands")
         .then(carbrands => {
             this.carbrands = carbrands.data;
             console.log(carbrands.data)
@@ -82,7 +82,7 @@ export default {
     mounted() {
         console.log("usao");
         axios
-        .get("/maintenance/brands")
+        .get("ads/brands")
         .then(carbrands => {
             this.carbrands = carbrands.data;
             console.log(carbrands.data)

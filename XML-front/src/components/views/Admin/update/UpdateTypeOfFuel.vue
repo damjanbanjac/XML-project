@@ -78,7 +78,7 @@ import axios from "axios";
         this.errormessage = "";
         this.change = false;
         axios
-        .get("/maintenance/fuel-types/" + this.$route.params.id + "/fuel-type")
+        .get("ads/fuel-types/" + this.$route.params.id + "/fuel-type")
         .then(type => {
           this.form = type.data;
         })
@@ -93,7 +93,7 @@ import axios from "axios";
           return;
         }
         axios
-        .put("/maintenance/fuel-types/" + this.$route.params.id + "/fuel-type", this.form)
+        .put("ads/fuel-types/" + this.$route.params.id + "/fuel-type", this.form)
         .then(type => {
         this.form = type.data;
         this.change = false;
@@ -107,7 +107,7 @@ import axios from "axios";
     },
     mounted() {
       axios
-        .get("/maintenance/fuel-types/" + this.$route.params.id + "/fuel-type")
+        .get("ads/fuel-types/" + this.$route.params.id + "/fuel-type")
         .then(type => {
           this.form = type.data;
           this.change = false;

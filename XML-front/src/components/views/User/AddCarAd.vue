@@ -251,7 +251,7 @@ import axios from "axios";
           this.idAd = form.data.id,
           console.log(this.idAd);
           if(this.idAd == undefined) {
-          this.errormessage = "Ne mozete vise od 3 puta postaviti oglas";
+          this.errormessage = "You cannot ad more than 3 car ads.";
           this.error = true;
           }
           else {
@@ -275,7 +275,7 @@ import axios from "axios";
         })
         .catch(error => {
           console.log(error);
-          this.errormessage = "POstoje vec 3 vasa oglasa ne mozete da dodate vise";
+          this.errormessage = "You have reached your limit of car ads. (3)";
           this.error = true;
         });
 

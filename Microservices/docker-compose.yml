@@ -8,17 +8,17 @@ services:
     tty: true
 
 
-#  adsservice:
-#    build: ./ads
-#    ports:
-#      - "8098:8098"
-#    tty: true
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#      - MYSQL_HOST=users-database
-#    depends_on:
-#     - eurekaservice
-#     - users-database
+  adsservice:
+    build: ./ads
+    ports:
+      - "8098:8098"
+    tty: true
+    environment:
+      - REGISTRY_HOST=eurekaservice
+      - MYSQL_HOST=users-database
+    depends_on:
+     - eurekaservice
+     - users-database
 
 
 #  maintenanceservice:
@@ -71,15 +71,15 @@ services:
 #      - eurekaservice
 #      - users-database
 
-#  authservice:
-#    build: ./authentication
-#    ports:
-#      - "8083:8083"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#    tty: true
-#    depends_on:
-#      - eurekaservice
+  authservice:
+    build: ./authentication
+    ports:
+      - "8083:8083"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+    tty: true
+    depends_on:
+      - eurekaservice
 
 #  paymentservice:
 #    build: ./payment
@@ -102,8 +102,8 @@ services:
     tty: true
     depends_on:
       - eurekaservice
-#      - adsservice
-#      - authservice
+      - adsservice
+      - authservice
 #      - maintenanceservice
 #      - orderservice
 #      - messageservice
@@ -113,18 +113,18 @@ services:
 #      - paymentservice
 #      - searchsevice
 
-#  users-database:
-#    image: mariadb:10.2
-#    container_name: users-database
-#    ports:
-#      - 3306:3306
-#    environment:
-#      MYSQL_DATABASE: services
-#      MYSQL_USER: root
-#      MYSQL_PASSWORD: root
-#      MYSQL_ROOT_PASSWORD: root
-#    volumes:
-#      - usersdata:/var/lib/mysql
+  users-database:
+    image: mariadb:10.2
+    container_name: users-database
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: services
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - usersdata:/var/lib/mysql
 
 
 volumes:

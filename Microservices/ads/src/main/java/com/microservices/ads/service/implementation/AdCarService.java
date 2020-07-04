@@ -101,7 +101,6 @@ public class AdCarService implements IAdCarService {
 
         List<AdCar> adCarList = adCarRepository.findAll();
 
-
             AdCar adCar = new AdCar();
             adCar.setAvailableFrom(request.getAvailableFrom());
             adCar.setAvailableTo(request.getAvailableTo());
@@ -122,8 +121,6 @@ public class AdCarService implements IAdCarService {
             AdCarResponse carResponse  = new AdCarResponse(adCar);
             return  carResponse;
 
-
-
     }
 
     public AdCarResponse createAd(AdCarRequest request,long id) {
@@ -140,7 +137,7 @@ public class AdCarService implements IAdCarService {
                 cnt++;
             }
         }
-         System.out.println(cnt);
+        System.out.println(cnt);
         if(cnt < 3) {
 
             AdCar adCar = new AdCar();
