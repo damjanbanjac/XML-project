@@ -251,17 +251,19 @@ import axios from "axios";
           this.idAd = form.data.id,
           console.log(this.idAd);
           if(this.idAd == undefined) {
-          this.errormessage = "Ne mozete vise od 3 puta postaviti oglas";
+          this.errormessage = "You cannot ad more than 3 car ads.";
           this.error = true;
           }
           else {
-            this.selectedClass = "",
-            this.selectedModel = "",
-            this.selectedFuel = "",
-            this.selectedGear = "",
-            this.selectedBrand = "",
+            this.form.kidsSeats = "",
+            this.form.kmRestriction = "",
+            this.form.kmTraveled = "",
+            this.form.carModel_id = "",
+            this.form.carClass_id = "",
+            this.form.fuelType_id = "",
+            this.form.gearShift_id = "",
             this.form.city = "",
-            this.selectedPricelist = "",
+             this.selectedPricelist = "",
             this.success = true,
             this.successmessages = "You have succesfully added a new car ad. Now you can upload images for the car."
             this.changeButton = true;
@@ -273,7 +275,7 @@ import axios from "axios";
         })
         .catch(error => {
           console.log(error);
-          this.errormessage = "POstoje vec 3 vasa oglasa ne mozete da dodate vise";
+          this.errormessage = "You have reached your limit of car ads. (3)";
           this.error = true;
         });
 

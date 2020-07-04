@@ -101,7 +101,6 @@ public class AdCarService implements IAdCarService {
 
         List<AdCar> adCarList = adCarRepository.findAll();
 
-
             AdCar adCar = new AdCar();
             adCar.setAvailableFrom(request.getAvailableFrom());
             adCar.setAvailableTo(request.getAvailableTo());
@@ -117,12 +116,10 @@ public class AdCarService implements IAdCarService {
             adCar.setKmTraveled(request.getKmTraveled());
             adCar.setKmRestriction(request.getKmRestriction());
             adCarSuccessLog(id);
-     //   adCar.setPricelist(request.getPricelist());
+            adCar.setPricelist(request.getPricelist());
             adCarRepository.save(adCar);
             AdCarResponse carResponse  = new AdCarResponse(adCar);
             return  carResponse;
-
-
 
     }
 
@@ -140,7 +137,7 @@ public class AdCarService implements IAdCarService {
                 cnt++;
             }
         }
-         System.out.println(cnt);
+        System.out.println(cnt);
         if(cnt < 3) {
 
             AdCar adCar = new AdCar();

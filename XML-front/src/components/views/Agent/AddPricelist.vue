@@ -1,7 +1,7 @@
 <template>
 <div>
     <b-jumbotron bg-variant="light" text-variant="dark" style="width: 510px;
-    height: 680px;
+    height: 600px;
     margin-top: 2%;
     margin-left:32%">
         <template>
@@ -18,7 +18,7 @@
                
                 <b-form-group
                     id="input-group-1"
-                    label="Pricelist name:"
+                    label="pricelist name:"
                     label-for="input-1"
                 >
                     <b-form-input
@@ -59,7 +59,7 @@
                     ></b-form-input>
                 </b-form-group>
 
-                 <b-form-group id="input-group-5" label="KM restriction price:" label-for="input-5">
+                 <b-form-group id="input-group-5" label="km restriction price:" label-for="input-5">
                     <b-form-input
                     id="input-5"
                     v-model="form.priceForKmRestriction"
@@ -74,7 +74,7 @@
               
 
                 <b-form-group>
-                    <b-button type="submit" variant="info" @click="onSubmit()">Create pricelist</b-button>
+                    <b-button  variant="primary" @click="onSubmit()">Create pricelist</b-button>
                 </b-form-group>
 
             </b-form>
@@ -109,7 +109,7 @@ Vue.use(MultiSelectPlugin);
         
        
         axios
-        .post("ads/pricelist/" + this.$store.state.user.id + "/user", this.form)
+        .post("ads/pricelist/" + this.$store.state.user.id + "/agent", this.form)
         .then(response => {
             this.form = response;
           this.form.name = "";

@@ -77,7 +77,7 @@ import axios from "axios";
           return;
         }
         axios
-        .post("/maintenance/models", this.form)
+        .post("ads/models", this.form)
         .then(() => {
           this.form.model = "";
           this.success = true;

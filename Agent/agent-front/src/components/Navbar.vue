@@ -20,7 +20,7 @@
 
       <!-- Agent -->
       <b-nav-item-dropdown v-if="this.$store.state.user.role.authority == 'AGENT'" text="Sidebar" left>
-        <router-link to="/adsListByAgent" tag="b-dropdown-item">Car ads</router-link>
+        <router-link to="/adsListByAgent" tag="b-dropdown-item">My car ads</router-link>
         <router-link to="/newAd" tag="b-dropdown-item">Add Car</router-link>
          <router-link to="/agentRequests" tag="b-dropdown-item">Requests</router-link>
          <router-link to="/reservePayGo" tag="b-dropdown-item">Reserve-Pay-Go</router-link>

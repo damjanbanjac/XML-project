@@ -73,6 +73,7 @@ export default {
   methods: {
     comment() {
       const body = {
+        userId: this.$store.state.user.id,
         comment: this.comm,
         adCarId: this.$route.params.id
       }

@@ -270,6 +270,7 @@ export default {
 
     grade() {
       const body = {
+        userId: this.$store.state.user.id,
         grade: this.selected,
         adCarId: this.$route.params.id
       }
@@ -288,6 +289,7 @@ export default {
 
     comment() {
       const body = {
+        userId: this.$store.state.user.id,
         comment: this.comm,
         adCarId: this.$route.params.id
       }
@@ -307,7 +309,7 @@ export default {
     saveData() {
      
       axios
-      .put("ads/ads/" + this.$route.params.id + "/ad" , this.form)
+      .put("ads/" + this.$route.params.id + "/ad" , this.form)
       .then(user =>{
         this.form = user.data;
         this.change = false;

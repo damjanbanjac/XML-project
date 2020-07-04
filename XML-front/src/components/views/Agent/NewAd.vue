@@ -84,6 +84,15 @@
                     >{{gear.type}}</option>
                   </b-form-select>
 
+                  <label for="Form-pricelist">Choose pricelist</label>
+                   <b-form-select v-model="selectedPricelist">
+                    <option
+                      v-for="p in pricelists"
+                      :value="p.id"
+                      :key="p.id"
+                    >{{p.name}}</option>
+                  </b-form-select>
+
                   <label for="Form-br">Kids Seats</label>
                   <input type="text" id="Form-kidsSeats" class="form-control" v-model="form.kidsSeats" />
 
@@ -163,6 +172,8 @@ import axios from "axios";
        fuels: [],
        selectedGear: "",
        gears: [],
+          selectedPricelist: "",
+       pricelists: [],
        idAd: null
       
       }
@@ -226,6 +237,11 @@ import axios from "axios";
             this.form.gearShift_id = gear;
             }
            });
+             this.pricelists.forEach(p => {
+            if (p.id === this.selectedPricelist) {
+            this.form.pricelist = p.id;
+            }
+           });
 
         axios
         .post("/ads/ads/" + this.$store.state.user.id + "/agent" , this.form)
@@ -246,6 +262,7 @@ import axios from "axios";
             this.form.fuelType_id = "",
             this.form.gearShift_id = "",
             this.form.city = "",
+             this.selectedPricelist = "",
             this.success = true,
             this.successmessages = "You have succesfully added a new car ad. Now you can upload images for the car."
             this.changeButton = true;
@@ -258,7 +275,7 @@ import axios from "axios";
         })
         .catch(error => {
           console.log(error);
-          this.errormessage = "Mail vec postoji";
+          this.errormessage = "greska";
           this.error = true;
         });
 
@@ -306,6 +323,15 @@ import axios from "axios";
       .get("ads/gearshift-types")
       .then(gears => {
         this.gears = gears.data;
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+         axios
+      .get("ads/pricelist/" + this.$store.state.user.id + "/agent")
+      .then(pricelists => {
+        this.pricelists = pricelists.data;
       })
       .catch(error => {
         console.log(error);

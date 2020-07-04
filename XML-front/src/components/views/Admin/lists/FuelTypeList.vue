@@ -57,9 +57,9 @@ export default {
 
     deleteFuelType(id) {
         axios
-        .delete("/maintenance/fuel-types/" + id + "/fuel-type")
+        .delete("ads/fuel-types/" + id + "/fuel-type")
         axios
-        .get("/maintenance/fuel-types")
+        .get("ads/fuel-types")
         .then(fueltypes => {
             console.log("usao u listu")
             this.fueltypes = fueltypes.data;
@@ -73,7 +73,7 @@ export default {
     mounted() {
         console.log("usao");
         axios
-        .get("/maintenance/fuel-types")
+        .get("ads/fuel-types")
         .then(fueltypes => {
             console.log("usao u listu")
             this.fueltypes = fueltypes.data;
