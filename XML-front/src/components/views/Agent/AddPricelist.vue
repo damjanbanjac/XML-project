@@ -109,7 +109,7 @@ Vue.use(MultiSelectPlugin);
         
        
         axios
-        .post("ads/pricelist/" + this.$store.state.user.id + "/user", this.form)
+        .post("ads/pricelist/" + this.$store.state.user.id + "/agent", this.form)
         .then(response => {
             this.form = response;
           this.form.name = "";

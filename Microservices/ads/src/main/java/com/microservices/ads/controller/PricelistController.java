@@ -40,7 +40,7 @@ public class PricelistController {
     }
 
     @GetMapping("/{id}/agent")
-    public List<PricelistResponse> getAllAdsFromAgent(@PathVariable long id) throws Exception{
+    public List<PricelistResponse> getAllPricelistFromAgent(@PathVariable long id) throws Exception{
         return pricelistService.getAllPricelistAgent(id);
     }
 }

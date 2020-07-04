@@ -14,6 +14,7 @@ import OpenedAdByAgent from '../components/views/Agent/OpenedAd.vue'
 import OpenedAdByUser from '../components/views/User/OpenedAd.vue'
 
 import NewAd from '../components/views/Agent/NewAd.vue'
+import AddPricelist from '../components/views/Agent/AddPricelist.vue'
 import AgentAdList from '../components/views/Agent/AgentAdList.vue'
 import MakeReport from '../components/views/Agent/MakeReport.vue'
 
@@ -102,6 +103,14 @@ const routes = [
     path: '/newAd',
     name: 'new-ad',
     component: NewAd,
+    meta: {
+      requiresAuth: true
+    } 
+  },
+  {
+    path: '/addPricelist',
+    name: 'add-pricelist',
+    component: AddPricelist,
     meta: {
       requiresAuth: true
     } 

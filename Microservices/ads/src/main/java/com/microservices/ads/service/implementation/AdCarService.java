@@ -117,7 +117,7 @@ public class AdCarService implements IAdCarService {
             adCar.setKmTraveled(request.getKmTraveled());
             adCar.setKmRestriction(request.getKmRestriction());
             adCarSuccessLog(id);
-     //   adCar.setPricelist(request.getPricelist());
+            adCar.setPricelist(request.getPricelist());
             adCarRepository.save(adCar);
             AdCarResponse carResponse  = new AdCarResponse(adCar);
             return  carResponse;
