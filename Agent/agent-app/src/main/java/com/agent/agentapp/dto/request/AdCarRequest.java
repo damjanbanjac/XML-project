@@ -10,7 +10,7 @@ public class AdCarRequest {
 
     private CarBrand carBrand_id;
     private CarClass carClass_id;
-    private User userAd;
+    //private User userAd;
     private Agent agentAd;
     private CarModel carModel_id;
     private TypeOfFuel fuelType_id;
