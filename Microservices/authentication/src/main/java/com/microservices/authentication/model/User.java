@@ -40,6 +40,10 @@ public class User implements UserDetails {
     private String rate;
     private String password;
 
+    public Boolean getBlocked() {
+        return blocked;
+    }
+
     @Enumerated(EnumType.STRING)
     private RegistrationState registrationState;
 

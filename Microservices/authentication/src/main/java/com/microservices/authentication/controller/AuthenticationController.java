@@ -111,13 +111,14 @@ public class AuthenticationController {
             int expiresIn = tokenUtils.getExpiredIn();
 
             return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
-        } else  {
+        } else if (subject.getBlocked() == false)  {
             Collection<?> roles = user.getAuthorities();
             String jwt = tokenUtils.generateToken(user, (Authority) roles.iterator().next());
             int expiresIn = tokenUtils.getExpiredIn();
 
             return ResponseEntity.ok(new UserTokenState(jwt, expiresIn));
         }
+        return (ResponseEntity<?>) ResponseEntity.notFound();
     }
 
     @PostMapping(value = "/register")

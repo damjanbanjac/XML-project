@@ -1,80 +1,11 @@
-2020-07-03 21:25:47.799+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
-2020-07-03 21:30:47.818+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
-2020-07-03 21:35:47.820+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
-2020-07-03 21:40:47.823+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
-2020-07-04 13:06:48.940+0200 [main] INFO  com.microservices.ads.AdsApplication - No active profile set, falling back to default profiles: default 
-2020-07-04 13:06:50.412+0200 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode. 
-2020-07-04 13:06:50.670+0200 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 242ms. Found 15 JPA repository interfaces. 
-2020-07-04 13:06:51.119+0200 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=94f905d8-992b-3ec5-8826-3249bc101825 
-2020-07-04 13:06:51.233+0200 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.microservices.ads.client.AuthClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
-2020-07-04 13:06:51.254+0200 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'webServiceConfig' of type [com.microservices.ads.config.WebServiceConfig$$EnhancerBySpringCGLIB$$9092e224] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
-2020-07-04 13:06:51.255+0200 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$92f8a046] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
-2020-07-04 13:06:51.302+0200 [main] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0] 
-2020-07-04 13:06:51.809+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8098 (http) 
-2020-07-04 13:06:51.825+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8098"] 
-2020-07-04 13:06:51.826+0200 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat] 
-2020-07-04 13:06:51.826+0200 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35] 
-2020-07-04 13:06:52.144+0200 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext 
-2020-07-04 13:06:52.144+0200 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3177 ms 
-2020-07-04 13:06:52.409+0200 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor' 
-2020-07-04 13:06:52.494+0200 [task-1] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
-2020-07-04 13:06:52.633+0200 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
-2020-07-04 13:06:52.747+0200 [task-1] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.15.Final 
-2020-07-04 13:06:53.81+0200 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final} 
-2020-07-04 13:06:53.307+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
-2020-07-04 13:06:54.296+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
-2020-07-04 13:06:54.338+0200 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
-2020-07-04 13:07:05.111+0200 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
-2020-07-04 13:07:05.132+0200 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
-2020-07-04 13:07:06.316+0200 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
-2020-07-04 13:07:06.317+0200 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
-2020-07-04 13:07:06.325+0200 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
-2020-07-04 13:07:06.325+0200 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
-2020-07-04 13:07:06.631+0200 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
-
-Using generated security password: a14e45e8-7e1d-4de0-831f-9de867c989ff
- 
-2020-07-04 13:07:07.84+0200 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@122635ef, org.springframework.security.web.context.SecurityContextPersistenceFilter@f238e4f, org.springframework.security.web.header.HeaderWriterFilter@390037e7, org.springframework.security.web.authentication.logout.LogoutFilter@3ad8717d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@75fe1619, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@348137e8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2ac519dc, org.springframework.security.web.session.SessionManagementFilter@29bcf51d, org.springframework.security.web.access.ExceptionTranslationFilter@261bd7b] 
-2020-07-04 13:07:08.636+0200 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project. 
-2020-07-04 13:07:08.816+0200 [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING 
-2020-07-04 13:07:08.881+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1 
-2020-07-04 13:07:08.973+0200 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson 
-2020-07-04 13:07:08.974+0200 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson 
-2020-07-04 13:07:09.149+0200 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml 
-2020-07-04 13:07:09.150+0200 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml 
-2020-07-04 13:07:09.396+0200 [main] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
-2020-07-04 13:07:09.881+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false 
-2020-07-04 13:07:09.881+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null 
-2020-07-04 13:07:09.882+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false 
-2020-07-04 13:07:09.882+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false 
-2020-07-04 13:07:09.882+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true 
-2020-07-04 13:07:09.882+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true 
-2020-07-04 13:07:09.882+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server 
-2020-07-04 13:07:10.155+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200 
-2020-07-04 13:07:10.158+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30 
-2020-07-04 13:07:10.161+0200 [main] INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4 
-2020-07-04 13:07:10.167+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1593860830166 with initial instances count: 4 
-2020-07-04 13:07:10.170+0200 [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application ADS with eureka with status UP 
-2020-07-04 13:07:10.170+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1593860830170, current=UP, previous=STARTING] 
-2020-07-04 13:07:10.174+0200 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_ADS/host.docker.internal:ads:8098: registering service... 
-2020-07-04 13:07:10.174+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8098"] 
-2020-07-04 13:07:10.213+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8098 (http) with context path '' 
-2020-07-04 13:07:10.215+0200 [main] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8098 
-2020-07-04 13:07:10.240+0200 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_ADS/host.docker.internal:ads:8098 - registration status: 204 
-2020-07-04 13:07:11.11+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
-2020-07-04 13:07:11.487+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
-2020-07-04 13:07:11.504+0200 [main] INFO  com.microservices.ads.AdsApplication - Started AdsApplication in 25.477 seconds (JVM running for 28.194) 
-2020-07-04 13:07:45.235+0200 [http-nio-8098-exec-6] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
-2020-07-04 13:07:45.235+0200 [http-nio-8098-exec-6] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
-2020-07-04 13:07:45.252+0200 [http-nio-8098-exec-6] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 17 ms 
-2020-07-04 13:09:20.225+0200 [http-nio-8098-exec-7] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"] 
-2020-07-04 13:11:05.35+0200 [http-nio-8098-exec-8] INFO  c.m.a.s.implementation.AdCarService - SUCCESS Agent 200 successfully added a car. 
-2020-07-04 13:11:55.169+0200 [http-nio-8098-exec-1] INFO  c.m.a.s.implementation.AdCarService - SUCCESS Agent 1 successfully updated a car . 
-2020-07-04 13:12:09.886+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
-2020-07-04 13:14:52.971+0200 [http-nio-8098-exec-5] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /1/image 
-2020-07-04 13:14:55.602+0200 [http-nio-8098-exec-6] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /1/image 
-2020-07-04 13:15:22.349+0200 [http-nio-8098-exec-10] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /1/image 
-2020-07-04 13:16:18.150+0200 [http-nio-8098-exec-4] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /1/image 
-2020-07-04 13:17:09.887+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
-2020-07-04 13:20:09.943+0200 [http-nio-8098-exec-6] WARN  o.s.web.servlet.PageNotFound - No mapping for GET /1/image 
-2020-07-04 13:22:09.888+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 16:04:07.968+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 16:09:07.999+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 16:14:08.07+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 16:19:08.16+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 16:24:08.25+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 16:29:08.33+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 16:34:08.40+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 16:39:08.49+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 16:44:08.56+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 16:49:08.64+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 16:54:08.71+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
