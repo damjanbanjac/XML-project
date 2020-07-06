@@ -21,30 +21,30 @@ services:
      - users-database
 
 
-  maintenanceservice:
-    build: ./maintenance
-    ports:
-      - "8086:8086"
-    environment:
-      - REGISTRY_HOST=eurekaservice
-      - MYSQL_HOST=users-database
-    tty: true
-    depends_on:
-      - users-database
-      - eurekaservice
+#  maintenanceservice:
+#    build: ./maintenance
+#    ports:
+#      - "8086:8086"
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#      - MYSQL_HOST=users-database
+#    tty: true
+#    depends_on:
+#      - users-database
+#      - eurekaservice
 
 
-  orderservice:
-    build: ./ordering
-    ports:
-      - "8089:8089"
-    environment:
-      - REGISTRY_HOST=eurekaservice
-      - MYSQL_HOST=users-database
-    tty: true
-    depends_on:
-      - users-database
-      - eurekaservice
+#  orderservice:
+#    build: ./ordering
+#    ports:
+#      - "8089:8089"
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#      - MYSQL_HOST=users-database
+#    tty: true
+#    depends_on:
+#      - users-database
+#      - eurekaservice
 
 
 #  searchsevice:
@@ -59,17 +59,17 @@ services:
   #    - users-database
 #      - eurekaservice
 #
-  messageservice:
-    build: ./messages
-    ports:
-      - "8084:8084"
-    environment:
-      - REGISTRY_HOST=eurekaservice
-      -  MYSQL_HOST=users-database
-    tty: true
-    depends_on:
-      - eurekaservice
-      - users-database
+#  messageservice:
+#    build: ./messages
+#    ports:
+#      - "8084:8084"
+#    environment:
+#      - REGISTRY_HOST=eurekaservice
+#      -  MYSQL_HOST=users-database
+#    tty: true
+#    depends_on:
+#      - eurekaservice
+#      - users-database
 
   authservice:
     build: ./authentication
@@ -104,9 +104,9 @@ services:
       - eurekaservice
       - adsservice
       - authservice
-      - maintenanceservice
-      - orderservice
-      - messageservice
+#      - maintenanceservice
+#      - orderservice
+#      - messageservice
 #      - adsservice
 #      - authservice
 #      - orderservice

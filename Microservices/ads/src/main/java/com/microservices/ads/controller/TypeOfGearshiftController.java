@@ -1,6 +1,7 @@
 package com.microservices.ads.controller;
 
 
+import com.microservices.ads.dto.request.TypeOfGearshiftRequest;
 import com.microservices.ads.dto.response.TypeOfGearshiftResponse;
 import com.microservices.ads.service.ITypeOfGearshiftService;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,15 @@ public class TypeOfGearshiftController {
         return _typeOfGearshiftService.getAllTypesOfGearshifts();
     }
 
+    @PostMapping
+    public TypeOfGearshiftResponse createTypeOfGearshift(@RequestBody TypeOfGearshiftRequest request) {
+        return _typeOfGearshiftService.createTypeOfGearshift(request);
+    }
+
+    @PutMapping("/{id}/gearshift-type")
+    public TypeOfGearshiftResponse updateTypeOfGearshift(@RequestBody TypeOfGearshiftRequest request, @PathVariable Long id) {
+        return _typeOfGearshiftService.updateTypeOfGearshift(request, id);
+    }
 
     @DeleteMapping("/{id}/gearshift-type")
     public void deleteTypeOfGearshift(@PathVariable Long id) {

@@ -59,6 +59,11 @@
 
                    <label for="Form-radnoOd">CDW</label>
                   <input type="checkbox" id="Form-cdw" class="form-control" v-model="form.cdw" :disabled="!change" />
+
+                  <button
+                    type="button"
+                    class="btn btn-info btn-block z-depth-2"
+                  @click="priprema()">Prepare</button>
                   <br/>
 
                  <!--   <template v-if="!change">
@@ -98,6 +103,42 @@
         <b-container v-if="success">
       <b-alert style="width: 100%;" show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
     </b-container>
+    <div v-if="prepare" class="card" style="width: 120%">
+        <!--Header-->
+        <div class="header pt-3 grey lighten-2">
+          <div class="row d-flex justify-content-start">
+            <h3 class="deep-grey-text mt-2 mb-4 pb-1 mx-5" 
+            style="font-size: 3rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-top: -12%;">Prepare</h3>
+          </div>
+        </div>
+
+        <label for="Form-ime">Start date</label>
+                <input
+                      type="date"
+                      id="Form-start"
+                      class="form-control"
+                      v-model="order.availableFrom"
+                    />
+                <label style="margin-top:4%" for="Form-ime">End date</label>
+                <input
+                      type="date"
+                      id="Form-end"
+                      class="form-control"
+                      v-model="order.availableTo"
+                    />
+                    <br/>
+                <div style="margin-top:2%" class="text-center mb-4">
+                  <button
+                    type="button"
+                    class="btn btn-info btn-block z-depth-2"
+                  @click="naruci()">Add to bag</button>
+                </div>
+    </div> 
+
+
         <div class="card" style="width: 120%">
         <!--Header-->
         <div class="header pt-3 grey lighten-2">
@@ -168,7 +209,17 @@ export default {
           availableTo: '',
           city: '',
           kmRestriction: '',
-          kmTraveled: null
+          kmTraveled: null,
+          agentAd : {},
+      },
+      prepare: false,
+      order:{
+        adCar:{
+          id: "",
+          agentAd: "",
+        },
+      availableFrom: "",
+      availableTo: "",
       },
       comm: '',
       retrievedImage: null,
@@ -196,8 +247,30 @@ export default {
    
   methods: {
 
+    priprema(){
+      this.prepare = true;
+      this.order.adCar.id = this.form.id;
+      this.order.adCar.agentAd = this.form.agentAd;
+      console.log(this.order);
+      
+    },
+
+    naruci(){
+      console.log(this.order)
+      axios
+          .post("/orders", this.order)
+          .then(response => {
+            this.order= response.data;
+            this.prepare = false;
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    },
+
     grade() {
       const body = {
+        userId: this.$store.state.user.id,
         grade: this.selected,
         adCarId: this.$route.params.id
       }
@@ -216,6 +289,7 @@ export default {
 
     comment() {
       const body = {
+        userId: this.$store.state.user.id,
         comment: this.comm,
         adCarId: this.$route.params.id
       }
@@ -235,7 +309,7 @@ export default {
     saveData() {
      
       axios
-      .put("ads/ads/" + this.$route.params.id + "/ad" , this.form)
+      .put("ads/" + this.$route.params.id + "/ad" , this.form)
       .then(user =>{
         this.form = user.data;
         this.change = false;

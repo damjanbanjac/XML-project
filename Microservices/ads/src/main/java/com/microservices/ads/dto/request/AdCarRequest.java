@@ -12,8 +12,8 @@ public class AdCarRequest {
 
     private CarBrand carBrand_id;
     private CarClass carClass_id;
-    private User userAd;
-    private Agent agentAd;
+    private long userAd;
+    private long agentAd;
     private CarModel carModel_id;
     private TypeOfFuel fuelType_id;
     private TypeOfGearshift gearShift_id;
@@ -26,4 +26,5 @@ public class AdCarRequest {
     private Date availableFrom;
     private Date availableTo;
     private String city;
+    private long pricelist;
 }

@@ -77,7 +77,7 @@ import axios from "axios";
           return;
         }
         axios
-        .post("/maintenance/fuel-types", this.form)
+        .post("ads/fuel-types", this.form)
         .then(() => {
           this.form.type = "";
           this.success = true;

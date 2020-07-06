@@ -35,30 +35,29 @@ public class CommentService implements ICommentService {
         _commentRepository = commentRepository;
     }
 
-
     @Override
     public void commentAdCar(CommentAdCarRequest request) throws Exception {
-//        User user = _userRepository.findOneById(request.getUserId());
+        User user = _userRepository.findOneById(request.getUserId());
         AdCar adCar = _adCarRepository.findOneById(request.getAdCarId());
 
-//        List<Order> allOrders = _orderRepository.findAllByUser_IdAndUsingTimeUp(user.getId(), true);
+        List<Order> allOrders = _orderRepository.findAllByUser_IdAndUsingTimeUp(user.getId(), true);
 
-//        if(allOrders.isEmpty()) {
-//            throw new Exception("You cannot comment this ad.");
-//        }
-//        Order order = null;
-//        for (Order o: allOrders) {
-//            if(o.getAdCar_id()==adCar) {
-//                order = o;
-//                break;
-//            }
-//        }
-//        if(order == null){
-//            throw new Exception("You cannot comment this ad.");
-//        }
+        if(allOrders.isEmpty()) {
+            throw new Exception("You cannot comment this ad.");
+        }
+        Order order = null;
+        for (Order o: allOrders) {
+            if(o.getAdCar_id()==adCar) {
+                order = o;
+                break;
+            }
+        }
+        if(order == null){
+            throw new Exception("You cannot comment this ad.");
+        }
         Comment comment = new Comment();
         comment.setAdCar(adCar);
-//        comment.setUserId(user.getId());
+        comment.setUserId(user.getId());
         comment.setComment(request.getComment());
         _commentRepository.save(comment);
         adCar.getComments().add(comment);

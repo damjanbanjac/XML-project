@@ -19,12 +19,13 @@
         <div class="dropdown-divider"></div>
         <router-link to="/bag" tag="b-dropdown-item">Bag</router-link>
         <router-link to="/searchCarAds" tag="b-dropdown-item">Search cars</router-link>
-        <router-link to="/adCarListOrder" tag="b-dropdown-item">Car ads</router-link>
+        <!-- <router-link to="/adCarListOrder" tag="b-dropdown-item">Car ads</router-link> -->
+        <router-link to="/allAdList" tag="b-dropdown-item">All car ads</router-link>
         <div class="dropdown-divider"></div>
         <router-link to="/userRequests" tag="b-dropdown-item">My requests</router-link>
-        <router-link to="/adsList" tag="b-dropdown-item">My car ads</router-link>
+        <router-link to="/userAdList" tag="b-dropdown-item">My car ads</router-link>
         <div class="dropdown-divider"></div>
-        <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
+        <router-link  to="/addCarAd" tag="b-dropdown-item">Add car ad</router-link>
         <router-link to="/createPriceList" tag="b-dropdown-item">Add pricelist</router-link>
         <div class="dropdown-divider"></div>
         <b-dropdown-item @click="odjavaFun">Log Out</b-dropdown-item>
@@ -39,8 +40,9 @@
         <router-link to="/agentRequests" tag="b-dropdown-item">Owner requests</router-link>
         <router-link to="/reservePayGo" tag="b-dropdown-item">Reserve-Pay-Go</router-link>
         <div class="dropdown-divider"></div>
-        <router-link  to="/addCarAd" tag="b-dropdown-item">Add Car</router-link>
-        <router-link to="/adsList" tag="b-dropdown-item">Car ads</router-link>
+        <router-link to="/agentAdList" tag="b-dropdown-item">My car ads</router-link>
+        <router-link  to="/newAd" tag="b-dropdown-item">Add car ad</router-link>
+        <router-link  to="/addPricelist" tag="b-dropdown-item">Add Pricelist</router-link>
         <div class="dropdown-divider"></div>
         <router-link to="/makeReport" tag="b-dropdown-item">Issue Report</router-link>
 
@@ -52,12 +54,12 @@
 
       <b-nav-item-dropdown left v-if="this.$store.state.user.role.authority == 'ADMIN'" text="Sidebar">
 
-                    <router-link to="/userList" tag="b-dropdown-item">Client profiles</router-link>
                     <router-link to="/agentRegistration" tag="b-dropdown-item">Agent registration</router-link>
+                    <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
+                    <router-link to="/userList" tag="b-dropdown-item">Client profiles</router-link>
 
                     <div class="dropdown-divider"></div>
 
-                    <router-link to="/registrationRequests" tag="b-dropdown-item">Registration requests</router-link>
                     <router-link to="/commentRequestList" tag="b-dropdown-item">Comment requests</router-link>
 
                     <div class="dropdown-divider"></div>

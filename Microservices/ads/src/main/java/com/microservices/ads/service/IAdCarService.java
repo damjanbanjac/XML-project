@@ -13,7 +13,7 @@ public interface IAdCarService {
 
     List<AdCarResponse> getAllAds();
 
-    AdCarResponse createAd(AdCarRequest request);
+    //   AdCarResponse createAd(AdCarRequest request);
 
     AdCarResponse updateAd(AdCarRequest request, long id);
 

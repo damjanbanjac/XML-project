@@ -80,7 +80,7 @@ import axios from "axios";
           this.errormessage = "";
           this.change = false;
           axios
-          .get("/maintenance/brands/" + this.$route.params.id + "/brand")
+          .get("ads/brands/" + this.$route.params.id + "/brand")
           .then(brand => {
             this.form = brand.data;
           })
@@ -95,7 +95,7 @@ import axios from "axios";
             return;
           }
           axios
-          .put("/maintenance/brands/" + this.$route.params.id + "/brand", this.form)
+          .put("ads/brands/" + this.$route.params.id + "/brand", this.form)
           .then(brand => {
           this.form = brand.data;
           this.change = false;
@@ -110,7 +110,7 @@ import axios from "axios";
     },
     mounted() {
       axios
-        .get("/maintenance/brands/" + this.$route.params.id + "/brand")
+        .get("ads/brands/" + this.$route.params.id + "/brand")
         .then(brand => {
           this.form = brand.data;
           this.change = false;

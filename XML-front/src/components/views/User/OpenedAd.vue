@@ -37,6 +37,13 @@
                   <input type="date" id="Form-availableFrom" class="form-control" v-model="form.availableFrom" :disabled="!change" />
                    <label for="Form-radnoDo">Available To</label>
                   <input type="date" id="Form-availableTo" class="form-control" v-model="form.availableTo" :disabled="!change" >
+                   <button type="button" class="btn btn-info mt-4 btn-block z-depth-2" @click="showPricelist" >Pricelist</button>
+                     <template v-if="pricelist">
+                    <label for="">Price for workdays</label>
+                  <input type="text" id="Form-availableFrom" class="form-control" v-model="price.priceForWorkDay" disabled />
+                   <label for="">Price for weekday</label>
+                  <input type="text" id="Form-availableFrom" class="form-control" v-model="price.priceForWeekend" disabled />
+                    </template>
                 </div>  
               </div>
               <div class="col">
@@ -62,12 +69,18 @@
                   <br/>
 
                   <template v-if="!change">
-            <button type="button" class="btn btn-danger btn-block z-depth-2" @click="changeClick" >Izmeni</button>
+            <button type="button" class="btn btn-danger btn-block z-depth-2" @click="changeClick" >Change data</button>
             </template>
             <template v-else>
-            <button type="button" class="btn btn-success btn-block z-depth-2" @click ="saveData" >Sačuvaj</button>
-            
+            <button type="button" class="btn btn-success btn-block z-depth-2" @click ="saveData" >Save</button>
             </template>
+
+             <template v-if="pricelist">
+                    <label for="form-price">Price for workdays</label>
+                  <input type="text" id="Form-price" class="form-control" v-model="price.priceForKmRestriction" disabled />
+                   <label for="">Price for weekday</label>
+                  <input type="text" id="Form-price" class="form-control" v-model="price.priceForCDW" disabled />
+                    </template>
 
             <!--      <button
           type="button"
@@ -102,8 +115,8 @@
         <!--Header-->
         <div class="header pt-3 grey lighten-2">
           <div class="row d-flex justify-content-start">
-            <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5" 
-            style="font-size: 3rem;
+            <h3 class="deep-grey-text mt-3 mb-2 pb-1 mx-5" 
+            style="font-size: 2rem;
             font-weight: 300;
             line-height: 1.2;
             margin-top: -12%;">Gallery and feedback</h3>
@@ -168,6 +181,14 @@ export default {
           kmRestriction: '',
           kmTraveled: null
       },
+      price: {
+          name : '',
+          priceForWorkend: '',
+          priceForWeekday: '',
+          priceForKmRestriction: '',
+          priceForCDW: ''
+      },
+      pricelist: false,
       comm: '',
       retrievedImage: null,
       retriveResponse: [],
@@ -195,6 +216,7 @@ export default {
 
     grade() {
       const body = {
+        userId: this.$store.state.user.id,
         grade: this.selected,
         adCarId: this.$route.params.id
       }
@@ -213,6 +235,7 @@ export default {
 
     comment() {
       const body = {
+        userId: this.$store.state.user.id,
         comment: this.comm,
         adCarId: this.$route.params.id
       }
@@ -243,6 +266,24 @@ export default {
 
     changeClick() {
       this.change = true
+    },
+
+     showPricelist() {
+      this.pricelist = true;
+
+        axios
+      .get("ads/pricelist/" + this.$route.params.id + "/ad")
+      .then(ad => {
+        
+            console.log("usao u then")
+        console.log(ad.data)
+        this.price = ad.data;
+        
+      
+      })
+      .catch(error => {
+        console.log(error);
+      });
     },
 
     getImage() {
@@ -293,12 +334,15 @@ export default {
     axios
       .get("ads/ads/" + this.$route.params.id + "/ad")
       .then(ad => {
-        console.log("usao u then")
+       // console.log("usao u then")
         this.form = ad.data;
       })
       .catch(error => {
         console.log(error);
       });
+
+
+    
   }
 };
 </script>

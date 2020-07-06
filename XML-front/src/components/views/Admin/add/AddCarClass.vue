@@ -77,7 +77,7 @@ import axios from "axios";
           return;
         }
         axios
-        .post("/maintenance/classes", this.form)
+        .post("ads/classes", this.form)
         .then(() => {
           this.form.car_class = "";
           this.success = true;

@@ -83,7 +83,7 @@ import axios from "axios";
           return;
         }
         axios
-        .post("/maintenance/brands", this.form)
+        .post("ads/brands", this.form)
         .then(() => {
           this.form.name = "";
           this.form.label = "";

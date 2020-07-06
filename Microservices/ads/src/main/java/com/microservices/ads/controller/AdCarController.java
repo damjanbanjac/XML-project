@@ -28,9 +28,10 @@ public class AdCarController {
 
 
 
-    @PostMapping
-    public AdCarResponse addAd(@RequestBody AdCarRequest request) throws Exception{
-        return adsCarService.createAd(request);
+    @PostMapping("/{id}/user")
+    public AdCarResponse addAd(@RequestBody AdCarRequest request,@PathVariable long id) throws Exception{
+        System.out.println("user id" + id);
+        return adsCarService.createAd(request,id);
     }
 
     @PostMapping("/{id}/agent")

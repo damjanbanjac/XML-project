@@ -26,9 +26,9 @@ public class AdCar {
 
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Agent AgentAd;
-
+    /*
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    private User userAd;
+    private User userAd;*/
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private CarBrand carBrand_id;
@@ -58,8 +58,8 @@ public class AdCar {
     private Date availableTo;
     private String city;
 
-    @OneToMany(mappedBy = "adCar_id", cascade = CascadeType.DETACH, orphanRemoval = true)
-    private List<Order> orders = new ArrayList<>();
+    //@OneToMany(mappedBy = "adCar_id", cascade = CascadeType.DETACH, orphanRemoval = true)
+    //private List<Order> orders = new ArrayList<>();
 
     @OneToMany(mappedBy = "adCar", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Grade> grades = new ArrayList<>();
