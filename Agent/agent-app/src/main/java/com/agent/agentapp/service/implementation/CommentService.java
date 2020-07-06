@@ -2,14 +2,8 @@ package com.agent.agentapp.service.implementation;
 
 import com.agent.agentapp.dto.request.CommentAdCarRequest;
 import com.agent.agentapp.dto.response.CommentResponse;
-import com.agent.agentapp.entity.AdCar;
-import com.agent.agentapp.entity.Comment;
-import com.agent.agentapp.entity.Order;
-import com.agent.agentapp.entity.User;
-import com.agent.agentapp.repository.AdCarRepository;
-import com.agent.agentapp.repository.ICommentRepository;
-import com.agent.agentapp.repository.IOrderRepository;
-import com.agent.agentapp.repository.IUserRepository;
+import com.agent.agentapp.entity.*;
+import com.agent.agentapp.repository.*;
 import com.agent.agentapp.service.ICommentService;
 import com.agent.agentapp.utils.CommentRequestState;
 import org.springframework.stereotype.Service;
@@ -22,14 +16,17 @@ public class CommentService implements ICommentService {
 
     private final AdCarRepository _adCarRepository;
 
+    private final AgentRepository _agentRepository;
+
     private final IUserRepository _userRepository;
 
     private final IOrderRepository _orderRepository;
 
     private final ICommentRepository _commentRepository;
 
-    public CommentService(AdCarRepository adCarRepository, IUserRepository userRepository, IOrderRepository orderRepository, ICommentRepository commentRepository) {
+    public CommentService(AdCarRepository adCarRepository, AgentRepository agentRepository, IUserRepository userRepository, IOrderRepository orderRepository, ICommentRepository commentRepository) {
         _adCarRepository = adCarRepository;
+        _agentRepository = agentRepository;
         _userRepository = userRepository;
         _orderRepository = orderRepository;
         _commentRepository = commentRepository;
@@ -38,30 +35,45 @@ public class CommentService implements ICommentService {
     @Override
     public void commentAdCar(CommentAdCarRequest request) throws Exception {
         User user = _userRepository.findOneById(request.getUserId());
+        Agent agent = _agentRepository.findOneById(request.getUserId());
         AdCar adCar = _adCarRepository.findOneById(request.getAdCarId());
 
-        List<Order> allOrders = _orderRepository.findAllByUser_IdAndUsingTimeUp(user.getId(), true);
+        if(user != null){
+            List<Order> allOrders = _orderRepository.findAll();
 
-        if(allOrders.isEmpty()) {
-            throw new Exception("You cannot comment this ad.");
-        }
-        Order order = null;
-        for (Order o: allOrders) {
-            if(o.getAdCar_id()==adCar) {
-                order = o;
-                break;
+            if(allOrders.isEmpty()) {
+                throw new Exception("You cannot comment this ad.");
             }
+            Order order = null;
+            for (Order o: allOrders) {
+                if(o.getAdCar_id() == adCar && o.getRequest().getStatus().equals("PAID") && o.getUser() == user) {
+                    order = o;
+                    break;
+                }
+            }
+            if(order == null){
+                throw new Exception("You cannot comment this ad.");
+            }
+            Comment comment = new Comment();
+            comment.setAdCar(adCar);
+            comment.setUserId(user.getId());
+            comment.setComment(request.getComment());
+            _commentRepository.save(comment);
+            adCar.getComments().add(comment);
+            _adCarRepository.save(adCar);
+        }else if(agent != null){
+//            if(adCar.getAgentAd() != agent){
+//                throw new Exception("You cannot comment this ad.");
+//            }
+            Comment comment = new Comment();
+            comment.setAdCar(adCar);
+            comment.setUserId(agent.getId());
+            comment.setComment(request.getComment());
+            _commentRepository.save(comment);
+            adCar.getComments().add(comment);
+            _adCarRepository.save(adCar);
         }
-        if(order == null){
-            throw new Exception("You cannot comment this ad.");
-        }
-        Comment comment = new Comment();
-        comment.setAdCar(adCar);
-        comment.setUserId(user.getId());
-        comment.setComment(request.getComment());
-        _commentRepository.save(comment);
-        adCar.getComments().add(comment);
-        _adCarRepository.save(adCar);
+
     }
 
     @Override
