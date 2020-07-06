@@ -65,3 +65,8 @@ Using generated security password: e0ddd64a-776c-4561-bafe-b4018bd18764
 2020-07-06 17:03:37.102+0200 [http-nio-8098-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 13 ms 
 2020-07-06 17:07:27.693+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
 2020-07-06 17:12:27.694+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 17:17:27.695+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 17:19:08.587+0200 [http-nio-8098-exec-2] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"] 
+2020-07-06 17:20:41.159+0200 [http-nio-8098-exec-5] INFO  c.m.a.s.implementation.AdCarService - SUCCESS Agent 1 successfully added a car. 
+2020-07-06 17:22:27.697+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-06 17:27:27.700+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
