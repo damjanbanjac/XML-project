@@ -463,7 +463,7 @@ import axios from "axios";
     ,
     mounted() {
     axios
-      .get("/brands")
+      .get("/search/brands")
       .then(brands => {
         this.brands = brands.data;
       })
@@ -472,7 +472,7 @@ import axios from "axios";
       });
 
         axios
-        .get("/classes")
+        .get("/search/classes")
         .then(classes => {
           this.classes = classes.data;
         })
@@ -481,7 +481,7 @@ import axios from "axios";
         });
 
       axios
-      .get("/models")
+      .get("/search/models")
       .then(models => {
         this.models = models.data;
       })
@@ -490,7 +490,7 @@ import axios from "axios";
       });
 
       axios
-      .get("/fuel-types")
+      .get("/search/fuel-types")
       .then(fuels => {
         this.fuels = fuels.data;
       })
@@ -499,7 +499,7 @@ import axios from "axios";
       });
 
        axios
-      .get("/gearshift-types")
+      .get("/search/gearshift-types")
       .then(gears => {
         this.gears = gears.data;
       })

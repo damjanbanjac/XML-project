@@ -1,5 +1,7 @@
 package com.microservices.search.controller;
 
+import com.microservices.search.client.AdsClient;
+import com.microservices.search.dto.AdCarDTO;
 import com.microservices.search.dto.SearchAdDTO;
 import com.microservices.search.model.SearchAd;
 import com.microservices.search.service.implementation.SearchAdService;
@@ -13,13 +15,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.sound.midi.SysexMessage;
 import javax.xml.bind.ValidationException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 @RestController
-@RequestMapping("/search")
 public class SearchController {
 
     @Autowired
@@ -34,6 +36,12 @@ public class SearchController {
     public ResponseEntity<Collection<SearchAdDTO>> searchAds(@RequestBody SearchAdDTO searchAd) throws ParseException {
         Map<Long,SearchAdDTO> adsDTO = new HashMap();
 
+
+        List<AdCarDTO> carss = searchAdService.getAdCars();
+
+
+        System.out.println("SEARCHRADI");
+
         if(searchAd == null) {
             searchFailedLog();
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
@@ -47,7 +55,7 @@ public class SearchController {
         return new ResponseEntity<>(adsDTO.values(), HttpStatus.OK);
     }
 
-    @GetMapping(value="/{sortBy}/{sortType}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    @GetMapping(value="/{sortBy}/{sortType}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Collection<SearchAdDTO>> sortAds(@PathVariable String sortBy, @PathVariable String sortType) {
         List<SearchAd> sortedSearchAds = null;
 //        String sortByy = new String("kmTraveled");
@@ -69,7 +77,7 @@ public class SearchController {
         return new ResponseEntity<>(adsDTO.values(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/addad")
+    @GetMapping(value = "/addad")
     public ResponseEntity<SearchAdDTO> addAd(@RequestBody SearchAdDTO searchAdDTO) throws Exception {
 
         SearchAdDTO searchaddto = new SearchAdDTO();

@@ -2,10 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0b8693c-7168-4cb6-8019-0e1ec3d908e1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ads/logs/busepAds-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../ads/logs/busepAds-1.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ads/logs/busepAds-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../ads/logs/busepAds-2.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ads/logs/busepAds.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ads/logs/busepAds.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ads/src/main/java/com/microservices/ads/AdsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ads/src/main/java/com/microservices/ads/AdsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ads/src/main/java/com/microservices/ads/controller/AdCarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ads/src/main/java/com/microservices/ads/controller/AdCarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ads/src/main/java/com/microservices/ads/service/implementation/AdCarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ads/src/main/java/com/microservices/ads/service/implementation/AdCarService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication/logs/busepAuth-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../authentication/logs/busepAuth-1.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication/logs/busepAuth-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../authentication/logs/busepAuth-2.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authentication/logs/busepAuth.log" beforeDir="false" afterPath="$PROJECT_DIR$/../authentication/logs/busepAuth.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/busepSearch-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/busepSearch-1.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/busepSearch-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/busepSearch-2.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/busepSearch.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/busepSearch.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search.iml" beforeDir="false" afterPath="$PROJECT_DIR$/search.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/microservices/search/SearchApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/microservices/search/SearchApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/microservices/search/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/microservices/search/controller/SearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/microservices/search/service/implementation/SearchAdService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/microservices/search/service/implementation/SearchAdService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../XML-front/src/components/views/User/SearchCarAds.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../XML-front/src/components/views/User/SearchCarAds.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +46,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
-        <option value="Class" />
         <option value="Interface" />
         <option value="spring-beans.schema" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -64,7 +80,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -130,6 +146,10 @@
       <workItem from="1592774732916" duration="4910000" />
       <workItem from="1593151664812" duration="197000" />
       <workItem from="1593155525339" duration="109000" />
+      <workItem from="1593899098849" duration="5802000" />
+      <workItem from="1593911110697" duration="2180000" />
+      <workItem from="1593961364844" duration="13738000" />
+      <workItem from="1594071717784" duration="2018000" />
     </task>
     <servers />
   </component>
@@ -165,59 +185,59 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1170" y="265" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592586970716" />
-    <state x="686" y="211" key="FileChooserDialogImpl" timestamp="1593151860563">
+    <state x="686" y="211" key="FileChooserDialogImpl" timestamp="1594054283735">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591010831316" />
-    <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593151860563" />
-    <state width="1876" height="315" key="GridCell.Tab.0.bottom" timestamp="1593155634273">
+    <state x="686" y="211" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1594054283735" />
+    <state width="900" height="320" key="GridCell.Tab.0.bottom" timestamp="1594073501548">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="315" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593155634273" />
-    <state width="1876" height="315" key="GridCell.Tab.0.center" timestamp="1593155634273">
+    <state width="900" height="320" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594073501548" />
+    <state width="900" height="320" key="GridCell.Tab.0.center" timestamp="1594073501548">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="315" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593155634273" />
-    <state width="1876" height="315" key="GridCell.Tab.0.left" timestamp="1593155634273">
+    <state width="900" height="320" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594073501548" />
+    <state width="900" height="320" key="GridCell.Tab.0.left" timestamp="1594073501548">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="315" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593155634273" />
-    <state width="1876" height="315" key="GridCell.Tab.0.right" timestamp="1593155634273">
+    <state width="900" height="320" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594073501548" />
+    <state width="900" height="320" key="GridCell.Tab.0.right" timestamp="1594073501548">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="315" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593155634273" />
-    <state width="1876" height="315" key="GridCell.Tab.1.bottom" timestamp="1593155634273">
+    <state width="900" height="320" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594073501548" />
+    <state width="900" height="320" key="GridCell.Tab.1.bottom" timestamp="1594073501549">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="315" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1593155634273" />
-    <state width="1876" height="315" key="GridCell.Tab.1.center" timestamp="1593155634273">
+    <state width="900" height="320" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594073501549" />
+    <state width="900" height="320" key="GridCell.Tab.1.center" timestamp="1594073501549">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="315" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1593155634273" />
-    <state width="1876" height="315" key="GridCell.Tab.1.left" timestamp="1593155634273">
+    <state width="900" height="320" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594073501549" />
+    <state width="900" height="320" key="GridCell.Tab.1.left" timestamp="1594073501548">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="315" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1593155634273" />
-    <state width="1876" height="315" key="GridCell.Tab.1.right" timestamp="1593155634273">
+    <state width="900" height="320" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594073501548" />
+    <state width="900" height="320" key="GridCell.Tab.1.right" timestamp="1594073501549">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1876" height="315" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593155634273" />
-    <state width="900" height="320" key="GridCell.Tab.2.bottom" timestamp="1592786541662">
+    <state width="900" height="320" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594073501549" />
+    <state width="900" height="320" key="GridCell.Tab.2.bottom" timestamp="1594073501549">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="900" height="320" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592786541662" />
-    <state width="900" height="320" key="GridCell.Tab.2.center" timestamp="1592786541662">
+    <state width="900" height="320" key="GridCell.Tab.2.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594073501549" />
+    <state width="900" height="320" key="GridCell.Tab.2.center" timestamp="1594073501549">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="900" height="320" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592786541662" />
-    <state width="900" height="320" key="GridCell.Tab.2.left" timestamp="1592786541662">
+    <state width="900" height="320" key="GridCell.Tab.2.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594073501549" />
+    <state width="900" height="320" key="GridCell.Tab.2.left" timestamp="1594073501549">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="900" height="320" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592786541662" />
-    <state width="900" height="320" key="GridCell.Tab.2.right" timestamp="1592786541662">
+    <state width="900" height="320" key="GridCell.Tab.2.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594073501549" />
+    <state width="900" height="320" key="GridCell.Tab.2.right" timestamp="1594073501549">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="900" height="320" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592786541662" />
+    <state width="900" height="320" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594073501549" />
     <state x="490" y="173" key="Maven.ArtifactSearchDialog" timestamp="1591369052109">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -240,43 +260,53 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/microservices/search/service/implementation/SearchAdService.java</url>
-          <line>151</line>
+          <line>165</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/microservices/search/controller/SearchController.java</url>
-          <line>51</line>
+          <line>59</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/microservices/search/controller/SearchController.java</url>
-          <line>55</line>
+          <line>63</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/microservices/search/controller/SearchController.java</url>
-          <line>65</line>
+          <line>73</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/microservices/search/controller/SearchController.java</url>
-          <line>68</line>
+          <line>76</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/microservices/search/controller/SearchController.java</url>
-          <line>34</line>
+          <line>36</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/microservices/search/controller/SearchController.java</url>
-          <line>82</line>
+          <line>90</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/microservices/search/service/implementation/SearchAdService.java</url>
-          <line>284</line>
+          <line>298</line>
           <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/microservices/search/controller/SearchController.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/microservices/search/service/implementation/SearchAdService.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

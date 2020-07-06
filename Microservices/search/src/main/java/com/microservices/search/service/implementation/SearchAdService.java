@@ -1,5 +1,7 @@
 package com.microservices.search.service.implementation;
 
+import com.microservices.search.client.AdsClient;
+import com.microservices.search.dto.AdCarDTO;
 import com.microservices.search.dto.SearchAdDTO;
 import com.microservices.search.model.*;
 import com.microservices.search.repository.*;
@@ -34,6 +36,18 @@ public class SearchAdService implements ISearchAdService {
 
     @Autowired
     private IGearShiftTypeRepository gearShiftTypeRepository;
+
+    @Autowired
+    private AdsClient adsClient;
+
+    public List<AdCarDTO> getAdCars() {
+        List<AdCarDTO> ads = adsClient.getAllAds();
+        for(AdCarDTO ad : ads) {
+            System.out.println(ad.getCity());
+        }
+        System.out.println("IDEMOOO");
+        return ads;
+    }
 
     @Override
     public List<SearchAdDTO> getAllSearchAds() {
