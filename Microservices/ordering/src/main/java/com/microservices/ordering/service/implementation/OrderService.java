@@ -16,7 +16,12 @@ import com.microservices.ordering.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -142,4 +147,27 @@ public class OrderService implements IOrderService {
         adsDTOlist.add(adCarDTO);
         return adsDTOlist;
     }
+
+    public List<OrderDTO> getAllOrderForReport() throws ParseException {
+
+        List<Order> orders = orderRepositiory.findAll();
+        List<OrderDTO> orderResponses = new ArrayList<>();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+        System.out.println(date + " valjda trenutno");
+
+        for(Order order : orders) {
+            Date date1 =new SimpleDateFormat("dd/MM/yyyy").parse(order.getAvailableTo());
+            if(  date1.before(date)  && order.isDeleted() == false) {
+                System.out.println("usao u order");
+               // System.out.println(order.getAdCar_id());
+                OrderDTO orderResponse = new OrderDTO(order);
+
+                orderResponses.add(orderResponse);
+            }
+        }
+
+        return  orderResponses;
+    }
+
 }

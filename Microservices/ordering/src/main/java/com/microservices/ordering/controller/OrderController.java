@@ -42,4 +42,8 @@ public class OrderController {
     @GetMapping("/ad")
     public List<AdCarDTO> getAd(@RequestBody AdCarDTO adCar){return iorderService.getAd(adCar);}
 
+    @GetMapping("/report")
+    public List<OrderDTO> getAllOrdersForReport() throws Exception{
+        return iorderService.getAllOrderForReport();
+    }
 }
