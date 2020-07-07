@@ -39,10 +39,13 @@ public class GradeService implements IGradeService {
     public void gradeOrder(GradeAdCarRequest request) throws Exception {
         AdCar adCar = adCarRepository.findOneById(request.getAdCarId());
         User user = userRepository.findOneById(request.getUserId());
-
+        List<Order> allOrders = orderRepository.findAllByUser_Id(user.getId());
+        if(allOrders.isEmpty()){
+            throw new Exception("You cannot grade this ad.");
+        }
         Order order = null;
-        for (Order o: adCar.getOrders()) {
-            if(o.getUser() == user && o.isUsingTimeUp()) {
+        for (Order o: allOrders) {
+            if(o.getAdCar_id() == adCar && o.getRequest().getStatus().equals("PAID") && o.getUser() == user) {
                 order = o;
                 break;
             }

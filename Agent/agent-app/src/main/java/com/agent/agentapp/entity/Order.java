@@ -34,6 +34,10 @@ public class Order {
     @JoinColumn(name = "ad_car")
     private AdCar adCar_id;
 
+    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinColumn(name = "request_id")
+    private Request request;
+
     //koji agent je izdao oglas
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Agent agentIzdao;
