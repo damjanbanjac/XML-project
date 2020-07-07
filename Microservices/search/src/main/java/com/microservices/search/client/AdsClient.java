@@ -2,6 +2,8 @@ package com.microservices.search.client;
 
 
 import com.microservices.search.dto.AdCarDTO;
+import com.microservices.search.dto.ProbaDTO;
+import com.microservices.search.model.CarBrand;
 import com.microservices.search.model.SearchAd;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,15 @@ public interface AdsClient {
 
       @GetMapping("/ads")
       List<AdCarDTO> getAllAds();
+
+//      @GetMapping("/ads")
+//      String getAllAds();
+
+//      @GetMapping("/ads")
+//      CarBrand getAllAds();
+
+//      @GetMapping("/ads")
+//      ProbaDTO getAllAds();
 
       @GetMapping("/ads/{id}/user")
       List<AdCarDTO> getAllAdsFromUser(@PathVariable long id);

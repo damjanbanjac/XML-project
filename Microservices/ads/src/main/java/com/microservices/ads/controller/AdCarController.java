@@ -1,11 +1,17 @@
 package com.microservices.ads.controller;
 
 import com.microservices.ads.dto.AdCarDTO;
+import com.microservices.ads.dto.ProbaDTO;
 import com.microservices.ads.dto.request.AdCarRequest;
 import com.microservices.ads.dto.response.AdCarResponse;
 import com.microservices.ads.dto.response.ImageResponse;
+import com.microservices.ads.model.CarBrand;
+import com.microservices.ads.model.CarModel;
 import com.microservices.ads.model.Image;
+import com.microservices.ads.repository.ICarBrandRepository;
+import com.microservices.ads.repository.ICarModelRepository;
 import com.microservices.ads.repository.ImageRepository;
+import com.microservices.ads.service.ICarModelService;
 import com.microservices.ads.service.implementation.AdCarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -66,6 +72,38 @@ public class AdCarController {
         System.out.println("GETALL");
         return adsCarService.getAllAds();
     }
+
+//    @GetMapping
+//    public String getAllAds() throws Exception{
+//        System.out.println("GETALL");
+//        return "Lepa sela lepo gore";
+//    }
+
+    @Autowired
+    ICarBrandRepository iCarBrandRepository;
+
+    @Autowired
+    ICarModelRepository iCarModelRepository;
+
+//    @GetMapping
+//    public CarBrand getAllAds() throws Exception{
+//        List<CarBrand> carBrands = iCarBrandRepository.findAll();
+//        CarBrand one = null;
+//        for(CarBrand carBrand : carBrands) {
+//            if(carBrand != null) {
+//                one = carBrand;
+//            }
+//        }
+//        return one;
+//    }
+
+//    @GetMapping
+//    public ProbaDTO getAllAds() throws Exception{
+//        CarBrand carBrand = iCarBrandRepository.findOneById(2);
+//        CarModel carModel = iCarModelRepository.findOneById((long)1);
+//        ProbaDTO proba = new ProbaDTO(carBrand,carModel);
+//        return proba;
+//    }
 
     @GetMapping("/{id}/user")
     public List<AdCarResponse> getAllAdsFromUser(@PathVariable long id) throws Exception{

@@ -2,7 +2,9 @@ package com.microservices.search.controller;
 
 import com.microservices.search.client.AdsClient;
 import com.microservices.search.dto.AdCarDTO;
+import com.microservices.search.dto.ProbaDTO;
 import com.microservices.search.dto.SearchAdDTO;
+import com.microservices.search.model.CarBrand;
 import com.microservices.search.model.SearchAd;
 import com.microservices.search.service.implementation.SearchAdService;
 import com.netflix.discovery.converters.Auto;
@@ -39,6 +41,14 @@ public class SearchController {
 
         List<AdCarDTO> carss = searchAdService.getAdCars();
 
+//        String carss = searchAdService.getAdCars();
+//        System.out.println(carss);
+
+//        CarBrand carss = searchAdService.getAdCars();
+//        System.out.println(carss.getName());
+
+//        ProbaDTO carss = searchAdService.getAdCars();
+//        System.out.println(carss.getCarBrand().getName());
 
         System.out.println("SEARCHRADI");
 

@@ -2,7 +2,9 @@ package com.microservices.search.dto;
 
 
 import com.microservices.search.model.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,6 +13,8 @@ import java.util.Date;
 
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AdCarDTO {
     private Long id;
     private CarBrand carBrand_id;

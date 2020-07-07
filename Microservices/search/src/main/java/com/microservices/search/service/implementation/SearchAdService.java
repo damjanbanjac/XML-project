@@ -2,6 +2,7 @@ package com.microservices.search.service.implementation;
 
 import com.microservices.search.client.AdsClient;
 import com.microservices.search.dto.AdCarDTO;
+import com.microservices.search.dto.ProbaDTO;
 import com.microservices.search.dto.SearchAdDTO;
 import com.microservices.search.model.*;
 import com.microservices.search.repository.*;
@@ -42,12 +43,33 @@ public class SearchAdService implements ISearchAdService {
 
     public List<AdCarDTO> getAdCars() {
         List<AdCarDTO> ads = adsClient.getAllAds();
+        AdCarDTO adCarDTO = new AdCarDTO();
         for(AdCarDTO ad : ads) {
+            adCarDTO = ad;
             System.out.println(ad.getCity());
         }
         System.out.println("IDEMOOO");
         return ads;
     }
+
+//    public String getAdCars() {
+//        String ads = adsClient.getAllAds();
+//        System.out.println(ads);
+//        return ads;
+//    }
+
+//    public CarBrand getAdCars() {
+//        CarBrand ads = adsClient.getAllAds();
+//        System.out.println(ads.getName());
+//        return ads;
+//    }
+
+//    public ProbaDTO getAdCars() {
+//        ProbaDTO ads = adsClient.getAllAds();
+//        System.out.println(ads.getCarBrand().getName());
+//        System.out.println(ads.getCarModel().getModel());
+//        return ads;
+//    }
 
     @Override
     public List<SearchAdDTO> getAllSearchAds() {

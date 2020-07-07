@@ -12,8 +12,9 @@ import java.util.Date;
 
 @SpringBootApplication
 @RestController
-@EnableEurekaClient
 @EnableFeignClients
+@EnableEurekaClient
+
 public class SearchApplication {
 
 	public static void main(String[] args) {
