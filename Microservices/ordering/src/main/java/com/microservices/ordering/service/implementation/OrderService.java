@@ -1,6 +1,8 @@
 package com.microservices.ordering.service.implementation;
 
+import com.microservices.ordering.client.AdClient;
 import com.microservices.ordering.dto.AdCarDTO;
+import com.microservices.ordering.dto.AdCarResponse;
 import com.microservices.ordering.dto.OrderDTO;
 import com.microservices.ordering.model.AdCar;
 import com.microservices.ordering.model.Agent;
@@ -33,6 +35,9 @@ public class OrderService implements IOrderService {
     @Autowired
     private AgentRepository agentRepository;
 
+    @Autowired
+    private AdClient adClient;
+
     @Override
     public OrderDTO getOrder(long id) {
         return null;
@@ -46,15 +51,16 @@ public class OrderService implements IOrderService {
     @Override
     public OrderDTO createOrder(OrderDTO request) {
         Order order = new Order();
-
-        System.out.println(request.getAdCar().getId());
+        System.out.println("Id auta koji mi treba je " + request.getAdCar());
+        System.out.println(request.getAdCar());
         order.setAvailableFrom(request.getAvailableFrom());
         order.setAvailableTo(request.getAvailableTo());
         order.setRequired(false);
-        order.setAdCar(adCarRepository.findOneById(request.getAdCar().getId()));
+        AdCarResponse adResp = adClient.getAd(request.getAdCar());
+        order.setAdCar(adResp.getId());
         order.setUserr(userRepository.findOneById(1));
-        order.setUserIzdavao(userRepository.findOneById(request.getAdCar().getUserIzdavaoAd().getId()));
-        order.setAgentIzdao(agentRepository.findOneById(request.getAdCar().getAgentIzdaoAd().getId()));
+        //order.setUserIzdavao(userRepository.findOneById(request.getAdCar().getUserIzdavaoAd().getId()));
+        //order.setAgentIzdao(agentRepository.findOneById(request.getAdCar().getAgentIzdaoAd().getId()));
 
         orderRepositiory.save(order);
 

@@ -25,8 +25,8 @@ public class Order {
     private Boolean required;
 
     //na koji oglas se odnosi zahtev
-    @OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    private AdCar adCar;
+    //@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private Long adCar;
     //na kog korisnika se odnosi zahtev
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Users userr;
