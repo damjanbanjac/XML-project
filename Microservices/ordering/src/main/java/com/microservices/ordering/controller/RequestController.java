@@ -17,14 +17,14 @@ public class RequestController {
     @Autowired
     private IRequestService irequestService;
 
-    @PostMapping("/{bundle}/request")
-    public List<OrderDTO> createRequestForUser(@PathVariable Boolean bundle,@RequestBody OrderDTO order) {
-        return irequestService.createRquestForUser(bundle, order);
+    @PostMapping("/{bundle}/request/user/{id}")
+    public List<OrderDTO> createRequestForUser(@PathVariable Boolean bundle,@PathVariable Long id,@RequestBody OrderDTO order) {
+        return irequestService.createRquestForUser(bundle,id, order);
     }
 
-    @PostMapping("/personally")
-    public RequestDTO presonallyRequest(@RequestBody OrderDTO order){
-        return irequestService.presonallyRequest(order);
+    @PostMapping("/personally/user/{id}")
+    public RequestDTO presonallyRequest(@PathVariable Long id,@RequestBody OrderDTO order){
+        return irequestService.presonallyRequest(id, order);
     }
 
     @GetMapping("/{agentId}/agent")

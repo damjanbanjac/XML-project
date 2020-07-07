@@ -49,7 +49,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public OrderDTO createOrder(OrderDTO request) {
+    public OrderDTO createOrder(OrderDTO request, Long id) {
         Order order = new Order();
         System.out.println("Id auta koji mi treba je " + request.getAdCar());
         System.out.println(request.getAdCar());
@@ -58,9 +58,14 @@ public class OrderService implements IOrderService {
         order.setRequired(false);
         AdCarResponse adResp = adClient.getAd(request.getAdCar());
         order.setAdCar(adResp.getId());
-        order.setUserr(userRepository.findOneById(1));
-        //order.setUserIzdavao(userRepository.findOneById(request.getAdCar().getUserIzdavaoAd().getId()));
-        //order.setAgentIzdao(agentRepository.findOneById(request.getAdCar().getAgentIzdaoAd().getId()));
+        order.setUserr(id);
+        order.setUserIzdavao(adResp.getUserAd());
+        System.out.println("Agentov id je " + adResp.getAgentAd());
+        System.out.println("User izdao id je " + adResp.getUserAd());
+        System.out.println("Pravi user id " + id);
+        System.out.println("Datumi validnosti od" + adResp.getAvailableFrom());
+        System.out.println("Datumi validnosti do" + adResp.getAvailableTo());
+        order.setAgentIzdao(adResp.getAgentAd());
 
         orderRepositiory.save(order);
 
@@ -79,7 +84,7 @@ public class OrderService implements IOrderService {
 
         for(Order order: orders){
             if(order.getRequired()==false) {
-                if (order.getUserr().getId().equals(id)) {
+                if (order.getUserr().equals(id)) {
                     ordersOfUser.add(new OrderDTO(order));
                 }
             }   

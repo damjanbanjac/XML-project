@@ -21,7 +21,9 @@ public class OrderDTO {
     private String availableTo;
 
     private Long adCar;
-    //private Users user;
+    private Long userIzdavao;
+    private Long agentIzdao;
+    private Long user;
     //private Users userIzdao;
     //private Agent agentIzdao;
 
@@ -31,8 +33,8 @@ public class OrderDTO {
         this.availableFrom=order.getAvailableFrom();
         this.availableTo=order.getAvailableTo();
         this.adCar=order.getAdCar();
-        //this.user=order.getUserr();
-        //this.userIzdao=order.getUserIzdavao();
-        //this.agentIzdao=order.getAgentIzdao();
+        this.user=order.getUserr();
+        this.userIzdavao=order.getUserIzdavao();
+        this.agentIzdao=order.getAgentIzdao();
     }
 }

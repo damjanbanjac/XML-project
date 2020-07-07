@@ -91,7 +91,7 @@ export default {
   },
   mounted() {
     axios
-      .get("/order/requests/"+1+"/agent")
+      .get("/order/requests/"+this.$store.state.user.id+"/agent")
       .then(zahtevi => {
         this.zahtevi = zahtevi.data;
       })

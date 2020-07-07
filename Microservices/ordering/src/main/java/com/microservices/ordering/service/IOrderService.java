@@ -15,7 +15,7 @@ public interface IOrderService {
 
     Set<OrderDTO> getAllOrders();
 
-    OrderDTO createOrder(OrderDTO request);
+    OrderDTO createOrder(OrderDTO request, Long id);
 
     List<OrderDTO> getAllOrdersForUser(Long id);
 
