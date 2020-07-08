@@ -8,7 +8,6 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,9 +19,10 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "report_id_seq")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    private AdCar adCar;
+
+
     private String text;
+    private long order;
     private Integer km;
 
 }

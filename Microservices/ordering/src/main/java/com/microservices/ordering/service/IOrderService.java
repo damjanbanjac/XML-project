@@ -5,6 +5,7 @@ import com.microservices.ordering.dto.OrderDTO;
 import com.microservices.ordering.model.AdCar;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Set;
 
@@ -15,7 +16,7 @@ public interface IOrderService {
 
     Set<OrderDTO> getAllOrders();
 
-    OrderDTO createOrder(OrderDTO request);
+    OrderDTO createOrder(OrderDTO request, Long id);
 
     List<OrderDTO> getAllOrdersForUser(Long id);
 
@@ -26,4 +27,8 @@ public interface IOrderService {
     List<AdCarDTO> getAgentsAds(Long agentId);
 
     List<AdCarDTO> getAd(AdCarDTO adCar);
+
+    List<OrderDTO> getAllOrdersByCustomer(Long id) throws ParseException;
+
+    List<OrderDTO> getAllOrderForReport() throws ParseException;
 }

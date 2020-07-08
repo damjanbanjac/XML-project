@@ -1,11 +1,13 @@
 package com.microservices.ads.service.implementation;
 
+import com.microservices.ads.client.AuthClient;
+import com.microservices.ads.client.OrderClient;
+import com.microservices.ads.dto.feignDTOs.UserDTO;
 import com.microservices.ads.dto.request.CommentAdCarRequest;
 import com.microservices.ads.dto.response.CommentResponse;
+import com.microservices.ads.dto.response.OrderDTO;
 import com.microservices.ads.model.AdCar;
 import com.microservices.ads.model.Comment;
-import com.microservices.ads.model.Order;
-import com.microservices.ads.model.User;
 import com.microservices.ads.repository.AdCarRepository;
 import com.microservices.ads.repository.ICommentRepository;
 import com.microservices.ads.repository.IOrderRepository;
@@ -28,37 +30,59 @@ public class CommentService implements ICommentService {
 
     private final ICommentRepository _commentRepository;
 
-    public CommentService(AdCarRepository adCarRepository, IUserRepository userRepository, IOrderRepository orderRepository, ICommentRepository commentRepository) {
+    private final AuthClient _authClient;
+
+    private final OrderClient _orderClient;
+
+    public CommentService(AdCarRepository adCarRepository, IUserRepository userRepository, IOrderRepository orderRepository, ICommentRepository commentRepository, AuthClient authClient, OrderClient orderClient) {
         _adCarRepository = adCarRepository;
         _userRepository = userRepository;
         _orderRepository = orderRepository;
         _commentRepository = commentRepository;
+        _authClient = authClient;
+        _orderClient = orderClient;
     }
 
 
     @Override
     public void commentAdCar(CommentAdCarRequest request) throws Exception {
-        User user = _userRepository.findOneById(request.getUserId());
+        AdCar adCar = _adCarRepository.findOneById(request.getAdCarId());
+//
+//        List<AdCar> adCars = _adCarRepository.findAllByAgentAd(request.getUserId());
+//        if(!adCars.contains(adCar)){
+//            throw new Exception("You cannot comment this ad.");
+//        }
+
+        Comment comment = new Comment();
+        comment.setAdCar(adCar);
+        comment.setUserId(request.getUserId());
+        comment.setComment(request.getComment());
+        _commentRepository.save(comment);
+        adCar.getComments().add(comment);
+        _adCarRepository.save(adCar);
+    }
+
+    @Override
+    public void commentAdCarByCustomer(CommentAdCarRequest request) throws Exception {
         AdCar adCar = _adCarRepository.findOneById(request.getAdCarId());
 
-        List<Order> allOrders = _orderRepository.findAllByUser_IdAndUsingTimeUp(user.getId(), true);
+        List<OrderDTO> orderDTOS = _orderClient.getAllOrdersByCustomer(request.getUserId());
 
-        if(allOrders.isEmpty()) {
-            throw new Exception("You cannot comment this ad.");
-        }
-        Order order = null;
-        for (Order o: allOrders) {
-            if(o.getAdCar_id()==adCar) {
-                order = o;
+        boolean flag = true;
+        for(OrderDTO o: orderDTOS){
+            if(o.getAdCar() == adCar.getId()){
+                flag = false;
                 break;
             }
         }
-        if(order == null){
+
+        if(flag){
             throw new Exception("You cannot comment this ad.");
         }
+
         Comment comment = new Comment();
         comment.setAdCar(adCar);
-        comment.setUserId(user.getId());
+        comment.setUserId(request.getUserId());
         comment.setComment(request.getComment());
         _commentRepository.save(comment);
         adCar.getComments().add(comment);
@@ -76,9 +100,14 @@ public class CommentService implements ICommentService {
         }
         List<CommentResponse> responses = new ArrayList<>();
         for(Comment c: comments){
+            UserDTO userDTO = _authClient.getUserDetails(c.getUserId());
+            System.out.println(userDTO.getEmail());
             CommentResponse response = new CommentResponse();
             response.setCommId(c.getId());
             response.setComment(c.getComment());
+            response.setEmail(userDTO.getEmail());
+            response.setName(userDTO.getName());
+            response.setSurname(userDTO.getSurname());
             responses.add(response);
         }
         return responses;

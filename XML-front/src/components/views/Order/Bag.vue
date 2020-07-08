@@ -41,8 +41,8 @@
             </div>
             <div class="col">
               <div class="md-form pb-3">
-                <label for="Form-ime">Agent issued</label>
-                <label id="Form-ime" class="form-control">{{oglas.adCar.agentIzdaoAd.id}}</label>
+                <!--label for="Form-ime">Agent issued</label>
+                <label id="Form-ime" class="form-control">{{oglas.adCar.agentIzdaoAd.id}}</label-->
 
                 <div class="md-form">
                 <label for="Form-ime">End data:</label>
@@ -84,7 +84,7 @@ export default {
     reserve(oglas){
       console.log(oglas)
       axios
-          .post("order/requests/"+this.bundle+"/request", oglas)
+          .post("order/requests/"+this.bundle+"/request/user/" + this.$store.state.user.id, oglas)
           .then(response => {
               this.oglasi= response.data
           })
@@ -95,7 +95,7 @@ export default {
   },
    mounted() {
     axios
-      .get("/order/orders/"+1+"/user")
+      .get("/order/orders/"+ this.$store.state.user.id +"/user")
       .then(oglasi => {
         this.oglasi = oglasi.data;
       })

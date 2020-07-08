@@ -66,6 +66,7 @@
 
                    <label for="Form-radnoOd">CDW</label>
                   <input type="checkbox" id="Form-cdw" class="form-control" v-model="form.cdw" :disabled="!change" />
+                  <br/>    
 
                    <button
                     type="button"
@@ -74,7 +75,7 @@
                   <br/>
 
                   <template v-if="!change">
-            <button type="button" class="btn btn-danger btn-block z-depth-2" @click="changeClick" >Change data</button>
+            <!-- <button type="button" class="btn btn-danger btn-block z-depth-2" @click="changeClick" >Change data</button> -->
             </template>
             <template v-else>
             <button type="button" class="btn btn-success btn-block z-depth-2" @click ="saveData" >Save</button>
@@ -121,14 +122,14 @@
         <!--Header-->
         <div class="header pt-3 grey lighten-2">
           <div class="row d-flex justify-content-start">
-            <h3 class="deep-grey-text mt-2 mb-4 pb-1 mx-5" 
-            style="font-size: 3rem;
+            <h3 class="deep-grey-text mt-2 mb-2 pb-1 mx-5" 
+            style="font-size: 2rem;
             font-weight: 300;
             line-height: 1.2;
             margin-top: -12%;">Prepare</h3>
           </div>
         </div>
-
+        <div class="card-body mx-4 mt-4">
         <label for="Form-ime">Start date</label>
                 <input
                       type="date"
@@ -150,6 +151,7 @@
                     class="btn btn-info btn-block z-depth-2"
                   @click="naruci()">Add to bag</button>
                 </div>
+        </div>
     </div> 
 
         <div class="card" style="width: 120%">
@@ -270,7 +272,7 @@ export default {
     naruci(){
       console.log(this.order)
       axios
-          .post("order/orders", this.order)
+          .post("order/orders/user/"+ this.$store.state.user.id, this.order)
           .then(response => {
             this.order= response.data;
             this.prepare = false;
@@ -306,7 +308,7 @@ export default {
         adCarId: this.$route.params.id
       }
       axios
-        .post("ads/comments", body)
+        .post("ads/comments/by-customer", body)
         .then(() => {
           this.comm = "";
           this.success = true;

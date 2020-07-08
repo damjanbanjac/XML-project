@@ -7,12 +7,12 @@ import lombok.Data;
 @Data
 public class ReportResponse {
 
-    private AdCar adCar;
+    private long order;
     private String text;
     private Integer km;
 
     public ReportResponse(Report report) {
-        adCar = report.getAdCar();
+        order = report.getOrder();
         text = report.getText();
         km = report.getKm();
     }

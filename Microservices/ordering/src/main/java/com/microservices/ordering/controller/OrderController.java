@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -20,9 +21,9 @@ public class OrderController {
     private IOrderService iorderService;
 
     
-    @PostMapping
-    public OrderDTO createOrder(@RequestBody OrderDTO request) {
-        return iorderService.createOrder(request);
+    @PostMapping("/user/{id}")
+    public OrderDTO createOrder(@RequestBody OrderDTO request, @PathVariable Long id) {
+        return iorderService.createOrder(request, id);
     }
 
     @GetMapping("/{id}/user")
@@ -42,4 +43,13 @@ public class OrderController {
     @GetMapping("/ad")
     public List<AdCarDTO> getAd(@RequestBody AdCarDTO adCar){return iorderService.getAd(adCar);}
 
+    @GetMapping("/report")
+    public List<OrderDTO> getAllOrdersForReport() throws Exception{
+        return iorderService.getAllOrderForReport();
+    }
+
+    @GetMapping("/{id}/customer")
+    List<OrderDTO> getAllOrdersByCustomer(@PathVariable Long id) throws ParseException {
+        return iorderService.getAllOrdersByCustomer(id);
+    }
 }

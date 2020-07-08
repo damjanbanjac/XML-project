@@ -1,4 +1,4 @@
-package com.microservices.ads.dto.response;
+package com.microservices.ads.dto.feignDTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,11 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentResponse {
-
-    private Long commId;
-
-    private String comment;
+public class UserDTO { //for comments and grades
 
     private String name;
 
