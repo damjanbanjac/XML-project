@@ -29,16 +29,16 @@ public class Order {
     //@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Long adCar;
     //na kog korisnika se odnosi zahtev
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    private Users userr;
+    //@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private Long userr;
 
     //koji korisnik je izdao oglas
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    private Users userIzdavao;
+    //@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private Long userIzdavao;
 
     //koji agent je izdao oglas
-    @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-    private Agent agentIzdao;
+    //@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    private Long agentIzdao;
 /*
     @ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private Request request;*/
