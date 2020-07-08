@@ -30,5 +30,7 @@ public interface IOrderService {
 
     List<OrderDTO> getAllOrdersByCustomer(Long id) throws ParseException;
 
-    List<OrderDTO> getAllOrderForReport() throws ParseException;
+    List<OrderDTO> getAllOrderForReport(long id) throws ParseException;
+
+    List<OrderDTO> getAllOrderForReportUser(Long id) throws ParseException;
 }

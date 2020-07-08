@@ -43,9 +43,14 @@ public class OrderController {
     @GetMapping("/ad")
     public List<AdCarDTO> getAd(@RequestBody AdCarDTO adCar){return iorderService.getAd(adCar);}
 
-    @GetMapping("/report")
-    public List<OrderDTO> getAllOrdersForReport() throws Exception{
-        return iorderService.getAllOrderForReport();
+    @GetMapping("/report/{id}")
+    public List<OrderDTO> getAllOrdersForReport(@PathVariable Long id) throws Exception{
+        return iorderService.getAllOrderForReport(id);
+    }
+
+    @GetMapping("/report/user/{id}")
+    public List<OrderDTO> getAllOrdersForReportUser(@PathVariable Long id) throws Exception{
+        return iorderService.getAllOrderForReportUser(id);
     }
 
     @GetMapping("/{id}/customer")

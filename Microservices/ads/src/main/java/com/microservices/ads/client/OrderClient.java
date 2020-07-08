@@ -11,10 +11,13 @@ import java.util.List;
 @FeignClient(name = "ordering")
 public interface OrderClient {
 
-    @GetMapping("/orders/report")
-     List<OrderDTO> getAllOrdersForReport() throws Exception;
+    @GetMapping("/orders/report/{id}")
+     List<OrderDTO> getAllOrdersForReport(@PathVariable Long id) throws Exception;
 
     @GetMapping("/orders/{id}/customer")
     List<OrderDTO> getAllOrdersByCustomer(@PathVariable Long id) throws ParseException;
+
+    @GetMapping("/orders/report/user/{id}")
+    List<OrderDTO> getAllOrdersForReportUser(@PathVariable Long id) throws Exception;
 
 }

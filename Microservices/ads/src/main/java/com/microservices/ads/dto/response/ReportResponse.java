@@ -12,7 +12,7 @@ public class ReportResponse {
     private Integer km;
 
     public ReportResponse(Report report) {
-        order = report.getOrder();
+        order = report.getOrders();
         text = report.getText();
         km = report.getKm();
     }

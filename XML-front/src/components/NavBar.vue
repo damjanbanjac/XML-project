@@ -28,6 +28,8 @@
         <router-link  to="/addCarAd" tag="b-dropdown-item">Add car ad</router-link>
         <router-link to="/createPriceList" tag="b-dropdown-item">Add pricelist</router-link>
         <div class="dropdown-divider"></div>
+         <router-link to="/makeReportUser" tag="b-dropdown-item">Issue Report</router-link>
+          <div class="dropdown-divider"></div>
         <b-dropdown-item @click="odjavaFun">Log Out</b-dropdown-item>
         
       </b-nav-item-dropdown>

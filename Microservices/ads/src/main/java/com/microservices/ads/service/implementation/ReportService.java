@@ -27,7 +27,7 @@ public class ReportService {
 
         Report report =new Report();
         //  report.setAdCar(reportRequest.getOrder().getAdCar_id());
-        report.setOrder(reportRequest.getOrder().getId());
+        report.setOrders(reportRequest.getOrder().getId());
         //Order order = orderRepository.findOneById(reportRequest.getOrder().getId());
         //  System.out.println(reportRequest.getOrder().getAdCar_id().getId());
 
