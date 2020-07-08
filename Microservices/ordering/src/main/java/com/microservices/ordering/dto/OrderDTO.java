@@ -20,10 +20,14 @@ public class OrderDTO {
     private String availableFrom;
     private String availableTo;
 
-    private Long adCar;
+
+    private long adCar;
+    private boolean deleted;
+
     private Long userIzdavao;
     private Long agentIzdao;
     private Long user;
+
     //private Users userIzdao;
     //private Agent agentIzdao;
 

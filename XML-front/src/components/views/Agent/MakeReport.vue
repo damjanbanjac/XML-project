@@ -69,7 +69,7 @@ import axios from "axios";
     data() {
       return {
         report: {
-          adCar: {},
+          order: {},
           text: '',
           km: ''
         },
@@ -85,7 +85,7 @@ import axios from "axios";
 
          this.ads.forEach(ad => {
             if (ad.id === this.selectedAd) {
-            this.report.adCar = ad;
+            this.report.order = ad;
             }
            });
        
@@ -111,7 +111,7 @@ import axios from "axios";
     },
     mounted() {
     axios
-      .get("/ads/ads/1/agent")
+      .get("/ads/reports")
       .then(ads => {
         this.ads = ads.data;
         
