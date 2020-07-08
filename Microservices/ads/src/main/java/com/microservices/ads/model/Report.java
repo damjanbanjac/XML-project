@@ -8,12 +8,10 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Report {
 
     @Id

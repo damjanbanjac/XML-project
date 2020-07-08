@@ -162,7 +162,7 @@ public class OrderService implements IOrderService {
         System.out.println(date + " valjda trenutno");
 
         for(Order order : orders) {
-            Date date1 =new SimpleDateFormat("dd/MM/yyyy").parse(order.getAvailableTo());
+            Date date1 =new SimpleDateFormat("yyyy-MM-dd").parse(order.getAvailableTo());
             if(  date1.before(date)  && order.isDeleted() == false) {
                 System.out.println("usao u order");
                // System.out.println(order.getAdCar_id());
