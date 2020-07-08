@@ -29,26 +29,17 @@ public class SearchController {
     @Autowired
     private SearchAdService searchAdService;
 
-    List<SearchAd> searchAdsResult = null;
+    List<AdCarDTO> searchAdsResult = null;
 
     private final Logger logger = LoggerFactory.getLogger(SearchController.class);
 
 
     @PostMapping(value="/ad")
-    public ResponseEntity<Collection<SearchAdDTO>> searchAds(@RequestBody SearchAdDTO searchAd) throws ParseException {
-        Map<Long,SearchAdDTO> adsDTO = new HashMap();
+    public ResponseEntity<Collection<AdCarDTO>> searchAds(@RequestBody AdCarDTO searchAd) throws ParseException {
+        Map<Long,AdCarDTO> adsDTO = new HashMap();
 
 
         List<AdCarDTO> carss = searchAdService.getAdCars();
-
-//        String carss = searchAdService.getAdCars();
-//        System.out.println(carss);
-
-//        CarBrand carss = searchAdService.getAdCars();
-//        System.out.println(carss.getName());
-
-//        ProbaDTO carss = searchAdService.getAdCars();
-//        System.out.println(carss.getCarBrand().getName());
 
         System.out.println("SEARCHRADI");
 
@@ -58,8 +49,8 @@ public class SearchController {
         }
         searchAdsResult = searchAdService.searchAds(searchAd);
 
-        for(SearchAd searchAdReturn : searchAdsResult) {
-            adsDTO.put(searchAdReturn.getId(), new SearchAdDTO(searchAdReturn));
+        for(AdCarDTO searchAdReturn : searchAdsResult) {
+            adsDTO.put(searchAdReturn.getId(), searchAdReturn);
         }
         searchSuccessfulLog();
         return new ResponseEntity<>(adsDTO.values(), HttpStatus.OK);
@@ -71,7 +62,7 @@ public class SearchController {
 //        String sortByy = new String("kmTraveled");
 //        String sortTypee = new String(("asc"));
         if(searchAdsResult != null) {
-            sortedSearchAds = searchAdService.sortAds(searchAdsResult,sortBy,sortType);
+//            sortedSearchAds = searchAdService.sortAds(searchAdsResult,sortBy,sortType);
         } else {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }

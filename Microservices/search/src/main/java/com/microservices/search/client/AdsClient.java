@@ -2,6 +2,7 @@ package com.microservices.search.client;
 
 
 import com.microservices.search.dto.AdCarDTO;
+import com.microservices.search.dto.CarBrandDTO;
 import com.microservices.search.dto.ProbaDTO;
 import com.microservices.search.model.CarBrand;
 import com.microservices.search.model.SearchAd;
@@ -22,6 +23,9 @@ public interface AdsClient {
 
       @GetMapping("/ads")
       List<AdCarDTO> getAllAds();
+
+      @GetMapping("/brands")
+      List<CarBrandDTO> getAllBrands();
 
 //      @GetMapping("/ads")
 //      String getAllAds();

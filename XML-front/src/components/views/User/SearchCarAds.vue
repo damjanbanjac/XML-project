@@ -219,7 +219,7 @@
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Car Brand</label>
-                <label id="Form-ime" class="form-control">{{ad.carBrand.name}}</label>               
+                <label id="Form-ime" class="form-control">{{ad.carBrand_id.name}}</label>               
               </div>
             </div>
             </div>
@@ -228,7 +228,7 @@
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Car Model</label>
-                <label id="Form-ime" class="form-control">{{ad.carModel.model}}</label>               
+                <label id="Form-ime" class="form-control">{{ad.carModel_id.model}}</label>               
               </div>
             </div>
             <!-- </div> -->
@@ -238,7 +238,7 @@
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Car Class</label>
-                <label id="Form-ime" class="form-control">{{ad.carClass.car_class}}</label>               
+                <label id="Form-ime" class="form-control">{{ad.carClass_id.car_class}}</label>               
               </div>
             </div>
           </div>
@@ -247,7 +247,7 @@
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Fuel type</label>
-                <label id="Form-ime" class="form-control">{{ad.fuelType.type}}</label>               
+                <label id="Form-ime" class="form-control">{{ad.fuelType_id.type}}</label>               
               </div>
             </div>
           <!-- </div> -->
@@ -256,7 +256,7 @@
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Gear shift type</label>
-                <label id="Form-ime" class="form-control">{{ad.gearShiftType.type}}</label>               
+                <label id="Form-ime" class="form-control">{{ad.gearShift_id.type}}</label>               
               </div>
             </div>
           </div>
@@ -295,11 +295,11 @@ import axios from "axios";
     data() {
       return {
         form: {
-          carClass: '',
-          carBrand: '',
-          carModel: '',
-          fuelType: '',
-          gearShiftType: '',
+          carClass_id: '',
+          carBrand_id: '',
+          carModel_id: '',
+          fuelType_id: '',
+          gearShift_id: '',
           cdw: null,
           kidsSeats: '',
           grade: '',
@@ -371,43 +371,43 @@ import axios from "axios";
           this.brands.forEach(brand => {
           if (brand.id === this.selectedBrand) {
           console.log("baki homos")
-          this.form.carBrand = brand;
+          this.form.carBrand_id = brand;
           }
-          if(this.form.carBrand === "") {
-            this.form.carBrand = this.brandNull;
+          if(this.form.carBrand_id === "") {
+            this.form.carBrand_id = this.brandNull;
           }
           });
 
           this.classes.forEach(clas => {
           if (clas.id === this.selectedClass) {
-          this.form.carClass = clas;
+          this.form.carClass_id = clas;
           }
-          if(this.form.carClass === "") {
-            this.form.carClass = this.classNull;
+          if(this.form.carClass_id === "") {
+            this.form.carClass_id = this.classNull;
           }
           });
           this.models.forEach(model => {
           if (model.id === this.selectedModel) {
-          this.form.carModel = model;
+          this.form.carModel_id = model;
           }
-          if(this.form.carModel === "") {
-            this.form.carModel = this.modelNull;
+          if(this.form.carModel_id === "") {
+            this.form.carModel_id = this.modelNull;
           }
           });
           this.fuels.forEach(fuel => {
           if (fuel.id === this.selectedFuel) {
-          this.form.fuelType = fuel;
+          this.form.fuelType_id = fuel;
           }
-          if(this.form.fuelType === "") {
-            this.form.fuelType = this.fuelTypeNull;
+          if(this.form.fuelType_id === "") {
+            this.form.fuelType_id = this.fuelTypeNull;
           }
           });
           this.gears.forEach(gear => {
           if (gear.id === this.selectedGear) {
-          this.form.gearShiftType = gear;
+          this.form.gearShift_id = gear;
           }
-          if(this.form.gearShiftType === "") {
-            this.form.gearShiftType = this.gearShiftTypeNull;
+          if(this.form.gearShift_id === "") {
+            this.form.gearShift_id = this.gearShiftTypeNull;
           }
           });
 
@@ -463,7 +463,7 @@ import axios from "axios";
     ,
     mounted() {
     axios
-      .get("/search/brands")
+      .get("/ads/brands")
       .then(brands => {
         this.brands = brands.data;
       })
@@ -472,7 +472,7 @@ import axios from "axios";
       });
 
         axios
-        .get("/search/classes")
+        .get("/ads/classes")
         .then(classes => {
           this.classes = classes.data;
         })
@@ -481,7 +481,7 @@ import axios from "axios";
         });
 
       axios
-      .get("/search/models")
+      .get("/ads/models")
       .then(models => {
         this.models = models.data;
       })
@@ -490,7 +490,7 @@ import axios from "axios";
       });
 
       axios
-      .get("/search/fuel-types")
+      .get("/ads/fuel-types")
       .then(fuels => {
         this.fuels = fuels.data;
       })
@@ -499,7 +499,7 @@ import axios from "axios";
       });
 
        axios
-      .get("/search/gearshift-types")
+      .get("/ads/gearshift-types")
       .then(gears => {
         this.gears = gears.data;
       })
