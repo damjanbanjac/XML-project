@@ -42,7 +42,7 @@
         <div class="dropdown-divider"></div>
         <router-link to="/agentAdList" tag="b-dropdown-item">My car ads</router-link>
         <router-link  to="/newAd" tag="b-dropdown-item">Add car ad</router-link>
-        <router-link  to="/addPricelist" tag="b-dropdown-item">Add Pricelist</router-link>
+        <router-link  to="/addPricelist" tag="b-dropdown-item">Add pricelist</router-link>
         <div class="dropdown-divider"></div>
         <router-link to="/makeReport" tag="b-dropdown-item">Issue Report</router-link>
 

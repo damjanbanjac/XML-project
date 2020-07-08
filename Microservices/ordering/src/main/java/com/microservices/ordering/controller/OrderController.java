@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -45,5 +46,10 @@ public class OrderController {
     @GetMapping("/report")
     public List<OrderDTO> getAllOrdersForReport() throws Exception{
         return iorderService.getAllOrderForReport();
+    }
+
+    @GetMapping("/{id}/customer")
+    List<OrderDTO> getAllOrdersByCustomer(@PathVariable Long id) throws ParseException {
+        return iorderService.getAllOrdersByCustomer(id);
     }
 }

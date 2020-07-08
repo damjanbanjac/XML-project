@@ -23,6 +23,11 @@ public class CommentController {
         commentService.commentAdCar(request);
     }
 
+    @PostMapping("/by-customer")
+    public void commentByCustomer(@RequestBody CommentAdCarRequest request) throws Exception {
+        commentService.commentAdCarByCustomer(request);
+    }
+
     @GetMapping("/{id}/ad-car")
     List<CommentResponse> getAllComments(@PathVariable Long id) {
         return commentService.getAllCommentsByAdCarId(id);

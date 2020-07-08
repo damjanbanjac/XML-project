@@ -153,6 +153,25 @@ public class OrderService implements IOrderService {
         return adsDTOlist;
     }
 
+    @Override
+    public List<OrderDTO> getAllOrdersByCustomer(Long id) throws ParseException {
+        List<Order> allOrders = orderRepositiory.findAll();
+        List<OrderDTO> orderDTOS = new ArrayList<>();
+
+        for(Order o: allOrders){
+            if(id == o.getUserr()){
+                Date date =new SimpleDateFormat("yyyy-MM-dd").parse(o.getAvailableTo());
+                Date now = new Date();
+                if(now.after(date)){
+                    OrderDTO orderDTO = new OrderDTO();
+                    orderDTO.setAdCar(o.getAdCar());
+                    orderDTOS.add(orderDTO);
+                }
+            }
+        }
+        return orderDTOS;
+    }
+
     public List<OrderDTO> getAllOrderForReport() throws ParseException {
 
         List<Order> orders = orderRepositiory.findAll();

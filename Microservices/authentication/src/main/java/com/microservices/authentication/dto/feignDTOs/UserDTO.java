@@ -1,17 +1,13 @@
-package com.microservices.ads.dto.response;
+package com.microservices.authentication.dto.feignDTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class CommentResponse {
-
-    private Long commId;
-
-    private String comment;
+@NoArgsConstructor
+public class UserDTO {
 
     private String name;
 
