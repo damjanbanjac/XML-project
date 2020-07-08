@@ -1,7 +1,11 @@
 package com.microservices.ads.dto.response;
 
 import com.microservices.ads.model.*;
+import com.microservices.ads.repository.AdCarRepository;
+import com.microservices.ads.service.implementation.GradeService;
+import com.microservices.ads.service.implementation.PricelistService;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,6 +15,10 @@ import java.util.Date;
 
 @Data
 public class AdCarResponse {
+
+    @Autowired
+    AdCarRepository adCarRepository;
+
     private Long id;
     private CarBrand carBrand_id;
     private CarClass carClass_id;
@@ -19,7 +27,7 @@ public class AdCarResponse {
     private CarModel carModel_id;
     private TypeOfFuel fuelType_id;
     private TypeOfGearshift gearShift_id;
-    private Integer grade;
+    private float grade;
     private String kmRestriction;
     private Integer kmTraveled;
     private Boolean cdw;
@@ -39,7 +47,17 @@ public class AdCarResponse {
         fuelType_id = adCar.getFuelTypeCar_id();
         gearShift_id = adCar.getGearShiftCar_id();
         carClass_id = adCar.getCarClass_id();
-        grade = adCar.getGrade();
+        float suma = 0;
+        float brojac = 0;
+        for(Grade g: adCar.getGrades()) {
+            suma += g.getGrade();
+            brojac++;
+        }
+        if(brojac == 0){
+            brojac = 1;
+        }
+        grade = suma/brojac;
+
         kmRestriction = adCar.getKmRestriction();
         kmTraveled = adCar.getKmTraveled();
         cdw = adCar.getCdw();
