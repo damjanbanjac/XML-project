@@ -9,5 +9,7 @@ public interface ICommentService {
 
     void commentAdCar(CommentAdCarRequest request) throws Exception;
 
+    void commentAdCarByCustomer(CommentAdCarRequest request) throws Exception;
+
     List<CommentResponse> getAllCommentsByAdCarId(Long id);
 }
