@@ -9,4 +9,8 @@ import java.text.SimpleDateFormat;
 public class AdCarResponse {
 
     private Long id;
+    private long userAd;
+    private long agentAd;
+    private String availableFrom;
+    private String availableTo;
 }

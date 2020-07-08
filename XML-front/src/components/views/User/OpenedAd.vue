@@ -270,7 +270,7 @@ export default {
     naruci(){
       console.log(this.order)
       axios
-          .post("order/orders", this.order)
+          .post("order/orders/user/"+ this.$store.state.user.id, this.order)
           .then(response => {
             this.order= response.data;
             this.prepare = false;

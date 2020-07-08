@@ -20,9 +20,9 @@ public class OrderController {
     private IOrderService iorderService;
 
     
-    @PostMapping
-    public OrderDTO createOrder(@RequestBody OrderDTO request) {
-        return iorderService.createOrder(request);
+    @PostMapping("/user/{id}")
+    public OrderDTO createOrder(@RequestBody OrderDTO request, @PathVariable Long id) {
+        return iorderService.createOrder(request, id);
     }
 
     @GetMapping("/{id}/user")

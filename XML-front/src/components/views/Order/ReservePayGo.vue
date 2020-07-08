@@ -28,7 +28,7 @@
             <div class="col">
               <div class="md-form pb-3">
                 <label for="Form-ime">Agent issued</label>
-                <label id="Form-ime" class="form-control">{{oglas.agentIzdaoAd.id}}</label>
+                <label id="Form-ime" class="form-control">{{oglas.agentAd}}</label>
                 <br/>
             
                 <div class="text-center mb-4">
@@ -44,14 +44,14 @@
                 <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Id</label>
-                <label id="Form-ime" class="form-control">{{order.adCar.id}}</label>
+                <label id="Form-ime" class="form-control">{{order.adCar}}</label>
                 
                 <label for="Form-ime">Agent issued</label>
                 <input
                       type="text"
                       id="Form-username"
                       class="form-control"
-                      v-model="order.adCar.agentIzdaoAd.id"
+                      v-model="order.agentIzdaoAd"
                       disabled
                     />
                 <label for="Form-ime">Start date</label>
@@ -97,8 +97,7 @@ export default {
       oglasi: [],
       prepare: false,
       order:{
-        adCar:{
-        },
+      adCar: "",
       availableFrom: "",
       availableTo: "",
       }
@@ -107,12 +106,13 @@ export default {
   methods: {
     priprema(oglas){
       this.prepare = true;
-      this.order.adCar = oglas;
+      this.order.adCar = oglas.id;
+      console.log(this.order.adCar)
     },
     go(){
       console.log(this.order)
       axios
-          .post("/order/requests/personally", this.order)
+          .post("/order/requests/personally/user/1", this.order)
           .then(response => {
             this.order= response.data;
             this.prepare = false;
@@ -124,7 +124,7 @@ export default {
   },
   mounted() {
     axios
-      .get("/order/orders/oglasi/"+1)
+      .get("/ads/ads/"+ this.$store.state.user.id +"/agent")
       .then(oglasi => {
         this.oglasi = oglasi.data;
         
