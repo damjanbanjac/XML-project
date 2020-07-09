@@ -22,7 +22,34 @@ public class FeignService implements IFeignService {
         userDTO.setEmail(user.getEmail());
         userDTO.setName(user.getName());
         userDTO.setSurname(user.getSurname());
+        userDTO.setPermissionBlocked(user.getPermissionBlocked());
 
+        return userDTO;
+    }
+
+    @Override
+    public UserDTO changeUserDetails(Long id) {
+        User user = _userRepository.findOneById(id);
+        user.setPermissionBlocked(true);
+        _userRepository.save(user);
+        UserDTO userDTO = new UserDTO();
+        userDTO.setEmail(user.getEmail());
+        userDTO.setName(user.getName());
+        userDTO.setSurname(user.getSurname());
+        userDTO.setPermissionBlocked(user.getPermissionBlocked());
+        return userDTO;
+    }
+
+    @Override
+    public UserDTO changeUserPermission(Long id) {
+        User user = _userRepository.findOneById(id);
+        user.setPermissionBlocked(false);
+        _userRepository.save(user);
+        UserDTO userDTO = new UserDTO();
+        userDTO.setEmail(user.getEmail());
+        userDTO.setName(user.getName());
+        userDTO.setSurname(user.getSurname());
+        userDTO.setPermissionBlocked(user.getPermissionBlocked());
         return userDTO;
     }
 }

@@ -2,12 +2,10 @@ package com.microservices.authentication.controller;
 
 import com.microservices.authentication.dto.feignDTOs.UserDTO;
 import com.microservices.authentication.service.IFeignService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/feign")
 public class FeignController {
 
@@ -20,5 +18,15 @@ public class FeignController {
     @GetMapping("/{id}/user")
     public UserDTO getUser(@PathVariable Long id){
         return _feignService.getUserDetails(id);
+    }
+
+    @PutMapping("/{id}/user")
+    public UserDTO changeUser(@PathVariable Long id){
+        return _feignService.changeUserDetails(id);
+    }
+
+    @PutMapping("/permission/{id}/user")
+    public UserDTO changeUserPermission(@PathVariable Long id){
+        return _feignService.changeUserPermission(id);
     }
 }

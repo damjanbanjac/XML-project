@@ -11,7 +11,7 @@ public class OrderDTO {
     private Long adCar;
     private boolean deleted;
     //private Users user;
-    //private Users userIzdao;
+    private long user;
     //private Agent agentIzdao;
 
 
