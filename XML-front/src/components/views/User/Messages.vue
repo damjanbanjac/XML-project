@@ -230,7 +230,7 @@ export default {
 
 
         axios
-          .get("messages/user/loggedUser")
+          .get("/messages/user/loggedUser")
           .then(loggedUser => {
               this.loggedUser= loggedUser.data
           })
