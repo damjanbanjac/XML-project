@@ -1,6 +1,7 @@
 package com.microservices.ads.service.implementation;
 
 
+import com.microservices.ads.client.OrderClient;
 import com.microservices.ads.dto.request.ReportRequest;
 import com.microservices.ads.dto.response.AdCarResponse;
 import com.microservices.ads.dto.response.ReportResponse;
@@ -23,6 +24,9 @@ public class ReportService {
     @Autowired
     AdCarRepository adCarRepository;
 
+    @Autowired
+    OrderClient orderClient;
+
     public ReportResponse createReport(ReportRequest reportRequest) {
 
         Report report =new Report();
@@ -42,6 +46,8 @@ public class ReportService {
         report.setText(reportRequest.getText());
 
         reportRepository.save(report);
+
+        orderClient.deleteOrder(reportRequest.getOrder().getId());
         //Order o =orderRepository.findOneById(reportRequest.getOrder().getId());
        // order.setDeleted(true);
 

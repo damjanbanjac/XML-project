@@ -33,4 +33,6 @@ public interface IOrderService {
     List<OrderDTO> getAllOrderForReport(long id) throws ParseException;
 
     List<OrderDTO> getAllOrderForReportUser(Long id) throws ParseException;
+
+    void deleteOrder(Long id);
 }

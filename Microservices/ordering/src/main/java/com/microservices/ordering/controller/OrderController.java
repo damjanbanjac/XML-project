@@ -57,4 +57,9 @@ public class OrderController {
     List<OrderDTO> getAllOrdersByCustomer(@PathVariable Long id) throws ParseException {
         return iorderService.getAllOrdersByCustomer(id);
     }
+
+    @DeleteMapping("/{id}/order")
+    public void deleteOrder(@PathVariable Long id) {
+        iorderService.deleteOrder(id);
+    }
 }
