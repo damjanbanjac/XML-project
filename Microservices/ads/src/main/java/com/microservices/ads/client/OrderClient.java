@@ -2,6 +2,7 @@ package com.microservices.ads.client;
 
 import com.microservices.ads.dto.response.OrderDTO;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -19,5 +20,8 @@ public interface OrderClient {
 
     @GetMapping("/orders/report/user/{id}")
     List<OrderDTO> getAllOrdersForReportUser(@PathVariable Long id) throws Exception;
+
+    @DeleteMapping("orders/{id}/order")
+    void deleteOrder(@PathVariable Long id);
 
 }

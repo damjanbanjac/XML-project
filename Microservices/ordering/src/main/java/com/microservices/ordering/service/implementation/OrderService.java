@@ -216,4 +216,11 @@ public class OrderService implements IOrderService {
         return  orderResponses;
     }
 
+    @Override
+    public void deleteOrder(Long id) {
+        Order order = orderRepositiory.findOneById(id);
+        order.setDeleted(true);
+        orderRepositiory.save(order);
+    }
+
 }
