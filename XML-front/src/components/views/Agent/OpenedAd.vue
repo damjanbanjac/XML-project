@@ -91,9 +91,9 @@
                   @click="seeComments()">See comments
             </button>
              <template v-if="pricelist">
-                    <label for="form-radnoOd">Price for workdays</label>
+                    <label for="form-radnoOd">Price for km restriction</label>
                   <input type="text" id="Form-availableFrom" class="form-control" v-model="price.priceForKmRestriction" disabled />
-                   <label for="">Price for weekday</label>
+                   <label for="">Price for cdw</label>
                   <input type="text" id="Form-availableFrom" class="form-control" v-model="price.priceForCDW" disabled />
                     </template>
             <!--      <button

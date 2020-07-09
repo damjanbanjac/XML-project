@@ -74,7 +74,7 @@
               
 
                 <b-form-group>
-                    <b-button type="submit" variant="info" @click="onSubmit()">Create pricelist</b-button>
+                    <b-button  variant="info" @click="onSubmit()">Create pricelist</b-button>
                 </b-form-group>
 
             </b-form>

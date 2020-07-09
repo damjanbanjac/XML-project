@@ -1,11 +1,13 @@
 package com.microservices.ads.service.implementation;
 
 
+import com.microservices.ads.client.AuthClient;
 import com.microservices.ads.client.OrderClient;
 import com.microservices.ads.dto.request.ReportRequest;
 import com.microservices.ads.dto.response.AdCarResponse;
 import com.microservices.ads.dto.response.ReportResponse;
 import com.microservices.ads.model.AdCar;
+import com.microservices.ads.model.Order;
 import com.microservices.ads.model.Report;
 import com.microservices.ads.repository.AdCarRepository;
 import com.microservices.ads.repository.ReportRepository;
@@ -26,6 +28,9 @@ public class ReportService {
 
     @Autowired
     OrderClient orderClient;
+
+    @Autowired
+    AuthClient authClient;
 
     public ReportResponse createReport(ReportRequest reportRequest) {
 
@@ -52,7 +57,29 @@ public class ReportService {
        // order.setDeleted(true);
 
         ReportResponse reportResponse = new ReportResponse(report);
+        addedPaid(reportRequest);
         return  reportResponse;
+
+    }
+
+    public Integer addedPaid(ReportRequest reportRequest) {
+
+        long id = reportRequest.getOrder().getUser();
+        Integer price = 0;
+        Integer km = reportRequest.getKm();
+
+        AdCar adCar = adCarRepository.findOneById(reportRequest.getOrder().getAdCar());
+        if(adCar.getKmRestriction() == "UNLIMITED") {
+            return 0;
+        }
+        Integer kmAd = Integer.parseInt(adCar.getKmRestriction());
+        if(km > kmAd) {
+            price = km - kmAd;
+            authClient.changeUserDetails(id);
+
+        }
+
+       return price;
 
     }
 }

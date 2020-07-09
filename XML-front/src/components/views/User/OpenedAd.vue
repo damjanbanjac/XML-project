@@ -67,13 +67,20 @@
                    <label for="Form-radnoOd">CDW</label>
                   <input type="checkbox" id="Form-cdw" class="form-control" v-model="form.cdw" :disabled="!change" />
                   <br/>    
-
+                  <template v-if="cena">
+                   <button
+                    type="button"
+                    class="btn btn-danger btn-block z-depth-2"
+                  @click="plati()">Pay Last Order</button>
+                  <br/>
+                  </template>
+                  <template v-else>
                    <button
                     type="button"
                     class="btn btn-info btn-block z-depth-2"
                   @click="priprema()">Prepare</button>
                   <br/>
-
+                  </template>
                   <template v-if="!change">
             <!-- <button type="button" class="btn btn-danger btn-block z-depth-2" @click="changeClick" >Change data</button> -->
             </template>
@@ -82,9 +89,9 @@
             </template>
 
              <template v-if="pricelist">
-                    <label for="form-price">Price for workdays</label>
+                    <label for="form-price">Price for km restriction</label>
                   <input type="text" id="Form-price" class="form-control" v-model="price.priceForKmRestriction" disabled />
-                   <label for="">Price for weekday</label>
+                   <label for="">Price for cdw</label>
                   <input type="text" id="Form-price" class="form-control" v-model="price.priceForCDW" disabled />
                     </template>
 
@@ -248,6 +255,14 @@ export default {
       successmessages: "",
       change: false,
       selected: "",
+      cena: false,
+      responseAuth: {
+         name: '',
+         surname:'',
+         email: '',
+        permissionBlocked: false
+
+      },
       options: [
         { value: null, text: 'Select grade' },
         { value: '1', text: '1' },
@@ -262,6 +277,19 @@ export default {
   },
    
   methods: {
+
+     plati(){
+      this.cena = false;
+      axios
+          .put("auth/feign/permission/"+ this.$store.state.user.id + "/user")
+          .then(response => {
+           this.response = response;
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      
+    },
 
     priprema(){
       this.prepare = true;
@@ -404,6 +432,26 @@ export default {
       .then(ad => {
        // console.log("usao u then")
         this.form = ad.data;
+       
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+       axios
+      .get("auth/feign/" + this.$store.state.user.id + "/user")
+      .then(resp => {
+        
+         this.responseAuth = resp.data;
+        console.log(this.responseAuth.permissionBlocked)
+        
+        if(this.responseAuth.permissionBlocked) {
+             this.cena =true;
+             console.log("usao u cenu")
+        }
+       // console.log("usao u then")
+      
+       
       })
       .catch(error => {
         console.log(error);
