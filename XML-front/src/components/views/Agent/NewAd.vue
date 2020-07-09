@@ -211,6 +211,9 @@ import axios from "axios";
         },
         newCar() {
 
+
+         
+
             this.brands.forEach(brand => {
             if (brand.id === this.selectedBrand) {
             this.form.carBrand_id = brand;
@@ -242,6 +245,26 @@ import axios from "axios";
             this.form.pricelist = p.id;
             }
            });
+
+     
+             if (
+        this.form.carClass_id == "" ||
+        this.form.carBrand_id == "" ||
+        this.form.carModel_id == "" ||
+        this.form.city == "" ||
+        this.form.availableFrom == "" ||
+        this.form.availableTo == "" ||
+        this.form.pricelist == undefined ||
+        this.form.kmRestriction == "" ||
+        this.form.kmTraveled == "" ||
+        this.form.gearShift_id == "" ||
+        this.form.fuelType_id == "" ||
+        this.form.kidsSeats == ""
+      ) {
+        this.errormessage = "Please fill all fields";
+        this.error = true;
+        return;
+      }
 
         axios
         .post("/ads/ads/" + this.$store.state.user.id + "/agent" , this.form)

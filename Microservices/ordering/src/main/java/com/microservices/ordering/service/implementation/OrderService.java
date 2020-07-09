@@ -1,6 +1,8 @@
 package com.microservices.ordering.service.implementation;
 
+import com.microservices.ordering.client.AdClient;
 import com.microservices.ordering.dto.AdCarDTO;
+import com.microservices.ordering.dto.AdCarResponse;
 import com.microservices.ordering.dto.OrderDTO;
 import com.microservices.ordering.model.AdCar;
 import com.microservices.ordering.model.Agent;
@@ -14,7 +16,12 @@ import com.microservices.ordering.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.xml.crypto.Data;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -33,6 +40,9 @@ public class OrderService implements IOrderService {
     @Autowired
     private AgentRepository agentRepository;
 
+    @Autowired
+    private AdClient adClient;
+
     @Override
     public OrderDTO getOrder(long id) {
         return null;
@@ -44,17 +54,23 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public OrderDTO createOrder(OrderDTO request) {
+    public OrderDTO createOrder(OrderDTO request, Long id) {
         Order order = new Order();
-
-        System.out.println(request.getAdCar().getId());
+        System.out.println("Id auta koji mi treba je " + request.getAdCar());
+        System.out.println(request.getAdCar());
         order.setAvailableFrom(request.getAvailableFrom());
         order.setAvailableTo(request.getAvailableTo());
         order.setRequired(false);
-        order.setAdCar(adCarRepository.findOneById(request.getAdCar().getId()));
-        order.setUserr(userRepository.findOneById(1));
-        order.setUserIzdavao(userRepository.findOneById(request.getAdCar().getUserIzdavaoAd().getId()));
-        order.setAgentIzdao(agentRepository.findOneById(request.getAdCar().getAgentIzdaoAd().getId()));
+        AdCarResponse adResp = adClient.getAd(request.getAdCar());
+        order.setAdCar(adResp.getId());
+        order.setUserr(id);
+        order.setUserIzdavao(adResp.getUserAd());
+        System.out.println("Agentov id je " + adResp.getAgentAd());
+        System.out.println("User izdao id je " + adResp.getUserAd());
+        System.out.println("Pravi user id " + id);
+        System.out.println("Datumi validnosti od" + adResp.getAvailableFrom());
+        System.out.println("Datumi validnosti do" + adResp.getAvailableTo());
+        order.setAgentIzdao(adResp.getAgentAd());
 
         orderRepositiory.save(order);
 
@@ -73,7 +89,7 @@ public class OrderService implements IOrderService {
 
         for(Order order: orders){
             if(order.getRequired()==false) {
-                if (order.getUserr().getId().equals(id)) {
+                if (order.getUserr().equals(id)) {
                     ordersOfUser.add(new OrderDTO(order));
                 }
             }   
@@ -136,4 +152,75 @@ public class OrderService implements IOrderService {
         adsDTOlist.add(adCarDTO);
         return adsDTOlist;
     }
+
+    @Override
+    public List<OrderDTO> getAllOrdersByCustomer(Long id) throws ParseException {
+        List<Order> allOrders = orderRepositiory.findAll();
+        List<OrderDTO> orderDTOS = new ArrayList<>();
+
+        for(Order o: allOrders){
+            if(id == o.getUserr()){
+                Date date =new SimpleDateFormat("yyyy-MM-dd").parse(o.getAvailableTo());
+                Date now = new Date();
+                if(now.after(date)){
+                    OrderDTO orderDTO = new OrderDTO();
+                    orderDTO.setAdCar(o.getAdCar());
+                    orderDTOS.add(orderDTO);
+                }
+            }
+        }
+        return orderDTOS;
+    }
+
+    public List<OrderDTO> getAllOrderForReport(long id) throws ParseException {
+
+        List<Order> orders = orderRepositiory.findAll();
+        List<OrderDTO> orderResponses = new ArrayList<>();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+        System.out.println(date + " valjda trenutno");
+
+        for(Order order : orders) {
+            Date date1 =new SimpleDateFormat("yyyy-MM-dd").parse(order.getAvailableTo());
+            if(  date1.before(date)  && order.isDeleted() == false && order.getAgentIzdao() == id ) {
+                System.out.println("usao u order");
+               // System.out.println(order.getAdCar_id());
+                OrderDTO orderResponse = new OrderDTO(order);
+
+                orderResponses.add(orderResponse);
+            }
+        }
+
+        return  orderResponses;
+    }
+
+    @Override
+    public List<OrderDTO> getAllOrderForReportUser(Long id) throws ParseException {
+        List<Order> orders = orderRepositiory.findAll();
+        List<OrderDTO> orderResponses = new ArrayList<>();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+        System.out.println(date + " valjda trenutno");
+
+        for(Order order : orders) {
+            Date date1 =new SimpleDateFormat("yyyy-MM-dd").parse(order.getAvailableTo());
+            if(  date1.before(date)  && order.isDeleted() == false && order.getUserIzdavao() == id ) {
+                System.out.println("usao u order");
+                // System.out.println(order.getAdCar_id());
+                OrderDTO orderResponse = new OrderDTO(order);
+
+                orderResponses.add(orderResponse);
+            }
+        }
+
+        return  orderResponses;
+    }
+
+    @Override
+    public void deleteOrder(Long id) {
+        Order order = orderRepositiory.findOneById(id);
+        order.setDeleted(true);
+        orderRepositiory.save(order);
+    }
+
 }

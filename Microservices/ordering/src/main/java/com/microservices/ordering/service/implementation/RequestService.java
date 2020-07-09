@@ -1,6 +1,8 @@
 package com.microservices.ordering.service.implementation;
 
 
+import com.microservices.ordering.client.AdClient;
+import com.microservices.ordering.dto.AdCarResponse;
 import com.microservices.ordering.dto.OrderDTO;
 import com.microservices.ordering.dto.RequestDTO;
 import com.microservices.ordering.model.Order;
@@ -38,6 +40,9 @@ public class RequestService implements IRequestService {
     @Autowired
     private AgentRepository agentRepository;
 
+    @Autowired
+    private AdClient adClient;
+
     @Override
     public RequestDTO getRequest(long id) {
         return null;
@@ -64,17 +69,17 @@ public class RequestService implements IRequestService {
     }
 
     @Override
-    public List<OrderDTO> createRquestForUser(Boolean bundle, OrderDTO order) {
+    public List<OrderDTO> createRquestForUser(Boolean bundle,Long id, OrderDTO order) {
 
-
-        Long agentIzdaoId = order.getAdCar().getAgentIzdaoAd().getId();
-        Long userIzdaoId = order.getAdCar().getUserIzdavaoAd().getId();
+        AdCarResponse adResp = adClient.getAd(order.getAdCar());
+        Long agentIzdaoId = adResp.getAgentAd();
+        Long userIzdaoId = adResp.getUserAd();
         int brojIstihAgenata = 1;
         List<Order> orders= orderRepositiory.findAll();
         List<Order> bundleOrders= new ArrayList<>();
-        System.out.println("AGENT ID JEEEEEE"+agentIzdaoId);
+        //System.out.println("AGENT ID JEEEEEE"+agentIzdaoId);
         System.out.println("Bunleeeee"+bundle);
-        Users userProvera = userRepository.findOneById(1);
+        Long userProvera = id;
 
         Calendar calendar= Calendar.getInstance();
 
@@ -82,12 +87,12 @@ public class RequestService implements IRequestService {
 
         if(bundle==true){
             for(Order ord:orders){
-                if(ord.getUserr().getId().equals(userProvera.getId())){
-                    System.out.println("User ID jeeeee"+ord.getUserr().getId());
-                    if(order.getAdCar().getAgentIzdaoAd().getId()!=null) {
-                        System.out.println("Opet agenttttt"+order.getAdCar().getAgentIzdaoAd().getId());
-                        if (ord.getAgentIzdao().getId().equals(agentIzdaoId)) {
-                            System.out.println("Agent provera jednakosti"+ord.getAgentIzdao().getId());
+                if(ord.getUserr().equals(userProvera)){
+                    System.out.println("User ID jeeeee"+ord.getUserr());
+                    if(agentIzdaoId!=null) {
+                        System.out.println("Opet agenttttt"+agentIzdaoId);
+                        if (ord.getAgentIzdao().equals(agentIzdaoId)) {
+                            System.out.println("Agent provera jednakosti"+ord.getAgentIzdao());
                             Order orderTrue = orderRepositiory.findOneById(ord.getId());
                             orderTrue.setRequired(true);
                             orderRepositiory.save(orderTrue);
@@ -95,7 +100,7 @@ public class RequestService implements IRequestService {
                         }
                     }
                     else{
-                        if(ord.getUserIzdavao().getId().equals(userIzdaoId)){
+                        if(ord.getUserIzdavao().equals(userIzdaoId)){
                             Order orderTrue = orderRepositiory.findOneById(ord.getId());
                             bundleOrders.add(orderTrue);
                         }
@@ -117,7 +122,7 @@ public class RequestService implements IRequestService {
 
             for(Order o: orderss){
                 if(o.getRequired()==false) {
-                    if (o.getUserr().getId().equals(1)) {
+                    if (o.getUserr().equals(id)) {
                         ordersOfUser.add(new OrderDTO(o));
                     }
                 }
@@ -145,7 +150,7 @@ public class RequestService implements IRequestService {
 
             for(Order o: orderss){
                 if(o.getRequired()==false) {
-                    if (o.getUserr().getId().equals(1)) {
+                    if (o.getUserr().equals(id)) {
                         ordersOfUser.add(new OrderDTO(o));
                     }
                 }
@@ -176,17 +181,20 @@ public class RequestService implements IRequestService {
 
 
     @Override
-    public RequestDTO presonallyRequest(OrderDTO order) {
+    public RequestDTO presonallyRequest(Long id,OrderDTO order) {
 
         Order order1 = new Order();
 
+        AdCarResponse adResp = adClient.getAd(order.getAdCar());
+        Long agentIzdaoId = adResp.getAgentAd();
+        Long userIzdaoId = adResp.getUserAd();
         order1.setAvailableFrom(order.getAvailableFrom());
         order1.setAvailableTo(order.getAvailableTo());
-        order1.setAdCar(adCarRepository.findOneById(order.getAdCar().getId()));
+        order1.setAdCar(order.getAdCar());
         order1.setRequired(true);
-        order1.setUserr(userRepository.findOneById(2));
-        order1.setUserIzdavao(userRepository.findOneById(order.getAdCar().getUserIzdavaoAd().getId()));
-        order1.setAgentIzdao(agentRepository.findOneById(order.getAdCar().getAgentIzdaoAd().getId()));
+        order1.setUserr(id);
+        order1.setUserIzdavao(userIzdaoId);
+        order1.setAgentIzdao(agentIzdaoId);
 
 
         orderRepositiory.save(order1);
@@ -203,7 +211,7 @@ public class RequestService implements IRequestService {
 
         for (Request req:requests){
             for(int i=0; i<req.getOrderList().size(); i++) {
-                if (req.getOrderList().get(i).getAdCar().getId().equals(order.getAdCar().getId())){
+                if (req.getOrderList().get(i).getAdCar().equals(order.getAdCar())){
                     Request request1= requestRepository.getOne(req.getId());
                     request1.setStatus("CACELED");
                     requestRepository.save(request1);
@@ -225,8 +233,8 @@ public class RequestService implements IRequestService {
         for(Request req:requests){
            if(req.getStatus().equals("PENDING")) {
                for (int i = 0; i < req.getOrderList().size(); i++) {
-                   System.out.println("Agent u petljiiiii" + req.getOrderList().get(i).getAgentIzdao().getId());
-                   if (req.getOrderList().get(i).getAgentIzdao().getId().equals(agentId)) {
+                   System.out.println("Agent u petljiiiii" + req.getOrderList().get(i).getAgentIzdao());
+                   if (req.getOrderList().get(i).getAgentIzdao().equals(agentId)) {
                        requestsDTO.add(new RequestDTO(req));
                    }
                    break;
@@ -291,7 +299,7 @@ public class RequestService implements IRequestService {
 
         for(Request req: requets) {
             for (int i = 0; i < req.getOrderList().size(); i++) {
-                if (req.getOrderList().get(i).getUserr().getId().equals(idUser)) {
+                if (req.getOrderList().get(i).getUserr().equals(idUser)) {
                     if (req.getStatus().equals("RESERVED")) {
                         requestsDTO.add(new RequestDTO(req));
                     }
@@ -314,7 +322,7 @@ public class RequestService implements IRequestService {
         for(Request req:requests){
             for (int i = 0; i < req.getOrderList().size(); i++) {
                 for (int j=0; j < request.getOrderList().size(); j++){
-                    if (!req.getId().equals(request.getId()) && req.getOrderList().get(i).getAdCar().getId().equals(request.getOrderList().get(j).getAdCar().getId())) {
+                    if (!req.getId().equals(request.getId()) && req.getOrderList().get(i).getAdCar().equals(request.getOrderList().get(j).getAdCar())) {
                         Request request1= requestRepository.getOne(req.getId());
                         request1.setStatus("CANCELED");
                         requestRepository.save(request1);

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2020-07-09 01:46:40.567+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null 
 2020-07-09 01:46:40.567+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false 
 2020-07-09 01:46:40.567+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false 
@@ -89,3 +90,85 @@ Using generated security password: 3a511d28-f0a7-4b31-b543-3ef5a5ceb6f5
 2020-07-09 02:05:33.215+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
 2020-07-09 02:10:33.227+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
 2020-07-09 02:15:33.238+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+=======
+2020-07-09 17:19:21.33+0200 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode. 
+2020-07-09 17:19:21.317+0200 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 244ms. Found 15 JPA repository interfaces. 
+2020-07-09 17:19:21.905+0200 [main] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=b97d0c2f-87ba-375d-a4e4-4de7717a1d11 
+2020-07-09 17:19:22.60+0200 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.microservices.ads.client.AuthClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020-07-09 17:19:22.69+0200 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'com.microservices.ads.client.OrderClient' of type [org.springframework.cloud.openfeign.FeignClientFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020-07-09 17:19:22.97+0200 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'webServiceConfig' of type [com.microservices.ads.config.WebServiceConfig$$EnhancerBySpringCGLIB$$9760fada] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020-07-09 17:19:22.98+0200 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$99c6b8fc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020-07-09 17:19:22.188+0200 [main] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0] 
+2020-07-09 17:19:22.678+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8098 (http) 
+2020-07-09 17:19:22.694+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8098"] 
+2020-07-09 17:19:22.694+0200 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2020-07-09 17:19:22.695+0200 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35] 
+2020-07-09 17:19:23.48+0200 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext 
+2020-07-09 17:19:23.49+0200 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3433 ms 
+2020-07-09 17:19:23.622+0200 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor' 
+2020-07-09 17:19:23.726+0200 [task-1] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020-07-09 17:19:23.898+0200 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2020-07-09 17:19:23.999+0200 [task-1] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.15.Final 
+2020-07-09 17:19:24.280+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
+2020-07-09 17:19:24.441+0200 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final} 
+2020-07-09 17:19:24.666+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2020-07-09 17:19:25.755+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2020-07-09 17:19:25.801+0200 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2020-07-09 17:19:35.814+0200 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020-07-09 17:19:35.833+0200 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020-07-09 17:19:36.726+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
+2020-07-09 17:19:36.841+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
+2020-07-09 17:19:36.842+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
+2020-07-09 17:19:37.588+0200 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+2020-07-09 17:19:37.589+0200 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+2020-07-09 17:19:37.599+0200 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+2020-07-09 17:19:37.600+0200 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+2020-07-09 17:19:37.897+0200 [main] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: ca9a2f8c-c6d9-4d30-885d-1adbc0335431
+ 
+2020-07-09 17:19:38.21+0200 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@20440c6c, org.springframework.security.web.context.SecurityContextPersistenceFilter@6b27b2d0, org.springframework.security.web.header.HeaderWriterFilter@411fa0ce, org.springframework.security.web.authentication.logout.LogoutFilter@2c1d57bc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@118041c7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@706f6d26, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1e3f86d5, org.springframework.security.web.session.SessionManagementFilter@b5aa65b, org.springframework.security.web.access.ExceptionTranslationFilter@26be9a6] 
+2020-07-09 17:19:39.998+0200 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project. 
+2020-07-09 17:19:40.230+0200 [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING 
+2020-07-09 17:19:40.294+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1 
+2020-07-09 17:19:40.388+0200 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson 
+2020-07-09 17:19:40.388+0200 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson 
+2020-07-09 17:19:40.592+0200 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml 
+2020-07-09 17:19:40.593+0200 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml 
+2020-07-09 17:19:40.856+0200 [main] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-09 17:19:41.437+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false 
+2020-07-09 17:19:41.438+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null 
+2020-07-09 17:19:41.438+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false 
+2020-07-09 17:19:41.438+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false 
+2020-07-09 17:19:41.438+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true 
+2020-07-09 17:19:41.438+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true 
+2020-07-09 17:19:41.438+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server 
+2020-07-09 17:19:41.711+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200 
+2020-07-09 17:19:41.715+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30 
+2020-07-09 17:19:41.718+0200 [main] INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4 
+2020-07-09 17:19:41.726+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1594307981721 with initial instances count: 5 
+2020-07-09 17:19:41.729+0200 [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application ADS with eureka with status UP 
+2020-07-09 17:19:41.729+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1594307981729, current=UP, previous=STARTING] 
+2020-07-09 17:19:41.732+0200 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_ADS/host.docker.internal:ads:8098: registering service... 
+2020-07-09 17:19:41.732+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8098"] 
+2020-07-09 17:19:41.780+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8098 (http) with context path '' 
+2020-07-09 17:19:41.781+0200 [main] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8098 
+2020-07-09 17:19:41.801+0200 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_ADS/host.docker.internal:ads:8098 - registration status: 204 
+2020-07-09 17:19:42.670+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
+2020-07-09 17:19:42.671+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
+2020-07-09 17:19:42.684+0200 [main] INFO  com.microservices.ads.AdsApplication - Started AdsApplication in 27.13 seconds (JVM running for 30.099) 
+2020-07-09 17:20:25.649+0200 [http-nio-8098-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2020-07-09 17:20:25.649+0200 [http-nio-8098-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2020-07-09 17:20:25.667+0200 [http-nio-8098-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 17 ms 
+2020-07-09 17:20:42.474+0200 [http-nio-8098-exec-10] INFO  c.m.a.s.implementation.AdCarService - SUCCESS Agent 200 successfully added a car. 
+2020-07-09 17:21:29.230+0200 [http-nio-8098-exec-10] INFO  c.n.config.ChainedDynamicProperty - Flipping property: ordering.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647 
+2020-07-09 17:21:29.294+0200 [http-nio-8098-exec-10] INFO  c.n.u.c.ShutdownEnabledTimer - Shutdown hook installed for: NFLoadBalancer-PingTimer-ordering 
+2020-07-09 17:21:29.296+0200 [http-nio-8098-exec-10] INFO  c.n.loadbalancer.BaseLoadBalancer - Client: ordering instantiated a LoadBalancer: DynamicServerListLoadBalancer:{NFLoadBalancer:name=ordering,current list of Servers=[],Load balancer stats=Zone stats: {},Server stats: []}ServerList:null 
+2020-07-09 17:21:29.306+0200 [http-nio-8098-exec-10] INFO  c.n.l.DynamicServerListLoadBalancer - Using serverListUpdater PollingServerListUpdater 
+2020-07-09 17:21:29.348+0200 [http-nio-8098-exec-10] INFO  c.n.config.ChainedDynamicProperty - Flipping property: ordering.ribbon.ActiveConnectionsLimit to use NEXT property: niws.loadbalancer.availabilityFilteringRule.activeConnectionsLimit = 2147483647 
+2020-07-09 17:21:29.350+0200 [http-nio-8098-exec-10] INFO  c.n.l.DynamicServerListLoadBalancer - DynamicServerListLoadBalancer for client ordering initialized: DynamicServerListLoadBalancer:{NFLoadBalancer:name=ordering,current list of Servers=[192.168.0.31:8089],Load balancer stats=Zone stats: {defaultzone=[Zone:defaultzone;	Instance count:1;	Active connections count: 0;	Circuit breaker tripped count: 0;	Active connections per server: 0.0;]
+},Server stats: [[Server:192.168.0.31:8089;	Zone:defaultZone;	Total Requests:0;	Successive connection failure:0;	Total blackout seconds:0;	Last connection made:Thu Jan 01 01:00:00 CET 1970;	First connection made: Thu Jan 01 01:00:00 CET 1970;	Active Connections:0;	total failure count in last (1000) msecs:0;	average resp time:0.0;	90 percentile resp time:0.0;	95 percentile resp time:0.0;	min resp time:0.0;	max resp time:0.0;	stddev resp time:0.0]
+]}ServerList:org.springframework.cloud.netflix.ribbon.eureka.DomainExtractingServerList@29cc73ca 
+2020-07-09 17:21:29.371+0200 [http-nio-8098-exec-10] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
+2020-07-09 17:21:29.371+0200 [http-nio-8098-exec-10] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
+>>>>>>> origin/master

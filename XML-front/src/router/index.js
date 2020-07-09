@@ -49,6 +49,7 @@ import Bag from '../components/views/Order/Bag.vue'
 import AgentRequests from '../components/views/Order/AgentRequests.vue'
 import UserRequests from '../components/views/Order/UserRequests.vue'
 import ReservePayGo from '../components/views/Order/ReservePayGo.vue'
+import MakeReportUser from '../components/views/User/MakeReportUser.vue'
 
 Vue.use(VueRouter);
 
@@ -381,6 +382,14 @@ const routes = [
     path: '/reservePayGo',
     name: 'reserve-pay-go',
     component: ReservePayGo,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/makeReportUser',
+    name: 'make-report-user',
+    component: MakeReportUser,
     meta: {
       requiresAuth: true
     }

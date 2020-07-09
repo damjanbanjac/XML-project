@@ -60,8 +60,10 @@ export default {
     return {
       comments: [],
       fields: [
+        {key: 'email',
+        label: 'Email'},
         {key: 'comment',
-        label: 'Comment'},
+        label: 'Comment'}
       ],
       comm: '',
       error: '',

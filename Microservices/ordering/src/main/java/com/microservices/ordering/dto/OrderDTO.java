@@ -20,8 +20,14 @@ public class OrderDTO {
     private String availableFrom;
     private String availableTo;
 
-    private AdCar adCar;
-    //private Users user;
+
+    private long adCar;
+    private boolean deleted;
+
+    private Long userIzdavao;
+    private Long agentIzdao;
+    private Long user;
+
     //private Users userIzdao;
     //private Agent agentIzdao;
 
@@ -31,8 +37,8 @@ public class OrderDTO {
         this.availableFrom=order.getAvailableFrom();
         this.availableTo=order.getAvailableTo();
         this.adCar=order.getAdCar();
-        //this.user=order.getUserr();
-        //this.userIzdao=order.getUserIzdavao();
-        //this.agentIzdao=order.getAgentIzdao();
+        this.user=order.getUserr();
+        this.userIzdavao=order.getUserIzdavao();
+        this.agentIzdao=order.getAgentIzdao();
     }
 }

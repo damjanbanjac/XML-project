@@ -14,4 +14,6 @@ public interface IOrderRepository extends JpaRepository<Order, Long> {
     List<Order> findAllByDeleted(boolean deleted);
 
     List<Order> findAllByUser_IdAndUsingTimeUp(long id, boolean usingTimeUp);
+
+    List<Order> findAllByUser_Id(long id);
 }

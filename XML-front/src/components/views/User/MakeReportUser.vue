@@ -111,7 +111,7 @@ import axios from "axios";
     },
     mounted() {
     axios
-      .get("/ads/reports/" + this.$store.state.user.id)
+      .get("/ads/reports/user/" + this.$store.state.user.id)
       .then(ads => {
         this.ads = ads.data;
         
