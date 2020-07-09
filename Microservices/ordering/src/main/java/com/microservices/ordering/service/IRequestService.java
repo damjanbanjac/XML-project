@@ -3,6 +3,7 @@ package com.microservices.ordering.service;
 import com.microservices.ordering.dto.OrderDTO;
 import com.microservices.ordering.dto.RequestDTO;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Set;
 
@@ -22,15 +23,17 @@ public interface IRequestService {
 
     List<OrderDTO> createRquestForUser(Boolean bundle,Long id, OrderDTO order);
 
-    RequestDTO presonallyRequest(Long id, OrderDTO order);
+    RequestDTO presonallyRequest(Long id, OrderDTO order) throws ParseException;
 
     List<RequestDTO> agentRequests(Long agentId);
+
+    List<RequestDTO> userRequestsAgent(Long userId);
 
     RequestDTO acceptRequest(Long idRequest);
 
     List<RequestDTO> userRequests(Long idUser);
 
-    RequestDTO paidRequest(Long idRequest);
+    RequestDTO paidRequest(Long idRequest) throws ParseException;
 
     RequestDTO declineRequest(Long idRequest);
 }
