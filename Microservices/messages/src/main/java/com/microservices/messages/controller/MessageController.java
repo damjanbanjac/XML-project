@@ -15,7 +15,8 @@ import java.text.ParseException;
 import java.util.List;
 
 @RestController
-//@RequestMapping(value = "/message")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping(value = "/message")
 public class MessageController {
 
     @Autowired
@@ -27,7 +28,7 @@ public class MessageController {
 //        return new ResponseEntity<>(response, HttpStatus.OK);
 //    }
 
-    @PostMapping(value = "/message/message")
+    @PostMapping(value = "/message")
     public ResponseEntity<MessageDTO> createMessage(@RequestBody MessageDTO messageDTO) throws ParseException {
 
         MessageDTO messagedto = new MessageDTO();
@@ -35,13 +36,13 @@ public class MessageController {
         return new ResponseEntity<>(messagedto, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/message/chats", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/chats", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ChatDTO>> getAllChats() throws Exception {
         List<ChatDTO> response = messageService.getAllChats();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/message/chat", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/chat", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ChatDTO> getChat(@RequestBody String id) throws Exception {
         ChatDTO chatDTO = messageService.getChat(id);
         return new ResponseEntity<>(chatDTO, HttpStatus.OK);
@@ -52,7 +53,7 @@ public class MessageController {
 //        List<Long> returnList = messageService.getPendingRequestUsers(idOwner,idRenter);
 //        return new ResponseEntity<>(returnList, HttpStatus.OK);
 //    }
-        @GetMapping(value = "/message/show", produces = MediaType.APPLICATION_JSON_VALUE)
+        @GetMapping(value = "/show", produces = MediaType.APPLICATION_JSON_VALUE)
         public ResponseEntity<List<Long>> getPendingRequestsShow() throws ParseException {
         List<Long> returnList = messageService.getPendingRequestUsers();
         return new ResponseEntity<>(returnList, HttpStatus.OK);

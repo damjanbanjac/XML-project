@@ -69,13 +69,13 @@ public class MessageService implements IMessageService {
         return messagedto;
     }
 
-    @Autowired
-    MessagesClient messagesClient;
+//    @Autowired
+//    MessagesClient messagesClient;
 
     @Override
     public List<ChatDTO> getAllChats() {
-        List<RequestDTO> requests = messagesClient.getUserRequests(Long.valueOf(1));
-        List<OrderDTO> orders = messagesClient.getAllOrdersForUser(Long.valueOf(1));
+//        List<RequestDTO> requests = messagesClient.getUserRequests(Long.valueOf(1));
+//        List<OrderDTO> orders = messagesClient.getAllOrdersForUser(Long.valueOf(1));
         List<Chat> chatList = chatRepository.findAll();
         return chatList.stream().map(patient -> mapToResponse(patient)).collect(Collectors.toList());
     }
