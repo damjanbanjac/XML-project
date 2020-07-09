@@ -54,7 +54,7 @@ data() {
 <style>
 
  body {
-    background-image: url('https://scontent.fbeg2-1.fna.fbcdn.net/v/t1.15752-9/s2048x2048/100515875_881490369020792_4518760818975703040_n.jpg?_nc_cat=107&_nc_sid=b96e70&_nc_eui2=AeGnhsfbpMDeEEeIz0Yx4K5e_341XRcPUa7_fjVdFw9RrsyTVLUM5NwB3uTLNdD-vs8&_nc_ohc=JqfGBin3MQEAX_eG0NR&_nc_ht=scontent.fbeg2-1.fna&_nc_tp=7&oh=f0f305a21997a2033deb614dad0df1fe&oe=5EF2CF03');
+    background-image: url('https://scontent.fbeg2-1.fna.fbcdn.net/v/t1.15752-9/s2048x2048/107593978_325262128876200_527235236672401728_n.jpg?_nc_cat=104&_nc_sid=b96e70&_nc_eui2=AeHxJrXxJQNLcortDLRD-8kaluMZN0z9w6CW4xk3TP3DoNvbTIXXcWJrFJsXftR7fsY&_nc_ohc=49sZEDIbDE0AX9bXNj7&_nc_ht=scontent.fbeg2-1.fna&_nc_tp=7&oh=38c4b9e5a11a24d8f9fbb990683b32bf&oe=5F2DDFB3');
     background-repeat: no-repeat;
 
     /* background-color: #ECE0BD; */

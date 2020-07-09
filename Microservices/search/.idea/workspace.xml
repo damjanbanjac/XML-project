@@ -2,25 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0b8693c-7168-4cb6-8019-0e1ec3d908e1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ads/logs/busepAds-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../ads/logs/busepAds-1.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ads/logs/busepAds-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../ads/logs/busepAds-2.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ads/logs/busepAds.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ads/logs/busepAds.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../authentication/logs/busepAuth-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../authentication/logs/busepAuth-1.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../authentication/logs/busepAuth-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../authentication/logs/busepAuth-2.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../authentication/logs/busepAuth.log" beforeDir="false" afterPath="$PROJECT_DIR$/../authentication/logs/busepAuth.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../messages/src/main/java/com/microservices/messages/client/MessagesClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../messages/src/main/java/com/microservices/messages/client/MessagesClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../messages/src/main/java/com/microservices/messages/config/WebSecurity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../messages/src/main/java/com/microservices/messages/config/WebSecurity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../messages/src/main/java/com/microservices/messages/controller/AgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../messages/src/main/java/com/microservices/messages/controller/AgentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../messages/src/main/java/com/microservices/messages/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../messages/src/main/java/com/microservices/messages/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../messages/src/main/java/com/microservices/messages/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../messages/src/main/java/com/microservices/messages/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../messages/src/main/java/com/microservices/messages/service/implementation/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../messages/src/main/java/com/microservices/messages/service/implementation/MessageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ordering/src/main/java/com/microservices/ordering/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ordering/src/main/java/com/microservices/ordering/dto/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/busepSearch-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/busepSearch-1.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/busepSearch-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/busepSearch-2.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/busepSearch.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/busepSearch.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../XML-front/src/components/views/User/Messages.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../XML-front/src/components/views/User/Messages.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../XML-front/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../XML-front/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search.iml" beforeDir="false" afterPath="$PROJECT_DIR$/search.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../XML-front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../XML-front/src/App.vue" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,11 +82,39 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.SearchApplication">
+    <configuration name="SearchApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.microservices.search.SearchApplication" />
+      <module name="search" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.microservices.search.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SearchApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="search" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.microservices.search.SearchApplication" />
@@ -93,6 +122,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SearchApplication" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -161,6 +195,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="177" key="#Assign_Data_Sources" timestamp="1591384806926">
