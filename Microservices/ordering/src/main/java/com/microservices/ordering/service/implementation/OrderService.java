@@ -153,7 +153,26 @@ public class OrderService implements IOrderService {
         return adsDTOlist;
     }
 
-    public List<OrderDTO> getAllOrderForReport() throws ParseException {
+    @Override
+    public List<OrderDTO> getAllOrdersByCustomer(Long id) throws ParseException {
+        List<Order> allOrders = orderRepositiory.findAll();
+        List<OrderDTO> orderDTOS = new ArrayList<>();
+
+        for(Order o: allOrders){
+            if(id == o.getUserr()){
+                Date date =new SimpleDateFormat("yyyy-MM-dd").parse(o.getAvailableTo());
+                Date now = new Date();
+                if(now.after(date)){
+                    OrderDTO orderDTO = new OrderDTO();
+                    orderDTO.setAdCar(o.getAdCar());
+                    orderDTOS.add(orderDTO);
+                }
+            }
+        }
+        return orderDTOS;
+    }
+
+    public List<OrderDTO> getAllOrderForReport(long id) throws ParseException {
 
         List<Order> orders = orderRepositiory.findAll();
         List<OrderDTO> orderResponses = new ArrayList<>();
@@ -163,7 +182,7 @@ public class OrderService implements IOrderService {
 
         for(Order order : orders) {
             Date date1 =new SimpleDateFormat("yyyy-MM-dd").parse(order.getAvailableTo());
-            if(  date1.before(date)  && order.isDeleted() == false) {
+            if(  date1.before(date)  && order.isDeleted() == false && order.getAgentIzdao() == id ) {
                 System.out.println("usao u order");
                // System.out.println(order.getAdCar_id());
                 OrderDTO orderResponse = new OrderDTO(order);
@@ -173,6 +192,35 @@ public class OrderService implements IOrderService {
         }
 
         return  orderResponses;
+    }
+
+    @Override
+    public List<OrderDTO> getAllOrderForReportUser(Long id) throws ParseException {
+        List<Order> orders = orderRepositiory.findAll();
+        List<OrderDTO> orderResponses = new ArrayList<>();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date();
+        System.out.println(date + " valjda trenutno");
+
+        for(Order order : orders) {
+            Date date1 =new SimpleDateFormat("yyyy-MM-dd").parse(order.getAvailableTo());
+            if(  date1.before(date)  && order.isDeleted() == false && order.getUserIzdavao() == id ) {
+                System.out.println("usao u order");
+                // System.out.println(order.getAdCar_id());
+                OrderDTO orderResponse = new OrderDTO(order);
+
+                orderResponses.add(orderResponse);
+            }
+        }
+
+        return  orderResponses;
+    }
+
+    @Override
+    public void deleteOrder(Long id) {
+        Order order = orderRepositiory.findOneById(id);
+        order.setDeleted(true);
+        orderRepositiory.save(order);
     }
 
 }

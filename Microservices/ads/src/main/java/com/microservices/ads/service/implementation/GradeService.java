@@ -1,12 +1,12 @@
 package com.microservices.ads.service.implementation;
 
+import com.microservices.ads.client.OrderClient;
 import com.microservices.ads.dto.request.GradeAdCarRequest;
 import com.microservices.ads.dto.response.AvgGradeResponse;
 import com.microservices.ads.dto.response.GradeResponse;
+import com.microservices.ads.dto.response.OrderDTO;
 import com.microservices.ads.model.AdCar;
 import com.microservices.ads.model.Grade;
-import com.microservices.ads.model.Order;
-import com.microservices.ads.model.User;
 import com.microservices.ads.repository.AdCarRepository;
 import com.microservices.ads.repository.IGradeRepository;
 import com.microservices.ads.repository.IOrderRepository;
@@ -22,15 +22,15 @@ public class GradeService implements IGradeService {
 
     private final IGradeRepository gradeRepository;
 
-    private final IOrderRepository orderRepository;
+    private final OrderClient _orderClient;
 
     private final AdCarRepository adCarRepository;
 
     private final IUserRepository userRepository;
 
-    public GradeService(IGradeRepository gradeRepository, IOrderRepository orderRepository, AdCarRepository adCarRepository, IUserRepository userRepository) {
+    public GradeService(IGradeRepository gradeRepository, OrderClient orderClient, AdCarRepository adCarRepository, IUserRepository userRepository) {
         this.gradeRepository = gradeRepository;
-        this.orderRepository = orderRepository;
+        _orderClient = orderClient;
         this.adCarRepository = adCarRepository;
         this.userRepository = userRepository;
     }
@@ -38,22 +38,23 @@ public class GradeService implements IGradeService {
     @Override
     public void gradeOrder(GradeAdCarRequest request) throws Exception {
         AdCar adCar = adCarRepository.findOneById(request.getAdCarId());
-        User user = userRepository.findOneById(request.getUserId());
 
-        Order order = null;
-        for (Order o: adCar.getOrders()) {
-            if(o.getUser() == user && o.isUsingTimeUp()) {
-                order = o;
+        List<OrderDTO> orderDTOS = _orderClient.getAllOrdersByCustomer(request.getUserId());
+
+        boolean flag = true;
+        for(OrderDTO o: orderDTOS){
+            if(o.getAdCar() == adCar.getId()){
+                flag = false;
                 break;
             }
         }
 
-        if(order == null){
-            throw new Exception("You cannot grade this ad.");
+        if(flag){
+            throw new Exception("You cannot comment this ad.");
         }
 
         for (Grade g: adCar.getGrades()) {
-            if(g.getUserId() == user.getId()) {
+            if(g.getUserId() == request.getUserId()) {
                 throw new Exception("You have already graded this ad.");
             }
         }
@@ -62,7 +63,7 @@ public class GradeService implements IGradeService {
         grade.setAdCar(adCar);
         grade.setDeleted(false);
         grade.setGrade(request.getGrade());
-        grade.setUserId(user.getId());
+        grade.setUserId(request.getUserId());
         gradeRepository.save(grade);
         adCar.getGrades().add(grade);
         adCarRepository.save(adCar);

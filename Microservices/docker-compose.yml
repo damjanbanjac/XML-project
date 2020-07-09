@@ -34,31 +34,31 @@ services:
 #      - eurekaservice
 
 
-#  orderservice:
-#    build: ./ordering
-#    ports:
-#      - "8089:8089"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#      - MYSQL_HOST=users-database
-#    tty: true
-#    depends_on:
-#      - users-database
-#      - eurekaservice
+  orderservice:
+    build: ./ordering
+    ports:
+      - "8089:8089"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+      - MYSQL_HOST=users-database
+    tty: true
+    depends_on:
+      - users-database
+      - eurekaservice
 
 
-#  searchsevice:
-#   build: ./search
-#   ports:
-#      - "8091:8091"
-#    environment:
-#      - REGISTRY_HOST=eurekaservice
-#      - MYSQL_HOST=users-database
-#    tty: true
-#    depends_on:
-  #    - users-database
-#      - eurekaservice
-#
+  searchsevice:
+    build: ./search
+    ports:
+      - "8091:8091"
+    environment:
+      - REGISTRY_HOST=eurekaservice
+      - MYSQL_HOST=users-database
+    tty: true
+    depends_on:
+      - users-database
+      - eurekaservice
+
 #  messageservice:
 #    build: ./messages
 #    ports:
@@ -105,13 +105,10 @@ services:
       - adsservice
       - authservice
 #      - maintenanceservice
-#      - orderservice
+      - orderservice
 #      - messageservice
-#      - adsservice
-#      - authservice
-#      - orderservice
 #      - paymentservice
-#      - searchsevice
+      - searchsevice
 
   users-database:
     image: mariadb:10.2

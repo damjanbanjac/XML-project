@@ -12,4 +12,10 @@ public class CommentResponse {
     private Long commId;
 
     private String comment;
+
+    private String name;
+
+    private String surname;
+
+    private String email;
 }

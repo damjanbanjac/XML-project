@@ -11,19 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@RequestMapping(value = "/agent")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping(value = "/agent")
 public class AgentController {
 
     @Autowired
     private AgentService agentService;
 
-    @GetMapping(value = "/agent/agents", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/agents", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AgentDTO>> getAllAgents() throws Exception {
         List<AgentDTO> response = agentService.getAllAgents();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/agent/agent")
+    @PostMapping(value = "/agent")
     public ResponseEntity<AgentDTO> addAd(@RequestBody AgentDTO agentDTO) throws Exception {
 
         AgentDTO agentdto = new AgentDTO();

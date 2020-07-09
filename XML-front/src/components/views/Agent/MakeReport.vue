@@ -90,7 +90,7 @@ import axios from "axios";
            });
        
         axios
-        .post("ads/reports/", this.report)
+        .post("ads/reports" , this.report)
         .then(response => {
             this.report = response;
           this.report.km = "";
@@ -111,7 +111,7 @@ import axios from "axios";
     },
     mounted() {
     axios
-      .get("/ads/reports")
+      .get("/ads/reports/" + this.$store.state.user.id)
       .then(ads => {
         this.ads = ads.data;
         

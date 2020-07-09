@@ -28,5 +28,11 @@ public interface IOrderService {
 
     List<AdCarDTO> getAd(AdCarDTO adCar);
 
-    List<OrderDTO> getAllOrderForReport() throws ParseException;
+    List<OrderDTO> getAllOrdersByCustomer(Long id) throws ParseException;
+
+    List<OrderDTO> getAllOrderForReport(long id) throws ParseException;
+
+    List<OrderDTO> getAllOrderForReportUser(Long id) throws ParseException;
+
+    void deleteOrder(Long id);
 }

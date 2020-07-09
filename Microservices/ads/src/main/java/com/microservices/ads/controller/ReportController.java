@@ -28,9 +28,15 @@ public class ReportController {
         return  reportService.createReport(reportRequest);
     }
 
-    @GetMapping
-    List<OrderDTO> getAllOrdersForReport() throws Exception {
-      return   orderClient.getAllOrdersForReport();
+    @GetMapping("/{id}")
+    List<OrderDTO> getAllOrdersForReport(@PathVariable long id) throws Exception {
+      return   orderClient.getAllOrdersForReport(id);
+
+    }
+
+    @GetMapping("/user/{id}")
+    List<OrderDTO> getAllOrdersForReportUser(@PathVariable long id) throws Exception {
+        return   orderClient.getAllOrdersForReportUser(id);
 
     }
 }

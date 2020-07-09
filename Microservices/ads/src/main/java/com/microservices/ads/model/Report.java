@@ -22,7 +22,7 @@ public class Report {
 
 
     private String text;
-    private long order;
+    private long orders;
     private Integer km;
 
 }
