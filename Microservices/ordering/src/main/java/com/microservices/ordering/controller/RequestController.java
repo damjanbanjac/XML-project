@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,7 @@ public class RequestController {
     }
 
     @PostMapping("/personally/user/{id}")
-    public RequestDTO presonallyRequest(@PathVariable Long id,@RequestBody OrderDTO order){
+    public RequestDTO presonallyRequest(@PathVariable Long id,@RequestBody OrderDTO order) throws ParseException {
         return irequestService.presonallyRequest(id, order);
     }
 
@@ -31,7 +32,12 @@ public class RequestController {
     public List<RequestDTO> agentRequests(@PathVariable Long agentId){
         return irequestService.agentRequests(agentId);
     }
-
+    
+    @GetMapping("/user/{userId}")
+    public List<RequestDTO> userRequestsAgent(@PathVariable Long userId){
+        return irequestService.userRequestsAgent(userId);
+    }
+    
     @PostMapping("/{idRequest}/accept")
     public RequestDTO acceptRequest(@PathVariable Long idRequest){
         return irequestService.acceptRequest(idRequest);
@@ -48,7 +54,7 @@ public class RequestController {
     }
 
     @PostMapping("/{idRequest}/paid")
-    public RequestDTO paidRequest(@PathVariable Long idRequest){
+    public RequestDTO paidRequest(@PathVariable Long idRequest) throws ParseException {
         return irequestService.paidRequest(idRequest);
     }
 
