@@ -77,7 +77,7 @@ export default {
   },
    mounted() {
     axios
-      .get("/order/requests/"+1+"/user")
+      .get("/order/requests/"+ this.$store.state.user.id+"/user")
       .then(zahtevi => {
         this.zahtevi = zahtevi.data;
         console.log(this.zahtevi);

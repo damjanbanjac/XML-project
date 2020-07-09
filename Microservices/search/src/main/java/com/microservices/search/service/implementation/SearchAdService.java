@@ -1,5 +1,8 @@
 package com.microservices.search.service.implementation;
 
+import com.microservices.search.client.AdsClient;
+import com.microservices.search.dto.AdCarDTO;
+import com.microservices.search.dto.ProbaDTO;
 import com.microservices.search.dto.SearchAdDTO;
 import com.microservices.search.model.*;
 import com.microservices.search.repository.*;
@@ -34,6 +37,39 @@ public class SearchAdService implements ISearchAdService {
 
     @Autowired
     private IGearShiftTypeRepository gearShiftTypeRepository;
+
+    @Autowired
+    private AdsClient adsClient;
+
+    public List<AdCarDTO> getAdCars() {
+        List<AdCarDTO> ads = adsClient.getAllAds();
+        AdCarDTO adCarDTO = new AdCarDTO();
+        for(AdCarDTO ad : ads) {
+            adCarDTO = ad;
+            System.out.println(ad.getCity());
+        }
+        System.out.println("IDEMOOO");
+        return ads;
+    }
+
+//    public String getAdCars() {
+//        String ads = adsClient.getAllAds();
+//        System.out.println(ads);
+//        return ads;
+//    }
+
+//    public CarBrand getAdCars() {
+//        CarBrand ads = adsClient.getAllAds();
+//        System.out.println(ads.getName());
+//        return ads;
+//    }
+
+//    public ProbaDTO getAdCars() {
+//        ProbaDTO ads = adsClient.getAllAds();
+//        System.out.println(ads.getCarBrand().getName());
+//        System.out.println(ads.getCarModel().getModel());
+//        return ads;
+//    }
 
     @Override
     public List<SearchAdDTO> getAllSearchAds() {
@@ -216,7 +252,7 @@ public class SearchAdService implements ISearchAdService {
     }
 
 
-    public List<SearchAd> searchAds(SearchAdDTO searchAd) throws ParseException {
+    public List<AdCarDTO> searchAds(AdCarDTO searchAd) throws ParseException {
 
 //        List<SearchAd> ads = findAll();
 
@@ -266,7 +302,9 @@ public class SearchAdService implements ISearchAdService {
         //this.addAd(dto1);
         //this.addAd(dto2);
 
-        List<SearchAd> ads = findAll();
+//        List<SearchAd> ads = findAll();
+
+        List<AdCarDTO> ads = getAdCars();
 
         Date now = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm dd-MM-yyyy");
@@ -280,58 +318,58 @@ public class SearchAdService implements ISearchAdService {
 //            return null; //TODO sta ovde staviti da nije null
 //        }
 
-        List<SearchAd> searchAdsReturn = new ArrayList<>();
+        List<AdCarDTO> searchAdsReturn = new ArrayList<>();
 
-        for(SearchAd ad : ads) {
+        for(AdCarDTO ad : ads) {
             //Date adDateTakeOver = sdf.parse(ad.getAvailableFrom());
             //Date adDateReturn = sdf.parse(ad.getAvailableTo());
             if(searchAd.getAvailableFrom().compareTo(ad.getAvailableFrom()) >= 0) {
                 if(searchAd.getAvailableTo().compareTo(ad.getAvailableTo()) <= 0) {
                     if(searchAd.getCity().equals(ad.getCity())) {
-                        if(!searchAd.getCarBrand().getName().equals("Null")) {
-                            if (!(ad.getCarBrand().getId().equals(searchAd.getCarBrand().getId()))) {
+                        if(!searchAd.getCarBrand_id().getName().equals("Null")) {
+                            if (!(ad.getCarBrand_id().getId() == searchAd.getCarBrand_id().getId())) {
                                 continue;
                             }
                         }
-                        if(!searchAd.getCarModel().getModel().equals("Null")) {
-                            if (!(ad.getCarModel().getId().equals(searchAd.getCarModel().getId()))) {
+                        if(!searchAd.getCarModel_id().getModel().equals("Null")) {
+                            if (!(ad.getCarModel_id().getId() == searchAd.getCarModel_id().getId())) {
                                 continue;
                             }
                         }
-                        if(!searchAd.getFuelType().getType().equals("Null")) {
-                            if (!(ad.getFuelType().getId().equals(searchAd.getFuelType().getId()))) {
+                        if(!searchAd.getFuelType_id().getType().equals("Null")) {
+                            if (!(ad.getFuelType_id().getId() == searchAd.getFuelType_id().getId())) {
                                 continue;
                             }
                         }
-                        if(!searchAd.getGearShiftType().getType().equals("Null")) {
-                            if (!(ad.getGearShiftType().getId().equals(searchAd.getGearShiftType().getId()))) {
+                        if(!searchAd.getGearShift_id().getType().equals("Null")) {
+                            if (!(ad.getGearShift_id().getId() == searchAd.getGearShift_id().getId())) {
                                 continue;
                             }
                         }
-                        if(!searchAd.getCarClass().getCar_class().equals("Null")) {
-                            if (!(ad.getCarClass().getId().equals(searchAd.getCarClass().getId()))) {
+                        if(!searchAd.getCarClass_id().getCar_class().equals("Null")) {
+                            if (!(ad.getCarClass_id().getId() == searchAd.getCarClass_id().getId())) {
                                 continue;
                             }
                         }
-                        if(searchAd.getPrice() != null) {
-                            if(searchAd.getPrice() < ad.getPrice()) {
-                                continue;
-                            }
-                        }
+//                        if(searchAd.getPrice() != null) {
+//                            if(searchAd.getPrice() < ad.getPrice()) {
+//                                continue;
+//                            }
+//                        }
                         //TODO cenu uradi, treba od - do cena al ovo je privremeno sad snalazenje, mada ovde cenovnik igra ulogu ne znam sta sa time
-                        if(searchAd.getGrade() != null) {
-                            if(searchAd.getGrade() > ad.getGrade()) {
-                                continue;
-                            }
-                        }
+//                        if(searchAd.getGrade() != null) {
+//                            if(searchAd.getGrade() > ad.getGrade()) {
+//                                continue;
+//                            }
+//                        }
                         if(searchAd.getKmTraveled() != null) {
                             if(searchAd.getKmTraveled() < ad.getKmTraveled()) {
                                 continue;
                             }
                         }
                         //TODO ovo je malo zbunjujuce, on unosi kilometrazu koju planira da predje i sta sa time, ne kaze jel mu smeta restrikcija ili ispisujem koliko treba da plati dodatno ili sta
-                        if(searchAd.getKmRestriction() != null) {
-                            if(searchAd.getKmRestriction() < ad.getKmRestriction()) {
+                        if(searchAd.getKmRestriction() != "") {
+                            if(Long.parseLong(searchAd.getKmRestriction()) > Long.parseLong(ad.getKmRestriction())) {
                                 continue;
                             }
                         }

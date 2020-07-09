@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
@@ -181,7 +183,7 @@ public class RequestService implements IRequestService {
 
 
     @Override
-    public RequestDTO presonallyRequest(Long id,OrderDTO order) {
+    public RequestDTO presonallyRequest(Long id,OrderDTO order) throws ParseException {
 
         Order order1 = new Order();
 
@@ -199,6 +201,9 @@ public class RequestService implements IRequestService {
 
         orderRepositiory.save(order1);
 
+        Date dateFrom =new SimpleDateFormat("yyyy-MM-dd").parse(order.getAvailableFrom());
+        Date dateTo =new SimpleDateFormat("yyyy-MM-dd").parse(order.getAvailableTo());
+
         List<Request> requests= requestRepository.findAll();
         List<Order> bundleOrders= new ArrayList<>();
 
@@ -211,7 +216,19 @@ public class RequestService implements IRequestService {
 
         for (Request req:requests){
             for(int i=0; i<req.getOrderList().size(); i++) {
-                if (req.getOrderList().get(i).getAdCar().equals(order.getAdCar())){
+                Date date1 =new SimpleDateFormat("yyyy-MM-dd").parse(req.getOrderList().get(i).getAvailableFrom());
+                Date date2 =new SimpleDateFormat("yyyy-MM-dd").parse(req.getOrderList().get(i).getAvailableTo());
+                System.out.println("Ispis tacnosti datuma" + (date1.compareTo(dateFrom)*dateFrom.compareTo(date2)>0));
+                System.out.println("Ispis tacnosti datuma 2" + (date1.compareTo(dateTo)*dateTo.compareTo(date2)>0));
+
+                System.out.println("Ispis tacnosti drugi deo " + (dateFrom.compareTo(date1)*date1.compareTo(dateTo)>0));
+                System.out.println("Ispis tacnosti drugi deo drugog dela " + (dateFrom.compareTo(date2)*date2.compareTo(dateTo)>0));
+                if (req.getOrderList().get(i).getAdCar().equals(order.getAdCar()) && (date1.compareTo(dateFrom)*dateFrom.compareTo(date2)>0 || date1.compareTo(dateTo)*dateTo.compareTo(date2)>0)){
+                    Request request1= requestRepository.getOne(req.getId());
+                    request1.setStatus("CACELED");
+                    requestRepository.save(request1);
+                }
+                else if(req.getOrderList().get(i).getAdCar().equals(order.getAdCar()) && (dateFrom.compareTo(date1)*date1.compareTo(dateTo)>0 || dateFrom.compareTo(date2)*date2.compareTo(dateTo)>0)){
                     Request request1= requestRepository.getOne(req.getId());
                     request1.setStatus("CACELED");
                     requestRepository.save(request1);
@@ -240,6 +257,24 @@ public class RequestService implements IRequestService {
                    break;
                }
            }
+        }
+        return requestsDTO;
+    }
+
+    @Override
+    public List<RequestDTO> userRequestsAgent(Long userId) {
+        List<Request> requests = requestRepository.findAll();
+        List<RequestDTO> requestsDTO= new ArrayList<>();
+        for(Request req:requests){
+            if(req.getStatus().equals("PENDING")) {
+                for (int i = 0; i < req.getOrderList().size(); i++) {
+                    System.out.println("Agent u petljiiiii" + req.getOrderList().get(i).getAgentIzdao());
+                    if (req.getOrderList().get(i).getUserIzdavao().equals(userId)) {
+                        requestsDTO.add(new RequestDTO(req));
+                    }
+                    break;
+                }
+            }
         }
         return requestsDTO;
     }
@@ -311,7 +346,7 @@ public class RequestService implements IRequestService {
     }
 
     @Override
-    public RequestDTO paidRequest(Long idRequest) {
+    public RequestDTO paidRequest(Long idRequest) throws ParseException {
 
         Request request = requestRepository.findOneById(idRequest);
         request.setStatus("PAID");
@@ -322,7 +357,18 @@ public class RequestService implements IRequestService {
         for(Request req:requests){
             for (int i = 0; i < req.getOrderList().size(); i++) {
                 for (int j=0; j < request.getOrderList().size(); j++){
-                    if (!req.getId().equals(request.getId()) && req.getOrderList().get(i).getAdCar().equals(request.getOrderList().get(j).getAdCar())) {
+                    Date dateFrom = new SimpleDateFormat("yyyy-MM-dd").parse(request.getOrderList().get(j).getAvailableFrom());
+                    Date dateTo = new SimpleDateFormat("yyyy-MM-dd").parse(request.getOrderList().get(j).getAvailableTo());
+
+                    Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(req.getOrderList().get(i).getAvailableFrom());
+                    Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(req.getOrderList().get(i).getAvailableTo());
+                    
+                    if (!req.getId().equals(request.getId()) && req.getOrderList().get(i).getAdCar().equals(request.getOrderList().get(j).getAdCar()) && (date1.compareTo(dateFrom)*dateFrom.compareTo(date2)>0 || date1.compareTo(dateTo)*dateTo.compareTo(date2)>0)) {
+                        Request request1= requestRepository.getOne(req.getId());
+                        request1.setStatus("CANCELED");
+                        requestRepository.save(request1);
+                    }
+                    else if(!req.getId().equals(request.getId()) && req.getOrderList().get(i).getAdCar().equals(request.getOrderList().get(j).getAdCar()) && (dateFrom.compareTo(date1)*date1.compareTo(dateTo)>0 || dateFrom.compareTo(date2)*date2.compareTo(dateTo)>0)){
                         Request request1= requestRepository.getOne(req.getId());
                         request1.setStatus("CANCELED");
                         requestRepository.save(request1);

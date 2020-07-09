@@ -1,5 +1,6 @@
 package com.microservices.ads.service.implementation;
 
+import com.microservices.ads.dto.AdCarDTO;
 import com.microservices.ads.dto.request.AdCarRequest;
 import com.microservices.ads.dto.response.AdCarResponse;
 import com.microservices.ads.model.AdCar;
@@ -60,6 +61,7 @@ public class AdCarService implements IAdCarService {
             AdCarResponse adCarResponse = new AdCarResponse(ad);
             adCarResponses.add(adCarResponse);
         }
+        System.out.println("AJMOOOOOOOOO");
         return  adCarResponses;
     }
 
@@ -240,6 +242,50 @@ public class AdCarService implements IAdCarService {
 //        }
     }
 
+
+
+    public AdCarDTO createSearchAd(AdCarDTO request, long id) {
+
+        Integer cnt = 0;
+
+        System.out.println(request);
+
+
+        List<AdCar> adCarList = adCarRepository.findAll();
+
+        for (AdCar ad: adCarList) {
+            if(ad.getUserAd() == id) {
+                cnt++;
+            }
+        }
+        System.out.println(cnt);
+        if(cnt < 3) {
+
+            AdCar adCar = new AdCar();
+            adCar.setAvailableFrom(request.getAvailableFrom());
+            adCar.setAvailableTo(request.getAvailableTo());
+            adCar.setCarBrand_id(carBrandRepository.findOneById(request.getCarBrand_id().getId()));
+            adCar.setCarClass_id(carClassRepository.findOneById(request.getCarClass_id().getId()));
+            adCar.setCity(request.getCity());
+            adCar.setCarModel_id(carModelRepository.findOneById(request.getCarModel_id().getId()));
+            adCar.setCdw(request.getCdw());
+            adCar.setUserAd(id);
+            adCar.setFuelTypeCar_id(typeOfFuelTypeRepository.findOneById(request.getFuelType_id().getId()));
+            adCar.setGearShiftCar_id(typeOfGearShiftRepository.findOneById(request.getGearShift_id().getId()));
+            adCar.setKidsSeats(request.getKidsSeats());
+            adCar.setKmTraveled(request.getKmTraveled());
+            adCar.setKmRestriction(Integer.toString(request.getKmRestriction()));
+//            adCar.setPricelist(request.getPricelist());
+
+
+            adCarRepository.save(adCar);
+            AdCarDTO carResponse  = new AdCarDTO(adCar);
+            return  carResponse;
+
+        }
+        createCarFailedLog();
+        return null;
+    }
 
 
 }

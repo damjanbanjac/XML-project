@@ -13,4 +13,12 @@ public class AdCarResponse {
     private long agentAd;
     private String availableFrom;
     private String availableTo;
+
+    public AdCarResponse(Long id, long user, long agent, String from, String to) {
+        this.id = id;
+        this.userAd = user;
+        this.agentAd = agent;
+        this.availableFrom = from;
+        this.availableTo = to;
+    }
 }
