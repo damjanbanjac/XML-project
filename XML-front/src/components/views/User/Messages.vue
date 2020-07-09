@@ -128,7 +128,7 @@ export default {
             this.form.date = new Date();
     
             axios
-            .post("/messages/message/message",this.form)
+            .post("/order/message",this.form)
             .then(chata => {
                 this.chata = chata.data
                 this.form.messageText = "";
@@ -148,7 +148,7 @@ export default {
             this.form.messageText = "";
             this.show = id;
             axios
-            .get("/messages/message/chats")
+            .get("/order/message/chats")
             .then(chats => {
                 this.chats = chats.data;
                 // this.chats.forEach(chat => {
@@ -168,7 +168,7 @@ export default {
     mounted() {
         this.show = 0;
         axios
-        .get("/messages/agent/agents")
+        .get("/order/agent/agents")
         .then(agents => {
             this.agents = agents.data;
         })
@@ -178,7 +178,7 @@ export default {
 
 
         axios
-        .get("/messages/user/users")
+        .get("/order/user/users")
         .then(users => {
             this.users = users.data;
             // this.users.forEach(user => {
@@ -201,7 +201,7 @@ export default {
 
 
         axios
-        .get("/messages/message/chats")
+        .get("/order/message/chats")
         .then(chats => {
             this.chats = chats.data;
         })
@@ -211,7 +211,7 @@ export default {
 
 
         axios
-        .get("/messages/message/chats")
+        .get("/order/message/chats")
         .then(chats => {
             this.chats = chats.data;
         })
@@ -220,7 +220,7 @@ export default {
         });
 
         axios
-        .get("/messages/message/show")
+        .get("/order/message/show")
         .then(userPendingRequest => {
             this.userPendingRequest = userPendingRequest.data;
         })
@@ -230,7 +230,7 @@ export default {
 
 
         axios
-          .get("/messages/user/loggedUser")
+          .get("/order/user/loggedUser")
           .then(loggedUser => {
               this.loggedUser= loggedUser.data
           })
