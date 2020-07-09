@@ -1,8 +1,7 @@
 package com.microservices.messages.service.implementation;
 
-import com.microservices.messages.dto.ChatDTO;
-import com.microservices.messages.dto.MessageDTO;
-import com.microservices.messages.dto.UserDTO;
+import com.microservices.messages.client.MessagesClient;
+import com.microservices.messages.dto.*;
 import com.microservices.messages.model.*;
 import com.microservices.messages.repository.*;
 import com.microservices.messages.service.IMessageService;
@@ -70,11 +69,13 @@ public class MessageService implements IMessageService {
         return messagedto;
     }
 
-
-
+//    @Autowired
+//    MessagesClient messagesClient;
 
     @Override
     public List<ChatDTO> getAllChats() {
+//        List<RequestDTO> requests = messagesClient.getUserRequests(Long.valueOf(1));
+//        List<OrderDTO> orders = messagesClient.getAllOrdersForUser(Long.valueOf(1));
         List<Chat> chatList = chatRepository.findAll();
         return chatList.stream().map(patient -> mapToResponse(patient)).collect(Collectors.toList());
     }

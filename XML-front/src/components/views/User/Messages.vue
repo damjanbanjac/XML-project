@@ -132,7 +132,7 @@ export default {
             .then(chata => {
                 this.chata = chata.data
                 this.form.messageText = "";
-                return axios.get("/message/chats");
+                return axios.get("/messages/message/chats");
             })
             .then(chats => {
                 this.chats = chats.data;

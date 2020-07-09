@@ -12,19 +12,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@RequestMapping(value = "/user")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping(value = "/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/user/users", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<UserDTO>> getAllUsers() throws Exception {
         List<UserDTO> response = userService.getAllUsers();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/user/loggedUser")
+    @GetMapping("/loggedUser")
     public ResponseEntity<UserDTO> getUser(){
         long idUser = 1;
         UserDTO response = userService.getUser(idUser);
@@ -33,7 +34,7 @@ public class UserController {
 
 
 
-    @PostMapping(value = "/user/user")
+    @PostMapping(value = "/user")
     public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDTO) throws Exception {
 
         UserDTO userdto = new UserDTO();
