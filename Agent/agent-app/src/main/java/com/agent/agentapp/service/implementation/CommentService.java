@@ -24,12 +24,15 @@ public class CommentService implements ICommentService {
 
     private final ICommentRepository _commentRepository;
 
-    public CommentService(AdCarRepository adCarRepository, AgentRepository agentRepository, IUserRepository userRepository, IOrderRepository orderRepository, ICommentRepository commentRepository) {
+    private final RequestRepository _requestRepository;
+
+    public CommentService(AdCarRepository adCarRepository, AgentRepository agentRepository, IUserRepository userRepository, IOrderRepository orderRepository, ICommentRepository commentRepository, RequestRepository requestRepository) {
         _adCarRepository = adCarRepository;
         _agentRepository = agentRepository;
         _userRepository = userRepository;
         _orderRepository = orderRepository;
         _commentRepository = commentRepository;
+        _requestRepository = requestRepository;
     }
 
     @Override
@@ -45,12 +48,24 @@ public class CommentService implements ICommentService {
                 throw new Exception("You cannot comment this ad.");
             }
             Order order = null;
-            for (Order o: allOrders) {
-                if(o.getAdCar_id() == adCar && o.getRequest().getStatus().equals("PAID") && o.getUser() == user) {
-                    order = o;
-                    break;
+            List<Request> allRequests = _requestRepository.findAll();
+            for(Request r: allRequests){
+                if(r.getStatus().equals("PAID")){
+                    for(Order o: r.getOrderList()){
+                        if(o.getAdCar_id() == adCar && o.getUser() == user){
+                            order = o;
+                            break;
+                        }
+                    }
                 }
             }
+//            for (Order o: allOrders) {
+//                if(o.getAdCar_id() == adCar && o.getRequest().getStatus().equals("PAID") && o.getUser() == user) {
+//                    order = o;
+//                    break;
+//                }
+//            }
+
             if(order == null){
                 throw new Exception("You cannot comment this ad.");
             }
