@@ -28,7 +28,7 @@
             <div class="col">
               <div class="md-form pb-3">
                 <label for="Form-ime">Agent issued</label>
-                <label id="Form-ime" class="form-control">{{oglas.agentIzdaoAd.id}}</label>
+                <label id="Form-ime" class="form-control">{{oglas.agentAd.id}}</label>
                 <br/>
             
                 <div class="text-center mb-4">
@@ -46,14 +46,14 @@
                 <label for="Form-ime">Id</label>
                 <label id="Form-ime" class="form-control">{{order.adCar.id}}</label>
                 
-                <label for="Form-ime">Agent issued</label>
+                <!-- <label for="Form-ime">Agent issued</label>
                 <input
                       type="text"
                       id="Form-username"
                       class="form-control"
                       v-model="order.adCar.agentIzdaoAd.id"
                       disabled
-                    />
+                    /> -->
                 <label for="Form-ime">Start date</label>
                 <input
                       type="text"
@@ -124,7 +124,7 @@ export default {
   },
   mounted() {
     axios
-      .get("/ads/"+5+"/agent")
+      .get("/ads/"+ this.$store.state.user.id +"/agent")
       .then(oglasi => {
         this.oglasi = oglasi.data;
         

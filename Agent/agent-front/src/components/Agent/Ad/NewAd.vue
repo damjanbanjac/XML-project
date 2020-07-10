@@ -251,7 +251,7 @@ import axios from "axios";
       }
 
         axios
-        .post("ads/5/agent" , this.form)
+        .post("ads/"+ this.$store.state.user.id +"/agent" , this.form)
         .then(form => {
           this.error = form,
           this.idAd = form.data.id,

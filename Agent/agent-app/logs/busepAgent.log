@@ -1,101 +1,69 @@
-2020-07-10 18:39:50.759+0200 [task-1] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table order_ad add constraint FKs5ttmlbt8gvsy8ubkdfd91hah foreign key (ad_car) references ad_car (id)" via JDBC Statement 
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table order_ad add constraint FKs5ttmlbt8gvsy8ubkdfd91hah foreign key (ad_car) references ad_car (id)" via JDBC Statement
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:374) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1249) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
-Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`agentxml`.`#sql-16c8_46`, CONSTRAINT `FKs5ttmlbt8gvsy8ubkdfd91hah` FOREIGN KEY (`ad_car`) REFERENCES `ad_car` (`id`))
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:764) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-3.4.5.jar:na]
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-3.4.5.jar:na]
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	... 18 common frames omitted
-2020-07-10 18:39:59.416+0200 [task-1] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table order_ad add constraint FKnknh46ff3y3td33gg8d1fq0rr foreign key (agent_izdao_id) references agent (id)" via JDBC Statement 
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table order_ad add constraint FKnknh46ff3y3td33gg8d1fq0rr foreign key (agent_izdao_id) references agent (id)" via JDBC Statement
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:374) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1249) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
-Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`agentxml`.`#sql-16c8_46`, CONSTRAINT `FKnknh46ff3y3td33gg8d1fq0rr` FOREIGN KEY (`agent_izdao_id`) REFERENCES `agent` (`id`))
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:764) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-3.4.5.jar:na]
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-3.4.5.jar:na]
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	... 18 common frames omitted
-2020-07-10 18:39:59.420+0200 [task-1] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table order_ad add constraint FKf65mxfrk5xvpkd2x5b4w5f5tj foreign key (request_id) references requests (id)" via JDBC Statement 
-org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table order_ad add constraint FKf65mxfrk5xvpkd2x5b4w5f5tj foreign key (request_id) references requests (id)" via JDBC Statement
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlString(SchemaCreatorImpl.java:439) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.applySqlStrings(SchemaCreatorImpl.java:423) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.createFromMetadata(SchemaCreatorImpl.java:374) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.performCreation(SchemaCreatorImpl.java:166) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:135) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.internal.SchemaCreatorImpl.doCreation(SchemaCreatorImpl.java:121) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:156) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1249) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) ~[na:na]
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) ~[na:na]
-	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
-Caused by: java.sql.SQLSyntaxErrorException: Key column 'request_id' doesn't exist in table
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:764) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-java-8.0.20.jar:8.0.20]
-	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-3.4.5.jar:na]
-	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-3.4.5.jar:na]
-	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
-	... 18 common frames omitted
-2020-07-10 18:40:21.475+0200 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
-2020-07-10 18:40:22.351+0200 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
-2020-07-10 18:40:36.667+0200 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@48a46b0f, org.springframework.security.web.context.SecurityContextPersistenceFilter@1552da16, org.springframework.security.web.header.HeaderWriterFilter@4fd7b79, org.springframework.security.web.authentication.logout.LogoutFilter@3356ff58, com.agent.agentapp.security.auth.TokenAuthenticationFilter@1426370c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@77ce88c4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2cd3fc29, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@9f9146d, org.springframework.security.web.session.SessionManagementFilter@775f15fd, org.springframework.security.web.access.ExceptionTranslationFilter@738a815c] 
-2020-07-10 18:40:38.118+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8097"] 
-2020-07-10 18:40:39.976+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8097 (http) with context path '' 
-2020-07-10 18:40:39.978+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
-2020-07-10 18:40:42.696+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
-2020-07-10 18:40:42.969+0200 [main] INFO  c.agent.agentapp.AgentAppApplication - Started AgentAppApplication in 439.993 seconds (JVM running for 463.283) 
+2020-07-10 20:48:42.579+0200 [task-1] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.15.Final 
+2020-07-10 20:48:43.388+0200 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final} 
+2020-07-10 20:48:44.244+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2020-07-10 20:48:45.881+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2020-07-10 20:48:45.974+0200 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2020-07-10 20:48:56.51+0200 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020-07-10 20:48:56.74+0200 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020-07-10 20:48:57.935+0200 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6fde6f05, org.springframework.security.web.context.SecurityContextPersistenceFilter@1d2def55, org.springframework.security.web.header.HeaderWriterFilter@149d7cc6, org.springframework.security.web.authentication.logout.LogoutFilter@20820df0, com.agent.agentapp.security.auth.TokenAuthenticationFilter@7114e780, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6eeb29c0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5beb6be2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4def42c3, org.springframework.security.web.session.SessionManagementFilter@3dfe92ef, org.springframework.security.web.access.ExceptionTranslationFilter@602298b] 
+2020-07-10 20:48:58.109+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8097"] 
+2020-07-10 20:48:58.195+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8097 (http) with context path '' 
+2020-07-10 20:48:58.199+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
+2020-07-10 20:48:59.534+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
+2020-07-10 20:48:59.551+0200 [main] INFO  c.agent.agentapp.AgentAppApplication - Started AgentAppApplication in 25.687 seconds (JVM running for 28.351) 
+2020-07-10 20:49:35.219+0200 [http-nio-8097-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2020-07-10 20:49:35.220+0200 [http-nio-8097-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2020-07-10 20:49:35.238+0200 [http-nio-8097-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 17 ms 
+2020-07-10 20:49:35.710+0200 [http-nio-8097-exec-1] INFO  c.a.a.c.AuthenticationController - SUCCESS User user@gmail.com successfully registered. 
+2020-07-10 20:49:45.271+0200 [http-nio-8097-exec-3] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent admin@gmail.com successfully logged. 
+2020-07-10 20:50:04.866+0200 [http-nio-8097-exec-9] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent agent@gmail.com successfully logged. 
+2020-07-10 20:50:31.753+0200 [http-nio-8097-exec-1] INFO  c.a.a.s.implementation.AdCarService - SUCCESS Agent successfully added a car. 
+2020-07-10 20:51:13.704+0200 [http-nio-8097-exec-1] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent agent@gmail.com successfully logged. 
+2020-07-10 20:52:02.645+0200 [http-nio-8097-exec-9] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"] 
+2020-07-10 20:52:14.277+0200 [http-nio-8097-exec-7] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent agent@gmail.com successfully logged. 
+2020-07-10 20:59:04.719+0200 [main] INFO  c.agent.agentapp.AgentAppApplication - Starting AgentAppApplication on DESKTOP-VGPVP3J with PID 14056 (C:\Users\Lara\Desktop\XML\XML-project\Agent\agent-app\target\classes started by Lara in C:\Users\Lara\Desktop\XML\XML-project\Agent\agent-app) 
+2020-07-10 20:59:04.724+0200 [main] INFO  c.agent.agentapp.AgentAppApplication - No active profile set, falling back to default profiles: default 
+2020-07-10 20:59:07.144+0200 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFERRED mode. 
+2020-07-10 20:59:07.600+0200 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 441ms. Found 19 JPA repository interfaces. 
+2020-07-10 20:59:08.606+0200 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$35506e13] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2020-07-10 20:59:08.685+0200 [main] INFO  o.s.w.s.a.s.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0] 
+2020-07-10 20:59:09.838+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8097 (http) 
+2020-07-10 20:59:09.852+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8097"] 
+2020-07-10 20:59:09.853+0200 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat] 
+2020-07-10 20:59:09.853+0200 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35] 
+2020-07-10 20:59:10.253+0200 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext 
+2020-07-10 20:59:10.253+0200 [main] INFO  o.s.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 5371 ms 
+2020-07-10 20:59:10.662+0200 [main] INFO  o.s.s.c.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor' 
+2020-07-10 20:59:11.02+0200 [task-1] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020-07-10 20:59:11.183+0200 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2020-07-10 20:59:11.245+0200 [task-1] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.15.Final 
+2020-07-10 20:59:11.994+0200 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final} 
+2020-07-10 20:59:12.368+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2020-07-10 20:59:13.389+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2020-07-10 20:59:13.463+0200 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2020-07-10 20:59:22.216+0200 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020-07-10 20:59:22.237+0200 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020-07-10 20:59:23.760+0200 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2e3252, org.springframework.security.web.context.SecurityContextPersistenceFilter@7d522180, org.springframework.security.web.header.HeaderWriterFilter@4d20616a, org.springframework.security.web.authentication.logout.LogoutFilter@26994c6a, com.agent.agentapp.security.auth.TokenAuthenticationFilter@77cddc0c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@790654d5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@18e6b72b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@671d97bc, org.springframework.security.web.session.SessionManagementFilter@7e31062c, org.springframework.security.web.access.ExceptionTranslationFilter@4a9b92c6] 
+2020-07-10 20:59:23.933+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8097"] 
+2020-07-10 20:59:24.24+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8097 (http) with context path '' 
+2020-07-10 20:59:24.82+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
+2020-07-10 20:59:25.257+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
+2020-07-10 20:59:25.278+0200 [main] INFO  c.agent.agentapp.AgentAppApplication - Started AgentAppApplication in 21.635 seconds (JVM running for 23.496) 
+2020-07-10 21:00:01.826+0200 [http-nio-8097-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2020-07-10 21:00:01.826+0200 [http-nio-8097-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2020-07-10 21:00:01.841+0200 [http-nio-8097-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 13 ms 
+2020-07-10 21:00:02.345+0200 [http-nio-8097-exec-1] INFO  c.a.a.c.AuthenticationController - SUCCESS User user@gmail.com successfully registered. 
+2020-07-10 21:00:12.909+0200 [http-nio-8097-exec-3] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent agent@gmail.com successfully logged. 
+2020-07-10 21:00:38.356+0200 [http-nio-8097-exec-2] INFO  c.a.a.s.implementation.AdCarService - SUCCESS Agent successfully added a car. 
+2020-07-10 21:00:48.751+0200 [http-nio-8097-exec-5] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent admin@gmail.com successfully logged. 
+2020-07-10 21:02:14.642+0200 [http-nio-8097-exec-9] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent agent@gmail.com successfully logged. 
+2020-07-10 21:04:28.147+0200 [http-nio-8097-exec-7] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"] 
+2020-07-10 21:04:40.330+0200 [http-nio-8097-exec-6] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent agent@gmail.com successfully logged. 
+2020-07-10 21:10:29.618+0200 [http-nio-8097-exec-10] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<com.agent.agentapp.entity.Comment>` out of VALUE_NUMBER_INT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<com.agent.agentapp.entity.Comment>` out of VALUE_NUMBER_INT token
+ at [Source: (PushbackInputStream); line: 1, column: 982] (through reference chain: com.agent.agentapp.dto.request.OrderDTO["adCar"]->com.agent.agentapp.entity.AdCar["comments"])] 
+2020-07-10 21:12:28.949+0200 [http-nio-8097-exec-2] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<com.agent.agentapp.entity.Comment>` out of VALUE_NUMBER_INT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<com.agent.agentapp.entity.Comment>` out of VALUE_NUMBER_INT token
+ at [Source: (PushbackInputStream); line: 1, column: 982] (through reference chain: com.agent.agentapp.dto.request.OrderDTO["adCar"]->com.agent.agentapp.entity.AdCar["comments"])] 
+2020-07-10 21:15:35.864+0200 [http-nio-8097-exec-3] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<com.agent.agentapp.entity.Comment>` out of VALUE_NUMBER_INT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<com.agent.agentapp.entity.Comment>` out of VALUE_NUMBER_INT token
+ at [Source: (PushbackInputStream); line: 1, column: 982] (through reference chain: com.agent.agentapp.dto.request.OrderDTO["adCar"]->com.agent.agentapp.entity.AdCar["comments"])] 
+2020-07-10 21:16:01.833+0200 [http-nio-8097-exec-5] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<com.agent.agentapp.entity.Comment>` out of VALUE_NUMBER_INT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<com.agent.agentapp.entity.Comment>` out of VALUE_NUMBER_INT token
+ at [Source: (PushbackInputStream); line: 1, column: 982] (through reference chain: com.agent.agentapp.dto.request.OrderDTO["adCar"]->com.agent.agentapp.entity.AdCar["comments"])] 

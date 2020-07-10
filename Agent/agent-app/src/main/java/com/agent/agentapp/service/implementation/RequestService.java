@@ -177,7 +177,7 @@ public class RequestService implements IRequestService {
             for(int i=0; i<req.getOrderList().size(); i++) {
                 if (req.getOrderList().get(i).getAdCar_id().getId().equals(order.getAdCar().getId())){
                     Request request1= requestRepository.getOne(req.getId());
-                    request1.setStatus("CACELED");
+                    request1.setStatus("CANCELED");
                     requestRepository.save(request1);
                 }
             }
