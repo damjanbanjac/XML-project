@@ -25,6 +25,7 @@
         <router-link to="/userRequests" tag="b-dropdown-item">My requests</router-link>
         <router-link to="/userAdList" tag="b-dropdown-item">My car ads</router-link>
         <router-link to="/userRequestsAgent" tag="b-dropdown-item">My requests as agent</router-link>
+        <router-link to="/requestsHisotry" tag="b-dropdown-item">History</router-link>
         <div class="dropdown-divider"></div>
         <router-link  to="/addCarAd" tag="b-dropdown-item">Add car ad</router-link>
         <router-link to="/createPriceList" tag="b-dropdown-item">Add pricelist</router-link>
