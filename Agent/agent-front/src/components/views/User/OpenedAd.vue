@@ -60,6 +60,7 @@
                    <label for="Form-radnoOd">CDW</label>
                   <input type="checkbox" id="Form-cdw" class="form-control" v-model="form.cdw" :disabled="!change" />
 
+                  <br/>
                   <button
                     type="button"
                     class="btn btn-info btn-block z-depth-2"
@@ -101,8 +102,11 @@
         </div>
       <div class="col">
         <b-container v-if="success">
-      <b-alert style="width: 100%;" show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
-    </b-container>
+          <b-alert style="width: 100%;" show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
+        </b-container>
+        <b-container v-if="error">
+          <b-alert style="width: 100%;" show variant="danger" class="d-flex justify-content-center">{{errormessages}}</b-alert>
+        </b-container>
     <div v-if="prepare" class="card" style="width: 120%">
         <!--Header-->
         <div class="header pt-3 grey lighten-2">
@@ -115,6 +119,7 @@
           </div>
         </div>
 
+        <div class="card-body mx-4 mt-4">
         <label for="Form-ime">Start date</label>
                 <input
                       type="date"
@@ -136,6 +141,7 @@
                     class="btn btn-info btn-block z-depth-2"
                   @click="naruci()">Add to bag</button>
                 </div>
+        </div>
     </div> 
 
 
@@ -227,6 +233,7 @@ export default {
       base64Data: null,
       selectedFile: null,
       error: '',
+      errormessages: "",
       success: false,
       successmessages: "",
       change: false,
@@ -284,6 +291,7 @@ export default {
         .catch(error => {
           console.log(error);
           this.error = true;
+          this.errormessages = "You cannot grade this car ad.";
         });
     },
 
@@ -303,6 +311,7 @@ export default {
         .catch(error => {
           console.log(error);
           this.error = true;
+          this.errormessages = "You cannot comment this car ad.";
         });
     },
 
