@@ -35,7 +35,7 @@ public class RequestService implements IRequestService {
     AgentRepository agentRepository;
 
     @Override
-    public List<OrderDTO> createRquestForUser(Boolean bundle, OrderDTO order) {
+    public List<OrderDTO> createRquestForUser(Boolean bundle, Long id, OrderDTO order) {
         Long agentIzdaoId = order.getAdCar().getAgentAd().getId();
         //Long userIzdaoId = order.getAdCar().getUserAd().getId();
         int brojIstihAgenata = 1;
@@ -43,8 +43,7 @@ public class RequestService implements IRequestService {
         List<Order> bundleOrders= new ArrayList<>();
         System.out.println("AGENT ID JEEEEEE"+agentIzdaoId);
         System.out.println("Bunleeeee"+bundle);
-        Long l= new Long(4);
-        User userProvera = userRepository.findOneById(l);
+        User userProvera = userRepository.findOneById(id);
 
         Calendar calendar= Calendar.getInstance();
 
@@ -148,7 +147,7 @@ public class RequestService implements IRequestService {
     public RequestDTO presonallyRequest(OrderDTO order) throws ParseException {
         Order order1 = new Order();
 
-        DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Date date = format.parse(order.getAvailableFrom());
         Date date1 = format.parse(order.getAvailableTo());
 
@@ -156,8 +155,8 @@ public class RequestService implements IRequestService {
         order1.setAvailableTo(date1);
         order1.setAdCar_id(adCarRepository.findOneById(order.getAdCar().getId()));
         order1.setRequired(true);
-        Long l= new Long(1);
-        order1.setUser(userRepository.findOneById(l));
+        //Long l= new Long(1);
+        //order1.setUser(userRepository.findOneById(l));
         //order1.setUserIzdavao(userRepository.findOneById(order.getAdCar().getUserAd().getId()));
         order1.setAgentIzdao(agentRepository.findOneById(order.getAdCar().getAgentAd().getId()));
 
