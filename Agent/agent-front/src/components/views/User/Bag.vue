@@ -85,7 +85,7 @@ export default {
     reserve(oglas){
       console.log(oglas)
       axios
-          .post("requests/"+this.bundle+"/request", oglas)
+          .post("requests/"+this.bundle+"/request/user/" + this.$store.state.user.id, oglas)
           .then(response => {
               this.oglasi= response.data
           })

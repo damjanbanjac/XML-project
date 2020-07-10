@@ -28,9 +28,9 @@ public class OrderController {
     private IOrderService iorderService;
 
 
-    @PostMapping
-    public OrderDTO createOrder(@RequestBody OrderDTO request) throws ParseException {
-        return iorderService.createOrder(request);
+    @PostMapping("/user/{id}")
+    public OrderDTO createOrder(@RequestBody OrderDTO request, @PathVariable Long id) throws ParseException {
+        return iorderService.createOrder(request, id);
     }
 
     @GetMapping("/{id}/user")

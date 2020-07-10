@@ -55,11 +55,11 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public OrderDTO createOrder(OrderDTO request) throws ParseException {
+    public OrderDTO createOrder(OrderDTO request, Long id) throws ParseException {
         Order order = new Order();
 
         System.out.println(request.getAdCar().getId());
-        DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Date date = format.parse(request.getAvailableFrom());
         Date date1 = format.parse(request.getAvailableTo());
         order.setAvailableFrom(date);
@@ -67,10 +67,11 @@ public class OrderService implements IOrderService {
         order.setRequired(false);
         //order.setRequired(false);
         order.setAdCar_id(adCarRepository.findOneById(request.getAdCar().getId()));
-        Long l= new Long(4);
-        order.setUser(userRepository.findOneById(l));
+        Long a= new Long(200);
+        order.setUser(userRepository.findOneById(id));
+        //order.setRequest(null);
         //order.setUserIzdavao(userRepository.findOneById(request.getAdCar().getUserAd().getId()));
-        order.setAgentIzdao(agentRepository.findOneById(request.getAdCar().getAgentAd().getId()));
+        order.setAgentIzdao(agentRepository.findOneById(a));
 
         orderRepository.save(order);
 
