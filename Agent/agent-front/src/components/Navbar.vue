@@ -21,7 +21,7 @@
       <!-- Agent -->
       <b-nav-item-dropdown v-if="this.$store.state.user.role.authority == 'AGENT'" text="Sidebar" left>
         <router-link to="/adsListByAgent" tag="b-dropdown-item">My car ads</router-link>
-        <router-link to="/newAd" tag="b-dropdown-item">Add Car</router-link>
+        <router-link to="/newAd" tag="b-dropdown-item">Add car ad</router-link>
          <router-link to="/agentRequests" tag="b-dropdown-item">Requests</router-link>
          <router-link to="/reservePayGo" tag="b-dropdown-item">Reserve-Pay-Go</router-link>
         <div class="dropdown-divider"></div>
@@ -74,7 +74,7 @@
       <!-- User -->
       <b-nav-item-dropdown text="Sidebar"   v-if="this.$store.state.user.role.authority == 'USER'" left>
         <router-link to="/adsListByUser" tag="b-dropdown-item">Car ads</router-link>
-        <router-link to="/newAd" tag="b-dropdown-item">Add Car</router-link>
+        <!-- <router-link to="/newAd" tag="b-dropdown-item">Add Car</router-link> -->
         <router-link to="/bag" tag="b-dropdown-item">Bag</router-link>
         <router-link to="/userRequests" tag="b-dropdown-item">Requests</router-link>
         <div class="dropdown-divider"></div>
