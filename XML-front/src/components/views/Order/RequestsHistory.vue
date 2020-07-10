@@ -30,32 +30,9 @@
                 <label id="Form-ime" class="form-control">{{oglas.id}}</label>
                 
               </div>
-              <div class="text-center mb-4">
-                <button
-                    type="button"
-                    class="btn btn-danger btn-block z-depth-2"
-                  @click="pay(zahtev.id)">Pay</button>
-              </div>
-
-              <div class="text-center mb-4">
-                <button
-                    type="button"
-                    class="btn btn-danger btn-block z-depth-2"
-                  @click="cancle1(zahtev.id)">Cancle</button>
-              </div>
               
             </div>
-            <!--<div class="col">
-              <div class="md-form pb-3">
-                
-                <div class="text-center mb-4">
-                  <button
-                    type="button"
-                    class="btn btn-danger btn-block z-depth-2"
-                  @click="pay(zahtev.id)">Pay</button>
-                </div>
-              </div>
-            </div>-->
+           
           </div>
           <!--Body-->
         </div>
@@ -87,21 +64,10 @@ export default {
             console.log(error);
           });
     },
-
-     cancle1(id){
-      axios
-          .post("order/requests/"+id+"/cancle")
-          .then(response => {
-              this.request= response.data
-          })
-          .catch(error => {
-            console.log(error);
-          });
-    },
   },
    mounted() {
     axios
-      .get("/order/requests/"+ this.$store.state.user.id+"/user")
+      .get("/order/requests/userhistory/"+ this.$store.state.user.id)
       .then(zahtevi => {
         this.zahtevi = zahtevi.data;
         console.log(this.zahtevi);

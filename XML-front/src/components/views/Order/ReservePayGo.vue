@@ -46,14 +46,14 @@
                 <label for="Form-ime">Id</label>
                 <label id="Form-ime" class="form-control">{{order.adCar}}</label>
                 
-                <label for="Form-ime">Agent issued</label>
+                <!--label for="Form-ime">Agent issued</label>
                 <input
                       type="text"
                       id="Form-username"
                       class="form-control"
                       v-model="order.agentIzdaoAd"
                       disabled
-                    />
+                    /-->
                 <label for="Form-ime">Start date</label>
                 <input
                       type="text"
@@ -112,7 +112,7 @@ export default {
     go(){
       console.log(this.order)
       axios
-          .post("/order/requests/personally/user/1", this.order)
+          .post("/order/requests/personally", this.order)
           .then(response => {
             this.order= response.data;
             this.prepare = false;

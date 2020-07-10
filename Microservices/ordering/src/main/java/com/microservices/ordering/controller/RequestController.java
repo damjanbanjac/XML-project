@@ -18,14 +18,15 @@ public class RequestController {
     @Autowired
     private IRequestService irequestService;
 
+    
     @PostMapping("/{bundle}/request/user/{id}")
     public List<OrderDTO> createRequestForUser(@PathVariable Boolean bundle,@PathVariable Long id,@RequestBody OrderDTO order) {
         return irequestService.createRquestForUser(bundle,id, order);
     }
 
-    @PostMapping("/personally/user/{id}")
-    public RequestDTO presonallyRequest(@PathVariable Long id,@RequestBody OrderDTO order) throws ParseException {
-        return irequestService.presonallyRequest(id, order);
+    @PostMapping("/personally")
+    public RequestDTO presonallyRequest(@RequestBody OrderDTO order) throws ParseException {
+        return irequestService.presonallyRequest(order);
     }
 
     @GetMapping("/{agentId}/agent")
@@ -53,9 +54,19 @@ public class RequestController {
         return irequestService.userRequests(idUser);
     }
 
+    @GetMapping("/userhistory/{idUser}")
+    public List<RequestDTO> userRequestsHistory(@PathVariable Long idUser){
+        return irequestService.userRequestsHistory(idUser);
+    }
+
     @PostMapping("/{idRequest}/paid")
     public RequestDTO paidRequest(@PathVariable Long idRequest) throws ParseException {
         return irequestService.paidRequest(idRequest);
+    }
+
+    @PostMapping("/{idRequest}/cancle")
+    public RequestDTO cancleRequest(@PathVariable Long idRequest) {
+        return irequestService.cancleRequest(idRequest);
     }
 
 }
