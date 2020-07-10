@@ -122,8 +122,12 @@
         </div>
       <div class="col">
         <b-container v-if="success">
-      <b-alert show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
-    </b-container>
+          <b-alert show variant="success" class="d-flex justify-content-center">{{successmessages}}</b-alert>
+        </b-container>
+
+        <b-container v-if="error">
+          <b-alert show variant="danger" class="d-flex justify-content-center">{{errormessages}}</b-alert>
+        </b-container>
 
     <div v-if="prepare" class="card" style="width: 120%">
         <!--Header-->
@@ -251,6 +255,7 @@ export default {
       base64Data: null,
       selectedFile: null,
       error: '',
+      errormessages: "",
       success: false,
       successmessages: "",
       change: false,
@@ -326,6 +331,7 @@ export default {
         .catch(error => {
           console.log(error);
           this.error = true;
+          this.errormessages = "You cannot grade this car ad.";
         });
     },
 
@@ -345,6 +351,7 @@ export default {
         .catch(error => {
           console.log(error);
           this.error = true;
+          this.errormessages = "You cannot comment this car ad.";
         });
     },
 

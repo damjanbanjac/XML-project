@@ -33,15 +33,15 @@
               <div class="text-center mb-4">
                 <button
                     type="button"
-                    class="btn btn-danger btn-block z-depth-2"
+                    class="btn btn-info btn-block z-depth-2"
                   @click="pay(zahtev.id)">Pay</button>
               </div>
 
               <div class="text-center mb-4">
                 <button
                     type="button"
-                    class="btn btn-danger btn-block z-depth-2"
-                  @click="cancle1(zahtev.id)">Cancle</button>
+                    class="btn btn-info btn-block z-depth-2"
+                  @click="cancle1(zahtev.id)">Cancel</button>
               </div>
               
             </div>
