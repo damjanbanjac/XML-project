@@ -1,3 +1,4 @@
 2020-07-11 13:11:03.965+0200 [http-nio-8083-exec-6] INFO  c.m.a.service.UserService - SUCCESS User damjan@gmail.com successfully registered. 
 2020-07-11 13:11:04.296+0200 [http-nio-8083-exec-6] INFO  c.m.a.service.UserService - SUCCESS User successfully registered. 
 2020-07-11 13:13:12.940+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-11 13:18:12.943+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
