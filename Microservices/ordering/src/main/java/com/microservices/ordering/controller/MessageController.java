@@ -1,9 +1,6 @@
 package com.microservices.ordering.controller;
 
-import com.microservices.ordering.dto.ChatDTO;
-import com.microservices.ordering.dto.MessageDTO;
-import com.microservices.ordering.dto.RequestDTO;
-import com.microservices.ordering.dto.UserDTO;
+import com.microservices.ordering.dto.*;
 import com.microservices.ordering.service.implementation.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,12 +24,20 @@ public class MessageController {
 //        return new ResponseEntity<>(response, HttpStatus.OK);
 //    }
 
-    @PostMapping(value = "/message/message")
-    public ResponseEntity<MessageDTO> createMessage(@RequestBody MessageDTO messageDTO) throws ParseException {
+    @PostMapping(value = "/message/message/{id}")
+    public ResponseEntity<MessageDTO> createMessage(@RequestBody MessageDTO messageDTO, @PathVariable Long id) throws ParseException {
 
         MessageDTO messagedto = new MessageDTO();
-        messagedto = messageService.createMessage(messageDTO);
+        messagedto = messageService.createMessage(messageDTO, id);
         return new ResponseEntity<>(messagedto, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/message/message/{id}/agentSender")
+    public ResponseEntity<MessageAgentSenderDTO> createMessageAgentSender(@RequestBody MessageAgentSenderDTO messageDTO, @PathVariable Long id) throws ParseException {
+
+        MessageAgentSenderDTO messageAgentSenderDTO = new MessageAgentSenderDTO();
+        messageAgentSenderDTO = messageService.createMessageAgentSender(messageDTO, id);
+        return new ResponseEntity<>(messageAgentSenderDTO, HttpStatus.OK);
     }
 
     @GetMapping(value = "/message/chats", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -52,9 +57,9 @@ public class MessageController {
 //        List<Long> returnList = messageService.getPendingRequestUsers(idOwner,idRenter);
 //        return new ResponseEntity<>(returnList, HttpStatus.OK);
 //    }
-    @GetMapping(value = "/message/show", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Long>> getPendingRequestsShow() throws ParseException {
-        List<Long> returnList = messageService.getPendingRequestUsers();
+    @GetMapping(value = "/message/{id}/user", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Long>> getPendingRequestsShow(@PathVariable Long id) throws ParseException {
+        List<Long> returnList = messageService.getPendingRequestUsers(id);
         return new ResponseEntity<>(returnList, HttpStatus.OK);
     }
 }

@@ -2,6 +2,7 @@ package com.microservices.authentication.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.microservices.authentication.utils.RegistrationState;
+import com.sun.istack.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

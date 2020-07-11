@@ -1,5 +1,8 @@
 package com.microservices.authentication.controller;
 
+import com.microservices.authentication.dto.feignDTOs.AgentDTO;
+import com.microservices.authentication.dto.feignDTOs.UserDTO;
+import com.microservices.authentication.dto.feignDTOs.UsersDTO;
 import com.microservices.authentication.dto.request.JwtAuthenticationRequest;
 import com.microservices.authentication.dto.request.UserRequest;
 import com.microservices.authentication.dto.request.UserTokenState;
@@ -9,6 +12,7 @@ import com.microservices.authentication.model.FirstLoginHelperEntity;
 import com.microservices.authentication.model.User;
 import com.microservices.authentication.repository.IFirstLoginHelperEntityRepository;
 import com.microservices.authentication.security.TokenUtils;
+import com.microservices.authentication.service.AgentService;
 import com.microservices.authentication.service.CustomUserDetailsService;
 import com.microservices.authentication.service.UserService;
 import com.microservices.authentication.service.implementation.EmailService;
@@ -23,12 +27,14 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -49,6 +55,9 @@ public class AuthenticationController {
 
     @Autowired
     private EmailService _emailService;
+
+    @Autowired
+    private AgentService agentService;
 
     private final IFirstLoginHelperEntityRepository helperEntityRepository;
 
@@ -151,6 +160,38 @@ public class AuthenticationController {
         HttpHeaders headers = new HttpHeaders();
         return new ResponseEntity<UserResponse>(userResponse, HttpStatus.CREATED);
     }
+
+    @GetMapping(value = "/user")
+    public String getLoggedUser() throws Exception {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = new String();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails)principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+        return username;
+    }
+
+    @GetMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<UsersDTO>> getAllUsers() throws Exception {
+        List<UsersDTO> response = userService.getAllUsers();
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/agent")
+    public AgentDTO getAgent(@PathVariable Long id){
+        return agentService.getAgent(id);
+    }
+
+
+    @GetMapping(value = "/agents", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<AgentDTO>> getAllAgents() throws Exception {
+        List<AgentDTO> response = agentService.getAllAgents();
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+
 
     public void userLoginSuccessfulLog(String email) {
         logger.info("SUCCESS User {} successfully logged.", email);

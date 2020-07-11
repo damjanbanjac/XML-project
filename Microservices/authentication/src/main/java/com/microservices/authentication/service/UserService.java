@@ -1,6 +1,9 @@
 package com.microservices.authentication.service;
 
+import com.microservices.authentication.dto.feignDTOs.UserDTO;
+import com.microservices.authentication.dto.feignDTOs.UsersDTO;
 import com.microservices.authentication.dto.request.UserRequest;
+import com.microservices.authentication.dto.response.UserResponse;
 import com.microservices.authentication.model.Authority;
 import com.microservices.authentication.model.User;
 import com.microservices.authentication.repository.AuthorityRepository;
@@ -17,6 +20,7 @@ import java.util.List;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -137,5 +141,19 @@ public class UserService {
     }
 
 
+    public List<UsersDTO> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream().map(patient -> mapToResponse(patient)).collect(Collectors.toList());
+    }
+
+    private UsersDTO mapToResponse(User user) {
+        UsersDTO response = new UsersDTO();
+        response.setId(user.getId());
+        response.setEmail(user.getEmail());
+        response.setName(user.getName());
+        response.setSurname(user.getSurname());
+        response.setPermissionBlocked(user.getPermissionBlocked());
+        return response;
+    }
 
 }

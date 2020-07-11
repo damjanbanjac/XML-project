@@ -1,4 +1,55 @@
+<<<<<<< HEAD
+2020-07-11 17:45:32.461+0200 [task-1] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2020-07-11 17:45:32.571+0200 [task-1] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.15.Final 
+2020-07-11 17:45:32.586+0200 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2020-07-11 17:45:32.821+0200 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final} 
+2020-07-11 17:45:32.914+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2020-07-11 17:45:33.227+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2020-07-11 17:45:33.258+0200 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2020-07-11 17:45:34.24+0200 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020-07-11 17:45:34.39+0200 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020-07-11 17:45:34.383+0200 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+2020-07-11 17:45:34.383+0200 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+2020-07-11 17:45:34.383+0200 [main] WARN  c.n.c.sources.URLConfigurationSource - No URLs will be polled as dynamic configuration sources. 
+2020-07-11 17:45:34.383+0200 [main] INFO  c.n.c.sources.URLConfigurationSource - To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath. 
+2020-07-11 17:45:34.633+0200 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@55c57422, org.springframework.security.web.context.SecurityContextPersistenceFilter@7bee8621, org.springframework.security.web.header.HeaderWriterFilter@3cc053, org.springframework.security.web.authentication.logout.LogoutFilter@499ee966, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1e12a5a6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@69364b2d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@22825e1e, org.springframework.security.web.session.SessionManagementFilter@594131f2, org.springframework.security.web.access.ExceptionTranslationFilter@1a1ccaaf] 
+2020-07-11 17:45:35.508+0200 [main] WARN  o.s.c.l.c.BlockingLoadBalancerClientAutoConfiguration$BlockingLoadBalancerClientRibbonWarnLogger - You already have RibbonLoadBalancerClient on your classpath. It will be used by default. As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead. In order to use it, set the value of `spring.cloud.loadbalancer.ribbon.enabled` to `false` or remove spring-cloud-starter-netflix-ribbon from your project. 
+2020-07-11 17:45:35.602+0200 [main] INFO  o.s.c.n.eureka.InstanceInfoFactory - Setting initial instance status as: STARTING 
+2020-07-11 17:45:35.633+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Initializing Eureka in region us-east-1 
+2020-07-11 17:45:35.696+0200 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON encoding codec LegacyJacksonJson 
+2020-07-11 17:45:35.696+0200 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using JSON decoding codec LegacyJacksonJson 
+2020-07-11 17:45:35.789+0200 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML encoding codec XStreamXml 
+2020-07-11 17:45:35.789+0200 [main] INFO  c.n.d.p.DiscoveryJerseyProvider - Using XML decoding codec XStreamXml 
+2020-07-11 17:45:35.914+0200 [main] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-11 17:45:36.71+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Disable delta property : false 
+2020-07-11 17:45:36.71+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Single vip registry refresh property : null 
+2020-07-11 17:45:36.71+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Force full registry fetch : false 
+2020-07-11 17:45:36.71+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Application is null : false 
+2020-07-11 17:45:36.71+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Registered Applications size is zero : true 
+2020-07-11 17:45:36.71+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Application version is -1: true 
+2020-07-11 17:45:36.71+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Getting all instance registry info from the eureka server 
+2020-07-11 17:45:36.180+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - The response status is 200 
+2020-07-11 17:45:36.180+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Starting heartbeat executor: renew interval is: 30 
+2020-07-11 17:45:36.196+0200 [main] INFO  c.n.discovery.InstanceInfoReplicator - InstanceInfoReplicator onDemand update allowed rate per min is 4 
+2020-07-11 17:45:36.196+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Discovery Client initialized at timestamp 1594482336196 with initial instances count: 3 
+2020-07-11 17:45:36.196+0200 [main] INFO  o.s.c.n.e.s.EurekaServiceRegistry - Registering application AUTHENTICATION with eureka with status UP 
+2020-07-11 17:45:36.196+0200 [main] INFO  c.netflix.discovery.DiscoveryClient - Saw local status change event StatusChangeEvent [timestamp=1594482336196, current=UP, previous=STARTING] 
+2020-07-11 17:45:36.196+0200 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_AUTHENTICATION/Sima:authentication:8083: registering service... 
+2020-07-11 17:45:36.196+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"] 
+2020-07-11 17:45:36.211+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path '' 
+2020-07-11 17:45:36.227+0200 [main] INFO  o.s.c.n.e.s.EurekaAutoServiceRegistration - Updating port to 8083 
+2020-07-11 17:45:36.258+0200 [DiscoveryClient-InstanceInfoReplicator-0] INFO  c.netflix.discovery.DiscoveryClient - DiscoveryClient_AUTHENTICATION/Sima:authentication:8083 - registration status: 204 
+2020-07-11 17:45:36.508+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
+2020-07-11 17:45:36.649+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
+2020-07-11 17:45:36.664+0200 [main] INFO  c.m.a.AuthenticationApplication - Started AuthenticationApplication in 7.149 seconds (JVM running for 8.018) 
+2020-07-11 17:46:07.11+0200 [http-nio-8083-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2020-07-11 17:46:07.11+0200 [http-nio-8083-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2020-07-11 17:46:07.23+0200 [http-nio-8083-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 11 ms 
+2020-07-11 17:46:07.123+0200 [http-nio-8083-exec-1] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"] 
+2020-07-11 17:46:28.747+0200 [http-nio-8083-exec-4] INFO  c.m.a.service.UserService - SUCCESS User bozo@gmail.com successfully logged. 
+=======
 2020-07-11 13:11:03.965+0200 [http-nio-8083-exec-6] INFO  c.m.a.service.UserService - SUCCESS User damjan@gmail.com successfully registered. 
 2020-07-11 13:11:04.296+0200 [http-nio-8083-exec-6] INFO  c.m.a.service.UserService - SUCCESS User successfully registered. 
 2020-07-11 13:13:12.940+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
 2020-07-11 13:18:12.943+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+>>>>>>> origin/master

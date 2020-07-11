@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "MessageOrder")
+@Table(name = "Message")
 public class Message {
 
     @Id
@@ -24,11 +24,11 @@ public class Message {
 //    private transient Person sender;
 //    @Resource(name = "receiver")
 //    private transient Person receiver;
-    @OneToOne
-    private Users sender;
+//    @OneToOne
+    private Long sender_id;
 
-    @OneToOne
-    private Users receiver;
+//    @OneToOne
+    private Long receiver_id;
 
     private String messageText;
 
@@ -36,4 +36,5 @@ public class Message {
 
     @Column(name = "chat_id")
     private String chatId;
+
 }

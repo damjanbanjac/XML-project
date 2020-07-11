@@ -19,6 +19,7 @@ import NewAd from '../components/views/Agent/NewAd.vue'
 import AddPricelist from '../components/views/Agent/AddPricelist.vue'
 import AgentAdList from '../components/views/Agent/AgentAdList.vue'
 import MakeReport from '../components/views/Agent/MakeReport.vue'
+import Sender from '../components/views/Agent/Sender.vue'
 
 import AgentRegistrationForm from '../components/views/Admin/AgentRegistrationForm.vue'
 
@@ -336,6 +337,14 @@ const routes = [
     path: '/messages',
     name: 'messages',
     component: Messages,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/sender',
+    name: 'sender',
+    component: Sender,
     meta: {
       requiresAuth: true
     }
