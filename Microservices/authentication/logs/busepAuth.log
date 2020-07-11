@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2020-07-11 17:45:32.461+0200 [task-1] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
 2020-07-11 17:45:32.571+0200 [task-1] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.15.Final 
 2020-07-11 17:45:32.586+0200 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
@@ -46,3 +47,9 @@
 2020-07-11 17:46:07.23+0200 [http-nio-8083-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 11 ms 
 2020-07-11 17:46:07.123+0200 [http-nio-8083-exec-1] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"] 
 2020-07-11 17:46:28.747+0200 [http-nio-8083-exec-4] INFO  c.m.a.service.UserService - SUCCESS User bozo@gmail.com successfully logged. 
+=======
+2020-07-11 13:11:03.965+0200 [http-nio-8083-exec-6] INFO  c.m.a.service.UserService - SUCCESS User damjan@gmail.com successfully registered. 
+2020-07-11 13:11:04.296+0200 [http-nio-8083-exec-6] INFO  c.m.a.service.UserService - SUCCESS User successfully registered. 
+2020-07-11 13:13:12.940+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-11 13:18:12.943+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+>>>>>>> origin/master

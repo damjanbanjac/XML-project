@@ -29,6 +29,6 @@ public class Request {
     private Date paymentDate;
     private Date acceptDate;
 
-    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER, mappedBy = "request")
+    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private List<Order> orderList = new ArrayList<>();
 }

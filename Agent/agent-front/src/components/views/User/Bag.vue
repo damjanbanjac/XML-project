@@ -85,7 +85,7 @@ export default {
     reserve(oglas){
       console.log(oglas)
       axios
-          .post("requests/"+this.bundle+"/request", oglas)
+          .post("requests/"+this.bundle+"/request/user/" + this.$store.state.user.id, oglas)
           .then(response => {
               this.oglasi= response.data
           })
@@ -96,7 +96,7 @@ export default {
   },
    mounted() {
     axios
-      .get("/orders/"+4+"/user")
+      .get("/orders/"+ this.$store.state.user.id +"/user")
       .then(oglasi => {
         this.oglasi = oglasi.data;
       })

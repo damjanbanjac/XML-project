@@ -10,6 +10,7 @@
 
     <b-navbar-nav>
       <router-link to="/login" tag="b-nav-item" v-if="this.$store.state.user.role.authority == ''" left>Log in</router-link>
+       <router-link to="/searchCarAds" tag="b-nav-item" left>Search cars</router-link>
       <b-nav-item-dropdown
         text="Sidebar"
         left
@@ -25,6 +26,7 @@
         <router-link to="/userRequests" tag="b-dropdown-item">My requests</router-link>
         <router-link to="/userAdList" tag="b-dropdown-item">My car ads</router-link>
         <router-link to="/userRequestsAgent" tag="b-dropdown-item">My requests as agent</router-link>
+        <router-link to="/requestsHisotry" tag="b-dropdown-item">History</router-link>
         <div class="dropdown-divider"></div>
         <router-link  to="/addCarAd" tag="b-dropdown-item">Add car ad</router-link>
         <router-link to="/createPriceList" tag="b-dropdown-item">Add pricelist</router-link>

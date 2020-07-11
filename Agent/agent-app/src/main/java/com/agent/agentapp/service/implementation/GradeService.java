@@ -3,14 +3,8 @@ package com.agent.agentapp.service.implementation;
 import com.agent.agentapp.dto.request.GradeAdCarRequest;
 import com.agent.agentapp.dto.response.AvgGradeResponse;
 import com.agent.agentapp.dto.response.GradeResponse;
-import com.agent.agentapp.entity.AdCar;
-import com.agent.agentapp.entity.Grade;
-import com.agent.agentapp.entity.Order;
-import com.agent.agentapp.entity.User;
-import com.agent.agentapp.repository.AdCarRepository;
-import com.agent.agentapp.repository.IGradeRepository;
-import com.agent.agentapp.repository.IOrderRepository;
-import com.agent.agentapp.repository.IUserRepository;
+import com.agent.agentapp.entity.*;
+import com.agent.agentapp.repository.*;
 import com.agent.agentapp.service.IGradeService;
 import org.springframework.stereotype.Service;
 
@@ -28,11 +22,14 @@ public class GradeService implements IGradeService {
 
     private final IUserRepository userRepository;
 
-    public GradeService(IGradeRepository gradeRepository, IOrderRepository orderRepository, AdCarRepository adCarRepository, IUserRepository userRepository) {
+    private final RequestRepository _requestRepository;
+
+    public GradeService(IGradeRepository gradeRepository, IOrderRepository orderRepository, AdCarRepository adCarRepository, IUserRepository userRepository, RequestRepository requestRepository) {
         this.gradeRepository = gradeRepository;
         this.orderRepository = orderRepository;
         this.adCarRepository = adCarRepository;
         this.userRepository = userRepository;
+        _requestRepository = requestRepository;
     }
 
     @Override
@@ -43,13 +40,24 @@ public class GradeService implements IGradeService {
         if(allOrders.isEmpty()){
             throw new Exception("You cannot grade this ad.");
         }
+        List<Request> allRequests = _requestRepository.findAll();
         Order order = null;
-        for (Order o: allOrders) {
-            if(o.getAdCar_id() == adCar && o.getRequest().getStatus().equals("PAID") && o.getUser() == user) {
-                order = o;
-                break;
+        for(Request r: allRequests){
+            if(r.getStatus().equals("PAID")){
+                for(Order o: r.getOrderList()){
+                    if(o.getAdCar_id() == adCar && o.getUser() == user) {
+                         order = o;
+                         break;
+                     }
+                }
             }
         }
+//        for (Order o: allOrders) {
+//            if(o.getAdCar_id() == adCar && o.getRequest().getStatus().equals("PAID") && o.getUser() == user) {
+//                order = o;
+//                break;
+//            }
+//        }
 
         if(order == null){
             throw new Exception("You cannot grade this ad.");
