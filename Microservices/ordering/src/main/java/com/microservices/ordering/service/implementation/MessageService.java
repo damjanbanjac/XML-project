@@ -229,7 +229,7 @@ public class MessageService implements IMessageService {
         List<Request> requestList = requestRepository.findAll();
         List<Long> returnListOfId = new ArrayList<>();
         for(Request request : requestList) {
-            if(request.getStatus().equals("PENDING")) {
+            if(request.getStatus().equals("RESERVED")) {
                 for(Order order : request.getOrderList()) {
                     if(order.getUserIzdavao() != null) {
                         if (order.getUserIzdavao().equals(id_owner) || order.getUserr().equals(id_owner)) {

@@ -23,7 +23,12 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37">
+        <schema name="mysql" object-types="table, view, function, procedure" />
+        <schema name="services" object-types="table, constraint, column, view, function, index, dataset trigger, procedure" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37">
@@ -31,7 +36,10 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" object-ref="schemas/services/tables/users" />
+      <object connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" object-ref="schemas/services/tables/requests_order_list" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" />
@@ -39,6 +47,7 @@
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" dataset="services.users" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" dataset="services.authority" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" dataset="services.requests_order_list" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" dataset="services.agent" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" dataset="services.agent_auth" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="b44d947c-54a8-4c9d-9e1a-77fe4b15ed37" dataset="services.user_authority" active-filter-id="EMPTY_FILTER" />
