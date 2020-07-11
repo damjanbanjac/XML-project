@@ -2,35 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e0b8693c-7168-4cb6-8019-0e1ec3d908e1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ads/logs/busepAds-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../ads/logs/busepAds-1.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ads/logs/busepAds-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../ads/logs/busepAds-2.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ads/logs/busepAds.log" beforeDir="false" afterPath="$PROJECT_DIR$/../ads/logs/busepAds.log" afterDir="false" />
-<<<<<<< HEAD
-      <change beforePath="$PROJECT_DIR$/../authentication/logs/busepAuth.log" beforeDir="false" afterPath="$PROJECT_DIR$/../authentication/logs/busepAuth.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ordering/src/main/java/com/microservices/ordering/controller/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ordering/src/main/java/com/microservices/ordering/controller/RequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ordering/src/main/java/com/microservices/ordering/service/IRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ordering/src/main/java/com/microservices/ordering/service/IRequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ordering/src/main/java/com/microservices/ordering/service/implementation/RequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ordering/src/main/java/com/microservices/ordering/service/implementation/RequestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ordering/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../ordering/src/main/resources/data.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search.iml" beforeDir="false" afterPath="$PROJECT_DIR$/search.iml" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/../authentication/logs/busepAuth-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../authentication/logs/busepAuth-1.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../authentication/logs/busepAuth-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/../authentication/logs/busepAuth-2.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../authentication/logs/busepAuth.log" beforeDir="false" afterPath="$PROJECT_DIR$/../authentication/logs/busepAuth.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ordering/src/main/java/com/microservices/ordering/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ordering/src/main/java/com/microservices/ordering/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/busepSearch-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/busepSearch-1.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/busepSearch-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/logs/busepSearch-2.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/busepSearch.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/busepSearch.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/search.iml" beforeDir="false" afterPath="$PROJECT_DIR$/search.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../XML-front/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../XML-front/src/App.vue" afterDir="false" />
->>>>>>> origin/master
+      <change beforePath="$PROJECT_DIR$/../../XML-front/src/components/views/User/SearchCarAds.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../../XML-front/src/components/views/User/SearchCarAds.vue" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,18 +75,6 @@
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Application.SearchApplication">
     <configuration name="SearchApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -180,9 +153,7 @@
       <workItem from="1592774732916" duration="4910000" />
       <workItem from="1593151664812" duration="197000" />
       <workItem from="1593155525339" duration="109000" />
-<<<<<<< HEAD
       <workItem from="1594312856874" duration="659000" />
-=======
       <workItem from="1593899098849" duration="5802000" />
       <workItem from="1593911110697" duration="2180000" />
       <workItem from="1593961364844" duration="13738000" />
@@ -195,7 +166,6 @@
       <workItem from="1594217318367" duration="660000" />
       <workItem from="1594223364295" duration="18000" />
       <workItem from="1594251888377" duration="749000" />
->>>>>>> origin/master
     </task>
     <servers />
   </component>
@@ -207,7 +177,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

@@ -10,6 +10,7 @@
 
     <b-navbar-nav>
       <router-link to="/login" tag="b-nav-item" v-if="this.$store.state.user.role.authority == ''" left>Log in</router-link>
+       <router-link to="/searchCarAds" tag="b-nav-item" left>Search cars</router-link>
       <b-nav-item-dropdown
         text="Sidebar"
         left
