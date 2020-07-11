@@ -32,17 +32,7 @@
               </div>
               
             </div>
-            <div class="col">
-              <div class="md-form pb-3">
-                
-                <div class="text-center mb-4">
-                  <button
-                    type="button"
-                    class="btn btn-info btn-block z-depth-2"
-                  @click="pay(zahtev.id)">Pay</button>
-                </div>
-              </div>
-            </div>
+           
           </div>
           <!--Body-->
         </div>
@@ -66,7 +56,7 @@ export default {
   methods: {
     pay(id){
       axios
-          .post("requests/"+id+"/paid")
+          .post("order/requests/"+id+"/paid")
           .then(response => {
               this.request= response.data
           })
@@ -77,7 +67,7 @@ export default {
   },
    mounted() {
     axios
-      .get("requests/"+ this.$store.state.user.id +"/user")
+      .get("/order/requests/userhistory/"+ this.$store.state.user.id)
       .then(zahtevi => {
         this.zahtevi = zahtevi.data;
         console.log(this.zahtevi);

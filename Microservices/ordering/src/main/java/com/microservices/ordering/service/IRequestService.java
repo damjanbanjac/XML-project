@@ -23,7 +23,7 @@ public interface IRequestService {
 
     List<OrderDTO> createRquestForUser(Boolean bundle,Long id, OrderDTO order);
 
-    RequestDTO presonallyRequest(Long id, OrderDTO order) throws ParseException;
+    RequestDTO presonallyRequest(OrderDTO order) throws ParseException;
 
     List<RequestDTO> agentRequests(Long agentId);
 
@@ -33,7 +33,11 @@ public interface IRequestService {
 
     List<RequestDTO> userRequests(Long idUser);
 
+    List<RequestDTO> userRequestsHistory(Long idUser);
+
     RequestDTO paidRequest(Long idRequest) throws ParseException;
+
+    RequestDTO cancleRequest(Long idRequest);
 
     RequestDTO declineRequest(Long idRequest);
 }

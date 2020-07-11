@@ -183,7 +183,7 @@ public class RequestService implements IRequestService {
 
 
     @Override
-    public RequestDTO presonallyRequest(Long id,OrderDTO order) throws ParseException {
+    public RequestDTO presonallyRequest(OrderDTO order) throws ParseException {
 
         Order order1 = new Order();
 
@@ -194,7 +194,7 @@ public class RequestService implements IRequestService {
         order1.setAvailableTo(order.getAvailableTo());
         order1.setAdCar(order.getAdCar());
         order1.setRequired(true);
-        order1.setUserr(id);
+        //order1.setUserr(id);
         order1.setUserIzdavao(userIzdaoId);
         order1.setAgentIzdao(agentIzdaoId);
 
@@ -346,6 +346,25 @@ public class RequestService implements IRequestService {
     }
 
     @Override
+    public List<RequestDTO> userRequestsHistory(Long idUser) {
+
+        List<Request> requets =requestRepository.findAll();
+        List<RequestDTO> requestsDTO= new ArrayList<>();
+
+        for(Request req: requets) {
+            for (int i = 0; i < req.getOrderList().size(); i++) {
+                if (req.getOrderList().get(i).getUserr().equals(idUser)) {
+                    if (req.getStatus().equals("PAID") || req.getStatus().equals("CANCELED")) {
+                        requestsDTO.add(new RequestDTO(req));
+                    }
+                    break;
+                }
+            }
+        }
+        return requestsDTO;
+    }
+
+    @Override
     public RequestDTO paidRequest(Long idRequest) throws ParseException {
 
         Request request = requestRepository.findOneById(idRequest);
@@ -377,6 +396,17 @@ public class RequestService implements IRequestService {
                 }
             }
         }
+
+        RequestDTO requestDTO= new RequestDTO(request);
+
+        return requestDTO;
+    }
+
+    @Override
+    public RequestDTO cancleRequest(Long idRequest) {
+        Request request = requestRepository.findOneById(idRequest);
+        request.setStatus("CANCELED");
+        requestRepository.save(request);
 
         RequestDTO requestDTO= new RequestDTO(request);
 

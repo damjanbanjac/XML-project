@@ -30,9 +30,22 @@
                 <label id="Form-ime" class="form-control">{{oglas.id}}</label>
                 
               </div>
+              <div class="text-center mb-4">
+                <button
+                    type="button"
+                    class="btn btn-info btn-block z-depth-2"
+                  @click="pay(zahtev.id)">Pay</button>
+              </div>
+
+              <div class="text-center mb-4">
+                <button
+                    type="button"
+                    class="btn btn-info btn-block z-depth-2"
+                  @click="cancle1(zahtev.id)">Cancel</button>
+              </div>
               
             </div>
-            <div class="col">
+            <!--<div class="col">
               <div class="md-form pb-3">
                 
                 <div class="text-center mb-4">
@@ -42,7 +55,7 @@
                   @click="pay(zahtev.id)">Pay</button>
                 </div>
               </div>
-            </div>
+            </div>-->
           </div>
           <!--Body-->
         </div>
@@ -67,6 +80,17 @@ export default {
     pay(id){
       axios
           .post("order/requests/"+id+"/paid")
+          .then(response => {
+              this.request= response.data
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    },
+
+     cancle1(id){
+      axios
+          .post("order/requests/"+id+"/cancle")
           .then(response => {
               this.request= response.data
           })

@@ -26,3 +26,4 @@
 2020-07-11 13:16:29.138+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
 2020-07-11 13:18:38.720+0200 [http-nio-8091-exec-7] INFO  c.m.s.controller.SearchController - SUCCESS User successfully searched ads. 
 2020-07-11 13:19:01.972+0200 [http-nio-8091-exec-3] INFO  c.m.s.controller.SearchController - SUCCESS User successfully searched ads. 
+2020-07-11 13:21:29.142+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 

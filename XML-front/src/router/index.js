@@ -51,6 +51,7 @@ import UserRequests from '../components/views/Order/UserRequests.vue'
 import ReservePayGo from '../components/views/Order/ReservePayGo.vue'
 import UserRequestsAgent from '../components/views/Order/UserRequestsAgent.vue'
 import MakeReportUser from '../components/views/User/MakeReportUser.vue'
+import RequestsHistory from '../components/views/Order/RequestsHistory.vue'
 
 Vue.use(VueRouter);
 
@@ -399,6 +400,14 @@ const routes = [
     path: '/makeReportUser',
     name: 'make-report-user',
     component: MakeReportUser,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/requestsHisotry',
+    name: 'request-history',
+    component: RequestsHistory,
     meta: {
       requiresAuth: true
     }

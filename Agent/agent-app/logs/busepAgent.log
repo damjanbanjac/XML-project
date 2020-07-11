@@ -1,7 +1,150 @@
-2020-07-06 17:35:10.874+0200 [http-nio-8097-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.Exception: You cannot comment this ad.] with root cause 
-java.lang.Exception: You cannot comment this ad.
-	at com.agent.agentapp.service.implementation.CommentService.commentAdCar(CommentService.java:46) ~[classes/:na]
-	at com.agent.agentapp.controller.CommentController.comment(CommentController.java:25) ~[classes/:na]
+2020-07-10 21:53:15.729+0200 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2020-07-10 21:53:16.178+0200 [task-1] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.0.Final} 
+2020-07-10 21:53:16.438+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2020-07-10 21:53:16.932+0200 [task-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2020-07-10 21:53:16.973+0200 [task-1] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2020-07-10 21:53:18.923+0200 [task-1] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table requests_order_list drop foreign key FKaa0lkpcv5ng1kvedprmkj5ufh" via JDBC Statement 
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table requests_order_list drop foreign key FKaa0lkpcv5ng1kvedprmkj5ufh" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:331) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:230) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1249) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: java.sql.SQLSyntaxErrorException: Table 'agentxml.requests_order_list' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:764) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-3.4.5.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-3.4.5.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	... 19 common frames omitted
+2020-07-10 21:53:18.925+0200 [task-1] WARN  o.h.t.s.i.ExceptionHandlerLoggedImpl - GenerationTarget encountered exception accepting command : Error executing DDL "alter table requests_order_list drop foreign key FKk9txo9tkdl0aaaqtttkgrbm3h" via JDBC Statement 
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table requests_order_list drop foreign key FKk9txo9tkdl0aaaqtttkgrbm3h" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlString(SchemaDropperImpl.java:375) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applySqlStrings(SchemaDropperImpl.java:359) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.applyConstraintDropping(SchemaDropperImpl.java:331) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.dropFromMetadata(SchemaDropperImpl.java:230) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.performDrop(SchemaDropperImpl.java:154) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:126) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.internal.SchemaDropperImpl.doDrop(SchemaDropperImpl.java:112) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:145) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1249) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+Caused by: java.sql.SQLSyntaxErrorException: Table 'agentxml.requests_order_list' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:764) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-3.4.5.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-3.4.5.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	... 19 common frames omitted
+2020-07-10 21:53:27.360+0200 [task-1] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2020-07-10 21:53:27.373+0200 [task-1] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2020-07-10 21:53:28.770+0200 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6e321d9d, org.springframework.security.web.context.SecurityContextPersistenceFilter@7893c715, org.springframework.security.web.header.HeaderWriterFilter@75e0a54c, org.springframework.security.web.authentication.logout.LogoutFilter@13cc31ae, com.agent.agentapp.security.auth.TokenAuthenticationFilter@754de353, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@690df641, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@595fed99, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@ee2ae9a, org.springframework.security.web.session.SessionManagementFilter@6ad6ae45, org.springframework.security.web.access.ExceptionTranslationFilter@f849027] 
+2020-07-10 21:53:28.887+0200 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8097"] 
+2020-07-10 21:53:28.919+0200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8097 (http) with context path '' 
+2020-07-10 21:53:28.920+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Triggering deferred initialization of Spring Data repositories… 
+2020-07-10 21:53:29.443+0200 [main] INFO  o.s.d.r.c.DeferredRepositoryInitializationListener - Spring Data repositories initialized! 
+2020-07-10 21:53:29.453+0200 [main] INFO  c.agent.agentapp.AgentAppApplication - Started AgentAppApplication in 19.519 seconds (JVM running for 21.415) 
+2020-07-10 21:55:31.435+0200 [http-nio-8097-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2020-07-10 21:55:31.436+0200 [http-nio-8097-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+2020-07-10 21:55:31.473+0200 [http-nio-8097-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 31 ms 
+2020-07-10 21:55:41.622+0200 [http-nio-8097-exec-3] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent agent@gmail.com successfully logged. 
+2020-07-10 21:56:25.590+0200 [http-nio-8097-exec-8] INFO  c.a.a.s.implementation.AdCarService - SUCCESS Agent successfully added a car. 
+2020-07-10 21:56:47.422+0200 [http-nio-8097-exec-4] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.util.ArrayList<com.agent.agentapp.entity.Comment>` out of VALUE_NUMBER_INT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.util.ArrayList<com.agent.agentapp.entity.Comment>` out of VALUE_NUMBER_INT token
+ at [Source: (PushbackInputStream); line: 1, column: 984] (through reference chain: com.agent.agentapp.dto.request.OrderDTO["adCar"]->com.agent.agentapp.entity.AdCar["comments"])] 
+2020-07-10 21:57:49.761+0200 [http-nio-8097-exec-6] INFO  c.a.a.c.AuthenticationController - SUCCESS User user@gmail.com successfully registered. 
+2020-07-10 21:57:58.963+0200 [http-nio-8097-exec-3] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent admin@gmail.com successfully logged. 
+2020-07-10 21:59:11.839+0200 [http-nio-8097-exec-6] INFO  c.a.a.c.AuthenticationController - SUCCESS Agent agent@gmail.com successfully logged. 
+2020-07-10 21:59:24.668+0200 [http-nio-8097-exec-8] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "undefined"] 
+2020-07-10 22:01:37.427+0200 [http-nio-8097-exec-2] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1062, SQLState: 23000 
+2020-07-10 22:01:37.428+0200 [http-nio-8097-exec-2] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Duplicate entry '1' for key 'requests_order_list.UK_rsm21fryya2hmvyewss4tu6yx' 
+2020-07-10 22:01:37.431+0200 [http-nio-8097-exec-2] INFO  o.h.e.j.b.internal.AbstractBatchImpl - HHH000010: On release of batch it still contained JDBC statements 
+2020-07-10 22:01:37.453+0200 [http-nio-8097-exec-2] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [requests_order_list.UK_rsm21fryya2hmvyewss4tu6yx]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement] with root cause 
+java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '1' for key 'requests_order_list.UK_rsm21fryya2hmvyewss4tu6yx'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1092) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1040) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1347) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:1025) ~[mysql-connector-java-8.0.20.jar:8.0.20]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61) ~[HikariCP-3.4.5.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java) ~[HikariCP-3.4.5.jar:na]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:197) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.engine.jdbc.batch.internal.NonBatchingBatch.addToBatch(NonBatchingBatch.java:45) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.persister.collection.AbstractCollectionPersister.recreate(AbstractCollectionPersister.java:1357) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.action.internal.CollectionRecreateAction.execute(CollectionRecreateAction.java:52) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:604) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.engine.spi.ActionQueue.lambda$executeActions$1(ActionQueue.java:478) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:684) ~[na:na]
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:475) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:348) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:40) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:102) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.internal.SessionImpl.doFlush(SessionImpl.java:1352) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.internal.SessionImpl.managedFlush(SessionImpl.java:443) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.internal.SessionImpl.flushBeforeTransactionCompletion(SessionImpl.java:3202) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.internal.SessionImpl.beforeTransactionCompletion(SessionImpl.java:2370) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.engine.jdbc.internal.JdbcCoordinatorImpl.beforeTransactionCompletion(JdbcCoordinatorImpl.java:447) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.beforeCompletionCallback(JdbcResourceLocalTransactionCoordinatorImpl.java:183) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl.access$300(JdbcResourceLocalTransactionCoordinatorImpl.java:40) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcResourceLocalTransactionCoordinatorImpl$TransactionDriverControlImpl.commit(JdbcResourceLocalTransactionCoordinatorImpl.java:281) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.hibernate.engine.transaction.internal.TransactionImpl.commit(TransactionImpl.java:101) ~[hibernate-core-5.4.15.Final.jar:5.4.15.Final]
+	at org.springframework.orm.jpa.JpaTransactionManager.doCommit(JpaTransactionManager.java:534) ~[spring-orm-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:743) ~[spring-tx-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:711) ~[spring-tx-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:631) ~[spring-tx-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:385) ~[spring-tx-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:118) ~[spring-tx-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:139) ~[spring-tx-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:178) ~[spring-data-jpa-2.3.0.RELEASE.jar:2.3.0.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:95) ~[spring-aop-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:212) ~[spring-aop-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at com.sun.proxy.$Proxy142.save(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:344) ~[spring-aop-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:205) ~[spring-aop-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at com.sun.proxy.$Proxy100.save(Unknown Source) ~[na:na]
+	at com.agent.agentapp.service.implementation.RequestService.createRquestForUser(RequestService.java:108) ~[classes/:na]
+	at com.agent.agentapp.controller.RequestController.createRequestForUser(RequestController.java:22) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
@@ -78,22 +221,3 @@ java.lang.Exception: You cannot comment this ad.
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.35.jar:9.0.35]
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
-2020-07-06 17:38:41.905+0200 [SpringContextShutdownHook] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception thrown from ApplicationListener handling ContextClosedEvent 
-java.lang.NoSuchMethodError: 'void ch.qos.logback.classic.LoggerContext.removeObject(java.lang.String)'
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.markAsUninitialized(LogbackLoggingSystem.java:318) ~[spring-boot-2.3.0.RELEASE.jar:2.3.0.RELEASE]
-	at org.springframework.boot.logging.logback.LogbackLoggingSystem.cleanUp(LogbackLoggingSystem.java:212) ~[spring-boot-2.3.0.RELEASE.jar:2.3.0.RELEASE]
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onContextClosedEvent(LoggingApplicationListener.java:257) ~[spring-boot-2.3.0.RELEASE.jar:2.3.0.RELEASE]
-	at org.springframework.boot.context.logging.LoggingApplicationListener.onApplicationEvent(LoggingApplicationListener.java:223) ~[spring-boot-2.3.0.RELEASE.jar:2.3.0.RELEASE]
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:172) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:165) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:139) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:403) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:360) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1012) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:168) ~[spring-boot-2.3.0.RELEASE.jar:2.3.0.RELEASE]
-	at org.springframework.context.support.AbstractApplicationContext$1.run(AbstractApplicationContext.java:948) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
-2020-07-06 17:38:42.281+0200 [SpringContextShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default' 
-2020-07-06 17:38:42.284+0200 [SpringContextShutdownHook] INFO  o.h.t.s.i.SchemaDropperImpl$DelayedDropActionImpl - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down' 
-2020-07-06 17:38:43.836+0200 [SpringContextShutdownHook] INFO  o.s.s.c.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor' 
-2020-07-06 17:38:43.839+0200 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
-2020-07-06 17:38:43.861+0200 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 

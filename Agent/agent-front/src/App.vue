@@ -35,7 +35,7 @@ export default {
 }
 
 body {
-    background-image: url('https://scontent.fbeg2-1.fna.fbcdn.net/v/t1.15752-9/103881952_261397135081687_2774286197962572060_n.jpg?_nc_cat=104&_nc_sid=b96e70&_nc_eui2=AeG0zS1zc4uQEvkVZHt6qEFHSnw4ORzmjRRKfDg5HOaNFP7U6NSHG0qKynEQNMVwlys&_nc_ohc=BcGs03Ta13MAX9TVA32&_nc_ht=scontent.fbeg2-1.fna&oh=5a59e15199e1fe61717548ac85075cb9&oe=5F085A07');
+    background-image: url('https://scontent.fbeg2-1.fna.fbcdn.net/v/t1.15752-9/103881952_261397135081687_2774286197962572060_n.jpg?_nc_cat=104&_nc_sid=b96e70&_nc_eui2=AeG0zS1zc4uQEvkVZHt6qEFHSnw4ORzmjRRKfDg5HOaNFP7U6NSHG0qKynEQNMVwlys&_nc_ohc=MkenpKOVPxUAX_VZL9f&_nc_ht=scontent.fbeg2-1.fna&oh=a7f1c0b6b1fd6bebc753a19f62cdf8c8&oe=5F2FE707');
     background-repeat: no-repeat;
 }
 </style>

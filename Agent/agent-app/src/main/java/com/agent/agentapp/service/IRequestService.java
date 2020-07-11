@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IRequestService {
 
-    List<OrderDTO> createRquestForUser(Boolean bundle, OrderDTO order);
+    List<OrderDTO> createRquestForUser(Boolean bundle, Long id, OrderDTO order);
 
     RequestDTO presonallyRequest(OrderDTO order) throws ParseException;
 
