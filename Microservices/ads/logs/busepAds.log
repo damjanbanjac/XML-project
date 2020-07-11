@@ -74,3 +74,4 @@ Using generated security password: 48abbb6b-0ecf-460d-b147-1016b77500b4
 2020-07-11 13:07:46.896+0200 [http-nio-8098-exec-3] INFO  c.m.a.s.implementation.AdCarService - SUCCESS Agent 200 successfully added a car. 
 2020-07-11 13:10:54.315+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
 2020-07-11 13:15:54.336+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
+2020-07-11 13:20:54.387+0200 [AsyncResolver-bootstrap-executor-0] INFO  c.n.d.s.r.aws.ConfigClusterResolver - Resolving eureka endpoints via configuration 
