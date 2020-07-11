@@ -137,10 +137,35 @@
 
 
 
+         <div class="header pt-3 grey lighten-2">
+        <div class="row d-flex justify-content-start">
 
+          <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5">All car ads</h3>
+
+        </div>
+      </div>
+      <!--Header-->
+
+
+
+
+<b-container >
+         <div v-if="this.$store.state.user.role.authority == 'USER'" >
+    <b-table class="mt-2 mb-2" striped hover :items="ads" @row-selected="activateAd" select-mode="single" :fields="fields"   selectable caption-top >
+          <!-- <template v-slot:table-caption><h3>Ads list</h3>
+          </template> -->
+    </b-table>
+  </div>
+   <div v-if="this.$store.state.user.role.authority == ''" >
+    <b-table class="mt-2 mb-2" striped hover :items="ads"  select-mode="single" :fields="fields"   selectable caption-top >
+          <!-- <template v-slot:table-caption><h3>Ads list</h3>
+          </template> -->
+    </b-table>
+  </div>
+</b-container>
 
       
-      <div class="header pt-3 grey lighten-2">
+      <!-- <div class="header pt-3 grey lighten-2">
         <div class="row d-flex justify-content-start">
           <h3 class="deep-grey-text mt-3 mb-4 pb-1 mx-5">Cars</h3>
         </div>
@@ -159,9 +184,7 @@
                 <label id="Form-ime" class="form-control">{{ad.kidsSeats}}</label>               
               </div>
             </div>
-            <!-- </div> -->
-
-            <!-- <div class="row"> -->
+       
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">City</label>
@@ -177,9 +200,7 @@
                 <label id="Form-ime" class="form-control">{{ad.kmRestriction}}</label>               
               </div>
             </div>
-            <!-- </div> -->
 
-            <!-- <div class="row"> -->
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Km traveled</label>
@@ -195,9 +216,7 @@
                 <label id="Form-ime" class="form-control">{{ad.showTimeFrom}}</label>               
               </div>
             </div>
-            <!-- </div> -->
 
-            <!-- <div class="row"> -->
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Available to</label>
@@ -213,9 +232,7 @@
                 <label id="Form-ime" class="form-control">{{ad.cdw}}</label>               
               </div>
             </div>
-            <!-- </div> -->
 
-            <!-- <div class="row"> -->
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Car Brand</label>
@@ -231,10 +248,7 @@
                 <label id="Form-ime" class="form-control">{{ad.carModel_id.model}}</label>               
               </div>
             </div>
-            <!-- </div> -->
-          
-
-          <!-- <div class="row"> -->
+     
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Car Class</label>
@@ -250,9 +264,7 @@
                 <label id="Form-ime" class="form-control">{{ad.fuelType_id.type}}</label>               
               </div>
             </div>
-          <!-- </div> -->
-
-          <!-- <div class="row"> -->
+     
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Gear shift type</label>
@@ -268,9 +280,7 @@
                 <label id="Form-ime" class="form-control">{{ad.grade}}</label>               
               </div>
             </div>
-          <!-- </div> -->
 
-          <!-- <div class="row"> -->
             <div class="col">
               <div class="md-form">
                 <label for="Form-ime">Price</label>
@@ -279,7 +289,7 @@
             </div>
           </div>
         </div>
-    </div>
+    </div> -->
 
           
 
@@ -311,6 +321,24 @@ import axios from "axios";
           kmTraveled: ''
 
         },
+         fields: [
+        {key: 'id',
+            sortable: true,
+            label: 'Id'},
+             {key: 'carBrand_id.name',
+            sortable: true,
+            label: 'Car brand'},
+             {key: 'city',
+            sortable: true,
+            label: 'City'},
+            {key: 'grade',
+            sortable: true,
+            label: 'Grade'}
+          
+            
+        ],
+
+     
         selectedFile: null,
         show: true,
           error: false,
@@ -354,6 +382,16 @@ import axios from "axios";
       }
     },
     methods: {
+
+        activateAd(idAd) {
+      
+    
+        
+        this.$router.push("/openedAdByUser/" + idAd[0].id);
+        
+        
+      
+    },
         
         
         searchCars() {
