@@ -167,18 +167,18 @@ public class RequestService implements IRequestService {
     @Scheduled(fixedRate = 1000)
     public void sistemskoOdbijanje24h(){
 
-        List<Request> requests= requestRepository.findAll();
-        Calendar calendar= Calendar.getInstance();
-
-        for(Request r:requests){
-            if(r.getStatus().equals("PENDING")){
-                if(calendar.getTime().after(r.getPaymentDate())){
-                    Request request = requestRepository.findOneById(r.getId());
-                    request.setStatus("CANCELED");
-                    requestRepository.save(request);
-                }
-            }
-        }
+//        List<Request> requests= requestRepository.findAll();
+//        Calendar calendar= Calendar.getInstance();
+//
+//        for(Request r:requests){
+//            if(r.getStatus().equals("PENDING")){
+//                if(calendar.getTime().after(r.getPaymentDate())){
+//                    Request request = requestRepository.findOneById(r.getId());
+//                    request.setStatus("CANCELED");
+//                    requestRepository.save(request);
+//                }
+//            }
+//        }
     }
 
 

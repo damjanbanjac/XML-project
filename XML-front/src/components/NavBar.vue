@@ -42,6 +42,7 @@
       >
         <router-link to="/agentRequests" tag="b-dropdown-item">Owner requests</router-link>
         <router-link to="/reservePayGo" tag="b-dropdown-item">Reserve-Pay-Go</router-link>
+        <router-link to="/sender" tag="b-dropdown-item">Messages</router-link>
         <div class="dropdown-divider"></div>
         <router-link to="/agentAdList" tag="b-dropdown-item">My car ads</router-link>
         <router-link  to="/newAd" tag="b-dropdown-item">Add car ad</router-link>

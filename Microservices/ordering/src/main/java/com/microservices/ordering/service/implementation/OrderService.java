@@ -1,6 +1,7 @@
 package com.microservices.ordering.service.implementation;
 
 import com.microservices.ordering.client.AdClient;
+import com.microservices.ordering.client.AuthClient;
 import com.microservices.ordering.dto.AdCarDTO;
 import com.microservices.ordering.dto.AdCarResponse;
 import com.microservices.ordering.dto.OrderDTO;
@@ -81,9 +82,12 @@ public class OrderService implements IOrderService {
 
     }
 
+    @Autowired
+    AuthClient authClient;
+
     @Override
     public List<OrderDTO> getAllOrdersForUser(Long id) {
-
+//        String string = authClient.getLoggedUser();
         List<OrderDTO> ordersOfUser= new ArrayList<>();
         List<Order> orders= orderRepositiory.findAll();
 

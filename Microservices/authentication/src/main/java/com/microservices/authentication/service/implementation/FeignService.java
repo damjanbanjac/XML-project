@@ -1,6 +1,7 @@
 package com.microservices.authentication.service.implementation;
 
 import com.microservices.authentication.dto.feignDTOs.UserDTO;
+import com.microservices.authentication.dto.feignDTOs.UsersDTO;
 import com.microservices.authentication.model.User;
 import com.microservices.authentication.repository.UserRepository;
 import com.microservices.authentication.service.IFeignService;
@@ -26,6 +27,20 @@ public class FeignService implements IFeignService {
 
         return userDTO;
     }
+
+    @Override
+    public UsersDTO getUser1Details(Long id) {
+        User user = _userRepository.findOneById(id);
+        UsersDTO userDTO = new UsersDTO();
+        userDTO.setId(user.getId());
+        userDTO.setEmail(user.getEmail());
+        userDTO.setName(user.getName());
+        userDTO.setSurname(user.getSurname());
+        userDTO.setPermissionBlocked(user.getPermissionBlocked());
+        return userDTO;
+    }
+
+
 
     @Override
     public UserDTO changeUserDetails(Long id) {

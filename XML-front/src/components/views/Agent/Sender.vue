@@ -133,13 +133,13 @@ export default {
                 return;
             }
             // this.form.sender.id = this.$store.user.id;
-            this.form.receiver_id = user.id;
-            this.form.sender_id = this.loggedUser.id;
+            this.form.receiver_id = user;
+            this.form.sender_id = this.loggedUser;
             // user;
             this.form.date = new Date();
     
             axios
-            .post("/order/message/message/" + this.$store.state.user.id,this.form)
+            .post("/order/message/message/" + this.$store.state.user.id + "/agentSender",this.form)
             .then(chata => {
                 this.chata = chata.data
                 this.form.messageText = "";

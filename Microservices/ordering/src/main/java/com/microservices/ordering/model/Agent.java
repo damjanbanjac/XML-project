@@ -1,5 +1,6 @@
 package com.microservices.ordering.model;
 
+import com.microservices.ordering.dto.AgentDTO2;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,4 +31,5 @@ public class Agent {
     /*
     @OneToMany(fetch = FetchType.EAGER)
     public List<Order> orders;*/
+
 }

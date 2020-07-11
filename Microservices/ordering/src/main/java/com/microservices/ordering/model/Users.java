@@ -1,5 +1,6 @@
 package com.microservices.ordering.model;
 
+import com.microservices.ordering.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,4 +27,15 @@ public class Users {
     /*
     @OneToMany(fetch = FetchType.EAGER)
     public List<Order> orders;*/
+
+    public Users(Long idUser) {
+        this.id = idUser;
+    }
+
+    public Users(UserDTO userDTO) {
+        this.id = userDTO.getId();
+        this.name = userDTO.getName();
+        this.email = userDTO.getEmail();
+    }
+
 }
