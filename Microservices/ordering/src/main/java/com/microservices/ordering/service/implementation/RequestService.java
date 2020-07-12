@@ -167,18 +167,18 @@ public class RequestService implements IRequestService {
     @Scheduled(fixedRate = 1000)
     public void sistemskoOdbijanje24h(){
 
-//        List<Request> requests= requestRepository.findAll();
-//        Calendar calendar= Calendar.getInstance();
-//
-//        for(Request r:requests){
-//            if(r.getStatus().equals("PENDING")){
-//                if(calendar.getTime().after(r.getPaymentDate())){
-//                    Request request = requestRepository.findOneById(r.getId());
-//                    request.setStatus("CANCELED");
-//                    requestRepository.save(request);
-//                }
-//            }
-//        }
+        List<Request> requests= requestRepository.findAll();
+        Calendar calendar= Calendar.getInstance();
+
+        for(Request r:requests){
+            if(r.getStatus().equals("PENDING")){
+                if(calendar.getTime().after(r.getPaymentDate())){
+                    Request request = requestRepository.findOneById(r.getId());
+                    request.setStatus("CANCELED");
+                    requestRepository.save(request);
+                }
+            }
+        }
     }
 
 
@@ -225,12 +225,12 @@ public class RequestService implements IRequestService {
                 System.out.println("Ispis tacnosti drugi deo drugog dela " + (dateFrom.compareTo(date2)*date2.compareTo(dateTo)>0));
                 if (req.getOrderList().get(i).getAdCar().equals(order.getAdCar()) && (date1.compareTo(dateFrom)*dateFrom.compareTo(date2)>0 || date1.compareTo(dateTo)*dateTo.compareTo(date2)>0)){
                     Request request1= requestRepository.getOne(req.getId());
-                    request1.setStatus("CACELED");
+                    request1.setStatus("CANCELED");
                     requestRepository.save(request1);
                 }
                 else if(req.getOrderList().get(i).getAdCar().equals(order.getAdCar()) && (dateFrom.compareTo(date1)*date1.compareTo(dateTo)>0 || dateFrom.compareTo(date2)*date2.compareTo(dateTo)>0)){
                     Request request1= requestRepository.getOne(req.getId());
-                    request1.setStatus("CACELED");
+                    request1.setStatus("CANCELED");
                     requestRepository.save(request1);
                 }
             }
